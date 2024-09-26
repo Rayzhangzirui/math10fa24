@@ -10,6 +10,7 @@
 
 **[Online Poll](PollEv.com/rayziruizhang363)**
 
+
 **Software:** We will use Python and Jupyter Notebook for this class. You can download Anaconda from [here](https://www.anaconda.com/products/individual) and install it on your computer. It is also available in the lab. You can also use any online platform like Google Colab, Deepnote, or Kaggle, etc. 
 
 **About the class:**
