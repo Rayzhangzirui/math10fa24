@@ -4,7 +4,7 @@
 **Assessment**:
 * 20% in-lab quizzes: (lowest dropped). There will be in-lab quizzes in the lab.
 * 20% homework: (lowest dropped) There will be programming homework each week.
-* 20% midterm 1: 11/8 at ALP 3600, in-class, closed book and closed computer.
+* 20% midterm 1: 11/4 at ALP 3600, in-class, closed book and closed computer.
 * 20% midterm 2: 12/6 at ALP 3600, in-class, closed book and closed computer.
 * 20% final project: 12/11 (Wed) 11:59pm
 

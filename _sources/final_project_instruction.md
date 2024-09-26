@@ -9,12 +9,22 @@ The purpose of the final project is to submit a notebook project which analyzes 
 * Due date: 11:59pm, Wednesday of the Finals Week.
 * Before making the submission, Restart kernel>Run all to make sure there is no error.
 * Submit .ipynb and .pdf file to Canvas>Assignments>Final Project.
-* The header should follow the [template](final_project_template.ipynb). Answer the question regarding whether you want your project posted in the course notes. If the answer is "yes", you can also email me to update the notebook or take it down later.
+* Format: the first cell of the notebook should be a markdown cell with the following format:
+```
+# [Title]
+
+Author: [Name]
+
+Course Project, UC Irvine, Math 10, Fall 24
+
+I would like to post my notebook on the course's website. [Yes/No]
+```
+Answer the question regarding whether you want your project posted in the course notes. If the answer is "yes", you can also email me to update the notebook or take it down later.
 
 ## Requirements
 * This is an individual project.
-* The project should clearly build on the Math 10 material. If you're an expert in Python material that was not covered in Math 10, you are welcome to use that, but the project should use the topics of Math 10 in an essential way (see the rubric below).
-* The primary focus of the project must be on something involving data, and primarily using one or more datasets that weren't covered in Math 10.  You can use datasets that are built in to a Python library like Seaborn or scikit-learn, or you can use dataset from [Kaggle](https://https://kaggle.com/), [openml.org](https://www.openml.org/), [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php), etc.
+* The project should clearly build on the Math 10 material. 
+* The primary focus of the project must be on something involving data, and primarily using one or more datasets that weren't covered in Math 10.
 * Anything that is taken from another source (either the idea for the project or a piece of code, even if you edit that code) should be explicitly referenced with a link.  (For example, you could write, "The configuration of this Altair chart was adapted from ...").
 
 ## Examples
@@ -33,9 +43,10 @@ The course project is worth 20% of the course grade, and we will grade the proje
 
 Here is some general advice:
 
+- **Data Source**: You can use datasets that are built in to a Python library like Seaborn or scikit-learn, or you can use dataset from [Kaggle](https://https://kaggle.com/), [openml.org](https://www.openml.org/), [UC Irvine Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php), etc. You also also welcome to use your own dataset, but make sure that privacy is not violated.
 - **Avoid Repetition:** Don’t repeat the same technique multiple times unless essential. A variety of different charts is better than the same chart for different datasets.
 - **Don't Oversearch:** Don’t spend too much time searching for the perfect dataset or idea. Exploring a dataset in an interesting way is more important than having a perfect dataset.
-- **Be Reasonable:** Keep your statements reasonable. It’s better to say, "Therefore, we didn’t see any relationship between A and B," than to force a claim.
+- **Be Reasonable:** Keep your statements reasonable. It’s better to say "Therefore, we didn’t see any relationship between A and B," than to make a claim that isn’t supported by the data.
 - **Show Your Learning:** The main point is to demonstrate what you’ve learned in Math 10. A project based on material outside of what was covered in class won’t score well, even if it's advanced.
 - **Use Markdown:** Include many markdown cells to explain what you are doing. These can be very short, even just one sentence. Use `**bold text**` in markdown cells for emphasis, not in Python comments.
 - **Reference Everything:** Reference all sources clearly. If your project is based on an idea or tutorial, include a clear link to the original source. Your project will be graded on how well you explain and build on the tutorial content.
@@ -46,17 +57,14 @@ Here is some general advice:
 **Q: Is there a length requirement?**
 - No specific length, but aim to spend about 12 productive hours on the project. Productive means time spent actively working on the project, not just browsing tutorials or datasets.
 
-**Q: What should I focus on?**
-- Use tools from Math 10, such as pandas, visualization libraries, and scikit-learn.
+**Q: What if I'm worried my project is too short?**
+- It's fine to switch topics halfway through. If you finish your original plan and want to start something new with a different dataset, go ahead.
 
 **Q: What if much of my work involved data cleaning, but it's not in the project?**
 - Include all data cleaning steps in the project. Work done outside Python, like in Excel, won't count.
 
 **Q: Can I use a different plotting library?**
 - Yes, the content of the figure is more important than the library used.
-
-**Q: What if I'm worried my project is too short?**
-- It's fine to switch topics halfway through. If you finish your original plan and want to start something new with a different dataset, go ahead.
 
 **Q: Do I need to post my project in the course notes?**
 - Posting is optional. It can be useful for applications to internships or grad school. You can email me to update or remove it later.
