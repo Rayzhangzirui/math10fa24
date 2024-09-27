@@ -27,17 +27,36 @@ Answer the question regarding whether you want your project posted in the course
 * The primary focus of the project must be on something involving data, and primarily using one or more datasets that weren't covered in Math 10.
 * Anything that is taken from another source (either the idea for the project or a piece of code, even if you edit that code) should be explicitly referenced with a link.  (For example, you could write, "The configuration of this Altair chart was adapted from ...").
 
-## Examples
-Here are examples of student projects: [from Spring 2023](https://christopherdavisuci.github.io/UCI-Math-10-S23/Proj/StudentProjects.html), [from Spring 2022](https://christopherdavisuci.github.io/UCI-Math-10-S22/Proj/StudentProjects.html), [from Winter 2022](https://christopherdavisuci.github.io/UCI-Math-10-W22/Proj/StudentProjects.html), [from Fall 2022](https://christopherdavisuci.github.io/UCI-Math-10-F22/Proj/StudentProjects.html).
-
 
 
 ## Rubric
 The course project is worth 20% of the course grade, and we will grade the project out of 20 total points.
-* (**Clarity**, 5 points) Is the project clear and well-organized?  Does it use good coding style?  Is the code *Pythonic* (for example, avoiding unnecessary for loops) and *DRY* (avoiding unnecessary repetition)?  Does it explore one or more clearly described datasets, and is it clear where those datasets came from?  Use text and markdown throughout the project to help the reader understand what is going on.  Is the reasoning sound? (It's fine if you conclude, "so there is no clear connection between these variables"). Give your project a relevant title (like "Species of penguins" rather than "Math 10 project").
-* (**EDA**, 5 points) Does the project make essential use of pandas to explore the data?  It should also be used either to clean the data, or to analyze the data, or for performing *feature engineering*.  Does the project include a variety of interesting charts?  Do we learn something about the data from these charts? 
-* (**Analysis**, 5 points) Does the project explore the data using a variety of tools from scikit-learn? Does the project refer to essential aspects of data analysis, such as over-fitting, or the importance of a test set, or dimension reduction, or the difference between classification and regression?
-* (**Extra**, 5 points) Does the project include material that was not covered in Math 10?  This could include different libraries, different algorithms, or deeper use of the libraries we covered in Math 10.
+
+* **Clarity** (4 points)
+    - The notebook is well-formatted, with appropriate use of section headers, markdown, and text to guide the reader.
+    - The project has a relevant title
+    - Datasets are clearly described with sources provided.
+
+* **Code Quality** (4 points)
+    - Code runs without errors.
+    - Code is well-commented and easy to follow.
+
+* **Data Exploration and Visualization** (4 points)
+    - Pandas is used appropriately for data exploration.
+    - Data cleaning, analysis, or feature engineering is performed where needed, and is clearly explained.
+    - A variety of charts are included that provide insights into the data.
+    - The charts are well-labeled and easy to understand (e.g., appropriate titles, axis labels, legends).
+
+* **Analysis** (4 points)
+    - Machine learning models are used appropriately where relevant.
+    - Key data analysis concepts such as overfitting, cross-validation, or bias-variance tradeoff are discussed where relevant.
+    - Results are clearly interpreted with appropriate conclusions drawn.
+    
+* **Extra** (4 points)
+    - The project has elements that go beyond the course material, such as new machine learning models or new libraries.
+
+## Examples
+Here are examples of student projects: [Spring 2024](https://rayzhangzirui.github.io/math10sp24/final_project_demo/intro.html), [Spring 2023](https://christopherdavisuci.github.io/UCI-Math-10-S23/Proj/StudentProjects.html), [Spring 2022](https://christopherdavisuci.github.io/UCI-Math-10-S22/Proj/StudentProjects.html), [Winter 2022](https://christopherdavisuci.github.io/UCI-Math-10-W22/Proj/StudentProjects.html), [Fall 2022](https://christopherdavisuci.github.io/UCI-Math-10-F22/Proj/StudentProjects.html).
 
 ## Project Advice
 
