@@ -1,0 +1,21 @@
+
+format: jb-book
+root: intro
+chapters:
+  - file: syllabus
+  - file: final_project_instruction
+  - file: final_project_template
+  - file: notes/notes_intro
+    sections:
+      - file: notes/python_review
+      - file: notes/OOP
+  - file: lecture/intro
+    sections:
+      - file: lecture/week1_Mon
+      - file: lecture/week1_Wed
+      - file: lecture/week1_Fri
+      - file: lecture/week2_Mon
+  - file: homework/intro
+    sections:
+      - file: homework/hw1
+      - file: homework/hw2
