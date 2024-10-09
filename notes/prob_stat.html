@@ -367,10 +367,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation">Standard Deviation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance">Covariance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independence">Independence</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-and-covariance">Independence and Covariance</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality">Causality</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-is-not-causation">Correlation is Not Causation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-is-not-no-causation">Independent is Not “No-Causation”</a></li>
@@ -457,6 +453,7 @@ An event is a subset of the sample space, e.g., the event “rolling an even num
 <div class="math notranslate nohighlight">
 \[P(a \leq Y \leq b) = \int_a^b f(y) dy\]</div>
 <p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(Y\)</span> is uniformly distributed on <span class="math notranslate nohighlight">\([0, 1]\)</span>, then <span class="math notranslate nohighlight">\(f(y) = 1\)</span> for <span class="math notranslate nohighlight">\(y \in [0, 1]\)</span>, and 0 otherwise.</p>
+<p>Note that <span class="math notranslate nohighlight">\(\int_{-\infty}^{\infty} f(y) dy = 1\)</span>.</p>
 </section>
 <section id="what-is-the-relationship-between-random-variables-and-data">
 <h3>What is the relationship between random variables and data?<a class="headerlink" href="#what-is-the-relationship-between-random-variables-and-data" title="Link to this heading">#</a></h3>
@@ -496,31 +493,11 @@ You can always think of a random variable as the “payoff” in a game, and the
 <h2>Covariance<a class="headerlink" href="#covariance" title="Link to this heading">#</a></h2>
 <p>Covariance provides a measure of how two random variables change together. For example, if we treat weight and height as random variables, then knowing that someone is taller than average might make it more likely that they have above-average weight.</p>
 <p>For random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, the covariance is defined as <span class="math notranslate nohighlight">\(\text{Cov}(X, Y) = E[(X - E[X])(Y - E[Y])]\)</span>.</p>
-<p>Using the linearity of expectation, we also have <span class="math notranslate nohighlight">\(\text{Cov}(X, Y) = E[XY] - E[X] \cdot E[Y]\)</span>.</p>
 </section>
 <section id="correlation">
 <h2>Correlation<a class="headerlink" href="#correlation" title="Link to this heading">#</a></h2>
 <p>Correlation is a standardized measure of how two random variables change together, ranging from -1 to 1.
 <span class="math notranslate nohighlight">\( \text{Corr}(X, Y) = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \cdot \text{Var}(Y)}}\)</span>.</p>
-</section>
-<section id="independence">
-<h2>Independence<a class="headerlink" href="#independence" title="Link to this heading">#</a></h2>
-<p>Intuitively, when two things are independent, the outcome of one does not influence the outcome of the other.</p>
-<p>Two random variables, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, are considered independent if  <span class="math notranslate nohighlight">\(P(X = x, Y = y) = P(X = x) P(Y = y)\)</span> for all <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. Intuitively, this means that knowing the value of one variable provides no information about the value of the other.</p>
-<p>For example, if we flip two coins, and <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> represent the outcomes of the first and second coin flips, respectively, then the outcomes are independent. The probability of getting two heads is <span class="math notranslate nohighlight">\(P(X = \text{heads}) \cdot P(Y = \text{heads}) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4}\)</span>.</p>
-<section id="independence-and-covariance">
-<h3>Independence and Covariance<a class="headerlink" href="#independence-and-covariance" title="Link to this heading">#</a></h3>
-<p><strong>Independence implies zero covariance. But the converse is not necessarily true.</strong></p>
-<p>Exercise: If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are independent, use the linearity of expectation to show that <span class="math notranslate nohighlight">\(\text{Cov}(X, Y) = 0\)</span>.</p>
-<p>Covariance and correlation only measure <em>linear</em> relationships between random variables. They can’t capture more complex relationships.</p>
-<p>Example of zero covariance but not independence:</p>
-<p>Consider a scenario where <span class="math notranslate nohighlight">\(X\)</span> is a random variable uniformly distributed over <span class="math notranslate nohighlight">\([-1, 1]\)</span> and define <span class="math notranslate nohighlight">\(Y = X^2\)</span>.
-Now they are not independent: knowing <span class="math notranslate nohighlight">\(X\)</span> gives information about <span class="math notranslate nohighlight">\(Y\)</span>.</p>
-<p>Recall <span class="math notranslate nohighlight">\(\text{Cov}(X, Y) = \mathbb{E}[X \cdot Y] - \mathbb{E}[X]\mathbb{E}[Y] = 0\)</span>.
-In this example, <span class="math notranslate nohighlight">\(\mathbb{E}[X] = 0\)</span>, and <span class="math notranslate nohighlight">\(XY = X^3\)</span> is an odd function, so <span class="math notranslate nohighlight">\(\mathbb{E}[X \cdot Y] = 0\)</span> ( for every positive outcome, there is a corresponding negative outcome with the same probability).</p>
-<p>Alternatively, recall the <span class="math notranslate nohighlight">\(\text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] = 0\)</span>. <span class="math notranslate nohighlight">\(E[X]\)</span> is 0, and <span class="math notranslate nohighlight">\(E[Y]\)</span> is somewhere between 0 and 1.
-When <span class="math notranslate nohighlight">\(X&gt;E[X]\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> could be smaller than or larger than <span class="math notranslate nohighlight">\(E[Y]\)</span>. Therefore these two variable does not move in the same direction with respect to their means.</p>
-</section>
 </section>
 <section id="causality">
 <h2>Causality<a class="headerlink" href="#causality" title="Link to this heading">#</a></h2>
@@ -949,10 +926,6 @@ then for large n, Z is approximately normally distributed with mean 0 and varian
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation">Standard Deviation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance">Covariance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independence">Independence</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-and-covariance">Independence and Covariance</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#causality">Causality</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-is-not-causation">Correlation is Not Causation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-is-not-no-causation">Independent is Not “No-Causation”</a></li>
