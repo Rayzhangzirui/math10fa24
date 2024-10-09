@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/prob_stat';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="prev" title="Object-Oriented Programming" href="OOP.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -172,14 +172,15 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_template.html">[Title here]</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notes_intro.html">Notes</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Probability and Statistics</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -342,12 +343,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-experiments">Random Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variables">Random Variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-random-variables">Discrete Random Variables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-random-variables">Continuous Random Variables</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-function-pmf">probability mass function (PMF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">probability density function (PDF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-random-variables-and-data">What is the relationship between random variables and data?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-expectation-of-a-random-variable-from-data">How to estimate the expectation of a random variable from data?</a></li>
 </ul>
@@ -394,40 +402,76 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="probability-and-statistics">
 <h1>Probability and Statistics<a class="headerlink" href="#probability-and-statistics" title="Link to this heading">#</a></h1>
-<p>These concepts are foundational in data science, enabling us to quantify uncertainty and variability in data.</p>
+<p>These concepts are important in data science, enabling us to quantify uncertainty and variability in data.</p>
+<p>Note: probability and statistics is not a prerequisite for this course. This notebook focuses on the intuitive understanding of these concepts using examples.</p>
+<section id="random-experiments">
+<h2>Random Experiments<a class="headerlink" href="#random-experiments" title="Link to this heading">#</a></h2>
+<p><strong>Example</strong>: roll a die is a random experiment.
+The set of all possible outcomes is the sample space, in this case, <span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 5, 6\}\)</span>.
+An event is a subset of the sample space, e.g., the event “rolling an even number” is <span class="math notranslate nohighlight">\(\{2, 4, 6\}\)</span>.</p>
+</section>
+<section id="probability">
+<h2>Probability<a class="headerlink" href="#probability" title="Link to this heading">#</a></h2>
+<p>There are the following rules for probability:</p>
+<ol class="arabic simple">
+<li><p>The probability of any event is between 0 and 1.</p></li>
+<li><p>The probability of the whole sample space is 1, that is, something in the sample space must happen.</p></li>
+<li><p>If two events cannot happen at the same time, then the probability of either event happening is the sum of the probabilities of each event.</p></li>
+</ol>
+<p><strong>Example</strong>: If we roll a die, the probability of getting k is some positive number between 0 and 1 for each k in <span class="math notranslate nohighlight">\(\{1, 2, 3, 4, 5, 6\}\)</span>.</p>
+<p>The probability of getting any number between 1 and 6 is 1 (the die cannot land on the edge)</p>
+<p>The probability of getting “either 1 or 2” is the probability of getting 1 plus the probability of getting 2.</p>
+<p><strong>How to define probability?</strong></p>
+<p>This is actually a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_interpretations">very interesting question</a>. For our purposes, we will just keep it intuitive.</p>
+<p>We say that that the probability of tossing a coin and getting a head is 0.5, because (1) we did it many times and half of the times we got heads, or (2) we believe that the coin is fair and the two outcomes are equally likely.</p>
+</section>
 <section id="random-variables">
 <h2>Random Variables<a class="headerlink" href="#random-variables" title="Link to this heading">#</a></h2>
+<p>Random variables maps each outcome of a random experiment to a number.</p>
+<p><strong>Example</strong>: If we flip a coin, we can define a random variable <span class="math notranslate nohighlight">\(X\)</span> that is 1 if the coin lands heads, and 0 if the coin lands tails. Here, <span class="math notranslate nohighlight">\(X \in \{0, 1\}\)</span>. Alternatively, if we are betting 1 dollar on heads we can define a random variable <span class="math notranslate nohighlight">\(X\)</span> that represent the payoff, <span class="math notranslate nohighlight">\(X \in \{-1, 1\}\)</span>.</p>
 <section id="discrete-random-variables">
 <h3>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Link to this heading">#</a></h3>
-<p>Consider a random experiment where we roll a fair six-sided die. The result is uncertain, embodying a discrete random variable, which we can denote as <span class="math notranslate nohighlight">\(X\)</span>. This variable <span class="math notranslate nohighlight">\(X\)</span> can take one of a finite set of values, each with its own probability.</p>
-<ul class="simple">
-<li><p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(X\)</span> represents the outcome of rolling a die, then <span class="math notranslate nohighlight">\(X \in \{1, 2, 3, 4, 5, 6\}\)</span>, with <span class="math notranslate nohighlight">\(P(X = x) = \frac{1}{6}\)</span> for each <span class="math notranslate nohighlight">\(x \in \{1, 2, 3, 4, 5, 6\}\)</span>.</p></li>
-</ul>
+<p>A random variable is discrete if it takes on a finite number of values.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(X\)</span> represents the outcome of rolling a die, then <span class="math notranslate nohighlight">\(X \in \{1, 2, 3, 4, 5, 6\}\)</span>, with <span class="math notranslate nohighlight">\(P(X = x) = \frac{1}{6}\)</span> for each <span class="math notranslate nohighlight">\(x \in \{1, 2, 3, 4, 5, 6\}\)</span>.</p>
+<p>Note: usually, X denotes a random variable, while x denotes a specific value of that variable.</p>
+<p>Note: we usually consider finite number of outcomes. But there could be infinite but countable number of outcomes. For example, the number of flips until the first head. It could be 1, 2, 3, 4, …, 100, … and so on (if we are unlucky).</p>
 </section>
 <section id="continuous-random-variables">
 <h3>Continuous Random Variables<a class="headerlink" href="#continuous-random-variables" title="Link to this heading">#</a></h3>
-<p>In contrast, consider measuring the time it takes for the next bus to arrive, which might be any positive real number. Here, we have a continuous random variable, say <span class="math notranslate nohighlight">\(Y\)</span>, which can take any value within an interval.</p>
-<ul class="simple">
-<li><p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(Y\)</span> denotes the time (in minutes) for the next bus to arrive, then <span class="math notranslate nohighlight">\(Y \in [0, \infty)\)</span>. Here, <span class="math notranslate nohighlight">\(Y\)</span> could be 2.5 minutes, 3.14159 minutes, or any other positive real number.</p></li>
-</ul>
+<p>A random variable is continuous if it can take on any value in an interval.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(Y\)</span> denotes the time (in minutes) for the next bus to arrive, then <span class="math notranslate nohighlight">\(Y \in [0, \infty)\)</span>. Here, <span class="math notranslate nohighlight">\(Y\)</span> could be 2.5 minutes, 3.14159 minutes, or any other positive real number.</p>
 </section>
 </section>
 <section id="distributions">
 <h2>Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h2>
 <p>The probability distribution of a random variable provides a complete description of the likelihood of various outcomes.</p>
-<ul class="simple">
-<li><p>For a discrete variable <span class="math notranslate nohighlight">\(X\)</span>, the <strong>probability mass function (PMF)</strong> gives <span class="math notranslate nohighlight">\(P(X = x)\)</span> for each possible <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
-<li><p>For a continuous variable <span class="math notranslate nohighlight">\(Y\)</span>, the <strong>probability density function (PDF)</strong>, <span class="math notranslate nohighlight">\(f_Y(y)\)</span>, is such that the probability of <span class="math notranslate nohighlight">\(Y\)</span> falling in an interval <span class="math notranslate nohighlight">\([a, b]\)</span> is given by <span class="math notranslate nohighlight">\(\int_a^b f_Y(y) \, dy\)</span>.</p></li>
-</ul>
+<section id="probability-mass-function-pmf">
+<h3>probability mass function (PMF)<a class="headerlink" href="#probability-mass-function-pmf" title="Link to this heading">#</a></h3>
+<p>For a discrete variable <span class="math notranslate nohighlight">\(X\)</span>, the PMF is the function <span class="math notranslate nohighlight">\(p(x) = P(X = x)\)</span> that gives the probability that <span class="math notranslate nohighlight">\(X\)</span> is equal to a particular value <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(X\)</span> represents the outcome of rolling a die, then we have the PMF <span class="math notranslate nohighlight">\(p(x) = \frac{1}{6}\)</span> for each <span class="math notranslate nohighlight">\(x \in \{1, 2, 3, 4, 5, 6\}\)</span>, and 0 otherwise.</p>
+<p>Note that <span class="math notranslate nohighlight">\(\sum_{\text{all outcome x}} p(x) = 1\)</span>.</p>
+</section>
+<section id="probability-density-function-pdf">
+<h3>probability density function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h3>
+<p>For a continuous variable <span class="math notranslate nohighlight">\(Y\)</span>, the PDF, <span class="math notranslate nohighlight">\(f(y)\)</span>, is such that the probability of <span class="math notranslate nohighlight">\(Y\)</span> falling in an interval <span class="math notranslate nohighlight">\([a, b]\)</span> is given by the integral of <span class="math notranslate nohighlight">\(f(y)\)</span> over that interval:</p>
+<div class="math notranslate nohighlight">
+\[P(a \leq Y \leq b) = \int_a^b f(y) dy\]</div>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(Y\)</span> is uniformly distributed on <span class="math notranslate nohighlight">\([0, 1]\)</span>, then <span class="math notranslate nohighlight">\(f(y) = 1\)</span> for <span class="math notranslate nohighlight">\(y \in [0, 1]\)</span>, and 0 otherwise.</p>
+</section>
+<section id="what-is-the-relationship-between-random-variables-and-data">
+<h3>What is the relationship between random variables and data?<a class="headerlink" href="#what-is-the-relationship-between-random-variables-and-data" title="Link to this heading">#</a></h3>
+<p>Data are realizations of random variables. We collect data to learn about the underlying random process.</p>
+<p>For example: let’s say we want to know if a coin is fair – this is a question about the underlying random process, the distribution of the random variable. To answer this question, we start flipping the coin and recording the outcomes. This is the data, which is the realization of the random variable.</p>
+</section>
 </section>
 <section id="expectation">
 <h2>Expectation<a class="headerlink" href="#expectation" title="Link to this heading">#</a></h2>
-<p>The expectation or expected value of a random variable provides a measure of the central tendency of its distribution.</p>
-<ul class="simple">
-<li><p>For a discrete random variable <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(E[X] = \sum_{x} x \cdot P(X = x)\)</span>.</p></li>
-<li><p>For a continuous random variable <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(E[Y] = \int_{-\infty}^{\infty} y \cdot f_Y(y) \, dy\)</span>.</p></li>
-</ul>
-<p>You can always think of the random variable as the “payoff” in a game, and the expectation is the “average payoff” in each round of the game if you play it many times.</p>
+<p>The expectation or expected value of a random variable the average value of the random variable, weighted by the probability of each value.
+You can always think of a random variable as the “payoff” in a game, and the expectation is the “average payoff” in each round of the game if you play it many times.</p>
+<p>For a discrete random variable <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(E[X] = \sum_{x} x \cdot P(X = x)\)</span>.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(X\)</span> represents the outcome of rolling a die, then <span class="math notranslate nohighlight">\(E[X] = \sum_{x=1}^{6} x \cdot \frac{1}{6} = 3.5\)</span>.</p>
+<p>For a continuous random variable <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(E[Y] = \int_{-\infty}^{\infty} y \cdot f_Y(y) \, dy\)</span>.</p>
+<p><strong>Example</strong>: If <span class="math notranslate nohighlight">\(Y\)</span> is uniformly distributed on <span class="math notranslate nohighlight">\([0, 1]\)</span>, then <span class="math notranslate nohighlight">\(E[Y] = \int_{0}^{1} y \cdot 1 \, dy = \frac{1}{2}\)</span>.</p>
 <p>We have <span class="math notranslate nohighlight">\(E[aX + bY] = aE[X] + bE[Y]\)</span> for any constants <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <section id="how-to-estimate-the-expectation-of-a-random-variable-from-data">
 <h3>How to estimate the expectation of a random variable from data?<a class="headerlink" href="#how-to-estimate-the-expectation-of-a-random-variable-from-data" title="Link to this heading">#</a></h3>
@@ -437,18 +481,11 @@ document.write(`
 <section id="variance">
 <h2>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
 <p>Variance quantifies the spread of a distribution around its mean, reflecting the variability of the random variable. <span class="math notranslate nohighlight">\(\text{Var}(X) = E[(X - E[X])^2]\)</span></p>
-<p>Alternatively, we can compute the variance as <span class="math notranslate nohighlight">\(\text{Var}(X) = E[X^2] - (E[X])^2\)</span>:
-\begin{align*}
-\text{Var}(X) &amp; = E[(X - E[X])^2] \
-&amp; = E[X^2 - 2XE[X] + (E[X])^2] \
-&amp; = E[X^2] - 2E[X]E[X] + (E[X])^2 \
-&amp; = E[X^2] - (E[X])^2.
-\end{align*}
-The key here is that E[X] is a constant: it’s an property of the distribution of X, not a random variable.</p>
+<p>We have <span class="math notranslate nohighlight">\(\text{Var}(aX) = a^2 \text{Var}(X)\)</span> for any constant <span class="math notranslate nohighlight">\(a\)</span>.</p>
 <section id="how-to-estimate-the-variance-of-a-random-variable-from-data">
 <h3>How to estimate the variance of a random variable from data?<a class="headerlink" href="#how-to-estimate-the-variance-of-a-random-variable-from-data" title="Link to this heading">#</a></h3>
-<p>One common approach is to use the sample variance: if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are i.i.d. samples of <span class="math notranslate nohighlight">\(X\)</span>, then the sample variance <span class="math notranslate nohighlight">\(S^2 = \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^2\)</span> is an estimator of <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span>.
-(This is not an “unbiased estimator” in statistics, no need to worry about that in this course)</p>
+<p>One common approach is to use the sample variance: if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are i.i.d. samples of <span class="math notranslate nohighlight">\(X\)</span>. Let <span class="math notranslate nohighlight">\(\bar{X}\)</span> be the sample mean, then the sample variance <span class="math notranslate nohighlight">\(S^2 = \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^2\)</span> is an estimator of <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span>.</p>
+<p>Note: you might see 1/(n-1) instead of 1/n in the definition of sample variance. For large n, the difference is negligible.</p>
 </section>
 </section>
 <section id="standard-deviation">
@@ -695,12 +732,6 @@ We only see this relationship when we consider both switches together.
 </section>
 <section id="estimation-of-variance">
 <h4>Estimation of variance<a class="headerlink" href="#estimation-of-variance" title="Link to this heading">#</a></h4>
-<p>By definition the variance of a random variable X is defined as
-$<span class="math notranslate nohighlight">\( \text{Var}(X) = E[(X - E[X])^2]\)</span>$</p>
-<p>We can estimate the variance by</p>
-<div class="math notranslate nohighlight">
-\[ S^2 = \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})^2\]</div>
-<p>We essentially replace the expected value with the sample mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># estimate variance of dice row</span>
@@ -860,6 +891,24 @@ then for large n, Z is approximately normally distributed with mean 0 and varian
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="OOP.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Object-Oriented Programming</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lecture/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lectures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -876,12 +925,19 @@ then for large n, Z is approximately normally distributed with mean 0 and varian
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-experiments">Random Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability">Probability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variables">Random Variables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-random-variables">Discrete Random Variables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-random-variables">Continuous Random Variables</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">Distributions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-function-pmf">probability mass function (PMF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">probability density function (PDF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-random-variables-and-data">What is the relationship between random variables and data?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-expectation-of-a-random-variable-from-data">How to estimate the expectation of a random variable from data?</a></li>
 </ul>
