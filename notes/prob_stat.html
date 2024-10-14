@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -191,6 +191,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">discrete does not mean “outcomes are equally likely”</a></li>
+
+
+
 
 </ul>
 </li>
@@ -359,6 +364,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-function-pmf">probability mass function (PMF)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">probability density function (PDF)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-random-variables-and-data">What is the relationship between random variables and data?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-probabilities">How to estimate probabilities?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a><ul class="nav section-nav flex-column">
@@ -464,6 +470,12 @@ An event is a subset of the sample space, e.g., the event “rolling an even num
 <h3>What is the relationship between random variables and data?<a class="headerlink" href="#what-is-the-relationship-between-random-variables-and-data" title="Link to this heading">#</a></h3>
 <p>Data are realizations of random variables. We collect data to learn about the underlying random process.</p>
 <p>For example: let’s say we want to know if a coin is fair – this is a question about the underlying random process, the distribution of the random variable. To answer this question, we start flipping the coin and recording the outcomes. This is the data, which is the realization of the random variable.</p>
+</section>
+<section id="how-to-estimate-probabilities">
+<h3>How to estimate probabilities?<a class="headerlink" href="#how-to-estimate-probabilities" title="Link to this heading">#</a></h3>
+<p>We can estimate the probability of an event by looking at the relative frequency of that event:</p>
+<div class="math notranslate nohighlight">
+\[P(A) \approx \frac{\text{number of times A happened}}{\text{total number of trials}}\]</div>
 </section>
 </section>
 <section id="expectation">
@@ -789,9 +801,10 @@ We only see this relationship when we consider both switches together.
 <p>Roughly speaking, sample average are normally distributed for large sample sizes, regardless of the distribution of the underlying random variable!</p>
 <p>This explains why the normal distribution is so common.</p>
 <p>If <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are independent and identically distributed random variables with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>,
-if we define
-$<span class="math notranslate nohighlight">\( Z =  \frac{\sqrt{n}(\bar{X} - \mu)}{\sigma}\)</span>$
-then for large n, Z is approximately normally distributed with mean 0 and variance 1.</p>
+if we define</p>
+<div class="math notranslate nohighlight">
+\[ Z =  \frac{\sqrt{n}(\bar{X} - \mu)}{\sigma}\]</div>
+<p>then for large n, Z is approximately normally distributed with mean 0 and variance 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we know that the coin flip has a mean of 0.5 and a variance of 0.25</span>
@@ -918,6 +931,7 @@ then for large n, Z is approximately normally distributed with mean 0 and varian
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-function-pmf">probability mass function (PMF)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">probability density function (PDF)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-relationship-between-random-variables-and-data">What is the relationship between random variables and data?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-probabilities">How to estimate probabilities?</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a><ul class="nav section-nav flex-column">
