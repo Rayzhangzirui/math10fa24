@@ -9,13 +9,21 @@ chapters:
     sections:
       - file: notes/python_review
       - file: notes/OOP
+      - file: notes/numpy
+      - file: notes/prob_stat
+      - file: notes/pandas
   - file: lecture/intro
     sections:
       - file: lecture/week1_Mon
       - file: lecture/week1_Wed
       - file: lecture/week1_Fri
       - file: lecture/week2_Mon
+      - file: lecture/week2_Wed
+      - file: lecture/week2_Fri
+      - file: lecture/week3_Mon
+      - file: lecture/week3_Wed
   - file: homework/intro
     sections:
       - file: homework/hw1
       - file: homework/hw2
+      - file: homework/hw3

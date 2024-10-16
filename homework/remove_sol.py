@@ -14,13 +14,10 @@ def replace_solution_cells(notebook_path: str, output_path: str) -> None:
 
     # Iterate through the cells
     for cell in nb.cells:
-        # Clear outputs for all code cells
-        if cell.cell_type == 'code':
-            cell.outputs = []  # Clear outputs
-            cell.execution_count = None  # Reset execution count
+        has_tag = 'metadata' in cell and 'tags' in cell.metadata
 
         # Check if the cell has tags and if 'solution' is one of the tags
-        if 'metadata' in cell and 'tags' in cell.metadata and 'sol' in cell.metadata.tags:
+        if has_tag and 'sol' in cell.metadata.tags:
             # Create a new empty cell based on the cell type
             if cell.cell_type == 'code':
                 # Create a code cell with placeholder text
@@ -29,6 +26,13 @@ def replace_solution_cells(notebook_path: str, output_path: str) -> None:
                 # Create a markdown cell with placeholder text
                 new_cell = nbformat.v4.new_markdown_cell(source="*Answer here*")
             new_nb.cells.append(new_cell)  # Add new cell to the new notebook
+
+            # if 'keep' tag is present, keep output, else remove output
+            if has_tag and 'keep' in cell.metadata.tags:
+                new_cell.outputs = cell.outputs
+            else:
+                new_cell.outputs = []
+
         else:
             new_nb.cells.append(cell)  # Add untagged cell to the new notebook
 
@@ -36,11 +40,11 @@ def replace_solution_cells(notebook_path: str, output_path: str) -> None:
     with open(output_path, 'w', encoding='utf-8') as f:
         nbformat.write(new_nb, f)
 
-    print(f"Notebook saved with placeholders for 'solution' tagged cells to {output_path}")
+    print(f"Notebook saved with placeholders for 'sol' tagged cells to {output_path}")
 
 def main():
     # Create the parser
-    parser = argparse.ArgumentParser(description="Remove cells with 'solution' tag from a Jupyter Notebook.")
+    parser = argparse.ArgumentParser(description="Remove cells with 'sol' tag from a Jupyter Notebook.")
     
     # Add the arguments
     parser.add_argument("input_notebook", help="Path to the input Jupyter Notebook")
