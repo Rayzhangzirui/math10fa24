@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/prob_stat';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="next" title="Pandas dataframe" href="pandas.html" />
     <link rel="prev" title="NumPy Review" href="numpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -182,6 +182,12 @@
 <li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -192,11 +198,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">discrete does not mean “outcomes are equally likely”</a></li>
-
-
-
-
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -390,7 +393,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-e-x">How to estimate the E[X]</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">Law of large numbers</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-of-variance">Estimation of variance</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Correlation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-covariance">Computing covariance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-correlation">Visualizing correlation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-theorem">Central limit theorem</a></li>
 </ul>
 </li>
@@ -560,7 +566,7 @@ We only see this relationship when we consider both switches together.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.19
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.15
 </pre></div>
 </div>
 </div>
@@ -577,7 +583,7 @@ We only see this relationship when we consider both switches together.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.51
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.53
 </pre></div>
 </div>
 </div>
@@ -608,12 +614,12 @@ We only see this relationship when we consider both switches together.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([19., 18., 14., 10., 23., 16.]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([20., 13., 17., 14., 17., 19.]),
  array([0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5]),
  &lt;BarContainer object of 6 artists&gt;)
 </pre></div>
 </div>
-<img alt="../_images/87dd5e751b5afca9414269060ab620f85739dd30c1993a4edfc3cb2e15601fb6.png" src="../_images/87dd5e751b5afca9414269060ab620f85739dd30c1993a4edfc3cb2e15601fb6.png" />
+<img alt="../_images/4de0426ace8f9b20fc3c39f96a33d0a466b8b7b91b64b1d242f5527ad5450107.png" src="../_images/4de0426ace8f9b20fc3c39f96a33d0a466b8b7b91b64b1d242f5527ad5450107.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -635,14 +641,14 @@ We only see this relationship when we consider both switches together.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([43., 46., 48., 48., 50., 44., 51., 52., 39., 39., 55., 55., 55.,
-        55., 44., 63., 63., 49., 48., 53.]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([49., 57., 42., 46., 53., 52., 54., 52., 47., 53., 49., 51., 62.,
+        55., 47., 32., 60., 30., 50., 59.]),
  array([0.  , 0.05, 0.1 , 0.15, 0.2 , 0.25, 0.3 , 0.35, 0.4 , 0.45, 0.5 ,
         0.55, 0.6 , 0.65, 0.7 , 0.75, 0.8 , 0.85, 0.9 , 0.95, 1.  ]),
  &lt;BarContainer object of 20 artists&gt;)
 </pre></div>
 </div>
-<img alt="../_images/c33e2544596efacc61db59b3db501a966b45e1636b1944f16ac473935601a989.png" src="../_images/c33e2544596efacc61db59b3db501a966b45e1636b1944f16ac473935601a989.png" />
+<img alt="../_images/86d1597e10383aa4848234cb49d297881dbce486f6a6cb5d2232704a674ea835.png" src="../_images/86d1597e10383aa4848234cb49d297881dbce486f6a6cb5d2232704a674ea835.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -668,10 +674,10 @@ We only see this relationship when we consider both switches together.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb140f36110&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11bc71a90&gt;]
 </pre></div>
 </div>
-<img alt="../_images/22e8ba31844215cd57af137b7c1d7b389c9ae9c6e47362eafe94a109029accde.png" src="../_images/22e8ba31844215cd57af137b7c1d7b389c9ae9c6e47362eafe94a109029accde.png" />
+<img alt="../_images/0c718bd0c1f8b6591a9bdbd74a59833c706d70fc9739513ac1e6dc2fc91d4ab8.png" src="../_images/0c718bd0c1f8b6591a9bdbd74a59833c706d70fc9739513ac1e6dc2fc91d4ab8.png" />
 </div>
 </div>
 <section id="how-to-estimate-the-e-x">
@@ -720,7 +726,7 @@ We only see this relationship when we consider both switches together.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;estimated mean&#39;)
 </pre></div>
 </div>
-<img alt="../_images/7295123d24294d0c7b057b1e5849c42dfadb48742a9cf9aecd5c83306630b7a8.png" src="../_images/7295123d24294d0c7b057b1e5849c42dfadb48742a9cf9aecd5c83306630b7a8.png" />
+<img alt="../_images/fe2a1f9b544f5739a66c8ed75e9d494bba7e313bac5158b2a39b4a4dca269cab.png" src="../_images/fe2a1f9b544f5739a66c8ed75e9d494bba7e313bac5158b2a39b4a4dca269cab.png" />
 </div>
 </div>
 </section>
@@ -738,61 +744,53 @@ We only see this relationship when we consider both switches together.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4059 2.4059
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1291000000000007 3.1291000000000007
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id1">
-<h4>Correlation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+</section>
+<section id="computing-covariance">
+<h3>Computing covariance<a class="headerlink" href="#computing-covariance" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">np.cov(x,</span> <span class="pre">y)</span></code> return a 2x2 matrix M, where M[0, 0] is the variance of x, M[1, 1] is the variance of y, M[0, 1] is the covariance of x and y, and M[1, 0] is the covariance of y and x, which is the same as M[0, 1]. Similarly, <code class="docutils literal notranslate"><span class="pre">np.corrcoef(x,</span> <span class="pre">y)</span></code> returns the correlation matrix.</p>
+<section id="visualizing-correlation">
+<h4>Visualizing correlation<a class="headerlink" href="#visualizing-correlation" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># sample size</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># sample size</span>
 
 <span class="c1"># X is a random variable uniformly distributed on [0, 1]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 
 <span class="c1"># Y is a linear function of X plus noise</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 
 <span class="c1"># z is independent of X</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 
+<span class="n">cov_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">cov_xz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
-
-<span class="c1"># compute our own correlation coefficient</span>
-<span class="c1"># corr(x,y) = cov(x,y) / (std(x) * std(y))</span>
-
-<span class="n">my_corr</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">my_corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-
-<span class="c1"># using numpy</span>
-<span class="c1"># np.corrcoef returns a matrix M with the correlation coefficients [corr(x,x), corr(x,y); corr(y,x), corr(y,y)]</span>
-<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">)</span>
-
+<span class="n">corr_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">corr_xz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># scatter plot</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;r = </span><span class="si">{</span><span class="n">my_corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="c1"># equal axis</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;r = </span><span class="si">{</span><span class="n">my_corr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="c1"># plot x vs y and x vs z, different colors, show name</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;(X, Y), cov = </span><span class="si">%.2f</span><span class="s1">, corr = </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cov_xy</span><span class="p">,</span> <span class="n">corr_xy</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;(X, Z), cov = </span><span class="si">%.2f</span><span class="s1">, corr = </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cov_xz</span><span class="p">,</span> <span class="n">corr_xz</span><span class="p">))</span>
+<span class="c1"># show legend</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7989815521783616
-[[1.         0.79898155]
- [0.79898155 1.        ]]
-</pre></div>
-</div>
-<img alt="../_images/7394810e84ac2d59437479e8de82831865de2d20160082d9048449cbc459b4cd.png" src="../_images/7394810e84ac2d59437479e8de82831865de2d20160082d9048449cbc459b4cd.png" />
+<img alt="../_images/ff2c1742da3a265087b7599e37b461ce63af59c95987f60eaf1aec71fff72d3c.png" src="../_images/ff2c1742da3a265087b7599e37b461ce63af59c95987f60eaf1aec71fff72d3c.png" />
 </div>
 </div>
 </section>
@@ -848,7 +846,7 @@ if we define</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-5.0, 5.0)
 </pre></div>
 </div>
-<img alt="../_images/1a6c7f94c11040c25ed75a27af9d021ee15c987ba37c70846c067f79e367da86.png" src="../_images/1a6c7f94c11040c25ed75a27af9d021ee15c987ba37c70846c067f79e367da86.png" />
+<img alt="../_images/c7879232c511f2fda8604256aaf9359bc6f300bc91df46dc47a38793da0c502c.png" src="../_images/c7879232c511f2fda8604256aaf9359bc6f300bc91df46dc47a38793da0c502c.png" />
 </div>
 </div>
 </section>
@@ -896,11 +894,11 @@ if we define</p>
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="pandas.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Pandas dataframe</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -957,7 +955,10 @@ if we define</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-estimate-the-e-x">How to estimate the E[X]</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-large-numbers">Law of large numbers</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-of-variance">Estimation of variance</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Correlation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-covariance">Computing covariance</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-correlation">Visualizing correlation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#central-limit-theorem">Central limit theorem</a></li>
 </ul>
 </li>
