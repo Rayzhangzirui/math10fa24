@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/visualization';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear Regression" href="linear_regression.html" />
+    <link rel="prev" title="Pandas dataframe" href="pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -170,11 +170,11 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_template.html">[Title here]</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notes_intro.html">Notes</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
@@ -186,6 +186,10 @@
 
 
 
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -198,12 +202,15 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">what is the average body mass for adelie penguins</a></li>
+
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw2.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
 </ul>
 </li>
 </ul>
@@ -875,19 +882,6 @@ if (outputEl) {{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fcf52852e10&gt;
-</pre></div>
-</div>
-<img alt="../_images/02463eecb8ee7a1973c37196bd260b5d75e6b9a8b0b786f2f1a079a358bf436e.png" src="../_images/02463eecb8ee7a1973c37196bd260b5d75e6b9a8b0b786f2f1a079a358bf436e.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;species&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -931,6 +925,24 @@ if (outputEl) {{
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pandas dataframe</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="linear_regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linear Regression</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
