@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -204,14 +204,14 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">what is the average body mass for adelie penguins</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw2.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw3.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
 </ul>
 </li>
@@ -363,13 +363,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-effect-of-centering-the-data">What is the effect of centering the data?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-effect-of-scaling-the-data">What is the effect of scaling the data?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-good-fit">What is a “good” fit?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-derivation-of-the-optimal-parameters">Detailed Derivation of the Optimal Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a></li>
 </ul>
             </nav>
         </div>
@@ -384,41 +383,45 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
 <h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h1>
 <section id="problem">
-<h2><strong>Problem</strong><a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
+<h2>Problem<a class="headerlink" href="#problem" title="Link to this heading">#</a></h2>
 <p>Given the <em>training dataset</em> <span class="math notranslate nohighlight">\(x_i\in\mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(y_i\in\mathbb{R}\)</span>, <span class="math notranslate nohighlight">\(i= 1,2,..., N\)</span>, we want to find the linear function</p>
 <div class="math notranslate nohighlight">
 \[ y\approx f(x) = wx + b \]</div>
-<p>that fits the relations between <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span>. So that given any new <span class="math notranslate nohighlight">\(x^{test}\)</span> in the <strong>test</strong> dataset, we can make the prediction</p>
+<p>that fits the relations between <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span>. So that given any <span class="math notranslate nohighlight">\(x\)</span>, we can make the prediction</p>
 <div class="math notranslate nohighlight">
-\[ y^{pred} = w x^{test}+b \]</div>
+\[ \hat{y} = w x+b \]</div>
 </section>
-<section id="training-the-model">
-<h2>Training the model<a class="headerlink" href="#training-the-model" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>With the training dataset, define the loss function <span class="math notranslate nohighlight">\(L(w,b)\)</span> of parameter <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, which is also called <strong>mean squared error</strong> (MSE)</p></li>
-</ul>
+<section id="loss-function-and-optimization">
+<h2>Loss Function and Optimization<a class="headerlink" href="#loss-function-and-optimization" title="Link to this heading">#</a></h2>
+<p>With the training dataset, define the loss function <span class="math notranslate nohighlight">\(L(w,b)\)</span> of parameter <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, which is also called <strong>mean squared error</strong> (MSE)</p>
 <div class="math notranslate nohighlight">
 \[L(w,b)=\frac{1}{N}\sum_{i=1}^N\big(\hat{y}^{(i)}-y_i\big)^2=\frac{1}{N}\sum_{i=1}^N\big((wx_i+b)-y_i\big)^2,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{y}^{(i)}\)</span> denotes the predicted value of y at <span class="math notranslate nohighlight">\(x_i\)</span>, i.e. <span class="math notranslate nohighlight">\(\hat{y}^{(i)} = wx_i+b\)</span>.</p>
-<ul class="simple">
-<li><p>Then find the minimum of loss function – note that this is the quadratic function of <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, and we can analytically solve <span class="math notranslate nohighlight">\(\partial_{w}L = \partial_{b}L =0\)</span>, and yields</p></li>
-</ul>
+<p>Our goal is to find the optimal <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(b\)</span> that minimize the loss function <span class="math notranslate nohighlight">\(L(w,b)\)</span>, i.e.</p>
 <div class="math notranslate nohighlight">
-\[w^* = \frac{\sum_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{N} (x_i - \bar{x})^2} = \frac{\text{Cov}(X,Y)}{\text{Var}(X)}\]</div>
+\[\min_{w,b} L(w,b)\]</div>
+<p>This is a function of <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, and we can analytically solve <span class="math notranslate nohighlight">\(\partial_{w}L = \partial_{b}L =0\)</span>, and yields</p>
 <div class="math notranslate nohighlight">
-\[b^* = \bar{y}  - w^*\bar{x}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are the mean of <span class="math notranslate nohighlight">\(x\)</span> and of <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(\text{Cov}(X,Y)\)</span> denotes the estimated covariance (or called sample covariance) between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(\text{Var}(Y)\)</span> denotes the sample variance of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+\[w^* = \frac{\sum_{i=1}^{N} (x_i - \bar{X})(y_i - \bar{Y})}{\sum_{i=1}^{N} (x_i - \bar{X})^2} = \frac{\text{Cov}(X,Y)}{\text{Var}(X)}\]</div>
+<div class="math notranslate nohighlight">
+\[b^* = \bar{Y}  - w^*\bar{X}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{X}\)</span> and <span class="math notranslate nohighlight">\(\bar{Y}\)</span> are the mean of <span class="math notranslate nohighlight">\(x\)</span> and of <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(\text{Cov}(X,Y)\)</span> denotes the estimated covariance (or called sample covariance) between <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(\text{Var}(Y)\)</span> denotes the sample variance of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 </section>
 <section id="evaluating-the-model">
 <h2>Evaluating the model<a class="headerlink" href="#evaluating-the-model" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>MSE: The smaller MSE indicates better performance</p></li>
-<li><p>R-Squared: The larger <span class="math notranslate nohighlight">\(R^{2}\)</span> (closer to 1) indicates better performance. Compared with MSE, R-squared is <strong>dimensionless</strong>, not dependent on the units of variable.</p></li>
+<li><p>MSE: The smaller MSE indicates better performance.</p></li>
+</ul>
+<p>MSE depends on the unit. For example, if we replace y[m] by y[mm], than MSE will be <span class="math notranslate nohighlight">\(1000^2\)</span> times the original MSE.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R^{2}\)</span> (coefficient of determination):
+The larger <span class="math notranslate nohighlight">\(R^{2}\)</span> (closer to 1) indicates better performance. Compared with MSE, R-squared is <strong>dimensionless</strong>, not dependent on the units of variable.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[R^{2} = 1 - \frac{\sum_{i=1}^{N}(y_i-\hat{y}^{(i)})^{2}}{\sum_{i=1}^{N}(y_i-\bar{y})^{2}} = 1 - \frac{\frac{1}{N}\sum_{i=1}^{N}(y_i-\hat{y}^{(i)})^{2}}{\frac{1}{N}\sum_{i=1}^{N}(y_i-\bar{y})^{2}} = 1 - \frac{\text{MSE}}{\text{Var}(Y)}\]</div>
-<p>Intuitively, MSE is the “unexplained” variance, and <span class="math notranslate nohighlight">\(R^{2}\)</span> is the proportion of the variance that is explained by the model: if we are not using any model, then our best prediction is the mean of <span class="math notranslate nohighlight">\(y\)</span>, and MSE is the variance of <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(R^{2}\)</span> is 0;
-If our model is perfect, then MSE is 0, and <span class="math notranslate nohighlight">\(R^{2}\)</span> is 1.</p>
+<p>Intuitively, MSE is the “unexplained” variance, and <span class="math notranslate nohighlight">\(R^{2}\)</span> is the proportion of the variance that is explained by the model:
+If our model is perfect, then MSE is 0, and <span class="math notranslate nohighlight">\(R^{2}\)</span> is 1.
+If we are using a constant model, then our best prediction is the mean of <span class="math notranslate nohighlight">\(y\)</span>, and MSE is the variance of <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(R^{2}\)</span> is 0;</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -426,45 +429,33 @@ If our model is perfect, then MSE is 0, and <span class="math notranslate nohigh
 
 <span class="k">class</span> <span class="nc">myLinearRegression</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    The single-variable linear regression estimator</span>
+<span class="sd">    The single-variable linear regression estimator.</span>
+<span class="sd">    This serves as an example of the regression models from sklearn, with methods fit, predict, and score.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Determine the optimal parameters w, b for the input data x and y</span>
-<span class="sd">        </span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">           x : 1D numpy array with shape (n_samples,) from training data</span>
-<span class="sd">           y : 1D numpy array with shape (n_samples,) from training data</span>
-<span class="sd">        </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        self : returns an instance of self, with new attributes slope w (float) and intercept b (float)</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-         <span class="c1"># covariance matrix, bias = True makes the factor is 1/N -- but it doesn&#39;t matter actually, since the factor will be cancelled</span>
-        <span class="n">cov_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="kc">None</span>
+    
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="c1"># covariance matrix, </span>
+        <span class="c1"># bias = True makes the factor 1/N, otherwise 1/(N-1)</span>
+        <span class="c1"># but it doesn&#39;t matter here, since the factor will be cancelled out in the calculation of w</span>
+        
+        <span class="n">cov_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="c1"># cov_mat[0, 1] is the covariance of x and y, and cov_mat[0, 0] is the variance of x</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">cov_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">cov_mat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">x_train</span> <span class="o">=</span> <span class="n">x</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span>
 
         <span class="c1"># :.3f means 3 decimal places</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;w = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, b = </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-    
     <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Predict the output values for the input value x, based on trained parameters</span>
-<span class="sd">        </span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">           x : 1D numpy array from training or test data </span>
-<span class="sd">        </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        returns 1D numpy array of same shape as input, the predicted y value of corresponding x</span>
+
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">ypred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
         <span class="k">return</span> <span class="n">ypred</span>
@@ -472,15 +463,6 @@ If our model is perfect, then MSE is 0, and <span class="math notranslate nohigh
     <span class="k">def</span> <span class="nf">score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Calculate the R^2 score of the model</span>
-<span class="sd">        </span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">           x : 1D numpy array from training or test data </span>
-<span class="sd">           y : 1D numpy array from training or test data </span>
-<span class="sd">        </span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        returns the R^2 score of the model</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">mse</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
@@ -498,37 +480,42 @@ If our model is perfect, then MSE is 0, and <span class="math notranslate nohigh
 
 <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">y_gt</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
 
 <span class="c1"># Fit the model</span>
-<span class="n">lm</span> <span class="o">=</span> <span class="n">myLinearRegression</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">lm</span> <span class="o">=</span> <span class="n">myLinearRegression</span><span class="p">()</span>
+<span class="n">lm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 
 <span class="c1"># plot data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="c1"># plot ground truth</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_gt</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ground truth&#39;</span><span class="p">)</span>
+
 
 <span class="c1"># plot the linear regression model</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">lm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;pred, $R^2$=</span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;score = </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 1.997, b = 1.022
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 2.467, b = 0.462
+score = 0.580
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fada2202810&gt;
-</pre></div>
-</div>
-<img alt="../_images/923b0c2931963c0d0b0826efd5115d83fcfc5c5b29562711da01dfc09068ce72.png" src="../_images/923b0c2931963c0d0b0826efd5115d83fcfc5c5b29562711da01dfc09068ce72.png" />
+<img alt="../_images/00aace7c64e3ea6eb2bb8ac0f8b90dfc7b1e90bd75baefe79b4a224a9550bdf7.png" src="../_images/00aace7c64e3ea6eb2bb8ac0f8b90dfc7b1e90bd75baefe79b4a224a9550bdf7.png" />
 </div>
 </div>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> to fit the linear model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the following command to install scikit-learn</span>
@@ -555,8 +542,8 @@ If our model is perfect, then MSE is 0, and <span class="math notranslate nohigh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 1.997, b = 1.022
-score = 0.993
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 2.467, b = 0.462
+score = 0.580
 </pre></div>
 </div>
 </div>
@@ -576,7 +563,7 @@ score = 0.993
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 1.997, b = 2.910
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 2.467, b = 3.332
 </pre></div>
 </div>
 </div>
@@ -591,7 +578,7 @@ score = 0.993
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 1.997, b = -0.000
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 2.467, b = 0.000
 </pre></div>
 </div>
 </div>
@@ -611,7 +598,7 @@ score = 0.993
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 3.947, b = 1.022
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>w = 4.756, b = 0.462
 </pre></div>
 </div>
 </div>
@@ -619,57 +606,9 @@ score = 0.993
 <p>For <em>linear regression</em>, centering and scaling the data (both training and testing data ) does not affect the performance of the model.</p>
 <p>For some other models, centering and scaling can be essential</p>
 </section>
-<section id="what-is-a-good-fit">
-<h2>What is a “good” fit?<a class="headerlink" href="#what-is-a-good-fit" title="Link to this heading">#</a></h2>
-<p>It depends on the metric we use to evaluate the model.</p>
-<p>In the following example, the best model in terms of MSE(mean squared error) might not be the best model in terms of MAE(mean absolute error).</p>
-<div class="math notranslate nohighlight">
-\[\text{MAE} = \frac{1}{N}\sum_{i=1}^{N}|y_i-\hat{y}^{(i)}|\]</div>
-<p>Linear regression based on MSE can seem sensitive to outliers than MAE. But minimize MAE is much more challenging.</p>
-<p>For regression methods that are designed to handle outliers, see <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.linear_model">Outlier-robust regressors</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
-    <span class="s2">&quot;y&quot;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">]},</span>
-<span class="p">)</span>
-
-
-<span class="n">f1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
-<span class="n">f2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.4</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;f1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f1</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;f2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f2</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
-
-<span class="c1"># import mse and mae</span>
-<span class="n">f1_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;f1&quot;</span><span class="p">])</span>
-<span class="n">f2_mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;f2&quot;</span><span class="p">])</span>
-<span class="n">f1_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;f1&quot;</span><span class="p">])</span>
-<span class="n">f2_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;f2&quot;</span><span class="p">])</span>
-
-<span class="c1"># plot the data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;f1&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;f1&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;f2&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;f2&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;f1, mse=</span><span class="si">{</span><span class="n">f1_mse</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">, mae=</span><span class="si">{</span><span class="n">f1_mae</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;f2, mse=</span><span class="si">{</span><span class="n">f2_mse</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">, mae=</span><span class="si">{</span><span class="n">f2_mae</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.15000000000000002, 3.15, -10.8, 6.8)
-</pre></div>
-</div>
-<img alt="../_images/14de804355608cf1d183f6ee69da25adcacc43fbe172103ebda21fe4f3fb8eef.png" src="../_images/14de804355608cf1d183f6ee69da25adcacc43fbe172103ebda21fe4f3fb8eef.png" />
-</div>
-</div>
-</section>
-<section id="detailed-derivation-of-the-optimal-parameters">
-<h2>Detailed Derivation of the Optimal Parameters<a class="headerlink" href="#detailed-derivation-of-the-optimal-parameters" title="Link to this heading">#</a></h2>
+<section id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
+<p>Detailed Derivation of the Optimal Parameters (Not exam material).</p>
 <p>The loss function for simple linear regression is given by:</p>
 <div class="math notranslate nohighlight">
 \[L(w, b) = \frac{1}{N} \sum_{i=1}^N ((wx_i + b) - y_i)^2\]</div>
@@ -783,13 +722,12 @@ $<span class="math notranslate nohighlight">\(w = \frac{Cov(X,Y)}{Var(X)}\)</spa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-effect-of-centering-the-data">What is the effect of centering the data?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-effect-of-scaling-the-data">What is the effect of scaling the data?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-good-fit">What is a “good” fit?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-derivation-of-the-optimal-parameters">Detailed Derivation of the Optimal Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a></li>
 </ul>
   </nav></div>
 
