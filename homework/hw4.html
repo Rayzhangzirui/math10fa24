@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -433,7 +433,7 @@ document.write(`
 <p>Can we predict the future?</p>
 <p>For instance, can we use past temperatures to predict future temperatures, or past stock prices to predict future stock prices? These are examples of <strong>time series</strong> data, where there is a natural ordering of the data points based on time, which is different from the penguins dataset.</p>
 <p>In the following example, we will use stock price data for Google to explore time series data analysis.</p>
-<p>Download the dataset from the <a class="reference download internal" download="" href="../_downloads/3d5700b0e15341be78cab93e6a784489/google.csv"><span class="xref download myst">link</span></a>, obtained from <a class="reference external" href="https://www.marketwatch.com/investing/stock/goog/download-data">link</a>  This dataset contains the 1-year stock price data for Google. The columns include:</p>
+<p>Download the data from the <a class="reference download internal" download="" href="../_downloads/3d5700b0e15341be78cab93e6a784489/google.csv"><span class="xref download myst">link</span></a>.  This is the stock price data for Google from 10/17/2023 to 10/17/2024. The columns include:</p>
 <ul class="simple">
 <li><p><strong>Date</strong>: The date of the stock price</p></li>
 <li><p><strong>Open</strong>: The opening price of the stock</p></li>
@@ -442,6 +442,7 @@ document.write(`
 <li><p><strong>Close</strong>: The closing price of the stock</p></li>
 <li><p><strong>Volume</strong>: The volume of stocks traded</p></li>
 </ul>
+<p>The original data can be obtained from the <a class="reference external" href="https://www.marketwatch.com/investing/stock/goog/download-data">link</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
