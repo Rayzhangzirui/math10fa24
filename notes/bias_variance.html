@@ -394,7 +394,7 @@ We fit a model to the data, then our model depends on the training data we colle
 <p>Then the expected value of the test error is:</p>
 <!-- $$E_D[ y - \hat{f}(x;D) ]^2 = E_D[\hat{f}(x;D) - f(x)]^2 + Var_D[\hat{f}(x;D)]$$ -->
 <div class="math notranslate nohighlight">
-\[E_D[ y_0 - \hat{f}(x_0;D) ]^2 = \underbrace{(E_D[\hat{f}(x_0;D)] - y)^2}_{\text{Bias}^2} + \underbrace{Var_D[\hat{f}(x_0;D)]}_{\text{Variance}} \]</div>
+\[E_D[ (y_0 - \hat{f}(x_0;D))^2 ] = \underbrace{(E_D[\hat{f}(x_0;D)] - y_0)^2}_{\text{Bias}^2} + \underbrace{Var_D[\hat{f}(x_0;D)]}_{\text{Variance}} \]</div>
 <p>The expected value of the test error can be decomposed into 2 parts:</p>
 <ol class="arabic simple">
 <li><p><strong>Bias</strong> is the inherent error of the model even with infinite data. For example, the model might assume a linear relationship, but the true relationship is not linear.</p></li>
@@ -402,8 +402,8 @@ We fit a model to the data, then our model depends on the training data we colle
 </ol>
 <p>If we also consider the noise in the observation, that is, <span class="math notranslate nohighlight">\(y_0 = f(x_0) + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is the noise.
 Then there will be an additional term in the decomposition, which is called the <strong>irreducible error</strong>. This is the error that we cannot reduce no matter how complex the model is. This error might be due to the noise in the measurement, or other variables that affect the output that we are not measuring.</p>
-<p>In general, as we increase the number of tunable parameters in a model, such as the degree of the polynomial, the model becomes more powerful, as it can represent more complex relationships. Then given enough data, the model can recover the true relationship. It is said to have lower bias.</p>
-<p>However, when the data is limited, the more flexible model is also better at fitting the noise in the training data.
+<p>In general, as we increase the number of tunable parameters in a model, such as the degree of the polynomial, the model becomes more powerful, as it can represent more complex relationships. Then given enough data, the model will be approaching the true relationship. It is said to have lower bias.</p>
+<p>However, we can only collect some limited samples of the whole population. The more flexible model is also better at fitting the noise in the training data.
 Suppose we encounter a different batch of training data, the model will fit these data differently and make drastically different predictions. It is said to have higher variance.</p>
 <p><img alt="tradeoff" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bias_and_variance_contributing_to_total_error.svg/2880px-Bias_and_variance_contributing_to_total_error.svg.png" /></p>
 <div class="cell docutils container">
@@ -532,7 +532,7 @@ Suppose we encounter a different batch of training data, the model will fit thes
 </section>
 <section id="where-is-the-tradeoff">
 <h1>Where is the tradeoff?<a class="headerlink" href="#where-is-the-tradeoff" title="Link to this heading">#</a></h1>
-<p>The decomposition does not necessarily mean that there is a tradeoff between bias and variance. For some simple families of models, such as polynomials, a more careful analysis can show that the bias decreases and the variance increases as the degree of the polynomial increases.</p>
+<p>The decomposition does not necessarily mean that there is a tradeoff between bias and variance. For some families of models, such as polynomials, a more careful analysis can show that the bias decreases and the variance increases as the degree of the polynomial increases.</p>
 <p>But this is not the whole story. See <a class="reference external" href="https://www.bradyneal.com/bias-variance-tradeoff-textbooks-update#suggested-updates-to-textbooks-courses-and-our-mental-models">On the Bias-Variance Tradeoff: Textbooks Need an Update</a> for more details.</p>
 </section>
 
