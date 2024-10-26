@@ -14,6 +14,9 @@ chapters:
       - file: notes/pandas
       - file: notes/visualization
       - file: notes/linear_regression
+      - file: notes/multi_linear_reg
+      - file: notes/polynomial_reg
+      - file: notes/bias_variance
   - file: lecture/intro
     sections:
       - file: lecture/week1_Mon
@@ -25,6 +28,9 @@ chapters:
       - file: lecture/week3_Mon
       - file: lecture/week3_Wed
       - file: lecture/week3_Fri
+      - file: lecture/week4_Mon
+      - file: lecture/week4_Wed
+      - file: lecture/week4_Fri
   - file: homework/intro
     sections:
       - file: homework/hw1
