@@ -210,7 +210,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 4 Mon 10/21</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 3 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -513,7 +514,7 @@ You can always think of a random variable as the “payoff” in a game, and the
 <section id="variance">
 <h2>Variance<a class="headerlink" href="#variance" title="Link to this heading">#</a></h2>
 <p>Variance quantifies the spread of a distribution around its mean, reflecting the variability of the random variable. <span class="math notranslate nohighlight">\(\text{Var}(X) = E[(X - E[X])^2]\)</span></p>
-<p>We have <span class="math notranslate nohighlight">\(\text{Var}(aX) = a^2 \text{Var}(X)\)</span> for any constant <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<p>We have <span class="math notranslate nohighlight">\(\text{Var}(aX+b) = a^2 \text{Var}(X)\)</span> for any constant <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <section id="how-to-estimate-the-variance-of-a-random-variable-from-data">
 <h3>How to estimate the variance of a random variable from data?<a class="headerlink" href="#how-to-estimate-the-variance-of-a-random-variable-from-data" title="Link to this heading">#</a></h3>
 <p>One common approach is to use the sample variance: if <span class="math notranslate nohighlight">\(X_1, X_2, \ldots, X_n\)</span> are i.i.d. samples of <span class="math notranslate nohighlight">\(X\)</span>. Let <span class="math notranslate nohighlight">\(\bar{X}\)</span> be the sample mean, then the sample variance <span class="math notranslate nohighlight">\(S^2 = \frac{1}{n} \sum_{i=1}^{n} (X_i - \bar{X})^2\)</span> is an estimator of <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span>.</p>
