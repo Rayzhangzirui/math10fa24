@@ -1,0 +1,861 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lecture Week 2 Mon 10/7 &#8212; UCI Math 10, Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture/week5_Mon';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Homework" href="../homework/intro.html" />
+    <link rel="prev" title="Lecture Week 4 Fri 10/25" href="week4_Fri.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Fall 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Fall 2024
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lectures</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lecture Week 2 Mon 10/7</a></li>
+
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lecture/week5_Mon.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture Week 2 Mon 10/7</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 2 Mon 10/7</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross validation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-validation-and-testing">Training, Validation, and Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question:</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-week-2-mon-10-7">
+<h1>Lecture Week 2 Mon 10/7<a class="headerlink" href="#lecture-week-2-mon-10-7" title="Link to this heading">#</a></h1>
+<p><strong>Poll</strong></p>
+<p>Given input x in 1D, output y in 1D. If we use feature</p>
+<p><span class="math notranslate nohighlight">\([x, 2x, 2^2x,..., 2^kx]\)</span> …, how does the model performance changes as we increase k</p>
+<p><strong>Poll</strong></p>
+<p>Given input x in 1D, output y in 1D. If we use feature</p>
+<p><span class="math notranslate nohighlight">\([x, 2x, 2^2x,..., 2^kx]\)</span> …, how does the model performance changes as we increase k</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="colinearity">
+<h1>Colinearity<a class="headerlink" href="#colinearity" title="Link to this heading">#</a></h1>
+<p>If two variables are highly correlated, intuitively, we can say that they are measuring the same thing. In the context of linear regression, this is called multicollinearity.</p>
+<p>Suppose <span class="math notranslate nohighlight">\(Y = aX_1\)</span> and <span class="math notranslate nohighlight">\(X_2 = bX_1\)</span>, then we can write <span class="math notranslate nohighlight">\(Y = \beta_1 X_1 + \beta_2 X_2\)</span> for any <span class="math notranslate nohighlight">\(\beta_1\)</span>  and <span class="math notranslate nohighlight">\(\beta_2\)</span> such that <span class="math notranslate nohighlight">\(\beta_1 + b \beta_2 = a\)</span>.</p>
+<p>We can see that the coefficients are not unique.</p>
+<p>This cause a few problems:</p>
+<ol class="arabic simple">
+<li><p><strong>Interpretation</strong>: it’s difficult to interpret the coefficients. Originally, we would say that a one unit increase in <span class="math notranslate nohighlight">\(X_1\)</span> would lead to a <span class="math notranslate nohighlight">\(\beta_1\)</span> increase in <span class="math notranslate nohighlight">\(Y\)</span>. But now, we can’t say that, because we can’t change <span class="math notranslate nohighlight">\(X_1\)</span> without changing <span class="math notranslate nohighlight">\(X_2\)</span>.</p></li>
+<li><p><strong>Large Variance of the parameter</strong>: Since there could be infinite solutions, there is no guarantee which one the solver will find. Therefore small changes in the data could lead to large changes in the coefficients.</p></li>
+<li><p><strong>Numerical Stability</strong>: Sometimes the solver can’t find the solution.</p></li>
+</ol>
+<p>However, this does not affect the prediction: even though the coefficients are not unique, the prediction will be the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># append collinear columns</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.76211788, 1.52423577],
+       [0.5029594 , 1.0059188 ],
+       [0.52575871, 1.05151742],
+       [0.22006325, 0.44012649],
+       [0.81791763, 1.63583527],
+       [0.68107268, 1.36214535],
+       [0.4016557 , 0.8033114 ],
+       [0.36164756, 0.72329513],
+       [0.38081373, 0.76162746],
+       [0.43256595, 0.86513191],
+       [0.19213296, 0.38426592],
+       [0.5214522 , 1.0429044 ],
+       [0.06073058, 0.12146116],
+       [0.71085978, 1.42171955],
+       [0.93333873, 1.86667747],
+       [0.66158163, 1.32316325],
+       [0.11017665, 0.22035331],
+       [0.26035445, 0.52070891],
+       [0.03233723, 0.06467445],
+       [0.31478408, 0.62956816],
+       [0.7073091 , 1.4146182 ],
+       [0.37579514, 0.75159028],
+       [0.2337066 , 0.4674132 ],
+       [0.61645368, 1.23290736],
+       [0.14374096, 0.28748192],
+       [0.40109488, 0.80218975],
+       [0.97757554, 1.95515108],
+       [0.93754553, 1.87509107],
+       [0.88649598, 1.77299195],
+       [0.656356  , 1.31271199],
+       [0.29456178, 0.58912356],
+       [0.54653214, 1.09306427],
+       [0.88575411, 1.77150822],
+       [0.64577643, 1.29155287],
+       [0.73233848, 1.46467695],
+       [0.97338618, 1.94677235],
+       [0.21784033, 0.43568066],
+       [0.12753862, 0.25507724],
+       [0.88057366, 1.76114733],
+       [0.21193264, 0.42386528],
+       [0.76584372, 1.53168744],
+       [0.15445438, 0.30890876],
+       [0.18372064, 0.36744127],
+       [0.45499015, 0.9099803 ],
+       [0.28686581, 0.57373161],
+       [0.02735923, 0.05471846],
+       [0.68168096, 1.36336193],
+       [0.25343661, 0.50687323],
+       [0.62902947, 1.25805893],
+       [0.0994719 , 0.19894379],
+       [0.8068893 , 1.6137786 ],
+       [0.26150393, 0.52300785],
+       [0.87518049, 1.75036098],
+       [0.4258212 , 0.8516424 ],
+       [0.11328905, 0.2265781 ],
+       [0.72414744, 1.44829489],
+       [0.4268573 , 0.85371459],
+       [0.72540867, 1.45081734],
+       [0.15733763, 0.31467527],
+       [0.22652972, 0.45305945],
+       [0.31599226, 0.63198451],
+       [0.13382998, 0.26765996],
+       [0.72253241, 1.44506482],
+       [0.21027294, 0.42054588],
+       [0.47643918, 0.95287835],
+       [0.7884414 , 1.5768828 ],
+       [0.92632449, 1.85264898],
+       [0.58552151, 1.17104302],
+       [0.92485997, 1.84971995],
+       [0.34674351, 0.69348702],
+       [0.24289621, 0.48579241],
+       [0.8143314 , 1.62866281],
+       [0.5322099 , 1.0644198 ],
+       [0.0185913 , 0.0371826 ],
+       [0.85405815, 1.70811631],
+       [0.62833392, 1.25666783],
+       [0.03420048, 0.06840096],
+       [0.58953933, 1.17907866],
+       [0.39680704, 0.79361409],
+       [0.32960882, 0.65921764],
+       [0.83265308, 1.66530616],
+       [0.55970626, 1.11941253],
+       [0.88443868, 1.76887736],
+       [0.08663012, 0.17326025],
+       [0.74148545, 1.48297089],
+       [0.46302441, 0.92604883],
+       [0.29187956, 0.58375911],
+       [0.04093826, 0.08187651],
+       [0.46075901, 0.92151802],
+       [0.5707372 , 1.14147439],
+       [0.93271585, 1.86543169],
+       [0.17788948, 0.35577897],
+       [0.10478946, 0.20957892],
+       [0.21191987, 0.42383974],
+       [0.04990644, 0.09981288],
+       [0.98446704, 1.96893409],
+       [0.40056453, 0.80112907],
+       [0.42533359, 0.85066718],
+       [0.0809081 , 0.16181621],
+       [0.33114064, 0.66228127]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># regression with X0 and X1=2*X0</span>
+<span class="n">lreg_sklearn</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;coefs: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">, intercept: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># regression with X0</span>
+<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;coefs: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">, intercept: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefs: [0.17213533 0.34427066], intercept: 0.036208338624087455, score: 0.04965689668987128
+coefs: [0.86067664], intercept: 0.03620833862408768, score: 0.04965689668987128
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="cross-validation">
+<h1>Cross validation<a class="headerlink" href="#cross-validation" title="Link to this heading">#</a></h1>
+<section id="training-validation-and-testing">
+<h2>Training, Validation, and Testing<a class="headerlink" href="#training-validation-and-testing" title="Link to this heading">#</a></h2>
+<p>Note that we have the following separate goals:</p>
+<ul class="simple">
+<li><p><strong>Model selection</strong>: estimate the performance of different models in order to choose the best one.</p></li>
+<li><p><strong>Model assessment</strong>: after choosing the best model, estimate its prediction error on new data.</p></li>
+</ul>
+<p>If we have plenty of data, we can split it into three sets: training, validation, and test.</p>
+<p>The training set is used to fit the models.
+The validation set is used to estimate prediction error, which is used to select the model or tune the hyperparameters. In our example, this is the degree of the polynomial. Notice that in the process, the models “see” the validation set.
+The test set is used for assessment of the generalization error of the final chosen model. This set is never seen by the models. We should not go back and choose the model based on the test set performance.</p>
+<p>One common way of splitting the data is 60% training, 20% validation, and 20% test.</p>
+<p>Sometimes people use “validation” and “test” interchangeably. This is fine if we are only doing only one of the tasks above (model selection or model assessment). However, if we are doing both, we should have two separate sets.</p>
+</section>
+<section id="question">
+<h2>Question:<a class="headerlink" href="#question" title="Link to this heading">#</a></h2>
+<p>Take the penguins dataset. Use the flipper length to predict the body mass.
+Perform a 5-fold cross-validation. What is the average mean squared error?</p>
+<p>Feel free Look up the documentation of KFold, google, chatGPT, or discuss with your classmates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example from scikit-learn</span>
+<span class="c1"># https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.KFold.html</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">kf</span><span class="p">)</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sklearn.model_selection._split.KFold
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+<span class="c1"># This is an object that is similar to the range object</span>
+<span class="c1"># We can iterate over it</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>generator
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the indices of the train and test sets</span>
+<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Train: index=</span><span class="si">{</span><span class="n">train_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Test:  index=</span><span class="si">{</span><span class="n">test_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Train: index=[1 2 3]
+  Test:  index=[0]
+  Train: index=[0 2 3]
+  Test:  index=[1]
+  Train: index=[0 1 3]
+  Test:  index=[2]
+  Train: index=[0 1 2]
+  Test:  index=[3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using enumerate to get the index of the fold</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  i: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Train: index=</span><span class="si">{</span><span class="n">train_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Test:  index=</span><span class="si">{</span><span class="n">test_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  i: 0
+  Train: index=[1 2 3]
+  Test:  index=[0]
+  i: 1
+  Train: index=[0 2 3]
+  Test:  index=[1]
+  i: 2
+  Train: index=[0 1 3]
+  Test:  index=[2]
+  i: 3
+  Train: index=[0 1 2]
+  Test:  index=[3]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+
+<span class="c1"># Load the Penguins dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;penguins&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Remove missing values</span>
+
+<span class="c1"># features = [&#39;bill_length_mm&#39;, &#39;bill_depth_mm&#39;,&#39;flipper_length_mm&#39;]</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">]</span>  
+
+<span class="c1"># Initialize linear regression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">all_scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span> 
+    <span class="n">X_test</span>  <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+
+    <span class="n">y_train</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">]</span>
+    <span class="n">y_test</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">]</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+    <span class="n">all_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fold </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> R^2 score:&quot;</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean R^2 score: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">all_scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold 0 R^2 score: 0.725084353204537
+Fold 1 R^2 score: 0.6993225273807326
+Fold 2 R^2 score: 0.7895360534716703
+Fold 3 R^2 score: 0.7782229609972658
+Fold 4 R^2 score: 0.794602971686194
+Mean R^2 score: 0.75735377334808
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lecture"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="week4_Fri.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture Week 4 Fri 10/25</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../homework/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Homework</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 2 Mon 10/7</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross validation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-validation-and-testing">Training, Validation, and Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question">Question:</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
