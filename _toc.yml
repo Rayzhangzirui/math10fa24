@@ -4,7 +4,7 @@ root: intro
 chapters:
   - file: syllabus
   - file: final_project_instruction
-  - file: final_project_template
+  # - file: final_project_template
   - file: notes/notes_intro
     sections:
       - file: notes/python_review
@@ -36,4 +36,5 @@ chapters:
       - file: homework/hw1
       - file: homework/hw2_sol
       - file: homework/hw3_sol
-      - file: homework/hw4
+      - file: homework/hw4_sol
+      - file: homework/hw5
