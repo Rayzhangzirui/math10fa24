@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture Week 2 Mon 10/7 &#8212; UCI Math 10, Fall 2024</title>
+    <title>Lecture Week 5 Mon 10/7 &#8212; UCI Math 10, Fall 2024</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -212,7 +212,7 @@
 <li class="toctree-l2"><a class="reference internal" href="week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
 <li class="toctree-l2"><a class="reference internal" href="week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
 <li class="toctree-l2"><a class="reference internal" href="week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lecture Week 5 Mon 10/7</a></li>
 
 
 </ul>
@@ -363,7 +363,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture Week 2 Mon 10/7</h1>
+    <h1>Lecture Week 5 Mon 10/7</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -373,7 +373,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 2 Mon 10/7</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 5 Mon 10/7</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross validation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-validation-and-testing">Training, Validation, and Testing</a></li>
@@ -392,11 +392,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-week-2-mon-10-7">
-<h1>Lecture Week 2 Mon 10/7<a class="headerlink" href="#lecture-week-2-mon-10-7" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-week-5-mon-10-7">
+<h1>Lecture Week 5 Mon 10/7<a class="headerlink" href="#lecture-week-5-mon-10-7" title="Link to this heading">#</a></h1>
 <p><strong>Poll</strong></p>
-<p>Given input x in 1D, output y in 1D. If we use feature</p>
-<p><span class="math notranslate nohighlight">\([x, 2x, 2^2x,..., 2^kx]\)</span> …, how does the model performance changes as we increase k</p>
+<p>Generally speaking, if we had a new feature that highly correlates with an existing feature, is it useful to include it in our linear regression model?</p>
 <p><strong>Poll</strong></p>
 <p>Given input x in 1D, output y in 1D. If we use feature</p>
 <p><span class="math notranslate nohighlight">\([x, 2x, 2^2x,..., 2^kx]\)</span> …, how does the model performance changes as we increase k</p>
@@ -434,106 +433,106 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.76211788, 1.52423577],
-       [0.5029594 , 1.0059188 ],
-       [0.52575871, 1.05151742],
-       [0.22006325, 0.44012649],
-       [0.81791763, 1.63583527],
-       [0.68107268, 1.36214535],
-       [0.4016557 , 0.8033114 ],
-       [0.36164756, 0.72329513],
-       [0.38081373, 0.76162746],
-       [0.43256595, 0.86513191],
-       [0.19213296, 0.38426592],
-       [0.5214522 , 1.0429044 ],
-       [0.06073058, 0.12146116],
-       [0.71085978, 1.42171955],
-       [0.93333873, 1.86667747],
-       [0.66158163, 1.32316325],
-       [0.11017665, 0.22035331],
-       [0.26035445, 0.52070891],
-       [0.03233723, 0.06467445],
-       [0.31478408, 0.62956816],
-       [0.7073091 , 1.4146182 ],
-       [0.37579514, 0.75159028],
-       [0.2337066 , 0.4674132 ],
-       [0.61645368, 1.23290736],
-       [0.14374096, 0.28748192],
-       [0.40109488, 0.80218975],
-       [0.97757554, 1.95515108],
-       [0.93754553, 1.87509107],
-       [0.88649598, 1.77299195],
-       [0.656356  , 1.31271199],
-       [0.29456178, 0.58912356],
-       [0.54653214, 1.09306427],
-       [0.88575411, 1.77150822],
-       [0.64577643, 1.29155287],
-       [0.73233848, 1.46467695],
-       [0.97338618, 1.94677235],
-       [0.21784033, 0.43568066],
-       [0.12753862, 0.25507724],
-       [0.88057366, 1.76114733],
-       [0.21193264, 0.42386528],
-       [0.76584372, 1.53168744],
-       [0.15445438, 0.30890876],
-       [0.18372064, 0.36744127],
-       [0.45499015, 0.9099803 ],
-       [0.28686581, 0.57373161],
-       [0.02735923, 0.05471846],
-       [0.68168096, 1.36336193],
-       [0.25343661, 0.50687323],
-       [0.62902947, 1.25805893],
-       [0.0994719 , 0.19894379],
-       [0.8068893 , 1.6137786 ],
-       [0.26150393, 0.52300785],
-       [0.87518049, 1.75036098],
-       [0.4258212 , 0.8516424 ],
-       [0.11328905, 0.2265781 ],
-       [0.72414744, 1.44829489],
-       [0.4268573 , 0.85371459],
-       [0.72540867, 1.45081734],
-       [0.15733763, 0.31467527],
-       [0.22652972, 0.45305945],
-       [0.31599226, 0.63198451],
-       [0.13382998, 0.26765996],
-       [0.72253241, 1.44506482],
-       [0.21027294, 0.42054588],
-       [0.47643918, 0.95287835],
-       [0.7884414 , 1.5768828 ],
-       [0.92632449, 1.85264898],
-       [0.58552151, 1.17104302],
-       [0.92485997, 1.84971995],
-       [0.34674351, 0.69348702],
-       [0.24289621, 0.48579241],
-       [0.8143314 , 1.62866281],
-       [0.5322099 , 1.0644198 ],
-       [0.0185913 , 0.0371826 ],
-       [0.85405815, 1.70811631],
-       [0.62833392, 1.25666783],
-       [0.03420048, 0.06840096],
-       [0.58953933, 1.17907866],
-       [0.39680704, 0.79361409],
-       [0.32960882, 0.65921764],
-       [0.83265308, 1.66530616],
-       [0.55970626, 1.11941253],
-       [0.88443868, 1.76887736],
-       [0.08663012, 0.17326025],
-       [0.74148545, 1.48297089],
-       [0.46302441, 0.92604883],
-       [0.29187956, 0.58375911],
-       [0.04093826, 0.08187651],
-       [0.46075901, 0.92151802],
-       [0.5707372 , 1.14147439],
-       [0.93271585, 1.86543169],
-       [0.17788948, 0.35577897],
-       [0.10478946, 0.20957892],
-       [0.21191987, 0.42383974],
-       [0.04990644, 0.09981288],
-       [0.98446704, 1.96893409],
-       [0.40056453, 0.80112907],
-       [0.42533359, 0.85066718],
-       [0.0809081 , 0.16181621],
-       [0.33114064, 0.66228127]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.02493189, 0.04986379],
+       [0.88987389, 1.77974777],
+       [0.15536663, 0.31073326],
+       [0.18403565, 0.36807131],
+       [0.46053804, 0.92107609],
+       [0.05566118, 0.11132237],
+       [0.88793712, 1.77587425],
+       [0.43906006, 0.87812013],
+       [0.26654538, 0.53309076],
+       [0.94660644, 1.89321289],
+       [0.33099965, 0.6619993 ],
+       [0.66826138, 1.33652275],
+       [0.76191481, 1.52382962],
+       [0.44606353, 0.89212706],
+       [0.38940682, 0.77881364],
+       [0.31327139, 0.62654279],
+       [0.15368506, 0.30737012],
+       [0.99486966, 1.98973933],
+       [0.42264476, 0.84528953],
+       [0.15030903, 0.30061805],
+       [0.40178419, 0.80356838],
+       [0.23300085, 0.46600171],
+       [0.80373163, 1.60746326],
+       [0.90405667, 1.80811333],
+       [0.18957645, 0.3791529 ],
+       [0.187407  , 0.37481401],
+       [0.19874918, 0.39749836],
+       [0.84622686, 1.69245373],
+       [0.07614844, 0.15229687],
+       [0.57581073, 1.15162146],
+       [0.27849744, 0.55699487],
+       [0.45074952, 0.90149903],
+       [0.90207388, 1.80414776],
+       [0.66458771, 1.32917542],
+       [0.91821638, 1.83643277],
+       [0.30836426, 0.61672852],
+       [0.97082038, 1.94164076],
+       [0.01386004, 0.02772008],
+       [0.00388961, 0.00777922],
+       [0.27202653, 0.54405305],
+       [0.93960735, 1.87921469],
+       [0.29406414, 0.58812828],
+       [0.99926779, 1.99853558],
+       [0.59716839, 1.19433678],
+       [0.78193291, 1.56386582],
+       [0.29349179, 0.58698357],
+       [0.23360919, 0.46721838],
+       [0.45129704, 0.90259408],
+       [0.90060997, 1.80121993],
+       [0.37131516, 0.74263033],
+       [0.11864543, 0.23729086],
+       [0.91922047, 1.83844093],
+       [0.84499892, 1.68999783],
+       [0.93709011, 1.87418023],
+       [0.9948483 , 1.9896966 ],
+       [0.3913995 , 0.78279901],
+       [0.98166644, 1.96333288],
+       [0.93176551, 1.86353102],
+       [0.24417953, 0.48835905],
+       [0.53069928, 1.06139856],
+       [0.54600943, 1.09201887],
+       [0.8365131 , 1.67302621],
+       [0.54935307, 1.09870613],
+       [0.47455107, 0.94910214],
+       [0.13477471, 0.26954943],
+       [0.28010383, 0.56020765],
+       [0.37534329, 0.75068659],
+       [0.90228509, 1.80457017],
+       [0.25429843, 0.50859687],
+       [0.56475784, 1.12951568],
+       [0.33253236, 0.66506473],
+       [0.5646703 , 1.1293406 ],
+       [0.21257498, 0.42514996],
+       [0.03980089, 0.07960177],
+       [0.79893501, 1.59787003],
+       [0.36339928, 0.72679855],
+       [0.27878216, 0.55756433],
+       [0.67216702, 1.34433403],
+       [0.17829473, 0.35658947],
+       [0.51643744, 1.03287488],
+       [0.07402344, 0.14804688],
+       [0.74711617, 1.49423233],
+       [0.51660041, 1.03320082],
+       [0.59097335, 1.18194669],
+       [0.20100947, 0.40201895],
+       [0.09759389, 0.19518777],
+       [0.8477742 , 1.6955484 ],
+       [0.91859923, 1.83719846],
+       [0.5338964 , 1.0677928 ],
+       [0.06509675, 0.1301935 ],
+       [0.18073189, 0.36146378],
+       [0.87027108, 1.74054216],
+       [0.2931549 , 0.5863098 ],
+       [0.38208096, 0.76416192],
+       [0.31607139, 0.63214278],
+       [0.78272203, 1.56544406],
+       [0.07011386, 0.14022772],
+       [0.55568562, 1.11137123],
+       [0.22828128, 0.45656256],
+       [0.8990487 , 1.79809739]])
 </pre></div>
 </div>
 </div>
@@ -555,8 +554,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefs: [0.17213533 0.34427066], intercept: 0.036208338624087455, score: 0.04965689668987128
-coefs: [0.86067664], intercept: 0.03620833862408768, score: 0.04965689668987128
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefs: [0.20670874 0.41341747], intercept: -0.10402094162564779, score: 0.09417922701371784
+coefs: [1.03354368], intercept: -0.10402094162564746, score: 0.09417922701371773
 </pre></div>
 </div>
 </div>
@@ -652,7 +651,7 @@ Perform a 5-fold cross-validation. What is the average mean squared error?</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using enumerate to get the index of the fold</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using enumerate to get the counter i</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  i: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Train: index=</span><span class="si">{</span><span class="n">train_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -797,7 +796,7 @@ Mean R^2 score: 0.75735377334808
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 2 Mon 10/7</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 5 Mon 10/7</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross validation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-validation-and-testing">Training, Validation, and Testing</a></li>
