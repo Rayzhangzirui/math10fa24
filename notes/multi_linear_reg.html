@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -192,6 +192,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Multiple Linear Regression</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-Variance Tradeoff</a></li>
 
@@ -211,13 +212,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+
+
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
 </ul>
 </li>
@@ -369,12 +373,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multiple Linear Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-the-coefficients">Interpretation of the coefficients</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -644,6 +653,51 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
 <p>However, for the forward and backward selection, the result might depends on the order of adding/removing features. For example, suppose <span class="math notranslate nohighlight">\(Y = X_1 + X_2\)</span>. <span class="math notranslate nohighlight">\(X_3\)</span> is highly correlated with <span class="math notranslate nohighlight">\(X_2\)</span>. Then both (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>) and (<span class="math notranslate nohighlight">\(X_1\)</span>,<span class="math notranslate nohighlight">\(X_2\)</span>) are good models. If we start with all (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>), we might end up with (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_2\)</span>) or (<span class="math notranslate nohighlight">\(X_1\)</span>, <span class="math notranslate nohighlight">\(X_3\)</span>) depending on the order of considering the features.</p>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="colinearity">
+<h1>Colinearity<a class="headerlink" href="#colinearity" title="Link to this heading">#</a></h1>
+<p>If two variables are highly correlated, intuitively, we can say that they are measuring the same thing. In the context of linear regression, this is called multicollinearity.</p>
+<p>Suppose <span class="math notranslate nohighlight">\(Y = aX_1\)</span> and <span class="math notranslate nohighlight">\(X_2 = bX_1\)</span>, then we can write <span class="math notranslate nohighlight">\(Y = \beta_1 X_1 + \beta_2 X_2\)</span> for any <span class="math notranslate nohighlight">\(\beta_1\)</span>  and <span class="math notranslate nohighlight">\(\beta_2\)</span> such that <span class="math notranslate nohighlight">\(\beta_1 + b \beta_2 = a\)</span>.</p>
+<p>We can see that the coefficients are not unique.</p>
+<p>This cause a few problems:</p>
+<ol class="arabic simple">
+<li><p><strong>Interpretation</strong>: it’s difficult to interpret the coefficients. Originally, we would say that a one unit increase in <span class="math notranslate nohighlight">\(X_1\)</span> would lead to a <span class="math notranslate nohighlight">\(\beta_1\)</span> increase in <span class="math notranslate nohighlight">\(Y\)</span>. But now, we can’t say that, because we can’t change <span class="math notranslate nohighlight">\(X_1\)</span> without changing <span class="math notranslate nohighlight">\(X_2\)</span>.</p></li>
+<li><p><strong>Large Variance of the parameter</strong>: Since there could be infinite solutions, there is no guarantee which one the solver will find. Therefore small changes in the data could lead to large changes in the coefficients.</p></li>
+<li><p><strong>Numerical Stability</strong>: Sometimes the solver can’t find the solution.</p></li>
+</ol>
+<p>However, this does not affect the prediction: even though the coefficients are not unique, the prediction will be the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># append collinear columns</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># regression with X0 and X1=2*X0</span>
+<span class="n">lreg_sklearn</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;coefs: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">, intercept: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># regression with X0</span>
+<span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;coefs: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">, intercept: </span><span class="si">{</span><span class="n">lreg_sklearn</span><span class="o">.</span><span class="n">intercept_</span><span class="si">}</span><span class="s1">, score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>coefs: [0.08374443 0.16748885], intercept: 0.3645154675052994, score: 0.015743465462821682
+coefs: [0.41872214], intercept: 0.36451546750529923, score: 0.015743465462821682
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -709,12 +763,17 @@ We are requiring that the residual $Y-\mathbf{X} \hat{\beta}$ is orthogonal to t
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multiple Linear Regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem"><strong>Problem</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-and-optimization">Loss Function and Optimization</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-the-coefficients">Interpretation of the coefficients</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colinearity">Colinearity</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
