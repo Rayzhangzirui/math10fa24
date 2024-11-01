@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Regularization &#8212; UCI Math 10, Fall 2024</title>
+    <title>Constrained Formulation &#8212; UCI Math 10, Fall 2024</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/regularization';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture/week5_Fri';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
-    <link rel="prev" title="Feature Scaling" href="feature_scaling.html" />
+    <link rel="next" title="Homework" href="../homework/intro.html" />
+    <link rel="prev" title="Lecture Week 5 Wed 10/30" href="week5_Wed.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,54 +175,54 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prob_stat.html">Probability and Statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.html">Pandas dataframe</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_linear_reg.html">Multiple Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-Variance Tradeoff</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lectures</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
-
-
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
 
 
+<li class="toctree-l2"><a class="reference internal" href="week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Constrained Formulation</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Constrained Formulation</a></li>
 
 
 
@@ -290,7 +290,7 @@
       
       
       
-      <li><a href="../_sources/notes/regularization.ipynb" target="_blank"
+      <li><a href="../_sources/lecture/week5_Fri.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Regularization</h1>
+    <h1>Constrained Formulation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,17 +384,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-formulation">Constrained Formulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Constrained Formulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#poll">Poll</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Poll</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-penalized-formulation">Equivalent Penalized Formulation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation">Penalty Formulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Poll</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lasso">The Lasso</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intercept-term">Intercept Term</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-takeaways">Some takeaways:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-take-away">Some take away</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-the-lasso-prefer-sparse-solutions">Why does the Lasso prefer sparse solutions?</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -405,17 +408,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="regularization">
-<h1>Regularization<a class="headerlink" href="#regularization" title="Link to this heading">#</a></h1>
-<p>From the previous lectures, we know that more features do not always lead to better performance. Sometimes, adding more features can lead to overfitting.</p>
-<p>In this notebook, we will introduce another way to prevent overfitting: regularization. Regularization is a technique that discourages learning a more complex or flexible model, so as to prevent overfitting.</p>
-<section id="ridge-regression">
-<h2>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Link to this heading">#</a></h2>
+  <p>Ridge Regression</p>
 <p>Assume a centered linear regression model where the data have been pre-processed so that the mean of each feature (and the target) is zero. This means we don’t need a separate intercept term, simplifying the model to:</p>
 <div class="math notranslate nohighlight">
 \[f(x_i) = \sum_{j=1}^p x_{ij} \beta_j\]</div>
 <section id="constrained-formulation">
-<h3>Constrained Formulation<a class="headerlink" href="#constrained-formulation" title="Link to this heading">#</a></h3>
+<h1>Constrained Formulation<a class="headerlink" href="#constrained-formulation" title="Link to this heading">#</a></h1>
 <p>Ridge regression can be understood through a constrained optimization approach. We seek to minimize the residual sum of squares, subject to a constraint that limits the magnitude of the coefficients:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -424,20 +422,31 @@ document.write(`
 &amp;\text{subject to} \quad \sum_{j=1}^p \beta_j^2 \leq t
 \end{align*}
 \]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="poll">
+<h1>Poll<a class="headerlink" href="#poll" title="Link to this heading">#</a></h1>
+<p>As t shrinks from infinity to 0, how does the bias and variance of the model change?</p>
 <p>This formulation restricts the coefficients to lie within a <span class="math notranslate nohighlight">\(p\)</span>-dimensional ball, effectively controlling the model’s complexity by preventing the coefficients from becoming too large.</p>
 <ul class="simple">
 <li><p>When <span class="math notranslate nohighlight">\(t = 0\)</span>, all coefficients are zero, and the model always predicts 0.</p></li>
 <li><p>When <span class="math notranslate nohighlight">\(t\)</span> is very large, the constraint effectively disappears, and the model is the same as the unregularized linear regression model.</p></li>
 </ul>
 </section>
-</section>
-<section id="penalty-formulation">
-<h2>Penalty Formulation<a class="headerlink" href="#penalty-formulation" title="Link to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Poll<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>Do we need to scale the data?</p>
+<section id="equivalent-penalized-formulation">
+<h2>Equivalent Penalized Formulation<a class="headerlink" href="#equivalent-penalized-formulation" title="Link to this heading">#</a></h2>
 <p>An equivalent way to express ridge regression is through a penalized objective function, where we minimize the residual sum of squares and include a penalty on the coefficients:</p>
 <div class="math notranslate nohighlight">
 \[
 \min_{\beta}  \sum_{i=1}^N \left( \sum_{j=1}^p x_{ij} \beta_j - y_i \right)^2 + \alpha \sum_{j=1}^p \beta_j^2
 \]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>Poll<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p>As <span class="math notranslate nohighlight">\(\alpha\)</span> shrinks from infinity to 0, how does the bias and variance of the model change?</p>
 <p>Here, <span class="math notranslate nohighlight">\(\alpha\)</span> is a regularization parameter that controls the strength of the penalty. A higher <span class="math notranslate nohighlight">\(\alpha\)</span> discourages large coefficient values, shrinking them closer to zero.</p>
 <ul class="simple">
 <li><p>When <span class="math notranslate nohighlight">\(\alpha = 0\)</span>, we revert to the original least-squares linear regression model without regularization.</p></li>
@@ -447,36 +456,14 @@ document.write(`
 <p>The ridge regression problem can be written as:</p>
 <div class="math notranslate nohighlight">
 \[
-\min_{\beta} \|X \beta - y\|_2^2 + \lambda \|\beta\|_2^2
+\min_{\beta} \|X \beta - y\|_2^2 + \alpha \|\beta\|_2^2
 \]</div>
 <p>The optimal solution is:</p>
 <div class="math notranslate nohighlight">
 \[
-\hat{\beta}_{\text ridge} = (X^T X + \lambda I)^{-1} X^T y
+\hat{\beta}_{\text ridge} = (X^T X + \alpha I)^{-1} X^T y
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix.</p>
-</section>
-<section id="the-lasso">
-<h2>The Lasso<a class="headerlink" href="#the-lasso" title="Link to this heading">#</a></h2>
-<p>The lasso is another way to regularize the linear regression model. The optimization problem is:</p>
-<div class="math notranslate nohighlight">
-\[
-\min_{\beta}  \sum_{i=1}^N (\sum_{j=1}^p x_{ij} \beta_j - y_i)^2 + \alpha \sum_{j=1}^p |\beta_j|
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the regularization strength.</p>
-<p>We can also write the problem as a constrained optimization problem:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-&amp;\min_{\beta}  \sum_{i=1}^N (\sum_{j=1}^p x_{ij} \beta_j - y_i)^2 \\
-&amp;\text{subject to} \sum_{j=1}^p |\beta_j| \leq t
-\end{align*}
-\end{split}\]</div>
-<p>Compared with ridge regression, the lasso tends to produce sparse solutions: it encourages the coefficients to be exactly 0.
-This is useful in practice because it can help us select a subset of the features.</p>
-</section>
-<section id="intercept-term">
-<h2>Intercept Term<a class="headerlink" href="#intercept-term" title="Link to this heading">#</a></h2>
 <p>For all the previous discussion, we assuming X and y are centered, thus there is no need for an intercept term. If the data is not centered, we can add an intercept term to the model</p>
 <div class="math notranslate nohighlight">
 \[
@@ -485,12 +472,8 @@ This is useful in practice because it can help us select a subset of the feature
 <p>Notice that the intercept term <span class="math notranslate nohighlight">\(\beta_0\)</span> is not penalized.</p>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(\beta_0\)</span> is penalized, then taking <span class="math notranslate nohighlight">\(\alpha\)</span> to be very large will force <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \ldots, \beta_p\)</span> to be 0, and the model will be a trivial model (i.e., <span class="math notranslate nohighlight">\(f(x) = 0\)</span>).</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(\beta_0\)</span> is not penalized, then <span class="math notranslate nohighlight">\(\beta_0\)</span> will be the mean of the target variable <span class="math notranslate nohighlight">\(y\)</span>, because setting the derivative of the loss function with respect to <span class="math notranslate nohighlight">\(\beta_0\)</span> to zero gives the same equation in linear regression.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\beta_0\)</span> is not penalized, then <span class="math notranslate nohighlight">\(\beta_0\)</span> will be the mean of the target variable <span class="math notranslate nohighlight">\(y\)</span>. Since <span class="math notranslate nohighlight">\(\beta_0\)</span> is not in the pentaly term, setting the derivative of the loss function with respect to <span class="math notranslate nohighlight">\(\beta_0\)</span> to zero gives the same equation in linear regression.</p></li>
 </ul>
-<p>There is an optional argument <code class="docutils literal notranslate"><span class="pre">fit_intercept</span></code> (True by default) in the <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>, <code class="docutils literal notranslate"><span class="pre">Lasso</span></code> and <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> classes in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to control whether to include the intercept term in the model.</p>
-</section>
-<section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <p>We will use the <a class="reference external" href="https://scikit-learn.org/stable/datasets/toy_dataset.html">diabetes dataset</a> from sklearn to demonstrate the effect of regularization.</p>
 <p>Features:</p>
 <ul class="simple">
@@ -507,7 +490,6 @@ This is useful in practice because it can help us select a subset of the feature
 </ul>
 <p>Target:</p>
 <p>a quantitative measure of disease progression one year after baseline</p>
-<p>Let’s first visualize the data using the heatmap of the correlation matrix and the pairwise scatter plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -533,25 +515,24 @@ This is useful in practice because it can help us select a subset of the feature
 <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
 
-
-<span class="c1"># Pairwise scatter plot</span>
-<span class="c1"># sample 100 data points to make the plot clearer</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Pairwise Scatter&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
 <span class="c1"># Plotting the correlation matrix</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Pairwise scatter plot</span>
+<span class="c1"># sample 100 data points to make the plot clearer</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Pairwise Scatter&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ce85a1ba44f4d53d44a1d15363c11348949b0af439356e55bbefa91b2ba9514e.png" src="../_images/ce85a1ba44f4d53d44a1d15363c11348949b0af439356e55bbefa91b2ba9514e.png" />
 <img alt="../_images/bd173e346548befd19f6129694d12b751a03c1134bea2a06501b8c01404ee9c5.png" src="../_images/bd173e346548befd19f6129694d12b751a03c1134bea2a06501b8c01404ee9c5.png" />
+<img alt="../_images/26b2ca6be32ccc347dc1e051b963719dc20fdc424596fb0d0ae13be5aa4b473f.png" src="../_images/26b2ca6be32ccc347dc1e051b963719dc20fdc424596fb0d0ae13be5aa4b473f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -565,7 +546,7 @@ This is useful in practice because it can help us select a subset of the feature
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># Range of alpha values for regularization, from 10^5 to 10^-5</span>
+<span class="c1"># Range of alpha values for regularization, from 10^2 to 10^-6</span>
 <span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
 <span class="c1"># Array to store coefficients</span>
@@ -575,10 +556,11 @@ This is useful in practice because it can help us select a subset of the feature
 <span class="n">train_mse</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">test_mse</span> <span class="o">=</span> <span class="p">[]</span>
 
+<span class="n">train_r2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_r2</span> <span class="o">=</span> <span class="p">[]</span>
+
 <span class="c1"># Perform Ridge Regression with different values of alpha</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">alphas</span><span class="p">):</span>
-
-    <span class="c1"># Fit Ridge Regression</span>
     <span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
     <span class="n">ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     
@@ -588,6 +570,9 @@ This is useful in practice because it can help us select a subset of the feature
 
     <span class="n">train_mse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">))</span>
     <span class="n">test_mse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">))</span>
+
+    <span class="n">train_r2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_train_pred</span><span class="p">))</span>
+    <span class="n">test_r2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_test_pred</span><span class="p">))</span>
     
     <span class="c1"># Store coefficients</span>
     <span class="n">coefficients</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">ridge</span><span class="o">.</span><span class="n">coef_</span>
@@ -635,11 +620,29 @@ This is useful in practice because it can help us select a subset of the feature
 <img alt="../_images/a975b3d516091d47f77ffa5d0967e3b0ef4c14224ee4f3ac1e3a27c06ec88631.png" src="../_images/a975b3d516091d47f77ffa5d0967e3b0ef4c14224ee4f3ac1e3a27c06ec88631.png" />
 </div>
 </div>
+<section id="the-lasso">
+<h2>The Lasso<a class="headerlink" href="#the-lasso" title="Link to this heading">#</a></h2>
+<p>The lasso is another way to regularize the linear regression model. The optimization problem is:</p>
+<div class="math notranslate nohighlight">
+\[
+\min_{\beta}  \sum_{i=1}^N (\sum_{j=1}^p x_{ij} \beta_j - y_i)^2 + \alpha \sum_{j=1}^p |\beta_j|
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the regularization strength.</p>
+<p>We can also write the problem as a constrained optimization problem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;\min_{\beta}  \sum_{i=1}^N (\sum_{j=1}^p x_{ij} \beta_j - y_i)^2 \\
+&amp;\text{subject to} \sum_{j=1}^p |\beta_j| \leq t
+\end{align*}
+\end{split}\]</div>
+<p>Compared with ridge regression, the lasso tends to produce sparse solutions: it encourages the coefficients to be exactly 0.
+This is useful in practice because it can help us select a subset of the features.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
 
-<span class="c1"># Range of alpha values for regularization, from 10^1 to 10^-5</span>
+<span class="c1"># Range of alpha values for regularization, from 10^2 to 10^-6</span>
 <span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
 <span class="c1"># Array to store coefficients</span>
@@ -649,11 +652,11 @@ This is useful in practice because it can help us select a subset of the feature
 <span class="n">train_errors</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">test_errors</span> <span class="o">=</span> <span class="p">[]</span>
 
+<span class="n">train_r2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_r2</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># Perform Lasso Regression with different values of alpha</span>
 <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">alphas</span><span class="p">):</span>
-
-    <span class="c1"># Fit Lasso Regression</span>
     <span class="n">ridge</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
     <span class="n">ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     
@@ -710,25 +713,24 @@ This is useful in practice because it can help us select a subset of the feature
 <img alt="../_images/cf62f9b687df5f4719ec561d34451244db9a08104fc02273d8205c10ee3dd79b.png" src="../_images/cf62f9b687df5f4719ec561d34451244db9a08104fc02273d8205c10ee3dd79b.png" />
 </div>
 </div>
-<p>In ridge regression, the trajectories of the coefficients are smooth. As the regularization strength gradually decreases, the coefficients smoothly transition from 0 toward the values of the least squares solution, with all coefficients increasing together.</p>
-<p>In contrast, the trajectories of the coefficients in lasso regression are not smooth. As regularization weakens, many coefficients remain exactly at 0 until they abruptly increase to nonzero values, creating a “piecewise” effect. This behavior exemplifies lasso’s ability to promote sparsity by setting many coefficients precisely to zero rather than merely shrinking them.</p>
 </section>
-<section id="some-takeaways">
-<h2>Some takeaways:<a class="headerlink" href="#some-takeaways" title="Link to this heading">#</a></h2>
+<section id="some-take-away">
+<h2>Some take away<a class="headerlink" href="#some-take-away" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Both Lasso and Ridge regression are used to prevent overfitting in linear models.</p></li>
 <li><p>Both require the feature to be of the same scale.</p></li>
 <li><p>Ridge regression has a closed-form solution, while Lasso does not.</p></li>
 <li><p>Lasso tends to produce sparse solutions, that is, it encourages the coefficients to be exactly 0.</p></li>
-<li><p>The choice of <span class="math notranslate nohighlight">\(\alpha\)</span> is important. It can be chosen by cross-validation.</p></li>
+<li><p>The choice of <span class="math notranslate nohighlight">\(\alpha\)</span> is important. It can be determined by cross-validation.</p></li>
 </ul>
 </section>
 <section id="why-does-the-lasso-prefer-sparse-solutions">
 <h2>Why does the Lasso prefer sparse solutions?<a class="headerlink" href="#why-does-the-lasso-prefer-sparse-solutions" title="Link to this heading">#</a></h2>
 <p>Consider the contrained optimization problem of the lasso and the ridge regression. We can visualize the constraints in 2 dimensions.</p>
-<p>The elliptical contours are contours of the loss function of linear regression (without regularization). <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> is the optimal solution for linear regression.</p>
-<p>The diamond and the circle region represent the constraints. For the ridge regression, the coefficients are constrained in a ball, while for the lasso, the coefficients are constrained in a diamond shape.</p>
-<p>The optimal solution occurs where the loss function contours are tangent to these constraint boundaries. For ridge regression, this point typically lies on the boundary of the circle, yielding non-zero coefficients. In contrast, for lasso, the solution often occurs at one of the diamond’s corners, where some coefficients are zero. (These corners represent the farthest points from the origin within the diamond.)</p>
+<p>The elliptical contours are contours of the loss function, and the diamond and the circle region are the constraints.</p>
+<p>For the ridge regression, the coefficients are constrained in a ball, while for the lasso, the coefficients are constrained in a diamond shape.</p>
+<p>The optimal solution happens when the contours of the loss function are tangent to the constraints.</p>
+<p>For the ridge regression, that usually happens at the boundary of the ball, where the coefficients are not 0. While for the lasso, that usually happens at the corner of the diamond, where some coefficients are 0.</p>
 <p><img alt="Figure Description" src="https://images.datacamp.com/image/upload/v1648205672/image18_a3zz7y.png" /></p>
 <p><a class="reference external" href="https://online.stat.psu.edu/stat508/book/export/html/749">Souce</a></p>
 </section>
@@ -747,7 +749,7 @@ This is useful in practice because it can help us select a subset of the feature
         },
         kernelOptions: {
             name: "python3",
-            path: "./notes"
+            path: "./lecture"
         },
         predefinedOutput: true
     }
@@ -765,20 +767,20 @@ This is useful in practice because it can help us select a subset of the feature
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="feature_scaling.html"
+       href="week5_Wed.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Feature Scaling</p>
+        <p class="prev-next-title">Lecture Week 5 Wed 10/30</p>
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="../homework/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Homework</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -798,17 +800,20 @@ This is useful in practice because it can help us select a subset of the feature
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge Regression</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-formulation">Constrained Formulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Constrained Formulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#poll">Poll</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Poll</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-penalized-formulation">Equivalent Penalized Formulation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation">Penalty Formulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Poll</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lasso">The Lasso</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intercept-term">Intercept Term</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-takeaways">Some takeaways:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-take-away">Some take away</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-the-lasso-prefer-sparse-solutions">Why does the Lasso prefer sparse solutions?</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
