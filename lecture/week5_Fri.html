@@ -464,16 +464,6 @@ document.write(`
 \hat{\beta}_{\text ridge} = (X^T X + \alpha I)^{-1} X^T y
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix.</p>
-<p>For all the previous discussion, we assuming X and y are centered, thus there is no need for an intercept term. If the data is not centered, we can add an intercept term to the model</p>
-<div class="math notranslate nohighlight">
-\[
-\min_{\beta}  \sum_{i=1}^N (\beta_0 + \sum_{j=1}^p x_{ij} \beta_j - y_i)^2 + \alpha \sum_{j=1}^p \beta_j^2
-\]</div>
-<p>Notice that the intercept term <span class="math notranslate nohighlight">\(\beta_0\)</span> is not penalized.</p>
-<ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(\beta_0\)</span> is penalized, then taking <span class="math notranslate nohighlight">\(\alpha\)</span> to be very large will force <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \ldots, \beta_p\)</span> to be 0, and the model will be a trivial model (i.e., <span class="math notranslate nohighlight">\(f(x) = 0\)</span>).</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(\beta_0\)</span> is not penalized, then <span class="math notranslate nohighlight">\(\beta_0\)</span> will be the mean of the target variable <span class="math notranslate nohighlight">\(y\)</span>. Since <span class="math notranslate nohighlight">\(\beta_0\)</span> is not in the pentaly term, setting the derivative of the loss function with respect to <span class="math notranslate nohighlight">\(\beta_0\)</span> to zero gives the same equation in linear regression.</p></li>
-</ul>
 <p>We will use the <a class="reference external" href="https://scikit-learn.org/stable/datasets/toy_dataset.html">diabetes dataset</a> from sklearn to demonstrate the effect of regularization.</p>
 <p>Features:</p>
 <ul class="simple">
