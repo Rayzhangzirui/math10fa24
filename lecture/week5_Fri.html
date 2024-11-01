@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Constrained Formulation &#8212; UCI Math 10, Fall 2024</title>
+    <title>Lecture Week 5 Fri 11/1 &#8212; UCI Math 10, Fall 2024</title>
   
   
   
@@ -222,9 +222,7 @@
 
 
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Constrained Formulation</a></li>
-
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lecture Week 5 Fri 11/1</a></li>
 
 </ul>
 </li>
@@ -374,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Constrained Formulation</h1>
+    <h1>Lecture Week 5 Fri 11/1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,10 +382,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Constrained Formulation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#poll">Poll</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Poll</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-penalized-formulation">Equivalent Penalized Formulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 5 Fri 11/1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-formulation">Constrained Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poll">Poll</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Poll</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation">Penalty Formulation</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Poll</a><ul class="visible nav section-nav flex-column">
@@ -408,12 +410,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>Ridge Regression</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-week-5-fri-11-1">
+<h1>Lecture Week 5 Fri 11/1<a class="headerlink" href="#lecture-week-5-fri-11-1" title="Link to this heading">#</a></h1>
+<section id="ridge-regression">
+<h2>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Link to this heading">#</a></h2>
 <p>Assume a centered linear regression model where the data have been pre-processed so that the mean of each feature (and the target) is zero. This means we don’t need a separate intercept term, simplifying the model to:</p>
 <div class="math notranslate nohighlight">
 \[f(x_i) = \sum_{j=1}^p x_{ij} \beta_j\]</div>
 <section id="constrained-formulation">
-<h1>Constrained Formulation<a class="headerlink" href="#constrained-formulation" title="Link to this heading">#</a></h1>
+<h3>Constrained Formulation<a class="headerlink" href="#constrained-formulation" title="Link to this heading">#</a></h3>
 <p>Ridge regression can be understood through a constrained optimization approach. We seek to minimize the residual sum of squares, subject to a constraint that limits the magnitude of the coefficients:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -423,8 +428,8 @@ document.write(`
 \end{align*}
 \]</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="poll">
-<h1>Poll<a class="headerlink" href="#poll" title="Link to this heading">#</a></h1>
+<section id="poll">
+<h3>Poll<a class="headerlink" href="#poll" title="Link to this heading">#</a></h3>
 <p>As t shrinks from infinity to 0, how does the bias and variance of the model change?</p>
 <p>This formulation restricts the coefficients to lie within a <span class="math notranslate nohighlight">\(p\)</span>-dimensional ball, effectively controlling the model’s complexity by preventing the coefficients from becoming too large.</p>
 <ul class="simple">
@@ -432,11 +437,13 @@ document.write(`
 <li><p>When <span class="math notranslate nohighlight">\(t\)</span> is very large, the constraint effectively disappears, and the model is the same as the unregularized linear regression model.</p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Poll<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h3>Poll<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Do we need to scale the data?</p>
-<section id="equivalent-penalized-formulation">
-<h2>Equivalent Penalized Formulation<a class="headerlink" href="#equivalent-penalized-formulation" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section id="penalty-formulation">
+<h2>Penalty Formulation<a class="headerlink" href="#penalty-formulation" title="Link to this heading">#</a></h2>
 <p>An equivalent way to express ridge regression is through a penalized objective function, where we minimize the residual sum of squares and include a penalty on the coefficients:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -790,10 +797,14 @@ This is useful in practice because it can help us select a subset of the feature
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Constrained Formulation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#poll">Poll</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Poll</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-penalized-formulation">Equivalent Penalized Formulation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 5 Fri 11/1</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-formulation">Constrained Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poll">Poll</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Poll</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation">Penalty Formulation</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Poll</a><ul class="visible nav section-nav flex-column">

@@ -222,9 +222,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Constrained Formulation</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
 
 </ul>
 </li>
@@ -386,9 +384,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge Regression</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-formulation">Constrained Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation">Penalty Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression-solution">Ridge Regression Solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation">Penalty Formulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lasso">The Lasso</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intercept-term">Intercept Term</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
@@ -430,9 +429,8 @@ document.write(`
 <li><p>When <span class="math notranslate nohighlight">\(t\)</span> is very large, the constraint effectively disappears, and the model is the same as the unregularized linear regression model.</p></li>
 </ul>
 </section>
-</section>
 <section id="penalty-formulation">
-<h2>Penalty Formulation<a class="headerlink" href="#penalty-formulation" title="Link to this heading">#</a></h2>
+<h3>Penalty Formulation<a class="headerlink" href="#penalty-formulation" title="Link to this heading">#</a></h3>
 <p>An equivalent way to express ridge regression is through a penalized objective function, where we minimize the residual sum of squares and include a penalty on the coefficients:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -444,6 +442,9 @@ document.write(`
 <li><p>When <span class="math notranslate nohighlight">\(\alpha\)</span> is very large, the penalty forces all coefficients \beta_j close to zero, effectively reducing the model to a constant prediction.</p></li>
 </ul>
 <p>The constrained and penalized formulations are equivalent due to the Lagrange multiplier principle, with a one-to-one correspondence between <span class="math notranslate nohighlight">\(\alpha\)</span> and t, allowing us to interpret ridge regression as finding an optimal balance between fit and complexity.</p>
+</section>
+<section id="ridge-regression-solution">
+<h3>Ridge Regression Solution<a class="headerlink" href="#ridge-regression-solution" title="Link to this heading">#</a></h3>
 <p>The ridge regression problem can be written as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -455,6 +456,7 @@ document.write(`
 \hat{\beta}_{\text ridge} = (X^T X + \lambda I)^{-1} X^T y
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(I\)</span> is the identity matrix.</p>
+</section>
 </section>
 <section id="the-lasso">
 <h2>The Lasso<a class="headerlink" href="#the-lasso" title="Link to this heading">#</a></h2>
@@ -485,7 +487,7 @@ This is useful in practice because it can help us select a subset of the feature
 <p>Notice that the intercept term <span class="math notranslate nohighlight">\(\beta_0\)</span> is not penalized.</p>
 <ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(\beta_0\)</span> is penalized, then taking <span class="math notranslate nohighlight">\(\alpha\)</span> to be very large will force <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \ldots, \beta_p\)</span> to be 0, and the model will be a trivial model (i.e., <span class="math notranslate nohighlight">\(f(x) = 0\)</span>).</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(\beta_0\)</span> is not penalized, then <span class="math notranslate nohighlight">\(\beta_0\)</span> will be the mean of the target variable <span class="math notranslate nohighlight">\(y\)</span>, because setting the derivative of the loss function with respect to <span class="math notranslate nohighlight">\(\beta_0\)</span> to zero gives the same equation in linear regression.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\beta_0\)</span> is not penalized, then <span class="math notranslate nohighlight">\(\beta_0\)</span> will be the mean of the target variable <span class="math notranslate nohighlight">\(y\)</span>. To verify this, notice that setting the derivative of the loss function with respect to <span class="math notranslate nohighlight">\(\beta_0\)</span> to zero gives the same equation in linear regression (as the intercept term is not penalized).</p></li>
 </ul>
 <p>There is an optional argument <code class="docutils literal notranslate"><span class="pre">fit_intercept</span></code> (True by default) in the <code class="docutils literal notranslate"><span class="pre">Ridge</span></code>, <code class="docutils literal notranslate"><span class="pre">Lasso</span></code> and <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> classes in <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to control whether to include the intercept term in the model.</p>
 </section>
@@ -800,9 +802,10 @@ This is useful in practice because it can help us select a subset of the feature
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression">Ridge Regression</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-formulation">Constrained Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation">Penalty Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-regression-solution">Ridge Regression Solution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penalty-formulation">Penalty Formulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lasso">The Lasso</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intercept-term">Intercept Term</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
