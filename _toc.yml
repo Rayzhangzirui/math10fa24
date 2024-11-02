@@ -17,6 +17,9 @@ chapters:
       - file: notes/multi_linear_reg
       - file: notes/polynomial_reg
       - file: notes/bias_variance
+      - file: notes/cv
+      - file: notes/feature_scaling
+      - file: notes/regularization
   - file: lecture/intro
     sections:
       - file: lecture/week1_Mon
@@ -31,6 +34,9 @@ chapters:
       - file: lecture/week4_Mon
       - file: lecture/week4_Wed
       - file: lecture/week4_Fri
+      - file: lecture/week5_Mon
+      - file: lecture/week5_Wed
+      - file: lecture/week5_Fri
   - file: homework/intro
     sections:
       - file: homework/hw1
