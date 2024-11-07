@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Homework 5 (Due 11/1/2024 at 11:59pm) &#8212; UCI Math 10, Fall 2024</title>
+    <title>Homework 6 (Due 11/15/2024 at 11:59pm) &#8212; UCI Math 10, Fall 2024</title>
   
   
   
@@ -217,6 +217,7 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -224,7 +225,8 @@
 <li class="toctree-l2"><a class="reference internal" href="hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw5.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw5_sol.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw6.html">Homework 6 (Due 11/15/2024 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -357,7 +359,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Homework 5 (Due 11/1/2024 at 11:59pm)</h1>
+    <h1>Homework 6 (Due 11/15/2024 at 11:59pm)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,8 +382,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="homework-5-due-11-1-2024-at-11-59pm">
-<h1>Homework 5 (Due 11/1/2024 at 11:59pm)<a class="headerlink" href="#homework-5-due-11-1-2024-at-11-59pm" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-6-due-11-15-2024-at-11-59pm">
+<h1>Homework 6 (Due 11/15/2024 at 11:59pm)<a class="headerlink" href="#homework-6-due-11-15-2024-at-11-59pm" title="Link to this heading">#</a></h1>
 <section id="name">
 <h2>Name:<a class="headerlink" href="#name" title="Link to this heading">#</a></h2>
 </section>
@@ -395,261 +397,553 @@
 <li><p>Before submission, make sure to rerun all cells by clicking <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Restart</span> <span class="pre">&amp;</span> <span class="pre">Run</span> <span class="pre">All</span></code> and check all the outputs.</p></li>
 <li><p>Upload the .ipynb file to Gradescope.</p></li>
 </ul>
-<p><strong>Q1</strong> Linear regression on exponential growth</p>
-<p>Suppose we want to measure the growth of a population of bacteria. We culture the bacteria in a test tube.
-We measure the volume of the cell culture at various times (hr) and obtain the following dataframe:</p>
+<p><strong>Q1.</strong> How to predict the future? Can we use past temperatures to predict future temperatures? Can we use past stock prices to predict future stock prices?</p>
+<p>These are examples of time series data. If we collect the temperature data, then we only have a sequence of numbers. Compared with the penguins dataset, it seems that we have very limited number of features. However, in time series data, each observation is linked to previous ones.</p>
+<p>Let’s first generate a synthetic time series data.</p>
+<div class="math notranslate nohighlight">
+\[ y = \sin(2\pi t/60) + \exp(t/90) + \epsilon \]</div>
+<p>where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random noise.</p>
+<p>This is an example of a time series data with a long term trend with seasonality. This could be a model for the temperature data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df_bac</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="s1">&#39;Volume&#39;</span><span class="p">:[</span><span class="mf">0.37</span><span class="p">,</span> <span class="mf">1.63</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">6.2</span><span class="p">,</span> <span class="mf">10.66</span><span class="p">]})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_bac</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   time  Volume
-0   0.0    0.37
-1   1.5    1.63
-2   5.0    2.40
-3   9.0    6.20
-4  10.0   10.66
-</pre></div>
-</div>
-</div>
-</div>
-<p>(1) Use linear regression to fit the data. Compute the <span class="math notranslate nohighlight">\(R^2\)</span>. Plot the data and the fitted line on the same figure.</p>
-<div class="cell tag_sol docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_bac</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Volume&#39;</span><span class="p">)</span>
 
-<span class="n">lm</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">lm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_bac</span><span class="p">[[</span><span class="s1">&#39;time&#39;</span><span class="p">]],</span> <span class="n">df_bac</span><span class="p">[</span><span class="s1">&#39;Volume&#39;</span><span class="p">])</span>
-
-<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df_bac</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">lm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_bac</span><span class="p">[[</span><span class="s1">&#39;time&#39;</span><span class="p">]]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-
-<span class="n">score</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">df_bac</span><span class="p">[[</span><span class="s1">&#39;time&#39;</span><span class="p">]],</span> <span class="n">df_bac</span><span class="p">[</span><span class="s1">&#39;Volume&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2&#39;</span> <span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># For reproducibility</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">180</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">t</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Time&#39;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2 0.8523390725174672
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.176405</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.155717</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1.328256</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>1.567001</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>1.638939</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>175</td>
+      <td>6.557907</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>176</td>
+      <td>6.580767</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>177</td>
+      <td>6.768842</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>178</td>
+      <td>6.973201</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>179</td>
+      <td>7.204629</td>
+    </tr>
+  </tbody>
+</table>
+<p>180 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the time series data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/a078252998bf01e3856b4cfeafb6f7b0e00b1338e9e19ed3f72ef4a26297e102.png" src="../_images/a078252998bf01e3856b4cfeafb6f7b0e00b1338e9e19ed3f72ef4a26297e102.png" />
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07f91b17f74086a36f6bb7183b17cdebb08b760b53545e8c2cf296a2494f4338.png" src="../_images/07f91b17f74086a36f6bb7183b17cdebb08b760b53545e8c2cf296a2494f4338.png" />
 </div>
 </div>
-<p>(2) We know that when nutrients are abundant, the bacteria grow exponentially. Therefore, a better model might be</p>
+<p>One model of time series data is the autoregressive model, which is a linear regression model that uses the previous observations as features.</p>
 <div class="math notranslate nohighlight">
-\[ y = a e^{bx} \]</div>
-<p>where <span class="math notranslate nohighlight">\(y\)</span> is the volume of the bacteria culture and <span class="math notranslate nohighlight">\(x\)</span> is the time.</p>
-<p>Can we turn this into a linear regression problem?</p>
-<p>Hint: Take the natural logarithm of both sides of the equation.</p>
-<p>After taking the natural logarithm, we have</p>
+\[ y_{t} = \beta_0 + \beta_1 y_{t-1} + \beta_2 y_{t-2} + \cdots + \beta_p y_{t-p}\]</div>
+<p>where <span class="math notranslate nohighlight">\(y_{t-1}, y_{t-2}, \cdots, y_{t-p}\)</span> are the previous observations (also called lags), and they are used as features to predict the current observation <span class="math notranslate nohighlight">\(y_{t}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create lagged features for t-1 to t-p</span>
+<span class="n">df_shift</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">df_shift</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Value_t-</span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_shift</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">lag</span><span class="p">)</span>
+
+<span class="n">df_shift</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Value</th>
+      <th>Value_t-1</th>
+      <th>Value_t-2</th>
+      <th>Value_t-3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1.176405</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1.155717</td>
+      <td>1.176405</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>1.328256</td>
+      <td>1.155717</td>
+      <td>1.176405</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>1.567001</td>
+      <td>1.328256</td>
+      <td>1.155717</td>
+      <td>1.176405</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>1.638939</td>
+      <td>1.567001</td>
+      <td>1.328256</td>
+      <td>1.155717</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>175</td>
+      <td>6.557907</td>
+      <td>6.221304</td>
+      <td>6.101900</td>
+      <td>6.103135</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>176</td>
+      <td>6.580767</td>
+      <td>6.557907</td>
+      <td>6.221304</td>
+      <td>6.101900</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>177</td>
+      <td>6.768842</td>
+      <td>6.580767</td>
+      <td>6.557907</td>
+      <td>6.221304</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>178</td>
+      <td>6.973201</td>
+      <td>6.768842</td>
+      <td>6.580767</td>
+      <td>6.557907</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>179</td>
+      <td>7.204629</td>
+      <td>6.973201</td>
+      <td>6.768842</td>
+      <td>6.580767</td>
+    </tr>
+  </tbody>
+</table>
+<p>180 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop rows with NaN values</span>
+<span class="n">df_shift</span> <span class="o">=</span> <span class="n">df_shift</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_shift</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Value</th>
+      <th>Value_t-1</th>
+      <th>Value_t-2</th>
+      <th>Value_t-3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>1.567001</td>
+      <td>1.328256</td>
+      <td>1.155717</td>
+      <td>1.176405</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>1.638939</td>
+      <td>1.567001</td>
+      <td>1.328256</td>
+      <td>1.155717</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>1.459400</td>
+      <td>1.638939</td>
+      <td>1.567001</td>
+      <td>1.328256</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>6</td>
+      <td>1.751733</td>
+      <td>1.459400</td>
+      <td>1.638939</td>
+      <td>1.567001</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>1.734877</td>
+      <td>1.751733</td>
+      <td>1.459400</td>
+      <td>1.638939</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>175</td>
+      <td>6.557907</td>
+      <td>6.221304</td>
+      <td>6.101900</td>
+      <td>6.103135</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>176</td>
+      <td>6.580767</td>
+      <td>6.557907</td>
+      <td>6.221304</td>
+      <td>6.101900</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>177</td>
+      <td>6.768842</td>
+      <td>6.580767</td>
+      <td>6.557907</td>
+      <td>6.221304</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>178</td>
+      <td>6.973201</td>
+      <td>6.768842</td>
+      <td>6.580767</td>
+      <td>6.557907</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>179</td>
+      <td>7.204629</td>
+      <td>6.973201</td>
+      <td>6.768842</td>
+      <td>6.580767</td>
+    </tr>
+  </tbody>
+</table>
+<p>177 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>(1) Split the data into train and test sets. Instead of splitting the data randomly as we did in the penguins dataset, we will split the data in a sequential manner.</p>
+<p>We will use the first 50% of the data for training and the remaining 50% for testing.</p>
+<div class="cell tag_sol docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the split index</span>
+<span class="n">split_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_shift</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Split the dataset into training and testing sets</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">df_shift</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">split_index</span><span class="p">]</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">df_shift</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">split_index</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example code to plot the training and testing sets</span>
+<span class="c1"># need to save the training and testing dataframe as variable names train_df and test_df</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Testing&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Training and Testing Sets&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x16a13f0e0&gt;
+</pre></div>
+</div>
+<img alt="../_images/44d0449089ace570c6528d432b5c3984f353dab9937f34d116edfcb41122d7e5.png" src="../_images/44d0449089ace570c6528d432b5c3984f353dab9937f34d116edfcb41122d7e5.png" />
+</div>
+</div>
+<p>(2) Fit a linear regression model to the training data and make prediction on the test data. That is, use the features <code class="docutils literal notranslate"><span class="pre">Value_t-1</span></code> … <code class="docutils literal notranslate"><span class="pre">Value_t-p</span></code> to predict <code class="docutils literal notranslate"><span class="pre">Value</span></code>.</p>
+<div class="cell tag_sol docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Value_t-</span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">]</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">train_df</span><span class="p">[</span><span class="n">target</span><span class="p">])</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_df</span><span class="p">[</span><span class="n">features</span><span class="p">])</span>
+
+<span class="n">err</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">test_df</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean Squared Error: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.029921841615967348
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example code for plotting the actual and predicted values</span>
+<span class="c1"># Save the predictions on the test data in a variable called `prediction` for visualization.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Training&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;Value&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Testing&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">],</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Actual vs Predicted Values for </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e0538c3666bc5073383124e51aedce3670814833951d6bdc06e7dd743b19b523.png" src="../_images/e0538c3666bc5073383124e51aedce3670814833951d6bdc06e7dd743b19b523.png" />
+</div>
+</div>
+<p>(3) Try different values of p. How does the model performance change?</p>
+<p>As p increase, the testing error decrease and then increase.</p>
+<p><strong>Q2</strong></p>
+<p>Sometimes the number of features can be much larger than the number of samples. This is called the high-dimensional dataset.</p>
+<p>In this problem, we compare Lasso and Ridge regression on a synthetic high-dimensional dataset with n = 20 and p = 100.</p>
+<p>Each feature vector <span class="math notranslate nohighlight">\(X_0\)</span>, … <span class="math notranslate nohighlight">\(X_{99}\)</span> is generated from a normal distribution with mean 0 and standard deviation 1.</p>
+<p>The true model is</p>
 <div class="math notranslate nohighlight">
-\[ \log y = \log a + bx \]</div>
-<p>This is a linear regression problem.</p>
-<p>(3) After the transformation, find the optimal values of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.  Compute the <span class="math notranslate nohighlight">\(R^2\)</span>. Plot the data and the fitted curve in the same figure. Is it better than the linear model?</p>
+\[ y = 3X_0 - 2X_1 + 5 X_2 \]</div>
+<p>That is, only a small number of features are actually relevant to the target variable <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DO NOT modify this cell</span>
+<span class="c1"># Generate synthetic high-dimensional data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">Ridge</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># number of observations</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># number of features</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">true_coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">true_coef</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(1) Fit a Lasso and a Ridge regression model to this dataset without the intercept term and use <span class="math notranslate nohighlight">\(\alpha=0.1\)</span>. Compute and compare the means square error of the two models. Which model has a smaller MSE?</p>
 <div class="cell tag_sol docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># exponential growth</span>
-<span class="n">lm2</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">lm2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_bac</span><span class="p">[[</span><span class="s1">&#39;time&#39;</span><span class="p">]],</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df_bac</span><span class="p">[</span><span class="s1">&#39;Volume&#39;</span><span class="p">]))</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">lm2</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">lm2</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lasso Regression</span>
+<span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="c1"># Ridge Regression</span>
+<span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># compute R2</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">df_bac</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
-<span class="n">mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">df_bac</span><span class="p">[</span><span class="s1">&#39;Volume&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">df_bac</span><span class="p">[</span><span class="s1">&#39;Volume&#39;</span><span class="p">])</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">mse</span> <span class="o">/</span> <span class="n">var</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2 = &#39;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span>
-<span class="c1"># the R2 is higher than the linear model</span>
-
-
-<span class="c1"># plot the exponential fit</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_bac</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Volume&#39;</span><span class="p">)</span>
-<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">yy</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">xx</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yy</span><span class="p">)</span>
-<span class="c1"># add legend</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="s2">&quot;fit&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lasso Mean Squared Error:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ridge Mean Squared Error:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">ridge</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5954551711492091 0.2805094137824158
-R2 =  0.9605944747794366
-</pre></div>
-</div>
-<img alt="../_images/6f72655a86d35b01fb425e301a5852559f31e2484b24820d6262d814c37a0a4c.png" src="../_images/6f72655a86d35b01fb425e301a5852559f31e2484b24820d6262d814c37a0a4c.png" />
-</div>
-</div>
-<p><strong>Q2</strong> Multiple linear regression</p>
-<p>In this problem, we would like to predict the <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code> of a penguin based on the other features in the dataset.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do not modify this cell</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="c1"># the stratify parameter makes sure that the train and test sets have the same proportion of species</span>
-<span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">])</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lasso Mean Squared Error: 0.03250277108009776
+Ridge Mean Squared Error: 5.223539906925877e-05
 </pre></div>
 </div>
 </div>
 </div>
-<p>In this exercise, Let’s consider what is the best subset of features to predict <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code>. This is called the best subset selection problem.</p>
-<p>Since we have 3 features, we can fit 7 models, each with a different subset of features:</p>
-<ul class="simple">
-<li><p>Model 1: <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code></p></li>
-<li><p>Model 2: <code class="docutils literal notranslate"><span class="pre">bill_depth_mm</span></code></p></li>
-<li><p>Model 3: <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code></p></li>
-<li><p>Model 4: <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code>, <code class="docutils literal notranslate"><span class="pre">bill_depth_mm</span></code></p></li>
-<li><p>Model 5: <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code>, <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code></p></li>
-<li><p>Model 6: <code class="docutils literal notranslate"><span class="pre">bill_depth_mm</span></code>, <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code></p></li>
-<li><p>Model 7: <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code>, <code class="docutils literal notranslate"><span class="pre">bill_depth_mm</span></code>, <code class="docutils literal notranslate"><span class="pre">flipper_length_mm</span></code></p></li>
-</ul>
-<p>This can be done manually. Alternatively, look up the <code class="docutils literal notranslate"><span class="pre">combinations</span></code> function in the <code class="docutils literal notranslate"><span class="pre">itertools</span></code> module (part of the Python standard library).</p>
-<p>For each model, fit a linear regression model and compute the <span class="math notranslate nohighlight">\(R^2\)</span> on the training and testing data.</p>
-<p>Which model has the best <span class="math notranslate nohighlight">\(R^2\)</span> on the testing data?</p>
-<div class="cell tag_sol docutils container">
+<p>(2) Collect the coefficents of the two models. Make a bar plot of the coefficients of the two models. That is, draw a bar of length <span class="math notranslate nohighlight">\(\beta_i\)</span> at position i (sample plot shown below).</p>
+<div class="cell tag_sol tag_keep docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lasso_coef</span> <span class="o">=</span> <span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span>
+<span class="n">ridge_coef</span> <span class="o">=</span> <span class="n">ridge</span><span class="o">.</span><span class="n">coef_</span>
 
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;bill_depth_mm&#39;</span><span class="p">,</span>	<span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lasso_coef</span><span class="p">)),</span> <span class="n">lasso_coef</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lasso&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ridge_coef</span><span class="p">)),</span> <span class="n">ridge_coef</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ridge&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lasso vs Ridge Coefficients&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">best_subset</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">best_score</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">subset</span> <span class="ow">in</span> <span class="n">combinations</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
-        <span class="n">lm</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-        <span class="n">lm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">subset</span><span class="p">)],</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">])</span>
-        <span class="n">test_score</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">subset</span><span class="p">)],</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">])</span>
-        <span class="n">train_score</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">subset</span><span class="p">)],</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">])</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">subset</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">train_score</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">test_score</span> <span class="o">&gt;</span> <span class="n">best_score</span><span class="p">:</span>
-            <span class="n">best_score</span> <span class="o">=</span> <span class="n">test_score</span>
-            <span class="n">best_subset</span> <span class="o">=</span> <span class="n">subset</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;best subset: </span><span class="si">{</span><span class="n">best_subset</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">best_score</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># Lasso is preferred in this case. While it has a higher MSE than ridge, it can recover the true coefficients by setting the irrelevant coefficients to zero. </span>
+<span class="c1"># Ridge, on the other hand, will make all coefficients small but non-zero.</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;bill_length_mm&#39;,): 0.3792 0.3101
-(&#39;bill_depth_mm&#39;,): 0.2185 0.2134
-(&#39;flipper_length_mm&#39;,): 0.7489 0.7731
-(&#39;bill_length_mm&#39;, &#39;bill_depth_mm&#39;): 0.4890 0.4385
-(&#39;bill_length_mm&#39;, &#39;flipper_length_mm&#39;): 0.7523 0.7689
-(&#39;bill_depth_mm&#39;, &#39;flipper_length_mm&#39;): 0.7508 0.7745
-(&#39;bill_length_mm&#39;, &#39;bill_depth_mm&#39;, &#39;flipper_length_mm&#39;): 0.7532 0.7705
-best subset: (&#39;bill_depth_mm&#39;, &#39;flipper_length_mm&#39;) 0.7745
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x16a2b0dd0&gt;
 </pre></div>
 </div>
+<img alt="../_images/a291ccd5419d02d70c9d824cfbd96eff1d9273ce7d4fc642421608fa3fdd471d.png" src="../_images/a291ccd5419d02d70c9d824cfbd96eff1d9273ce7d4fc642421608fa3fdd471d.png" />
 </div>
 </div>
-<p><strong>Q3</strong> Working with categorical variables</p>
-<p>Let’s try to make use of the <code class="docutils literal notranslate"><span class="pre">species</span></code> feature in predicting the <code class="docutils literal notranslate"><span class="pre">body_mass_g</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do not modify this cell</span>
-<span class="n">df_penguins</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
-<span class="n">df_penguins</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can think of two different methods to encode the categorical feature:</p>
-<ol class="arabic simple">
-<li><p>Method 1: Using integer 1, 2, 3 …</p></li>
-<li><p>Method 2: Using dummy variables such as <code class="docutils literal notranslate"><span class="pre">is_category_A</span></code>, where <code class="docutils literal notranslate"><span class="pre">is_category_A</span></code> is 1 if the category is A, 0 otherwise.</p></li>
-</ol>
-<p>In this problem, we will compare the two methods.</p>
-<p>For our dataset, the species are <code class="docutils literal notranslate"><span class="pre">['Adelie',</span> <span class="pre">'Chinstrap',</span> <span class="pre">'Gentoo']</span></code>.</p>
-<p>Let’s generate a few new features in <code class="docutils literal notranslate"><span class="pre">df_penguins</span></code>:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">code</span></code> is 0 if the species is Adelie, 1 if the species is Chinstrap, 2 if the species is Gentoo</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">is_Adelie</span></code> is 1 if the species is Adelie, 0 otherwise</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">is_Chinstrap</span></code> is 1 if the species is Chinstrap, 0 otherwise</p></li>
-</ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">is_Adelie</span></code> and <code class="docutils literal notranslate"><span class="pre">is_Chinstrap</span></code> features are called <strong>dummy variables</strong>.</p>
-<div class="cell tag_sol docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_penguins</span><span class="p">[</span><span class="s1">&#39;is_Adelie&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Adelie&#39;</span>
-<span class="n">df_penguins</span><span class="p">[</span><span class="s1">&#39;is_Chinstrap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Chinstrap&#39;</span>
-
-<span class="c1"># encode species as 0 1 2</span>
-<span class="n">code</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Adelie&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Chinstrap&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Gentoo&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
-<span class="n">df_penguins</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_penguins</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>After generating these new features, split the new augmented dataframe into training and testing sets use the following command</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do not modify this cell</span>
-<span class="n">df_penguins_train</span><span class="p">,</span> <span class="n">df_penguins_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df_penguins</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">df_penguins</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>(2) Compare the performance using different combinations of features. Compute the <span class="math notranslate nohighlight">\(R^2\)</span> on training and testing sets. Which one is the best?</p>
-<ul class="simple">
-<li><p>Baseline: <code class="docutils literal notranslate"><span class="pre">['bill_length_mm',</span> <span class="pre">'bill_depth_mm',</span> <span class="pre">'flipper_length_mm']</span></code></p></li>
-<li><p>Use code: <code class="docutils literal notranslate"><span class="pre">['bill_length_mm',</span> <span class="pre">'bill_depth_mm',</span> <span class="pre">'flipper_length_mm',</span> <span class="pre">'code']</span></code></p></li>
-<li><p>Use dummy: <code class="docutils literal notranslate"><span class="pre">['bill_length_mm',</span> <span class="pre">'bill_depth_mm',</span> <span class="pre">'flipper_length_mm',</span> <span class="pre">'is_Adelie',</span> <span class="pre">'is_Chinstrap']</span></code></p></li>
-</ul>
-<div class="cell tag_sol docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we define a helper function for our workflow: take some features, fit a linear regression model, and return the R2 score</span>
-<span class="k">def</span> <span class="nf">get_score</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">df_test</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
-    <span class="n">lm</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-    <span class="n">lm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">])</span>
-    <span class="n">train_score</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">])</span>
-    <span class="n">test_score</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;body_mass_g&#39;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">train_score</span><span class="p">,</span> <span class="n">test_score</span>
-
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;bill_depth_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">]</span>
-<span class="n">train_score</span><span class="p">,</span> <span class="n">test_score</span> <span class="o">=</span> <span class="n">get_score</span><span class="p">(</span><span class="n">df_penguins_train</span><span class="p">,</span> <span class="n">df_penguins_test</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Baseline: Train score: </span><span class="si">{</span><span class="n">train_score</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, Test score: </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;bill_depth_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">]</span>
-<span class="n">train_score</span><span class="p">,</span> <span class="n">test_score</span> <span class="o">=</span> <span class="n">get_score</span><span class="p">(</span><span class="n">df_penguins_train</span><span class="p">,</span> <span class="n">df_penguins_test</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Use code: Train score: </span><span class="si">{</span><span class="n">train_score</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, Test score: </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;bill_depth_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;is_Adelie&#39;</span><span class="p">,</span> <span class="s1">&#39;is_Chinstrap&#39;</span><span class="p">]</span>
-<span class="n">train_score</span><span class="p">,</span> <span class="n">test_score</span> <span class="o">=</span> <span class="n">get_score</span><span class="p">(</span><span class="n">df_penguins_train</span><span class="p">,</span> <span class="n">df_penguins_test</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Use dummy: Train score: </span><span class="si">{</span><span class="n">train_score</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">, Test score: </span><span class="si">{</span><span class="n">test_score</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="c1"># the dummy variables are better than the code variable</span>
-<span class="c1"># In general, encoding categorical variables as integers 1 2 3 is not a good idea, because it implies an order between the categories that does not exist.</span>
-<span class="c1"># However, in some case, when the categories are age groups, it can make sense to encode them as 1 2 3, as there is an order between the categories.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Baseline: Train score: 0.753, Test score: 0.770
-Use code: Train score: 0.763, Test score: 0.760
-Use dummy: Train score: 0.851, Test score: 0.839
-</pre></div>
-</div>
-</div>
-</div>
+<p>(3) Which model is preferred in this case, and why?</p>
+<p>Lasso is preferred in this case. While it has a higher MSE than ridge, it can recover the true coefficients by setting the irrelevant coefficients to zero.
+Ridge, on the other hand, will make all coefficients small but non-zero.</p>
 </section>
 </section>
 
