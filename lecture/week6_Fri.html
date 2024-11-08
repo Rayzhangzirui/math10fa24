@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Binary Classification with logistic regression &#8212; UCI Math 10, Fall 2024</title>
+    <title>Lecture Week 6 Fri 11/8 &#8212; UCI Math 10, Fall 2024</title>
   
   
   
@@ -62,11 +62,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/logistic_binary';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture/week6_Fri';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
-    <link rel="prev" title="Gradient Descent" href="gradient_descent.html" />
+    <link rel="next" title="Homework" href="../homework/intro.html" />
+    <link rel="prev" title="Lecture Week 6 Wed 11/6" href="week6_Wed.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -167,59 +167,59 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prob_stat.html">Probability and Statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.html">Pandas dataframe</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_linear_reg.html">Multiple Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-Variance Tradeoff</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regularization.html">Regularization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lectures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
-
-
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
 
 
+<li class="toctree-l2"><a class="reference internal" href="week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lecture Week 6 Fri 11/8</a></li>
 
 </ul>
 </details></li>
@@ -286,7 +286,7 @@
       
       
       
-      <li><a href="../_sources/notes/logistic_binary.ipynb" target="_blank"
+      <li><a href="../_sources/lecture/week6_Fri.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -362,7 +362,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Binary Classification with logistic regression</h1>
+    <h1>Lecture Week 6 Fri 11/8</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -372,14 +372,23 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 6 Fri 11/8</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification-with-logistic-regression">Binary Classification with logistic regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-cross-entropy-loss">Binary Cross-Entropy Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-cross-entropy-loss">Binary Cross-Entropy Loss</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poll-what-happens-to-the-bce-loss-if-the-true-label-is-1-but-we-predict-0-probability-of-class-1">Poll: what happens to the BCE loss if the true label is 1, but we predict 0% probability of class 1?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-and-performance-metrics">Prediction and Performance Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-logistic-regression-model-in-1d">Visualizing the logistic regression model in 1D</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-logistic-regression-in-2d">Visualizing logistic regression in 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-and-performance-metrics">Prediction and Performance Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poll">Poll</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification-using-penguins-dataset">Binary Classification using penguins dataset</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -390,9 +399,12 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="binary-classification-with-logistic-regression">
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-week-6-fri-11-8">
+<h1>Lecture Week 6 Fri 11/8<a class="headerlink" href="#lecture-week-6-fri-11-8" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="binary-classification-with-logistic-regression">
 <h1>Binary Classification with logistic regression<a class="headerlink" href="#binary-classification-with-logistic-regression" title="Link to this heading">#</a></h1>
-<p>For classification problems, we have data (<span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>, <span class="math notranslate nohighlight">\(y_i\)</span>) for i = 1, 2, …, N, where <span class="math notranslate nohighlight">\(\mathbf{x}_i\in\mathbb{R}^p\)</span> is the input/feature and <span class="math notranslate nohighlight">\(y_i\)</span> is the output/label, which indicates the class of the input.</p>
+<p>In general, for classification problems, we have data (<span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>, <span class="math notranslate nohighlight">\(y_i\)</span>) for i = 1, 2, …, N, where <span class="math notranslate nohighlight">\(\mathbf{x}_i\in\mathbb{R}^p\)</span> is the input/feature and <span class="math notranslate nohighlight">\(y_i\)</span> is the output/label, which indicates the class of the input.</p>
 <p>In binary classification, the data is divided into class 1 and class 2:</p>
 <ul class="simple">
 <li><p>y = 1 means the input belongs to class 1.</p></li>
@@ -400,7 +412,7 @@
 </ul>
 <section id="model">
 <h2>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
-<p>We assume that the probability of the input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> belonging to class 1 is</p>
+<p>We assume the the probability of the input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> belonging to class 1 is</p>
 <div class="math notranslate nohighlight">
 \[f(\mathbf{x}) = \sigma(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_p),\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is the sigmoid function, <span class="math notranslate nohighlight">\(\beta_0, \beta_1, \beta_2, ..., \beta_p\)</span> are the parameters of the model, and <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_p\)</span> are the features of the input.</p>
@@ -431,12 +443,6 @@ which maps any real number to the range (0, 1).</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
-</pre></div>
-</div>
-<img alt="../_images/430a28a18b7dd323c232f844086908136f84e4a7dfe5d46804b89a2830fae976.png" src="../_images/430a28a18b7dd323c232f844086908136f84e4a7dfe5d46804b89a2830fae976.png" />
-</div>
 </div>
 </section>
 <section id="binary-cross-entropy-loss">
@@ -447,6 +453,8 @@ which maps any real number to the range (0, 1).</p>
 \[BCE(y, \hat{y}) = -y \log(\hat{y}) - (1 - y) \log(1 - \hat{y})\]</div>
 <p>where <span class="math notranslate nohighlight">\(y\)</span> is the true label, which is either 0 or 1,
 and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predicted probability, which is in the range (0, 1).</p>
+<section id="poll-what-happens-to-the-bce-loss-if-the-true-label-is-1-but-we-predict-0-probability-of-class-1">
+<h3>Poll: what happens to the BCE loss if the true label is 1, but we predict 0% probability of class 1?<a class="headerlink" href="#poll-what-happens-to-the-bce-loss-if-the-true-label-is-1-but-we-predict-0-probability-of-class-1" title="Link to this heading">#</a></h3>
 <p>Alternatively, we can write the loss function as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} BCE(y, \hat{y}) = 
@@ -488,15 +496,10 @@ and <span class="math notranslate nohighlight">\(\hat{y}\)</span> is the predict
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Loss&#39;)
-</pre></div>
-</div>
-<img alt="../_images/f91bf7868d72ebc1eb480e6d6aec949e032bd124ebaf6ec60d1d03529a657411.png" src="../_images/f91bf7868d72ebc1eb480e6d6aec949e032bd124ebaf6ec60d1d03529a657411.png" />
-</div>
 </div>
 <p>We can see that the cross-entropy loss function penalizes the model more when the predicted probability is far from the true label.
 For example, if the true label is 1 and the model predicts 0.01 probability of class 1, the cross-entropy loss is 4.6, but the mean squared error loss is 0.99.</p>
+</section>
 </section>
 <section id="optimization">
 <h2>Optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h2>
@@ -518,11 +521,76 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
 <h2>Prediction and Performance Metrics<a class="headerlink" href="#prediction-and-performance-metrics" title="Link to this heading">#</a></h2>
 <p>After we find the optimal parameters <span class="math notranslate nohighlight">\(\mathbf{\beta}\)</span>, we can use the model to make predictions. The output of the model is the probability of the input belonging to class 1. Therefore, if the output is greater than 0.5, we predict class 1, otherwise we predict class 0.</p>
 <p>Accuracy is the most common metric for classification problems. It is defined as the number of correct predictions divided by the total number of predictions.</p>
-<p>Alternatively, we can use the <a class="reference external" href="https://en.wikipedia.org/wiki/Confusion_matrix">confusion matrix</a> to evaluate the performance of the model. The confusion matrix is a table that shows the number of true positives, true negatives, false positives, and false negatives.</p>
-</section>
-<section id="visualizing-the-logistic-regression-model-in-1d">
-<h2>Visualizing the logistic regression model in 1D<a class="headerlink" href="#visualizing-the-logistic-regression-model-in-1d" title="Link to this heading">#</a></h2>
-<p>Why not use a linear regression model for binary classification? Let’s see an example in 1D.</p>
+<p>Alternatively, we can use the confusion matrix to evaluate the performance of the model. The confusion matrix is a table that shows the number of true positives, true negatives, false positives, and false negatives.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">LogisticRegression</span>
+
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+
+<span class="c1"># Set seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Generate a toy dataset</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x_class1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">x_class2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">y_class1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">y_class2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+
+<span class="c1"># Features and labels, with and without outlier</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">x_class1</span><span class="p">,</span> <span class="n">x_class2</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">y_class1</span><span class="p">,</span> <span class="n">y_class2</span><span class="p">))</span>
+
+<span class="c1"># Fit linear regression</span>
+<span class="n">ols</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">ols</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Fit logistic regression</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Generate test data for plotting</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">ols</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">logistic_prob</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">coef_</span> <span class="o">*</span> <span class="n">X_test</span> <span class="o">+</span> <span class="n">clf</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># plot data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_class1</span><span class="p">,</span> <span class="n">y_class1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Class 1&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_class2</span><span class="p">,</span> <span class="n">y_class2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Class 2&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Without extra points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Linear Regression&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">logistic_prob</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Logistic Regression&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comparison of Regression Models&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.5&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s2">&quot;small&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fb4af5271cab5f1f47fdf21d260bb8472726de8530dd9534b8b2210f7e29eff5.png" src="../_images/fb4af5271cab5f1f47fdf21d260bb8472726de8530dd9534b8b2210f7e29eff5.png" />
+</div>
+</div>
+<section id="poll">
+<h3>Poll<a class="headerlink" href="#poll" title="Link to this heading">#</a></h3>
+<p>If we have some additional samples of class1 near 10. Which of the following statements is true?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -608,10 +676,6 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
 <img alt="../_images/9de8c76bd220ee526dc972a23bf123e72926cce486757938e10bb28d3c175b11.png" src="../_images/9de8c76bd220ee526dc972a23bf123e72926cce486757938e10bb28d3c175b11.png" />
 </div>
 </div>
-</section>
-<section id="visualizing-logistic-regression-in-2d">
-<h2>Visualizing logistic regression in 2D<a class="headerlink" href="#visualizing-logistic-regression-in-2d" title="Link to this heading">#</a></h2>
-<p>The key is that the logistic regression model seeks a linear decision boundary that separates the two classes: a straight line in 2D, a plane in 3D, etc. That is, the decision boundary is “flat” and not “curved”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -652,7 +716,7 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
 <span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
 
 <span class="c1"># Adding title and labels</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;3-Class Logistic Regression Decision Boundary&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Logistic Regression Decision Boundary&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Feature 1&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Feature 2&#39;</span><span class="p">)</span>
 </pre></div>
@@ -662,9 +726,10 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Feature 2&#39;)
 </pre></div>
 </div>
-<img alt="../_images/cbab655ab256a80944cb991a8f06f96df6a1ea02a4b5fa71598e953837af9550.png" src="../_images/cbab655ab256a80944cb991a8f06f96df6a1ea02a4b5fa71598e953837af9550.png" />
+<img alt="../_images/e67974d93b9e423324b3a3fd50ec6739eedec80851b08df2e0dc056ffedbd68a.png" src="../_images/e67974d93b9e423324b3a3fd50ec6739eedec80851b08df2e0dc056ffedbd68a.png" />
 </div>
 </div>
+</section>
 </section>
 <section id="binary-classification-using-penguins-dataset">
 <h2>Binary Classification using penguins dataset<a class="headerlink" href="#binary-classification-using-penguins-dataset" title="Link to this heading">#</a></h2>
@@ -675,8 +740,6 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
-<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 
@@ -698,6 +761,9 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
 <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">penalty</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
+<span class="c1"># prediction</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
 <span class="c1"># Calculate the training and test accuracy</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training accuracy: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -710,7 +776,46 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
 </div>
 </div>
 </div>
-<p>We can visualize the decision boundary using <code class="docutils literal notranslate"><span class="pre">DecisionBoundaryDisplay</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Female&#39;, &#39;Male&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Male&#39;, &#39;Female&#39;, &#39;Female&#39;, &#39;Female&#39;, &#39;Male&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.49992132, 0.50007868],
+       [0.70860573, 0.29139427],
+       [0.55266441, 0.44733559],
+       [0.54734163, 0.45265837],
+       [0.18061042, 0.81938958]])
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -731,13 +836,15 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/aaca132a83b2f3df7ae86332f2cf0f0f7cea09115f76d6df80a3ac167f97e6c8.png" src="../_images/aaca132a83b2f3df7ae86332f2cf0f0f7cea09115f76d6df80a3ac167f97e6c8.png" />
+<img alt="../_images/bae97c0c0b41ce4b9c71b97562a8d9bc490d45c500d0f57a7129a4016894a26e.png" src="../_images/bae97c0c0b41ce4b9c71b97562a8d9bc490d45c500d0f57a7129a4016894a26e.png" />
 </div>
 </div>
-<p>We can also use the confusion matrix to have a more detailed view of the model’s performance.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Confusion_matrix">Confusion Matrix</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict on the test set</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+
+<span class="c1"># Predict on the test set</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="c1"># Evaluate the model</span>
@@ -759,7 +866,7 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
  [ 37 131]]
 </pre></div>
 </div>
-<img alt="../_images/6fa763e051c8402cad2b879ba73510348e12556c33129c01479c7869aa456ce1.png" src="../_images/6fa763e051c8402cad2b879ba73510348e12556c33129c01479c7869aa456ce1.png" />
+<img alt="../_images/06f17d798ce094253c640f89aacc8c2edcc6356d8039ceafc92de38b4bfa7806.png" src="../_images/06f17d798ce094253c640f89aacc8c2edcc6356d8039ceafc92de38b4bfa7806.png" />
 </div>
 </div>
 </section>
@@ -778,7 +885,7 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
         },
         kernelOptions: {
             name: "python3",
-            path: "./notes"
+            path: "./lecture"
         },
         predefinedOutput: true
     }
@@ -796,20 +903,20 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="gradient_descent.html"
+       href="week6_Wed.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Gradient Descent</p>
+        <p class="prev-next-title">Lecture Week 6 Wed 11/6</p>
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="../homework/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Homework</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -830,14 +937,23 @@ L(\mathbf{\beta}) &amp;= \sum_{i=1}^{n} BCE(y_i, f(\mathbf{x}_i)) \\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lecture Week 6 Fri 11/8</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification-with-logistic-regression">Binary Classification with logistic regression</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-cross-entropy-loss">Binary Cross-Entropy Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-cross-entropy-loss">Binary Cross-Entropy Loss</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poll-what-happens-to-the-bce-loss-if-the-true-label-is-1-but-we-predict-0-probability-of-class-1">Poll: what happens to the BCE loss if the true label is 1, but we predict 0% probability of class 1?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-and-performance-metrics">Prediction and Performance Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-logistic-regression-model-in-1d">Visualizing the logistic regression model in 1D</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-logistic-regression-in-2d">Visualizing logistic regression in 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-and-performance-metrics">Prediction and Performance Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poll">Poll</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification-using-penguins-dataset">Binary Classification using penguins dataset</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
