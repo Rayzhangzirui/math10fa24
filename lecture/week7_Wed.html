@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Logistic Regression for Multiclass Classification &#8212; UCI Math 10, Fall 2024</title>
+    <title>Lecture Week 7 Wed 11/13 &#8212; UCI Math 10, Fall 2024</title>
   
   
   
@@ -62,11 +62,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/logistic_multiclass';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture/week7_Wed';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="../lecture/intro.html" />
-    <link rel="prev" title="Binary Classification with logistic regression" href="logistic_binary.html" />
+    <link rel="next" title="Homework" href="../homework/intro.html" />
+    <link rel="prev" title="Lecture Week 6 Fri 11/8" href="week6_Fri.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -167,62 +167,62 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="numpy.html">NumPy Review</a></li>
-<li class="toctree-l2"><a class="reference internal" href="prob_stat.html">Probability and Statistics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pandas.html">Pandas dataframe</a></li>
-
-
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
 
 
-<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="multi_linear_reg.html">Multiple Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="polynomial_reg.html">Polynomial Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias-Variance Tradeoff</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="cv.html">Cross Validation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regularization.html">Regularization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Logistic Regression for Multiclass Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Logistic Regression for Multiclass Classification</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lectures</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
-
-
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
 
 
+<li class="toctree-l2"><a class="reference internal" href="week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lecture Week 7 Wed 11/13</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -288,7 +288,7 @@
       
       
       
-      <li><a href="../_sources/notes/logistic_multiclass.ipynb" target="_blank"
+      <li><a href="../_sources/lecture/week7_Wed.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -364,7 +364,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Logistic Regression for Multiclass Classification</h1>
+    <h1>Lecture Week 7 Wed 11/13</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -374,10 +374,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-for-multiclass-classification">Logistic Regression for Multiclass Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-entropy-loss">Cross-entropy loss</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-using-penguins-dataset">Classification using penguins dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-train-test-split">with train test split</a></li>
 </ul>
             </nav>
         </div>
@@ -389,14 +389,29 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-for-multiclass-classification">
-<h1>Logistic Regression for Multiclass Classification<a class="headerlink" href="#logistic-regression-for-multiclass-classification" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-week-7-wed-11-13">
+<h1>Lecture Week 7 Wed 11/13<a class="headerlink" href="#lecture-week-7-wed-11-13" title="Link to this heading">#</a></h1>
+<p>Survey feed back:</p>
+<ol class="arabic simple">
+<li><p>Notes are helpful</p></li>
+<li><p>Slow down on coding/More coding in lecture</p></li>
+</ol>
+<p>Some tips about coding:</p>
+<ol class="arabic simple">
+<li><p>For data science, coding is a tool to solve problems. We already have all we need (writing loops, using class, etc), just might need more familiarity with the tool.</p></li>
+<li><p>Gain familiarity by practicing, e.g. doing homework problem.</p></li>
+<li><p>There is no need to remember how to use specific methods or functions in this class.</p></li>
+<li><p>Google or ChatGPT is encouraged – ask questions instead of asking for the answer. For example, intead of copying the questions and ask for the answer, you can ask “how to remove missing data for a specific features in a dataframe”.</p></li>
+</ol>
+<section id="logistic-regression-for-multiclass-classification">
+<h2>Logistic Regression for Multiclass Classification<a class="headerlink" href="#logistic-regression-for-multiclass-classification" title="Link to this heading">#</a></h2>
 <p>In this part, we consider logistic regression for K &gt; 2 classes.
 We have data <span class="math notranslate nohighlight">\((\mathbf{x}_i, y_i)\)</span> for i = 1, 2, …, N, where <span class="math notranslate nohighlight">\(\mathbf{x}_i\in\mathbb{R}^p\)</span> is the input/feature and <span class="math notranslate nohighlight">\(y_i\)</span> is the output/label, which indicates the class of the input.</p>
 <p>We treat the output <span class="math notranslate nohighlight">\(y_i\)</span> as a categorical variable, which indicates the class of the input.</p>
+</section>
 <section id="model">
 <h2>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
-<p>We consider the augmented data <span class="math notranslate nohighlight">\(\mathbf{x}_i = [1, x_{i1}, x_{i2}, ..., x_{ip}]\)</span> for i = 1, 2, …, N, where <span class="math notranslate nohighlight">\(x_{ij}\)</span> is the j-th feature of the i-th input, and we assume that the output <span class="math notranslate nohighlight">\(y_i\)</span> can take K different values, 1, …, K</p>
+<p>We consider the augmented data <span class="math notranslate nohighlight">\(\mathbf{x}_i = [1, x_{i1}, x_{i2}, ..., x_{ip}]\)</span> for i = 1, 2, …, N, where <span class="math notranslate nohighlight">\(\mathbf{x}_{ij}\)</span> is the j-th feature of the i-th input, and we assume that the output <span class="math notranslate nohighlight">\(y_i\)</span> can take K different values, 1, …, K</p>
 <p>We assume the the probability of the input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> belonging to class 1 to K is given by a vector of probabilities.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -418,10 +433,9 @@ f_K(\mathbf{x})
 \end{split}\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbf{w}_i = [w_{i0}, w_{i1}, w_{i2}, ..., w_{ip}]\)</span> is the <span class="math notranslate nohighlight">\(p+1\)</span> dimensional vector of coefficients for class <span class="math notranslate nohighlight">\(i\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{w}_i^T \mathbf{x} = w_{i0} + w_{i1}x_1 + w_{i2}x_2 + ... + w_{ip}x_p\)</span>. As in linear regression and binary logistic regression, we are taking a linear combination of the features, and the cofficients are learned from the data.</p></li>
 <li><p><span class="math notranslate nohighlight">\(f_j(\mathbf{x};\mathbf{W})\)</span> is the probability of the input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> belonging to class j.
 By construction, <span class="math notranslate nohighlight">\(\sum_{j=1}^K f_j(\mathbf{x}; \mathbf{W}) = 1\)</span> for all <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. That is, the probabilities of the input <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> belonging to class 1 to K sum to 1.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathbf{W}\)</span> is the matrix of all the coefficients <span class="math notranslate nohighlight">\(\mathbf{w}_i\)</span> for i = 1, 2, …, K.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{W}\)</span> is the matrix of all the unknown coefficients <span class="math notranslate nohighlight">\(\mathbf{w}_i\)</span> for i = 1, 2, …, K.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -441,9 +455,7 @@ w_{K0} &amp; w_{K1} &amp; \cdots &amp; w_{Kp}
 \end{bmatrix}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_{ij}\)</span> is the j-th coefficient for class i.</p>
-<ul class="simple">
-<li><p>We also write <span class="math notranslate nohighlight">\(f(\mathbf{x}; \mathbf{W})\)</span> to indicate the dependence of the probabilities on the coefficients <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p></li>
-</ul>
+<p>Therefore we also write <span class="math notranslate nohighlight">\(f(\mathbf{x}; \mathbf{W})\)</span> to indicate the dependence of the probabilities on the coefficients <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>.</p>
 </section>
 <section id="cross-entropy-loss">
 <h2>Cross-entropy loss<a class="headerlink" href="#cross-entropy-loss" title="Link to this heading">#</a></h2>
@@ -456,45 +468,44 @@ y_{ik} =
 0 &amp; \text{otherwise}
 \end{cases}
 \end{split}\]</div>
-<p>Another way to think about this is that we encode the categorical variable <span class="math notranslate nohighlight">\(y_{i}\)</span> as a vector in <span class="math notranslate nohighlight">\(\mathbb{R}^K\)</span> with a 1 at the k-th position and 0 elsewhere. For example, if there is 3 class and the output <span class="math notranslate nohighlight">\(y_i\)</span> is class 2, then <span class="math notranslate nohighlight">\(y_i = [0, 1, 0]\)</span>.</p>
+<p>Essentiall, we encode the categorical variable <span class="math notranslate nohighlight">\(y_{i}\)</span> as a vector in <span class="math notranslate nohighlight">\(\mathbb{R}^K\)</span> with a 1 at the k-th position and 0 elsewhere.</p>
 <p>The cross-entropy loss is given by</p>
 <div class="math notranslate nohighlight">
 \[
 L(\mathbf{W}) = -\sum_{i=1}^N \sum_{k=1}^K y_{ik}\log(f_k(\mathbf{x}_i; \mathbf{W}))
 \]</div>
-<p>The summation over <span class="math notranslate nohighlight">\(i\)</span> is adding up the error from each sample. For the summation over <span class="math notranslate nohighlight">\(k\)</span>, we are adding up the error from each class. By our definition of <span class="math notranslate nohighlight">\(y_{ik}\)</span>, only the term corresponding to the true class <span class="math notranslate nohighlight">\(y_i\)</span> contributes to the loss. For example, if there is 3 classes and <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> belong to class 2, then</p>
-<div class="math notranslate nohighlight">
-\[ - \sum_{k=1}^K y_{ik} \log(f_k(\mathbf{x}_i; \mathbf{W})) = -\log(f_2(\mathbf{x}_1; \mathbf{W}))\]</div>
-<p>where <span class="math notranslate nohighlight">\(f_2(\mathbf{x}_1; \mathbf{W})\)</span> is the predicted probability of <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> belonging to class 2. If it is close to 100%, then the loss contributed by sample 1 is close to 0. If <span class="math notranslate nohighlight">\(f_2(\mathbf{x}_1; \mathbf{W})\)</span> is close to 0%, then the contributed loss is large.</p>
-<p>The optimal weight matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> is obtained by minimizing the loss function <span class="math notranslate nohighlight">\(L(\mathbf{W})\)</span>.</p>
-<p><strong>Exercises</strong>: show that when K=2, this reduces to the binary logistic regression loss.</p>
-</section>
-<section id="visualization">
-<h2>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h2>
+<p>And the optimal weight matrix <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> is obtained by minimizing the loss function <span class="math notranslate nohighlight">\(L(\mathbf{W})\)</span>.</p>
+<p>All this is saying that, for each individual input, say <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> belong to class 2, then the contribution to the loss is given by <span class="math notranslate nohighlight">\(-\log(f_2(\mathbf{x}_1; \mathbf{W}))\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(f_2(\mathbf{x}_1; \mathbf{W})\)</span> – the probability of <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> belonging to class 2 –
+is close to 100%, then the loss is close to 0. If <span class="math notranslate nohighlight">\(f_2(\mathbf{x}_1; \mathbf{W})\)</span> is close to 0%, then the loss is large.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
+<span class="kn">from</span> <span class="nn">sklearn.multiclass</span> <span class="kn">import</span> <span class="n">OneVsRestClassifier</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
 
 <span class="c1"># Set random seed for reproducibility</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Number of samples per class</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1"># Generate data for three classes, each class has a different mean</span>
-<span class="n">x_class1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
-<span class="n">x_class2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
-<span class="n">x_class3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">x_class1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">x_class2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">x_class3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">sig</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">N</span><span class="p">)</span>
 
 <span class="c1"># Combine into a single dataset</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x_class1</span><span class="p">,</span> <span class="n">x_class2</span><span class="p">,</span> <span class="n">x_class3</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)))</span>
 
 <span class="c1"># Create a logistic regression classifier with multinomial option for multi-class</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;multinomial&#39;</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="c1"># Plot the decision boundaries using DecisionBoundaryDisplay</span>
@@ -504,12 +515,13 @@ L(\mathbf{W}) = -\sum_{i=1}^N \sum_{k=1}^K y_{ik}\log(f_k(\mathbf{x}_i; \mathbf{
     <span class="n">X</span><span class="p">,</span>
     <span class="n">grid_resolution</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
     <span class="n">response_method</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">,</span>  <span class="c1"># Can be &quot;predict_proba&quot; for probability contours</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span>
     <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
 <span class="p">)</span>
 <span class="c1"># Scatter plot of the data points</span>
-<span class="n">scatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;deep&#39;</span><span class="p">)</span>
+
 
 <span class="c1"># Adding title and labels</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;3-Class Logistic Regression Decision Boundary&#39;</span><span class="p">)</span>
@@ -522,16 +534,11 @@ L(\mathbf{W}) = -\sum_{i=1}^N \sum_{k=1}^K y_{ik}\log(f_k(\mathbf{x}_i; \mathbf{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/Ray/opt/anaconda3/envs/math10/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use &#39;multinomial&#39;. Leave it to its default value to avoid this warning.
-  warnings.warn(
-</pre></div>
-</div>
-<img alt="../_images/00e3a78eedc1b06a6ca53d6c6b8291ba9b854feb299b6ea1d5efe9eded015028.png" src="../_images/00e3a78eedc1b06a6ca53d6c6b8291ba9b854feb299b6ea1d5efe9eded015028.png" />
+<img alt="../_images/1ff867ea7171053fef6cf8960609bb24b306c305b5909133beb0bb3ff3a6c927.png" src="../_images/1ff867ea7171053fef6cf8960609bb24b306c305b5909133beb0bb3ff3a6c927.png" />
 </div>
 </div>
-</section>
-<section id="classification-using-penguins-dataset">
-<h2>Classification using penguins dataset<a class="headerlink" href="#classification-using-penguins-dataset" title="Link to this heading">#</a></h2>
+<p>Exercise:</p>
+<p>Load the penguins dataset. Use <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code>, <code class="docutils literal notranslate"><span class="pre">bill_depth_mm</span></code> to predict the <code class="docutils literal notranslate"><span class="pre">species</span></code> of the penguins. Draw the confusion matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -556,15 +563,13 @@ L(\mathbf{W}) = -\sum_{i=1}^N \sum_{k=1}^K y_{ik}\log(f_k(\mathbf{x}_i; \mathbf{
 <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span>
 
-
 <span class="c1"># Initialize and train the logistic regression model</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="c1"># Calculate the training and test accuracy</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;accuracy: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Predict on the test set</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
@@ -583,14 +588,88 @@ L(\mathbf{W}) = -\sum_{i=1}^N \sum_{k=1}^K y_{ik}\log(f_k(\mathbf{x}_i; \mathbf{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training accuracy: 0.96
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>accuracy: 0.9640
 Confusion Matrix:
- [[149   2   0]
+ [[144   2   0]
  [  4  60   4]
- [  0   2 121]]
+ [  0   2 117]]
 </pre></div>
 </div>
-<img alt="../_images/aad1c78efa3f1278c13b0265c633bc5df2fea3a61e9e53305fa3683deb74a379.png" src="../_images/aad1c78efa3f1278c13b0265c633bc5df2fea3a61e9e53305fa3683deb74a379.png" />
+<img alt="../_images/499fa31c25fb51396217f7167b669d30afc1a5f7011b276f6b82219ceacc2845.png" src="../_images/499fa31c25fb51396217f7167b669d30afc1a5f7011b276f6b82219ceacc2845.png" />
+</div>
+</div>
+</section>
+<section id="with-train-test-split">
+<h2>with train test split<a class="headerlink" href="#with-train-test-split" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+
+<span class="c1"># Load the dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;penguins&#39;</span><span class="p">)</span>
+
+<span class="c1"># Drop rows with missing values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;bill_depth_mm&#39;</span><span class="p">]</span>
+
+<span class="c1"># scale the features</span>
+<span class="c1"># scaler = StandardScaler()</span>
+<span class="c1"># df[features] = scaler.fit_transform(df[features])</span>
+
+<span class="c1"># Select features</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span>
+
+<span class="c1"># Split the data into training and testing sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Initialize and train the logistic regression model</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Calculate the training and test accuracy</span>
+<span class="n">score_train</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score_test</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training accuracy: </span><span class="si">{</span><span class="n">score_train</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test accuracy: </span><span class="si">{</span><span class="n">score_test</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Predict on the test set</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">conf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">conf_matrix</span><span class="p">)</span>
+
+<span class="c1"># Plotting the confusion matrix</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">conf_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Labels&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Labels&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix of Species Classification&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training accuracy: 0.9699
+Test accuracy: 0.9641
+Confusion Matrix:
+ [[71  2  0]
+ [ 1 32  1]
+ [ 0  2 58]]
+</pre></div>
+</div>
+<img alt="../_images/8bec20a0fc37d8c4385f3986ddd50c043e38538448659154a62d16ec319a418c.png" src="../_images/8bec20a0fc37d8c4385f3986ddd50c043e38538448659154a62d16ec319a418c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -616,8 +695,8 @@ Confusion Matrix:
 
 <span class="c1"># Adding title and labels</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;3-Class Logistic Regression Decision Boundary&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Feature 1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Feature 2&#39;</span><span class="p">)</span>
 
 <span class="c1"># Show plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -625,7 +704,7 @@ Confusion Matrix:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1f1d03ff2e8e3ddc62b80c4a3c221a67cace51bfbeeb4f80792ef23c816910bc.png" src="../_images/1f1d03ff2e8e3ddc62b80c4a3c221a67cace51bfbeeb4f80792ef23c816910bc.png" />
+<img alt="../_images/d2b55f3cc0101d4f26cee541e73f49a888defaf3b907818732415f77a0e204b3.png" src="../_images/d2b55f3cc0101d4f26cee541e73f49a888defaf3b907818732415f77a0e204b3.png" />
 </div>
 </div>
 </section>
@@ -644,7 +723,7 @@ Confusion Matrix:
         },
         kernelOptions: {
             name: "python3",
-            path: "./notes"
+            path: "./lecture"
         },
         predefinedOutput: true
     }
@@ -662,20 +741,20 @@ Confusion Matrix:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="logistic_binary.html"
+       href="week6_Fri.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Binary Classification with logistic regression</p>
+        <p class="prev-next-title">Lecture Week 6 Fri 11/8</p>
       </div>
     </a>
     <a class="right-next"
-       href="../lecture/intro.html"
+       href="../homework/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Homework</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -696,10 +775,10 @@ Confusion Matrix:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-for-multiclass-classification">Logistic Regression for Multiclass Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-entropy-loss">Cross-entropy loss</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-using-penguins-dataset">Classification using penguins dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-train-test-split">with train test split</a></li>
 </ul>
   </nav></div>
 
