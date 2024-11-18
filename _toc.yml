@@ -20,6 +20,9 @@ chapters:
       - file: notes/cv
       - file: notes/feature_scaling
       - file: notes/regularization
+      - file: notes/gradient_descent
+      - file: notes/logistic_binary
+      - file: notes/logistic_multiclass
   - file: lecture/intro
     sections:
       - file: lecture/week1_Mon
@@ -37,10 +40,15 @@ chapters:
       - file: lecture/week5_Mon
       - file: lecture/week5_Wed
       - file: lecture/week5_Fri
+      - file: lecture/week6_Wed
+      - file: lecture/week6_Fri
+      - file: lecture/week7_Wed
   - file: homework/intro
     sections:
       - file: homework/hw1
       - file: homework/hw2_sol
       - file: homework/hw3_sol
       - file: homework/hw4_sol
-      - file: homework/hw5
+      - file: homework/hw5_sol
+      - file: homework/hw6_sol
+      - file: homework/hw7
