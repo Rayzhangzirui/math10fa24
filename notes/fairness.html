@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -55,11 +55,13 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/fairness';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -190,6 +192,8 @@
 <li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regularization.html">Regularization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Logistic Regression for Multiclass Classification</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -215,6 +219,10 @@
 
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -222,7 +230,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw5.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 11/15/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7.html">Homework 7 (Due 11/18/2024 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -366,7 +376,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-imbalance">Class Imbalance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-fair-classification">More on Fair Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-classification">Fair Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-fairness">What is Fairness?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-fairness">Criteria for Fairness</a></li>
 </ul>
@@ -394,11 +404,11 @@
 <section id="class-imbalance">
 <h2>Class Imbalance<a class="headerlink" href="#class-imbalance" title="Link to this heading">#</a></h2>
 <p>The dataset set that we have does not reflect the real world distribution of the classes. Let’s consider a simple example to illustrate the problem, and some possible solutions.</p>
-<p>Let’s first consider a synthetic dataset with imbalanced classes.
-Group A is gaussian distributed with mean -1 and standard deviation 1.
-Group B is gaussian distributed with mean 1 and standard deviation 1.
-Suppose we want to train a logistic regression classifier to distinguish between the two groups. In theory, the decision boundary should be at 0.
-However, the dataset is imbalanced, with 1000 samples from group A and 100 samples from group B.</p>
+<p>Let’s first consider a synthetic dataset with imbalanced classes:</p>
+<ul class="simple">
+<li><p>Group A is gaussian distributed with mean -1 and standard deviation 1.</p></li>
+<li><p>Group B is gaussian distributed with mean 1 and standard deviation 1.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -416,8 +426,8 @@ However, the dataset is imbalanced, with 1000 samples from group A and 100 sampl
 <span class="n">group_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">n_B</span><span class="p">)</span>    <span class="c1"># Group B: mean = 1</span>
 
 <span class="c1"># Labels for the groups</span>
-<span class="n">labels_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_A</span><span class="p">)</span>    <span class="c1"># Group A labeled as 0</span>
-<span class="n">labels_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_B</span><span class="p">)</span>    <span class="c1"># Group B labeled as 1</span>
+<span class="n">labels_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_A</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
+<span class="n">labels_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_B</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">)</span>
 
 <span class="c1"># Combining the data</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">group_A</span><span class="p">,</span> <span class="n">group_B</span><span class="p">])</span>
@@ -451,7 +461,7 @@ However, the dataset is imbalanced, with 1000 samples from group A and 100 sampl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/42f72b9b5a9c99e2d72881db380aaf14db9aef5494da86455b690f81642e8d30.png" src="../_images/42f72b9b5a9c99e2d72881db380aaf14db9aef5494da86455b690f81642e8d30.png" />
+<img alt="../_images/3bd4dad4f5d08a73c90be3dc2813d4d71b06ab14ea6b3d514c3599f48d647d93.png" src="../_images/3bd4dad4f5d08a73c90be3dc2813d4d71b06ab14ea6b3d514c3599f48d647d93.png" />
 </div>
 </div>
 <p>Because of the imbalance, the classifier works well on group A but poorly on group B.</p>
@@ -460,12 +470,11 @@ However, the dataset is imbalanced, with 1000 samples from group A and 100 sampl
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span>
 
 <span class="c1"># Predicting the labels</span>
-<span class="n">pred_group_B</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">pred_labels</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<span class="n">is_group_B</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="mi">1</span>
 
 <span class="c1"># Confusion matrix for group B</span>
-<span class="n">conf_matrix_B</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">is_group_B</span><span class="p">,</span> <span class="n">pred_group_B</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">conf_matrix_B</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">pred_labels</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
 
 <span class="n">disp_B</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">conf_matrix_B</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
 <span class="n">disp_B</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -473,10 +482,10 @@ However, the dataset is imbalanced, with 1000 samples from group A and 100 sampl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x19302f4d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x177da5fa0&gt;
 </pre></div>
 </div>
-<img alt="../_images/7b8ce782270176bf77f1d2f17939fd8cd68a348bca733aa9e6ccc5f5ff5e2ba5.png" src="../_images/7b8ce782270176bf77f1d2f17939fd8cd68a348bca733aa9e6ccc5f5ff5e2ba5.png" />
+<img alt="../_images/49194dd6e0690680962fc7cc3d9e765b1931c5fb3fe14e984dde0d7d7af6e83a.png" src="../_images/49194dd6e0690680962fc7cc3d9e765b1931c5fb3fe14e984dde0d7d7af6e83a.png" />
 </div>
 </div>
 <p>One way to address this issue is to use a balanced dataset. We can do this by resampling the minority class (group B) to have the same number of samples as the majority class (group A).</p>
@@ -486,32 +495,33 @@ However, the dataset is imbalanced, with 1000 samples from group A and 100 sampl
 
 <span class="c1"># Resampling the data to mitigate bias</span>
 <span class="c1"># Oversampling Group B</span>
-<span class="n">group_B_oversampled</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">group_B</span><span class="p">,</span>
+<span class="n">group_B_resampled</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">group_B</span><span class="p">,</span>
                                <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                <span class="n">n_samples</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">group_A</span><span class="p">),</span>  <span class="c1"># match the number of samples in Group A</span>
                                <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">labels_B_oversampled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">group_B_oversampled</span><span class="p">))</span>
+<span class="n">labels_B_resampled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">group_B_resampled</span><span class="p">),</span> <span class="s2">&quot;B&quot;</span><span class="p">)</span>
 
 <span class="c1"># Combining the oversampled data</span>
-<span class="n">data_oversampled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">group_A</span><span class="p">,</span> <span class="n">group_B_oversampled</span><span class="p">])</span>
-<span class="n">labels_oversampled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">labels_A</span><span class="p">,</span> <span class="n">labels_B_oversampled</span><span class="p">])</span>
+<span class="n">data_resampled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">group_A</span><span class="p">,</span> <span class="n">group_B_resampled</span><span class="p">])</span>
+<span class="n">labels_resampled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">labels_A</span><span class="p">,</span> <span class="n">labels_B_resampled</span><span class="p">])</span>
 
 <span class="c1"># Visualizing the oversampled data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">group_A</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group A&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">group_B_oversampled</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group B (Oversampled)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">group_B_resampled</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group B (Oversampled)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution after Oversampling B&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
 
-<span class="c1"># Retraining logistic regression with the oversampled data</span>
-<span class="n">X_oversampled</span> <span class="o">=</span> <span class="n">data_oversampled</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">y_oversampled</span> <span class="o">=</span> <span class="n">labels_oversampled</span>
-<span class="n">model_oversampled</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
-<span class="n">model_oversampled</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_oversampled</span><span class="p">,</span> <span class="n">y_oversampled</span><span class="p">)</span>
 
-<span class="n">decision_boundary</span> <span class="o">=</span> <span class="o">-</span><span class="n">model_oversampled</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">/</span> <span class="n">model_oversampled</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Retraining logistic regression with the resampled data</span>
+<span class="n">X_resampled</span> <span class="o">=</span> <span class="n">data_resampled</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_resampled</span> <span class="o">=</span> <span class="n">labels_resampled</span>
+<span class="n">model_resampled</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">model_resampled</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">)</span>
+
+<span class="n">decision_boundary</span> <span class="o">=</span> <span class="o">-</span><span class="n">model_resampled</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">/</span> <span class="n">model_resampled</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c1"># Plotting the decision boundary</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">decision_boundary</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decision Boundary&#39;</span><span class="p">)</span>
@@ -521,17 +531,36 @@ However, the dataset is imbalanced, with 1000 samples from group A and 100 sampl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/438750331e6cb7a67ea4f073f124bd65ca64f9e0dd9d9c665b67a45254d54c8c.png" src="../_images/438750331e6cb7a67ea4f073f124bd65ca64f9e0dd9d9c665b67a45254d54c8c.png" />
+<img alt="../_images/9949489f44d1d773c110090904c261182deb1b17fc4b05249307f381c08d47fe.png" src="../_images/9949489f44d1d773c110090904c261182deb1b17fc4b05249307f381c08d47fe.png" />
 </div>
 </div>
 <p>Another way is to reweight the data.</p>
+<p>In our loss function,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{total loss} = \sum_{i=1}^{n}  \text{error}(y_i, \hat{y}_i)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{error}(y_i, \hat{y}_i)\)</span> is the error function, and <span class="math notranslate nohighlight">\(y_i\)</span> is the true label, and <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> is the predicted label.</p>
+<p>We are actually weighting each data point equally.</p>
+<p>If we have a class imbalance, we can reweight the data points.</p>
+<div class="math notranslate nohighlight">
+\[
+\text{total loss} = \sum_{i=1}^{n}  w_i \cdot \text{error}(y_i, \hat{y}_i)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{weight}(y_i)\)</span> is the weight for the data point <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign weights to mitigate bias</span>
 <span class="n">weight_A</span> <span class="o">=</span> <span class="n">n_B</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_A</span> <span class="o">+</span> <span class="n">n_B</span><span class="p">)</span> <span class="c1"># there is more of A, so we want to weight it less</span>
 <span class="n">weight_B</span> <span class="o">=</span> <span class="n">n_A</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_A</span> <span class="o">+</span> <span class="n">n_B</span><span class="p">)</span> <span class="c1"># there is less of B, so we want to weight it more</span>
 
-<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">weight_A</span><span class="p">,</span> <span class="n">weight_B</span><span class="p">)</span>
+<span class="c1"># The weights are assigned based on the labels chosen such that</span>
+<span class="c1">#  number of A * weight_A = number of B * weight_B</span>
+<span class="c1"># roughly speaking, total errors from A and B are balanced</span>
+
+<span class="c1"># weights is an array of weights for each sample</span>
+<span class="c1"># if the label is A, the weight is weight_A, otherwise it is weight_B</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">weight_A</span><span class="p">,</span> <span class="n">weight_B</span><span class="p">)</span>
 
 <span class="c1"># Visualizing the data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -558,74 +587,12 @@ However, the dataset is imbalanced, with 1000 samples from group A and 100 sampl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0ecbb93d52dc9c50296d698f0963fe0cf358b355d6dda7320bfd9184466da32a.png" src="../_images/0ecbb93d52dc9c50296d698f0963fe0cf358b355d6dda7320bfd9184466da32a.png" />
-</div>
-</div>
-<p>We can also post process the decision boundary to make it more robust</p>
-<p>Here is an criteria of fairness: the true positive rate should be the same for both groups. Therefore, we can search for different decision boundaries that satisfy this criteria.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to calculate TPR for a given threshold</span>
-<span class="k">def</span> <span class="nf">calculate_tpr</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
-    <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">TP</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">FN</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">TP</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">FN</span><span class="p">)</span>
-
-<span class="c1"># Function to find optimal threshold for equal opportunity</span>
-<span class="n">probabilities</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">best_diff</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
-<span class="n">best_threshold</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="k">for</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
-    
-    <span class="c1"># Assigning group labels based on the threshold</span>
-    <span class="n">group_A_pred</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">mask_group_A</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>
-    <span class="n">group_B_pred</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">mask_group_B</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span>
-
-    <span class="n">is_group_A</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">mask_group_A</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
-    <span class="n">is_group_B</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">mask_group_B</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
-
-    <span class="c1"># Calculating TPR for each group</span>
-    <span class="n">tpr_A</span> <span class="o">=</span> <span class="n">calculate_tpr</span><span class="p">(</span><span class="n">is_group_A</span><span class="p">,</span> <span class="n">group_A_pred</span><span class="p">)</span>
-    <span class="n">tpr_B</span> <span class="o">=</span> <span class="n">calculate_tpr</span><span class="p">(</span><span class="n">is_group_B</span><span class="p">,</span> <span class="n">group_B_pred</span><span class="p">)</span>
-    
-
-    <span class="c1"># Measure the absolute difference between TPRs</span>
-    <span class="n">diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">tpr_A</span> <span class="o">-</span> <span class="n">tpr_B</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="n">best_diff</span><span class="p">:</span>
-        <span class="n">best_diff</span> <span class="o">=</span> <span class="n">diff</span>
-        <span class="n">best_threshold</span> <span class="o">=</span> <span class="n">threshold</span>
-
-<span class="c1"># Finding and printing optimal thresholds</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimal Threshold for Group A: </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># Visualizing the data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">group_A</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group A&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">group_B</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group B&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Groups A and B&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
-<span class="c1"># Plotting the decision boundary</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decision Boundary (equal opportunity)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal Threshold for Group A: 0.09090909090909105
-</pre></div>
-</div>
-<img alt="../_images/db21b89426020173b45f4ed835cd2cdc4792e93374f9265d00e1884e120f4571.png" src="../_images/db21b89426020173b45f4ed835cd2cdc4792e93374f9265d00e1884e120f4571.png" />
+<img alt="../_images/ec44af626522434bec2ddee5bde71f08a22e3ad4c67848acf8f295a16a131afc.png" src="../_images/ec44af626522434bec2ddee5bde71f08a22e3ad4c67848acf8f295a16a131afc.png" />
 </div>
 </div>
 </section>
-<section id="more-on-fair-classification">
-<h2>More on Fair Classification<a class="headerlink" href="#more-on-fair-classification" title="Link to this heading">#</a></h2>
+<section id="fair-classification">
+<h2>Fair Classification<a class="headerlink" href="#fair-classification" title="Link to this heading">#</a></h2>
 <p><em>This section is based on <a class="reference external" href="https://www.youtube.com/watch?v=c2_ezuAnCrA&amp;amp;t=333s">this video</a>.</em></p>
 <p><strong>Protected Attributes</strong>: Features such as sex, race, and age are considered “protected attributes.” It’s crucial to ensure that classifiers remain fair concerning these attributes.</p>
 </section>
@@ -660,6 +627,115 @@ The confusion matrix in this context has the following interpretation:</p>
 <li><p><strong>Relevance</strong>: Attributes like sex and age are critical in contexts such as healthcare.</p></li>
 <li><p><strong>Regulatory Compliance</strong>: Certain laws and guidelines may require adherence to specific fairness standards.</p></li>
 </ul>
+<p>In our previous example of class imbalance, we can also post-process the decision boundary to make it “fair”.</p>
+<p>Here is an criteria of fairness: the true positive rate should be the same for both groups. Therefore, we can search for different decision boundaries that satisfy this criteria.</p>
+<p>Here is an algorithm:</p>
+<ul class="simple">
+<li><p>Iterate over a range of thresholds.</p></li>
+<li><p>For each threshold, calculate the true positive rate (TPR) for each group.</p></li>
+<li><p>Compute the difference between the TPRs.</p></li>
+<li><p>Choose the threshold with the smallest difference between the TPRs.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mask for samples in group A and B</span>
+<span class="n">mask_group_A</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span>
+<span class="n">mask_group_B</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="s2">&quot;B&quot;</span>
+
+<span class="c1"># This is the predicted probability of being in group A for each sample</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># We will try different thresholds to find the one that minimizes the difference in TPRs</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># we initialize the best difference in TPRs to infinity and the best threshold to None</span>
+<span class="n">best_diff</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+<span class="n">best_threshold</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">list_tpr_A</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">list_tpr_B</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">threshold</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+    
+    <span class="c1"># Assigning group labels based on the threshold</span>
+    <span class="c1"># probabilities[mask_group_A] the predicted probabilities for group A</span>
+    <span class="c1"># group_A_pred is a N-by-1 boolean array, where N is the number of samples in group A</span>
+    <span class="c1"># group_A_pred[i] is True if the predicted probability for sample i in group A is greater than the threshold, and therefore the sample is predicted to be in group B</span>
+    <span class="n">group_A_pred</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">mask_group_A</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span>
+    <span class="n">group_B_pred</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">mask_group_B</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span>
+
+    <span class="c1"># group_A_pred is an array of &quot;is the i-th sample in group A predicted to be in group A?&quot;</span>
+    <span class="c1"># therefore the average of this array is the True Positive Rate (TPR) for group A</span>
+    <span class="c1"># similarly for group B</span>
+    <span class="n">tpr_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group_A_pred</span><span class="p">)</span>
+    <span class="n">tpr_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">group_B_pred</span><span class="p">)</span>
+
+    <span class="n">list_tpr_A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tpr_A</span><span class="p">)</span>
+    <span class="n">list_tpr_B</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tpr_B</span><span class="p">)</span>
+    
+    <span class="c1"># Measure the absolute difference between TPRs</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">tpr_A</span> <span class="o">-</span> <span class="n">tpr_B</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="n">best_diff</span><span class="p">:</span>
+        <span class="n">best_diff</span> <span class="o">=</span> <span class="n">diff</span>
+        <span class="n">best_threshold</span> <span class="o">=</span> <span class="n">threshold</span>
+
+<span class="c1"># Finding and printing optimal thresholds</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimal Threshold: </span><span class="si">{</span><span class="n">best_threshold</span><span class="si">}</span><span class="s2">, Difference in TPR </span><span class="si">{</span><span class="n">best_diff</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># plot the TPRs as a function of the threshold</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">list_tpr_A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group A&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">list_tpr_B</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Threshold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;TPR&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Visualizing the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">group_A</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group A&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">group_B</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Group B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Groups A and B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="c1"># Plotting the decision boundary</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_threshold</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decision Boundary (equal opportunity)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal Threshold: 0.08080808080808081, Difference in TPR 0.021999999999999992
+</pre></div>
+</div>
+<img alt="../_images/f76c01a4be0d166742d42af9759072137cbe960ad05ca87b5541390b4080eaea.png" src="../_images/f76c01a4be0d166742d42af9759072137cbe960ad05ca87b5541390b4080eaea.png" />
+<img alt="../_images/94ca53c65a13d3c3da83871edcfa7cdc78bdae685478938eb88853abaa9bf662.png" src="../_images/94ca53c65a13d3c3da83871edcfa7cdc78bdae685478938eb88853abaa9bf662.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predicting the labels</span>
+<span class="n">pred_group_A</span> <span class="o">=</span> <span class="n">probabilities</span> <span class="o">&gt;</span> <span class="n">best_threshold</span>
+
+<span class="n">pred_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pred_group_A</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">)</span>
+
+<span class="c1"># Confusion matrix for group B</span>
+<span class="n">conf_matrix_B</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">pred_labels</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+
+<span class="n">disp_B</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">conf_matrix_B</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<span class="n">disp_B</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x177ad83e0&gt;
+</pre></div>
+</div>
+<img alt="../_images/8bd46b1f59934c9fedcd85eea8386e503e826e1a5fa37a07744e4763a9d1fc24.png" src="../_images/8bd46b1f59934c9fedcd85eea8386e503e826e1a5fa37a07744e4763a9d1fc24.png" />
+</div>
+</div>
 </section>
 </section>
 
@@ -711,7 +787,7 @@ The confusion matrix in this context has the following interpretation:</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-imbalance">Class Imbalance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-on-fair-classification">More on Fair Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-classification">Fair Classification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-fairness">What is Fairness?</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criteria-for-fairness">Criteria for Fairness</a></li>
 </ul>
