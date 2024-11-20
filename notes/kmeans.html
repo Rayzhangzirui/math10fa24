@@ -384,9 +384,20 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="clustering">
 <h1>Clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h1>
-<p>In addition to dimensional reduction, clustering is another important unsupervised learning technique.</p>
+<p>Supervised vs Unsupervised Learning</p>
+<ul class="simple">
+<li><p>In supervised learning, we have a dataset consisting of both input features and a target variable. We use this dataset to train a model that will make predictions on new data points.</p></li>
+<li><p>In unsupervised learning, we only have a dataset consisting of input features, and we want to find patterns in the data. We don’t have a target variable to predict.</p></li>
+</ul>
+<p>Clustering is an important unsupervised learning technique.</p>
 <p>We want to group or segment data points into subsets or “clusters”, such that data points in the same cluster are more similar to each other than to those in other clusters.</p>
 <p>Notice that clustering is different from classification. In classification, we have a set of labeled data points and we want to train a model to predict the labels of new data points. In clustering, we don’t have labeled data points, and we want to group data points based on their similarity.</p>
+<p>Example of Clustering:</p>
+<ul class="simple">
+<li><p>Grouping customers based on their purchase history for targeted marketing.</p></li>
+<li><p>Grouping documents based on their content.</p></li>
+<li><p>Grouping cells based on gene expression.</p></li>
+</ul>
 <p>In this notebook, we will use the KMeans algorithm to cluster the data.</p>
 <p>Given <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_n \in \mathbb{R}^d\)</span>, the KMeans algorithm partitions the data points into <span class="math notranslate nohighlight">\(k\)</span> clusters, denoted by <span class="math notranslate nohighlight">\(S_1, S_2, ..., S_k\)</span>. Each cluster contain indices of data points in the cluster. For example, <span class="math notranslate nohighlight">\(S_1 = {1, 2, 3}\)</span> means the first cluster contains the first three data points.</p>
 <p>Using set notation, we can write the partition as
