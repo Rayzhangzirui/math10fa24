@@ -194,6 +194,9 @@
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient Descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_binary.html">Binary Classification with logistic regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="logistic_multiclass.html">Logistic Regression for Multiclass Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -223,6 +226,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Fri.html">Lecture Week 7 Fri 11/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Mon.html">Lecture Week 8 Mon 11/18</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -232,7 +237,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 11/15/2024 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework/hw7.html">Homework 7 (Due 11/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7.html">Homework 7 (Due 11/25/2024 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -383,10 +388,15 @@
 <p>We want to group or segment data points into subsets or “clusters”, such that data points in the same cluster are more similar to each other than to those in other clusters.</p>
 <p>Notice that clustering is different from classification. In classification, we have a set of labeled data points and we want to train a model to predict the labels of new data points. In clustering, we don’t have labeled data points, and we want to group data points based on their similarity.</p>
 <p>In this notebook, we will use the KMeans algorithm to cluster the data.</p>
-<p>Given <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_n \in \mathbb{R}^d\)</span>,
-the KMeans algorithm partitions the data points into <span class="math notranslate nohighlight">\(k\)</span> clusters, <span class="math notranslate nohighlight">\(S_1 \cup S_2 \cup ... \cup S_k = \{1, 2, ..., n\}\)</span>, with centers <span class="math notranslate nohighlight">\(c_1, c_2, ..., c_k \in \mathbb{R}^d\)</span> that minimize the total distance between the data points and their corresponding cluster centers.</p>
+<p>Given <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_n \in \mathbb{R}^d\)</span>, the KMeans algorithm partitions the data points into <span class="math notranslate nohighlight">\(k\)</span> clusters, denoted by <span class="math notranslate nohighlight">\(S_1, S_2, ..., S_k\)</span>. Each cluster contain indices of data points in the cluster. For example, <span class="math notranslate nohighlight">\(S_1 = {1, 2, 3}\)</span> means the first cluster contains the first three data points.</p>
+<p>Using set notation, we can write the partition as
+<span class="math notranslate nohighlight">\(S_1 \cup S_2 \cup ... \cup S_k = \{1, 2, ..., n\}\)</span>,
+where <span class="math notranslate nohighlight">\(S_i \cap S_j = \emptyset\)</span> for <span class="math notranslate nohighlight">\(i \neq j\)</span>.</p>
+<p>For each set <span class="math notranslate nohighlight">\(S_i\)</span>, we have a cluster center <span class="math notranslate nohighlight">\(c_i \in \mathbb{R}^d\)</span>. In total, we have <span class="math notranslate nohighlight">\(k\)</span> cluster centers <span class="math notranslate nohighlight">\(c_1, c_2, ..., c_k \in \mathbb{R}^d\)</span>.</p>
+<p>Therefore, the optimization problem is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \min_{\substack{S_1, S_2, ..., S_k \\ c_1, c_2, ..., c_k}} \sum_{i=1}^{k} \sum_{j \in S_i} ||x_j - c_i||^2\end{split}\]</div>
+<p>We want to partition the data points into <span class="math notranslate nohighlight">\(k\)</span> clusters to minimize the total distance between the data points and their corresponding cluster centers.</p>
 <p>Note that, given a fixed partition, the optimal cluster centers are the means of the data points in the cluster.</p>
 <div class="math notranslate nohighlight">
 \[ c_i = \frac{1}{|S_i|} \sum_{j \in S_i} x_j\]</div>

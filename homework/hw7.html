@@ -191,6 +191,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Logistic Regression for Multiclass Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -220,6 +223,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Fri.html">Lecture Week 7 Fri 11/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Mon.html">Lecture Week 8 Mon 11/18</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Homework</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -445,7 +450,7 @@ use <code class="docutils literal notranslate"><span class="pre">stratified</spa
 </div>
 </div>
 </div>
-<p>Q2. Continue from Q1 (use the same training and test set)</p>
+<p>Q2. Continue from Q1 (use the same training and testing set)</p>
 <p>This time, let’s use kNN classifier to classify the species using <code class="docutils literal notranslate"><span class="pre">bill_length_mm</span></code>, <code class="docutils literal notranslate"><span class="pre">bill_depth_mm</span></code>.</p>
 <p>(1) Plot the training and testing accuracy for k = 1, 2, 3, …, 100. That is, for each k, fit a kNN classifier on the training set and compute the training and testing accuracy. Plot the training and testing accuracy as a function of k.</p>
 <div class="cell docutils container">
@@ -455,7 +460,7 @@ use <code class="docutils literal notranslate"><span class="pre">stratified</spa
 </div>
 </div>
 </div>
-<p>(2) Find the best k from (1). Fit the kNN classifier with the best k on the training set. Visualize the decision boundaries and the test set.</p>
+<p>(2) Find the best k from (1). Fit the kNN classifier with the best k on the testing set. Visualize the decision boundaries and the testing set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code here</span>

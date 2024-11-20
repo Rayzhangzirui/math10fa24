@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -468,21 +468,20 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c271e74a2d19417c4e944607ad9f49f290cf9eeb17e4d976f8c48f3ec21b1fd8.png" src="../_images/c271e74a2d19417c4e944607ad9f49f290cf9eeb17e4d976f8c48f3ec21b1fd8.png" />
+<img alt="../_images/8cb5eb6e8ae686ad6ac9e2f0e8d65e44fd7bcf378fd332cf7c4db451bd851a0a.png" src="../_images/8cb5eb6e8ae686ad6ac9e2f0e8d65e44fd7bcf378fd332cf7c4db451bd851a0a.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">DecisionBoundaryDisplay</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">N_class</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>  <span class="c1"># Number of samples for each class</span>
+<span class="n">N_class</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>  <span class="c1"># Number of samples for each class</span>
 
 <span class="c1"># Generate data for three classes, normally distributed with mean at [1, 0], [0, sqrt(3)], and [-1, 0]</span>
 <span class="n">x_class1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">N_class</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> 
@@ -491,10 +490,14 @@
 
 <span class="c1"># Combine into a single dataset</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">x_class1</span><span class="p">,</span> <span class="n">x_class2</span><span class="p">,</span> <span class="n">x_class3</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_class</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N_class</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N_class</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_class</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N_class</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N_class</span><span class="p">[</span><span class="mi">2</span><span class="p">])))</span>
 
 <span class="c1"># Number of neighbors to demonstrate</span>
 <span class="n">n_neighbors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
+
+<span class="c1"># Define colormap for the 3 classes</span>
+<span class="n">fixed_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ca02c&#39;</span><span class="p">]</span>  <span class="c1"># Blue, Orange, Green</span>
+<span class="n">class_cmap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">fixed_colors</span><span class="p">)</span>
 
 <span class="c1"># Set up the subplot configuration</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -505,7 +508,11 @@
     <span class="n">clf</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-    <span class="c1"># Plotting decision boundaries</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="n">include_color</span> <span class="o">=</span> <span class="p">[</span><span class="n">fixed_colors</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)]</span>
+
+    <span class="c1"># Generate decision boundary while ensuring consistent class mapping</span>
     <span class="n">disp</span> <span class="o">=</span> <span class="n">DecisionBoundaryDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span>
         <span class="n">clf</span><span class="p">,</span>
         <span class="n">X</span><span class="p">,</span>
@@ -513,17 +520,17 @@
         <span class="n">response_method</span><span class="o">=</span><span class="s1">&#39;predict&#39;</span><span class="p">,</span>  <span class="c1"># can use &#39;predict_proba&#39; for probability contours</span>
         <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
         <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-        <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">ListedColormap</span><span class="p">(</span><span class="n">include_color</span><span class="p">)</span>
     <span class="p">)</span>
     <span class="c1"># Scatter plot of the training data</span>
-    <span class="n">scatter</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+    <span class="n">scatter</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">class_cmap</span><span class="p">)</span>
     
     <span class="c1"># Customizing the plots</span>
-    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Decision Boundary</span><span class="se">\n</span><span class="s1">(k = </span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Decision Boundary</span><span class="se">\n</span><span class="s1">(k = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Feature 1&#39;</span><span class="p">)</span>
     <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Feature 2&#39;</span><span class="p">)</span>
 
-<span class="c1"># Adding a legend to the last plot (or any one of them)</span>
+<span class="c1"># Adding a legend to the last plot</span>
 <span class="n">legend</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="o">*</span><span class="n">scatter</span><span class="o">.</span><span class="n">legend_elements</span><span class="p">(),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Classes&quot;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">legend</span><span class="p">)</span>
 
@@ -534,14 +541,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4928b2064e9b5135a8ce74bdd92d25c120ff2e9803572f4de5d3b0553fc63e6b.png" src="../_images/4928b2064e9b5135a8ce74bdd92d25c120ff2e9803572f4de5d3b0553fc63e6b.png" />
+<img alt="../_images/47f0243dbf97c6a79f5ec4a8ab003c77a7fa52ecffeefb2db61feb873bb6e987.png" src="../_images/47f0243dbf97c6a79f5ec4a8ab003c77a7fa52ecffeefb2db61feb873bb6e987.png" />
 </div>
 </div>
 <section id="analyzing-the-bias-variance-tradeoff-derivation-not-exam-material">
 <h2>Analyzing the Bias-Variance Tradeoff (Derivation Not Exam Material)<a class="headerlink" href="#analyzing-the-bias-variance-tradeoff-derivation-not-exam-material" title="Link to this heading">#</a></h2>
 <p>Using kNN regression as an example, we can understand the bias-variance tradeoff mathematically.</p>
-<p>Suppose the true model is <span class="math notranslate nohighlight">\(y = f(x) + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random variable with mean 0 and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. That is, given <span class="math notranslate nohighlight">\(x\)</span>, the response <span class="math notranslate nohighlight">\(y\)</span> is generated by <span class="math notranslate nohighlight">\(f(x)\)</span> plus some noise.</p>
-<p>Now suppose we have a testing data <span class="math notranslate nohighlight">\(x_0\)</span>, whose response is <span class="math notranslate nohighlight">\(y_0 = f(x_0) + \epsilon_0\)</span>.</p>
+<p>Suppose the model is <span class="math notranslate nohighlight">\(y = f(x) + \epsilon\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is a random variable with mean 0 and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. That is, given <span class="math notranslate nohighlight">\(x\)</span>, the response <span class="math notranslate nohighlight">\(y\)</span> is generated by <span class="math notranslate nohighlight">\(f(x)\)</span> plus some noise.</p>
+<p>Now suppose we have a testing data <span class="math notranslate nohighlight">\(x_0\)</span>, whose response is <span class="math notranslate nohighlight">\(y_0 = f(x_0)\)</span>.</p>
 <p>Suppose it’s k-nearest neighbors in the training set are <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_k\)</span>. Then the prediction of the kNN algorithm is</p>
 <div class="math notranslate nohighlight">
 \[\hat{y} = \frac{1}{k} \sum_{i=1}^k y_i = \frac{1}{k} \sum_{i=1}^k f(x_i) + \frac{1}{k} \sum_{i=1}^k \epsilon_i.\]</div>
@@ -551,15 +558,6 @@
 <li><p><span class="math notranslate nohighlight">\(\epsilon_i\)</span>’s are independent and identically distributed, with mean 0 and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. In particular, <span class="math notranslate nohighlight">\(\text{E}[\epsilon_i^2] = \sigma^2\)</span> for all <span class="math notranslate nohighlight">\(i\)</span>=0, 1, 2, …, k.</p></li>
 </ul>
 <p>The <strong>expected squared error</strong> between the prediction <span class="math notranslate nohighlight">\(\hat{y}\)</span>, and the measured response <span class="math notranslate nohighlight">\(y_0\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-\text{E}[(\hat{y} - y_0)^2] &amp;= \text{E}[(\hat{y} - f(x_0) - \epsilon_0)^2] \\
-&amp;= \text{E}[(\hat{y} - f(x_0))^2] + \text{E}[\epsilon_0^2] + 2 \text{E}[(\hat{y} - f(x_0)) \epsilon_0] \\
-&amp;= \text{E}[(\hat{y} - f(x_0))^2] + \underbrace{\sigma^2}_{\text{noise}}.
-\end{aligned}\end{split}\]</div>
-<p>The 3rd term in the second line is 0 because <span class="math notranslate nohighlight">\(\hat{y} - f(x_0)\)</span> is independent of <span class="math notranslate nohighlight">\(\epsilon_0\)</span>, and <span class="math notranslate nohighlight">\(\text{E}[\epsilon_0] = 0\)</span>.</p>
-<p>This noise term is the error that we cannot avoid, because it is due to the inherent randomness in the response. Even if we know the model <span class="math notranslate nohighlight">\(f(x)\)</span> perfectly, we would still have this error.</p>
-<p>We can decompose the first term into two terms:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
 \text{E} \left[   \left(\hat{y} - f(x_0)\right)^2\right] 
@@ -578,14 +576,15 @@
 <ul class="simple">
 <li><p>The 3rd term in the second line is 0 because <span class="math notranslate nohighlight">\(\epsilon_i\)</span>’s are independent with mean 0.</p></li>
 </ul>
-<p>Therefore, we have
-$<span class="math notranslate nohighlight">\(\begin{aligned}
+<p>Therefore, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
 \text{E} \left[   \left(\hat{y} - f(x_0)\right)^2\right] = \underbrace{\left(\frac{1}{k} \sum_{i=1}^k f(x_i) - f(x_0)\right)^2}_{\text{bias}^2} + \underbrace{\frac{1}{k} \sigma^2}_{\text{variance}}
-\end{aligned}\)</span>$</p>
+\end{aligned}\]</div>
 <p>Therefore, we decompose the expected error into three terms: the bias term, the variance term, and the noise term.</p>
 <div class="math notranslate nohighlight">
 \[
-\text{E}[(\hat{y} - y_0)^2] = \underbrace{\left(\frac{1}{k} \sum_{i=1}^k f(x_i) - f(x_0)\right)^2}_{\text{bias}^2} + \underbrace{\frac{1}{k} \sigma^2}_{\text{variance}} + \underbrace{\sigma^2}_{\text{noise}}
+\text{E}[(\hat{y} - y_0)^2] = \underbrace{\left(\frac{1}{k} \sum_{i=1}^k f(x_i) - f(x_0)\right)^2}_{\text{bias}^2} + \underbrace{\frac{1}{k} \sigma^2}_{\text{variance}}
 \]</div>
 <p>As <span class="math notranslate nohighlight">\(k\)</span> increase,</p>
 <ul class="simple">
