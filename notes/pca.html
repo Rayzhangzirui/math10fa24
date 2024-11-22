@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -65,6 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notes/pca';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lectures" href="../lecture/intro.html" />
+    <link rel="prev" title="Clustering" href="kmeans.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,10 +164,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="notes_intro.html">Notes</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="python_review.html">Python review</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="OOP.html">Object-Oriented Programming</a></li>
@@ -197,6 +197,8 @@
 <li class="toctree-l2"><a class="reference internal" href="fairness.html">Bias and Fairness</a></li>
 <li class="toctree-l2"><a class="reference internal" href="knn.html">Nearest Neighbor Regression and Classification</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="kmeans.html">Clustering</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dimensionality Reduction</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -228,6 +230,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Fri.html">Lecture Week 7 Fri 11/15</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Mon.html">Lecture Week 8 Mon 11/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Wed.html">Lecture Week 8 Wed 11/20</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -380,6 +383,14 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-problem">Optimization Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-find-the-optimal-subspace-v">How do we find the optimal subspace <span class="math notranslate nohighlight">\(V^*\)</span>?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">1. Singular Value Decomposition (SVD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigendecomposition-of-the-covariance-matrix">2. Eigendecomposition of the Covariance Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-the-principal-component">How to interpret the principal component?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-on-synthetic-2d-data">PCA on synthetic 2D data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-on-hand-written-digits">PCA on hand written digits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-pca">Application of PCA</a></li>
@@ -400,42 +411,62 @@
 <p>Given some high dimensional data, we can try to reduce its dimension.</p>
 <p>This can help us to visualize the data and compress the data, which facilitates downstream tasks. To achieve good compression, we want to keep the most important information and discard the less important information, such as noise.</p>
 <p>We will introduce the classic method for dimensionality reduction: Principal Component Analysis (PCA).</p>
-<p>Suppose we have n data points in p-dimensional space: <span class="math notranslate nohighlight">\(x_1, x_2, ..., x_n \in \mathbb{R}^p\)</span>, and we want to reduce the dimension to d (d &lt; p).</p>
-<p>Our goal is to find a d-dimensional subspace such that the projection of the data points onto this subspace best approximates the original data points.</p>
-<p>Mathematically, we are trying to approximate each <span class="math notranslate nohighlight">\(x_k\)</span> by</p>
+<section id="principal-component-analysis-pca">
+<h2>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Link to this heading">#</a></h2>
+<p>Suppose we have n data points in p-dimensional space: <span class="math notranslate nohighlight">\(\mathbf{x}_1, \mathbf{x}_2, ..., \mathbf{x}_n \in \mathbb{R}^p\)</span>, and we want to reduce the dimension to d (d &lt; p).</p>
+<p>Our goal is to find a <span class="math notranslate nohighlight">\(d\)</span>-dimensional subspace such that the projection of the data points onto this subspace best approximates the original data points.</p>
+<p>Mathematically, we are trying to approximate each <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> by</p>
 <div class="math notranslate nohighlight">
-\[x_k \approx \mu + \sum_{j=1}^d (\beta_k)_j v_j\]</div>
-<p>where <span class="math notranslate nohighlight">\(v_1, v_2, ..., v_d \in \mathbb{R}^p\)</span>
-is an orthonormal basis for the d-dimensional subspace, <span class="math notranslate nohighlight">\(\mu\)</span> represents the translation, and <span class="math notranslate nohighlight">\((\beta_k)_j\)</span> is the coefficient of the projection of <span class="math notranslate nohighlight">\(x_k\)</span> onto <span class="math notranslate nohighlight">\(v_j\)</span>.</p>
-<p>We can represent the subspace by <span class="math notranslate nohighlight">\( V = [v_1, v_2, ..., v_d] \in \mathbb{R}^{p \times d}\)</span>, and the projection of <span class="math notranslate nohighlight">\(x_k\)</span> onto the subspace is <span class="math notranslate nohighlight">\(V \beta_k\)</span>, where <span class="math notranslate nohighlight">\(\beta_k \in \mathbb{R}^d\)</span>.</p>
+\[\mathbf{x}_k \approx \boldsymbol{\mu} + \sum_{j=1}^d (\beta_k)_j \mathbf{v}_j\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{v}_1, \mathbf{v}_2, ..., \mathbf{v}_d \in \mathbb{R}^p\)</span>
+is an orthonormal basis for the d-dimensional subspace, <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> represents the translation, and <span class="math notranslate nohighlight">\((\beta_k)_j\)</span> is the coefficient of the projection of <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{v}_j\)</span>.</p>
+<p>We can represent the subspace by <span class="math notranslate nohighlight">\( V = [\mathbf{v}_1, \mathbf{v}_2, ..., \mathbf{v}_d] \in \mathbb{R}^{p \times d}\)</span>, and the projection of <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> onto the subspace is <span class="math notranslate nohighlight">\(V \beta_k\)</span>, where <span class="math notranslate nohighlight">\(\beta_k \in \mathbb{R}^d\)</span>.</p>
 <p>Then we can rewrite the approximation as</p>
 <div class="math notranslate nohighlight">
-\[x_k \approx \mu + V \beta_k,\]</div>
-<p>where <span class="math notranslate nohighlight">\(V^T V = I_{d \times d}\)</span>, because <span class="math notranslate nohighlight">\(v_1, v_2, ..., v_d\)</span> are orthonormal.</p>
+\[\mathbf{x}_k \approx \boldsymbol{\mu} + V \beta_k,\]</div>
+<p>where <span class="math notranslate nohighlight">\(V^T V = I_{d \times d}\)</span>, because <span class="math notranslate nohighlight">\(\mathbf{v}_1, \mathbf{v}_2, ..., \mathbf{v}_d\)</span> are orthonormal.</p>
+</section>
+<section id="optimization-problem">
+<h2>Optimization Problem<a class="headerlink" href="#optimization-problem" title="Link to this heading">#</a></h2>
 <p>We arrive at the following optimization problem:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\min_{\substack{\mu, \beta_1, \beta_2, ..., \beta_n,\\ V^T V = 1}} \sum_{k=1}^n ||x_k - \mu - V \beta_k||^2\end{split}\]</div>
-<p>We can partially optimize <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\beta_k\)</span> to obtain</p>
+\[\begin{split}\min_{\substack{\boldsymbol{\mu}, \beta_1, \beta_2, ..., \beta_n,\\ V^T V = 1}} \sum_{k=1}^n ||\mathbf{x}_k - \boldsymbol{\mu} - V \beta_k||^2\end{split}\]</div>
+<p>We can partially optimize <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> and <span class="math notranslate nohighlight">\(\beta_k\)</span> to obtain</p>
 <div class="math notranslate nohighlight">
-\[\mu^* = \bar{x} = \frac{1}{n} \sum_{k=1}^n x_k\]</div>
+\[\boldsymbol{\mu}^* = \bar{\mathbf{x}} = \frac{1}{n} \sum_{k=1}^n \mathbf{x}_k\]</div>
 <div class="math notranslate nohighlight">
-\[\beta_k^* = V^T (x_k - \mu)\]</div>
+\[\beta_k^* = V^T (\mathbf{x}_k - \boldsymbol{\mu})\]</div>
 <p>Then we can rewrite the optimization problem as</p>
 <div class="math notranslate nohighlight">
-\[\min_{V^T V = 1} \sum_{k=1}^n ||x_k - \bar{x} - V V^T (x_k - \bar{x})||^2\]</div>
-<p><strong>How do we find the optimal subspace <span class="math notranslate nohighlight">\(V^*\)</span>?</strong></p>
-<p>Let X be the centered data matrix, <span class="math notranslate nohighlight">\(X \in \mathbb{R}^{n \times p}\)</span>, where <span class="math notranslate nohighlight">\(X_{ij} = x_{ij} - \bar{x}_j\)</span>. The following two characterizations of <span class="math notranslate nohighlight">\(V^*\)</span> are equivalent:</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(V^*\)</span> consists of the first <span class="math notranslate nohighlight">\(d\)</span> columns of the right singular vectors of X.</p></li>
-</ol>
+\[\min_{V^T V = 1} \sum_{k=1}^n ||\mathbf{x}_k - \bar{x} - V V^T (\mathbf{x}_k - \bar{x})||^2\]</div>
+</section>
+<section id="how-do-we-find-the-optimal-subspace-v">
+<h2>How do we find the optimal subspace <span class="math notranslate nohighlight">\(V^*\)</span>?<a class="headerlink" href="#how-do-we-find-the-optimal-subspace-v" title="Link to this heading">#</a></h2>
+<p>Let X be the centered data matrix <span class="math notranslate nohighlight">\(X \in \mathbb{R}^{n \times p}\)</span>. That is, the i-th row of X is <span class="math notranslate nohighlight">\(\mathbf{x}_i - \bar{\mathbf{x}} \in \mathbb{R}^p\)</span>.</p>
+<p>The following two characterizations of <span class="math notranslate nohighlight">\(V^*\)</span> are equivalent:</p>
+<section id="singular-value-decomposition-svd">
+<h3>1. Singular Value Decomposition (SVD)<a class="headerlink" href="#singular-value-decomposition-svd" title="Link to this heading">#</a></h3>
 <p>Consider the <strong>singular value decomposition (SVD)</strong> of X:</p>
 <div class="math notranslate nohighlight">
 \[X = U D V^T\]</div>
 <p>where <span class="math notranslate nohighlight">\(U\)</span> is an <span class="math notranslate nohighlight">\(N \times p\)</span> orthogonal matrix, <span class="math notranslate nohighlight">\(D\)</span> is a <span class="math notranslate nohighlight">\(p \times p\)</span> diagonal matrix, with diagonal entries <span class="math notranslate nohighlight">\(d_1 \geq d_2 \geq ... \geq d_p \geq 0\)</span>, and <span class="math notranslate nohighlight">\(V\)</span> is a <span class="math notranslate nohighlight">\(p \times p\)</span> orthogonal matrix.</p>
-<ol class="arabic simple" start="2">
-<li><p><span class="math notranslate nohighlight">\(V^*\)</span> consists of the <span class="math notranslate nohighlight">\(d\)</span> leading eigenvectors of the covariance matrix of X.</p></li>
-</ol>
+<p><span class="math notranslate nohighlight">\(V^*\)</span> consists of the first <span class="math notranslate nohighlight">\(d\)</span> columns of the right singular vectors of X.</p>
+</section>
+<section id="eigendecomposition-of-the-covariance-matrix">
+<h3>2. Eigendecomposition of the Covariance Matrix<a class="headerlink" href="#eigendecomposition-of-the-covariance-matrix" title="Link to this heading">#</a></h3>
 <p>The covariance matrix of X is <span class="math notranslate nohighlight">\(\Sigma = \frac{1}{n} X^T X\)</span>, which is a <span class="math notranslate nohighlight">\(p \times p\)</span> symmetric matrix, and it has <span class="math notranslate nohighlight">\(p\)</span> real eigenvalues <span class="math notranslate nohighlight">\(\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_p \geq 0\)</span> and <span class="math notranslate nohighlight">\(p\)</span> orthonormal eigenvectors <span class="math notranslate nohighlight">\(v_1, v_2, ..., v_p\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(V^*\)</span> consists of the <span class="math notranslate nohighlight">\(d\)</span> leading eigenvectors of the covariance matrix of X.</p>
+</section>
+</section>
+<section id="how-to-interpret-the-principal-component">
+<h2>How to interpret the principal component?<a class="headerlink" href="#how-to-interpret-the-principal-component" title="Link to this heading">#</a></h2>
+<p>The following two interpretations are equivalent:</p>
+<ol class="arabic simple">
+<li><p>The first principal component minimize the projection error. We lost the least information when we project the data points onto this direction.</p></li>
+<li><p>The first principal component maximizes the variance of the projected data. We preserve the most information when we project the data points onto this direction.</p></li>
+</ol>
+<p>“Information” is a vague concept. To be a bit more specific, consider a regression or classification task. If a feature is the same for all data points, it is not useful for prediction or classification. If a feature varies a lot, it is more likely to be useful.</p>
+</section>
 <section id="pca-on-synthetic-2d-data">
 <h2>PCA on synthetic 2D data<a class="headerlink" href="#pca-on-synthetic-2d-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -499,6 +530,7 @@ is an orthonormal basis for the d-dimensional subspace, <span class="math notran
 <img alt="../_images/01f236ee8a59b35c9b83bc05f136fec9ad4990a88e0bf7b75c71979f93d699a7.png" src="../_images/01f236ee8a59b35c9b83bc05f136fec9ad4990a88e0bf7b75c71979f93d699a7.png" />
 </div>
 </div>
+<p>more <a class="reference external" href="https://setosa.io/ev/principal-component-analysis/">visualization</a></p>
 </section>
 <section id="pca-on-hand-written-digits">
 <h2>PCA on hand written digits<a class="headerlink" href="#pca-on-hand-written-digits" title="Link to this heading">#</a></h2>
@@ -762,6 +794,24 @@ With the first 20 principal components, we can achieve a classification accuracy
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="kmeans.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Clustering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lecture/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lectures</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -779,6 +829,14 @@ With the first 20 principal components, we can achieve a classification accuracy
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-problem">Optimization Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-find-the-optimal-subspace-v">How do we find the optimal subspace <span class="math notranslate nohighlight">\(V^*\)</span>?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singular-value-decomposition-svd">1. Singular Value Decomposition (SVD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigendecomposition-of-the-covariance-matrix">2. Eigendecomposition of the Covariance Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-the-principal-component">How to interpret the principal component?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-on-synthetic-2d-data">PCA on synthetic 2D data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-on-hand-written-digits">PCA on hand written digits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-of-pca">Application of PCA</a></li>
