@@ -8,7 +8,7 @@ The purpose of the final project is to submit a notebook project which analyzes 
 ## Submission
 * Due date: 11:59pm, Wednesday of the Finals Week.
 * Before making the submission, Restart kernel>Run all to make sure there is no error.
-* Submit .ipynb and .pdf file to Canvas>Assignments>Final Project.
+* Submit .ipynb to Gradescope
 * Format: the first cell of the notebook should be a markdown cell with the following format:
 ```
 # [Title]
@@ -19,7 +19,7 @@ Course Project, UC Irvine, Math 10, Fall 24
 
 I would like to post my notebook on the course's website. [Yes/No]
 ```
-Answer the question regarding whether you want your project posted in the course notes. If the answer is "yes", you can also email me to update the notebook or take it down later.
+Answer the question regarding whether you want your project posted in the course notes. If the answer is "yes", you can also email me to update or remove the notebook later.
 
 ## Requirements
 * This is an individual project.
