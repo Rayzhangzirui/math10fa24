@@ -53,7 +53,7 @@ The course project is worth 20% of the course grade, and we will grade the proje
     - Results are clearly interpreted with appropriate conclusions drawn.
     
 * **Extra** (4 points)
-    - The project has elements that go beyond the course material, such as new machine learning models or new libraries.
+    - The project has new algorithms ((tree-based models, support vector machines, etc.)) that go beyond the course material. Training neural networks count as an extra.
 
 ## Examples
 Here are examples of student projects: [Spring 2024](https://rayzhangzirui.github.io/math10sp24/final_project_demo/intro.html), [Spring 2023](https://christopherdavisuci.github.io/UCI-Math-10-S23/Proj/StudentProjects.html), [Spring 2022](https://christopherdavisuci.github.io/UCI-Math-10-S22/Proj/StudentProjects.html), [Winter 2022](https://christopherdavisuci.github.io/UCI-Math-10-W22/Proj/StudentProjects.html), [Fall 2022](https://christopherdavisuci.github.io/UCI-Math-10-F22/Proj/StudentProjects.html).
@@ -83,7 +83,7 @@ Here is some general advice:
 - Include all data cleaning steps in the project. Work done outside Python, like in Excel, won't count.
 
 **Q: Can I use a different plotting library?**
-- Yes, the content of the figure is more important than the library used.
+- Yes, the content of the figure is more important than the library used. But choosing a different plotting library does not count as an "extra" for the project.
 
 **Q: Do I need to post my project in the course notes?**
 - Posting is optional. It can be useful for applications to internships or grad school. You can email me to update or remove it later.
