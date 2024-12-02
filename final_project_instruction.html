@@ -197,6 +197,8 @@
 
 <li class="toctree-l2"><a class="reference internal" href="notes/kmeans.html">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notes/gan.html">Generative Models</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -238,7 +240,7 @@
 <li class="toctree-l2"><a class="reference internal" href="homework/hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="homework/hw5_sol.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="homework/hw6_sol.html">Homework 6 (Due 11/15/2024 at 11:59pm)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="homework/hw7.html">Homework 7 (Due 11/25/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="homework/hw7_sol.html">Homework 7 (Due 11/25/2024 at 11:59pm)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -514,6 +516,17 @@
 <p><strong>Q: How can I use an Excel file instead of a CSV file?</strong></p>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">pd.read_excel</span></code> for Excel files. Alternatively, open the Excel file in Excel or Google Sheets, save it as a CSV, and then upload that CSV file.</p></li>
+</ul>
+<p><strong>Q: What if the dataset is large and the algorithm takes a long time to run?</strong></p>
+<ul class="simple">
+<li><p>Scaling can improve convergence of some algorithm. Features with larger scales will dominate the gradients, causing slower convergence. he optimization trajectory might “zig-zag” rather than smoothly progressing toward the minimum.</p></li>
+<li><p>You can reduce the dimensionality of the data and work with a smaller dataset.</p></li>
+<li><p>It’s fine to use a subset of the data for the project. Just mention that you did so.</p></li>
+</ul>
+<p><strong>Q: I can’t intall pytorch or tensorflow on my computer.</strong></p>
+<ul class="simple">
+<li><p>Installing pytorch or tensorflow can be tricky sometime.</p></li>
+<li><p>You can use Google Colab, which is a free Jupyter notebook environment that runs on Google’s cloud servers. It comes with many libraries pre-installed, including PyTorch and TensorFlow, and have free access to GPUs.</p></li>
 </ul>
 </section>
 </section>

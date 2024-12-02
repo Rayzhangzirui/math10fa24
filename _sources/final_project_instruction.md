@@ -90,3 +90,12 @@ Here is some general advice:
 
 **Q: How can I use an Excel file instead of a CSV file?**
 - Use `pd.read_excel` for Excel files. Alternatively, open the Excel file in Excel or Google Sheets, save it as a CSV, and then upload that CSV file.
+
+**Q: What if the dataset is large and the algorithm takes a long time to run?**
+- Scaling can improve convergence of some algorithm. Features with larger scales will dominate the gradients, causing slower convergence. he optimization trajectory might “zig-zag” rather than smoothly progressing toward the minimum.
+- You can reduce the dimensionality of the data and work with a smaller dataset.
+- It's fine to use a subset of the data for the project. Just mention that you did so.
+
+**Q: I can't intall pytorch or tensorflow on my computer.**
+- Installing pytorch or tensorflow can be tricky sometime.
+- You can use Google Colab, which is a free Jupyter notebook environment that runs on Google's cloud servers. It comes with many libraries pre-installed, including PyTorch and TensorFlow, and have free access to GPUs.
