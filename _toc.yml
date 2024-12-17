@@ -23,6 +23,12 @@ chapters:
       - file: notes/gradient_descent
       - file: notes/logistic_binary
       - file: notes/logistic_multiclass
+      - file: notes/fairness
+      - file: notes/knn
+      - file: notes/kmeans
+      - file: notes/pca
+      - file: notes/intro_nn
+      - file: notes/gan
   - file: lecture/intro
     sections:
       - file: lecture/week1_Mon
@@ -43,6 +49,9 @@ chapters:
       - file: lecture/week6_Wed
       - file: lecture/week6_Fri
       - file: lecture/week7_Wed
+      - file: lecture/week7_Fri
+      - file: lecture/week8_Mon
+      - file: lecture/week8_Wed
   - file: homework/intro
     sections:
       - file: homework/hw1
@@ -51,4 +60,23 @@ chapters:
       - file: homework/hw4_sol
       - file: homework/hw5_sol
       - file: homework/hw6_sol
-      - file: homework/hw7
+      - file: homework/hw7_sol
+  - file: final_projects/intro
+    sections:
+      - file: final_projects/Caroline_Cheng.ipynb 
+      - file: final_projects/Davin_Huynh.ipynb 
+      - file: final_projects/Fang_Zhao.ipynb 
+      - file: final_projects/Gabriela_Zuno.ipynb 
+      - file: final_projects/Hailili_Subinuer.ipynb 
+      - file: final_projects/Helena_Tran.ipynb 
+      - file: final_projects/intro.md 
+      - file: final_projects/James_Cho.ipynb 
+      - file: final_projects/Kaiyuan_Chen.ipynb 
+      - file: final_projects/Kent_Hocaoglu.ipynb 
+      - file: final_projects/Krishna_Saraogi.ipynb 
+      - file: final_projects/Nguyen_Bui.ipynb 
+      - file: final_projects/Nicholas_Le.ipynb 
+      - file: final_projects/Nikolina_Sentovich.ipynb 
+      - file: final_projects/Pinge_Chen.ipynb 
+      - file: final_projects/Simon_Chen.ipynb 
+      - file: final_projects/Zhang_Zhang.ipynb

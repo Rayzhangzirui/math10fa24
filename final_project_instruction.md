@@ -8,7 +8,7 @@ The purpose of the final project is to submit a notebook project which analyzes 
 ## Submission
 * Due date: 11:59pm, Wednesday of the Finals Week.
 * Before making the submission, Restart kernel>Run all to make sure there is no error.
-* Submit .ipynb and .pdf file to Canvas>Assignments>Final Project.
+* Submit .ipynb to Gradescope
 * Format: the first cell of the notebook should be a markdown cell with the following format:
 ```
 # [Title]
@@ -19,7 +19,7 @@ Course Project, UC Irvine, Math 10, Fall 24
 
 I would like to post my notebook on the course's website. [Yes/No]
 ```
-Answer the question regarding whether you want your project posted in the course notes. If the answer is "yes", you can also email me to update the notebook or take it down later.
+Answer the question regarding whether you want your project posted in the course notes. If the answer is "yes", you can also email me to update or remove the notebook later.
 
 ## Requirements
 * This is an individual project.
@@ -53,7 +53,7 @@ The course project is worth 20% of the course grade, and we will grade the proje
     - Results are clearly interpreted with appropriate conclusions drawn.
     
 * **Extra** (4 points)
-    - The project has elements that go beyond the course material, such as new machine learning models or new libraries.
+    - The project has new algorithms (tree-based models, support vector machines, etc.) that go beyond the course material. Training neural networks count as an extra.
 
 ## Examples
 Here are examples of student projects: [Spring 2024](https://rayzhangzirui.github.io/math10sp24/final_project_demo/intro.html), [Spring 2023](https://christopherdavisuci.github.io/UCI-Math-10-S23/Proj/StudentProjects.html), [Spring 2022](https://christopherdavisuci.github.io/UCI-Math-10-S22/Proj/StudentProjects.html), [Winter 2022](https://christopherdavisuci.github.io/UCI-Math-10-W22/Proj/StudentProjects.html), [Fall 2022](https://christopherdavisuci.github.io/UCI-Math-10-F22/Proj/StudentProjects.html).
@@ -83,10 +83,19 @@ Here is some general advice:
 - Include all data cleaning steps in the project. Work done outside Python, like in Excel, won't count.
 
 **Q: Can I use a different plotting library?**
-- Yes, the content of the figure is more important than the library used.
+- Yes, the content of the figure is more important than the library used. But choosing a different plotting library does not count as an "extra" for the project.
 
 **Q: Do I need to post my project in the course notes?**
 - Posting is optional. It can be useful for applications to internships or grad school. You can email me to update or remove it later.
 
 **Q: How can I use an Excel file instead of a CSV file?**
 - Use `pd.read_excel` for Excel files. Alternatively, open the Excel file in Excel or Google Sheets, save it as a CSV, and then upload that CSV file.
+
+**Q: What if the dataset is large and the algorithm takes a long time to run?**
+- Scaling can improve convergence of some algorithm. Features with larger scales will dominate the gradients, causing slower convergence. he optimization trajectory might “zig-zag” rather than smoothly progressing toward the minimum.
+- You can reduce the dimensionality of the data and work with a smaller dataset.
+- It's fine to use a subset of the data for the project. Just mention that you did so.
+
+**Q: I can't intall pytorch or tensorflow on my computer.**
+- Installing pytorch or tensorflow can be tricky sometime.
+- You can use Google Colab, which is a free Jupyter notebook environment that runs on Google's cloud servers. It comes with many libraries pre-installed, including PyTorch and TensorFlow, and have free access to GPUs.
