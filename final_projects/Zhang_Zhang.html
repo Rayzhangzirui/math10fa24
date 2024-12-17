@@ -1,0 +1,1902 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Prediction of High School Students’ Academic Performance &#8212; UCI Math 10, Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_projects/Zhang_Zhang';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Medical Insurance Prediction" href="Simon_Chen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Fall 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Fall 2024
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Logistic Regression for Multiclass Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/kmeans.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Fri.html">Lecture Week 7 Fri 11/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Mon.html">Lecture Week 8 Mon 11/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Wed.html">Lecture Week 8 Wed 11/20</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 11/15/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 11/25/2024 at 11:59pm)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Student Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Caroline_Cheng.html">Ballon D’or winner prediction model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Davin_Huynh.html">Predicting Heart Disease with Standard Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gabriela_Zuno.html">Correlation Bewteen a T.V Show’s Genre and Queer Female Character Deaths</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Hailili_Subinuer.html">The Application of Machine Learning in Gold Price Prediction</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Helena_Tran.html">Analyzing Life Expectancy Across Countries</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="James_Cho.html">TQQQ Stock Predictor Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kaiyuan_Chen.html">Data analysis of new energy vehicles in China</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kent_Hocaoglu.html">Analysis of Crime Reports in LA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Krishna_Saraogi.html">Step 1: Data Exploration/ Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nguyen_Bui.html">Title: Should I investing to SIRI stock ? Reason?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nicholas_Le.html">Predicting Student Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nikolina_Sentovich.html">An Analysis on the Likeliness of People Changing Their Occupation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Pinge_Chen.html"><strong>Predicting Subscription to Term Deposit</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simon_Chen.html"><strong>Medical Insurance Prediction</strong></a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Prediction of High School Students’ Academic Performance</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_projects/Zhang_Zhang.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Prediction of High School Students’ Academic Performance</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pre-processing">Data Pre-processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explorotory-data-analysis">Explorotory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpa-and-gradeclass">GPA and GradeClass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-features">Other Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demographic-features-analysis">Demographic Features Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#study-habits">Study Habits</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parental-involvement">Parental Involvement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracurricular">Extracurricular</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine">Support Vector Machine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbor-classification">K-Nearest-Neighbor Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network">Neural Network</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="prediction-of-high-school-students-academic-performance">
+<h1>Prediction of High School Students’ Academic Performance<a class="headerlink" href="#prediction-of-high-school-students-academic-performance" title="Link to this heading">#</a></h1>
+<p>Author: Zhang Zhang</p>
+<p>Course Project, UC Irvine, Math 10, Fall 24</p>
+<p>I would like to post my notebook on the course’s website. [Yes]</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Students’ Academic performance can be influenced by multiple factors. In this project, we aim to do a multi-classification of a large set of high school student’s grade base on their behaviors. Different models, such as Logistic Regression, Support Vector Machine, Random Forest, KNN, Neural Network is attempted in this project. The target variable, <strong>GradeClass</strong>, categorizes students’ grades, making the dataset ideal for educational research, predictive modeling, and statistical analysis.</p>
+</section>
+<section id="data-pre-processing">
+<h2>Data Pre-processing<a class="headerlink" href="#data-pre-processing" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://www.kaggle.com/datasets/rabieelkharoua/students-performance-dataset/data">dataset</a> chosed in this project contains comprehensive information of <strong>2392 high school students</strong>. It gives both numerical and categorical data of each student to reflect their school performance related aspects. In this section, we will pre-process the data, including loading, cleaning, and transforming the raw data into a format suitable for model training and analysis. Also, we will have a overall impression on the dataset.</p>
+<p>Here we first load the dataset and drop all null values. For convenience, we remapped the GradeClass variable from 0.0-4.0 to 1-5, while 1 means A class and 5 points to F class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;Student_performance_data _.csv&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">grade_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">grade_mapping</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GradeClass
+5.0    1211
+4.0     414
+3.0     391
+2.0     269
+1.0     107
+Name: count, dtype: int64
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>StudentID</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Ethnicity</th>
+      <th>ParentalEducation</th>
+      <th>StudyTimeWeekly</th>
+      <th>Absences</th>
+      <th>Tutoring</th>
+      <th>ParentalSupport</th>
+      <th>Extracurricular</th>
+      <th>Sports</th>
+      <th>Music</th>
+      <th>Volunteering</th>
+      <th>GPA</th>
+      <th>GradeClass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1001</td>
+      <td>17</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>19.833723</td>
+      <td>7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2.929196</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1002</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>15.408756</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.042915</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1003</td>
+      <td>15</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4.210570</td>
+      <td>26</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.112602</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1004</td>
+      <td>17</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>10.028829</td>
+      <td>14</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.054218</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1005</td>
+      <td>17</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4.672495</td>
+      <td>17</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.288061</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1006</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>8.191219</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.084184</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1007</td>
+      <td>15</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>15.601680</td>
+      <td>10</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.748237</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1008</td>
+      <td>15</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>15.424496</td>
+      <td>22</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.360143</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1009</td>
+      <td>17</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4.562008</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.896819</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1010</td>
+      <td>16</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>18.444466</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.573474</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Check if there’s any null value in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StudentID            0
+Age                  0
+Gender               0
+Ethnicity            0
+ParentalEducation    0
+StudyTimeWeekly      0
+Absences             0
+Tutoring             0
+ParentalSupport      0
+Extracurricular      0
+Sports               0
+Music                0
+Volunteering         0
+GPA                  0
+GradeClass           0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Print the basic information of the dataset. ‘StudentID’ is a unique identifier assigned to each student (1001 to 3392). Since ‘StudentID’ is useless for the project’s purpose, so we dropped it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;StudentID&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2392 entries, 0 to 2391
+Data columns (total 15 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   StudentID          2392 non-null   int64  
+ 1   Age                2392 non-null   int64  
+ 2   Gender             2392 non-null   int64  
+ 3   Ethnicity          2392 non-null   int64  
+ 4   ParentalEducation  2392 non-null   int64  
+ 5   StudyTimeWeekly    2392 non-null   float64
+ 6   Absences           2392 non-null   int64  
+ 7   Tutoring           2392 non-null   int64  
+ 8   ParentalSupport    2392 non-null   int64  
+ 9   Extracurricular    2392 non-null   int64  
+ 10  Sports             2392 non-null   int64  
+ 11  Music              2392 non-null   int64  
+ 12  Volunteering       2392 non-null   int64  
+ 13  GPA                2392 non-null   float64
+ 14  GradeClass         2392 non-null   float64
+dtypes: float64(3), int64(12)
+memory usage: 280.4 KB
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Ethnicity</th>
+      <th>ParentalEducation</th>
+      <th>StudyTimeWeekly</th>
+      <th>Absences</th>
+      <th>Tutoring</th>
+      <th>ParentalSupport</th>
+      <th>Extracurricular</th>
+      <th>Sports</th>
+      <th>Music</th>
+      <th>Volunteering</th>
+      <th>GPA</th>
+      <th>GradeClass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>17</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>19.833723</td>
+      <td>7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2.929196</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>15.408756</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.042915</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4.210570</td>
+      <td>26</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.112602</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>17</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>10.028829</td>
+      <td>14</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.054218</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>4.672495</td>
+      <td>17</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1.288061</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2387</th>
+      <td>18</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>10.680555</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.455509</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2388</th>
+      <td>17</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>7.583217</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.279150</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2389</th>
+      <td>16</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>6.805500</td>
+      <td>20</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.142333</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2390</th>
+      <td>16</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>12.416653</td>
+      <td>17</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1.803297</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2391</th>
+      <td>16</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>17.819907</td>
+      <td>13</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.140014</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>2392 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="explorotory-data-analysis">
+<h2>Explorotory Data Analysis<a class="headerlink" href="#explorotory-data-analysis" title="Link to this heading">#</a></h2>
+<p>In this section, we will explore the pattern lies in the data and try to find the relationship between each variables to better understand the dataset.</p>
+<section id="gpa-and-gradeclass">
+<h3>GPA and GradeClass<a class="headerlink" href="#gpa-and-gradeclass" title="Link to this heading">#</a></h3>
+<p>GPA is the Grade Point Average on a scale from 2.0 to 4.0, influenced by other features in the dataset. GPA is the numerical reflection of a student’s overall academic performance. However, for this project’s purpose, we want to predict the classification of students’ academic performace. So we use ‘GradeClass’ as the target variable instead of GPA.</p>
+<p>GradeClass mapped students’ GPA to grade classes.
+0: ‘A’ (GPA &gt;= 3.5)</p>
+<p>1: ‘B’ (3.0 &lt;= GPA &lt; 3.5)</p>
+<p>2: ‘C’ (2.5 &lt;= GPA &lt; 3.0)</p>
+<p>3: ‘D’ (2.0 &lt;= GPA &lt; 2.5)</p>
+<p>4: ‘F’ (GPA &lt; 2.0)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;GPA&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;GPA&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">(</span><span class="mf">0.8</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.7</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Mean = </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of GPA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GPA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1ad2e62af7b9f3bd8756c608416b28ed29312c38c96c230cbe4aa769e24f586a.png" src="../_images/1ad2e62af7b9f3bd8756c608416b28ed29312c38c96c230cbe4aa769e24f586a.png" />
+</div>
+</div>
+<p>The distribution of GPA appears to be approximately normal, with a slight skew to the left. This means that the majority of GPA fall around the middle range, with fewer students at the extremes (very low or very high GPAs).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grade_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">grade_counts</span><span class="p">)),</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Grade Class&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">grade_counts</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">grade_counts</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;GradeClass Distribution&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Lillian\AppData\Local\Temp\ipykernel_30244\2880979547.py:7: UserWarning: set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+  ax1.set_xticklabels(labels)
+</pre></div>
+</div>
+<img alt="../_images/f4f34c31376161d5660be39af6cfb0d8f2fd346bc82149d37ee2406d0969d7aa.png" src="../_images/f4f34c31376161d5660be39af6cfb0d8f2fd346bc82149d37ee2406d0969d7aa.png" />
+</div>
+</div>
+<p>The distribution of the total GradeClass is left-skewed, indicating the counts of students is ascending as grade descending. However, the counts of cases in the majority class(F class) greatly outweighs the minority class(A class). This imbalanced dataset may lead to some problems when training the data.</p>
+</section>
+<section id="other-features">
+<h3>Other Features<a class="headerlink" href="#other-features" title="Link to this heading">#</a></h3>
+<p>Despite the ‘GPA’ and ‘GradeClass’ columns in the dataset, there are 12 features provided in each student’s info. The 12 features are classified into four groups to better explain the data: <strong>Demographic features, Study habits, Parental Involvement, and Extracurricular</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;Ethnicity&#39;</span><span class="p">,</span> <span class="s1">&#39;ParentalEducation&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;StudyTimeWeekly&#39;</span><span class="p">,</span><span class="s1">&#39;Absences&#39;</span><span class="p">,</span> <span class="s1">&#39;Tutoring&#39;</span><span class="p">,</span><span class="s1">&#39;ParentalSupport&#39;</span><span class="p">,</span>  
+            <span class="s1">&#39;Extracurricular&#39;</span><span class="p">,</span><span class="s1">&#39;Sports&#39;</span><span class="p">,</span> <span class="s1">&#39;Music&#39;</span><span class="p">,</span> <span class="s1">&#39;Volunteering&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="demographic-features-analysis">
+<h4>Demographic Features Analysis<a class="headerlink" href="#demographic-features-analysis" title="Link to this heading">#</a></h4>
+<p>Features in the demographic group represents the following:</p>
+<p><strong>Age</strong>: The age of the students ranges from 15 to 18 years. The data is discrete.</p>
+<p><strong>Gender</strong>: Gender of the students, where 0 represents Male and 1 represents Female.</p>
+<p><strong>Ethnicity</strong>: The ethnicity of the students, coded as follows:</p>
+<p>0: Caucasian</p>
+<p>1: African American</p>
+<p>2: Asian</p>
+<p>3: Other</p>
+<p><strong>ParentalEducation</strong>: The education level of the parents, coded as follows:</p>
+<p>0: None</p>
+<p>1: High School</p>
+<p>2: Some College</p>
+<p>3: Bachelor’s</p>
+<p>4: Higher</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">demographic_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;Ethnicity&#39;</span><span class="p">,</span> <span class="s1">&#39;ParentalEducation&#39;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;whitegrid&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Demographic Details&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">demographic_features</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">i</span> <span class="o">//</span> <span class="mi">2</span>  
+    <span class="n">col</span> <span class="o">=</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span>  
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+    <span class="n">grade_class_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">])</span>
+    <span class="n">grade_class_counts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> 
+                            <span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">grade_class_counts</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Stacked Bar Chart for </span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3b5bc83fd363bd06ebd9d81a74496b789ddb4b7376ccca3809173c8abd22cada.png" src="../_images/3b5bc83fd363bd06ebd9d81a74496b789ddb4b7376ccca3809173c8abd22cada.png" />
+</div>
+</div>
+<p><strong>Demographic Patterns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Age</strong>: GradeClass distributions are relatively similar across ages 15-18, suggesting consistent academic performance trends regardless of age.</p></li>
+<li><p><strong>Gender</strong>: Both genders show a similar distribution of GradeClass, indicating no significant performance disparity between male and female students.</p></li>
+<li><p><strong>Ethnicity</strong>: The majority of students belong to the Caucasian group (code 0), dominating all GradeClass levels. Other ethnic groups (codes 1, 2, 3) show smaller and more varied distributions across GradeClass levels.</p></li>
+<li><p><strong>Parental Education</strong>: Higher levels of parental education (codes 3 and 4) are associated with better grade distributions, reflecting the potential influence of educational background on student success.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">demographic_features</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">7.0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">demographic_features</span><span class="p">):</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;GPA&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Violin Plot of </span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;GPA&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/770493e448953dd380b7601169da984019278e316876f70f7b46dd8abafdce16.png" src="../_images/770493e448953dd380b7601169da984019278e316876f70f7b46dd8abafdce16.png" />
+</div>
+</div>
+<p>The boxplot shows there isn’t a strong correlation between these features and students’ GPA.</p>
+</section>
+<section id="study-habits">
+<h4>Study Habits<a class="headerlink" href="#study-habits" title="Link to this heading">#</a></h4>
+<p><strong>StudyTimeWeekly</strong>: Weekly study time in hours, ranging from 0 to 20.</p>
+<p><strong>Absences</strong>: Number of absences during the school year, ranging from 0 to 30.</p>
+<p><strong>Tutoring</strong>: Tutoring status, where 0 indicates No and 1 indicates Yes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">study_habits_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;StudyTimeWeekly&#39;</span><span class="p">,</span> <span class="s1">&#39;Absences&#39;</span><span class="p">,</span> <span class="s1">&#39;Tutoring&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Study Habits&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">study_habits_features</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;StudyTimeWeekly&#39;</span><span class="p">,</span> <span class="s1">&#39;Absences&#39;</span><span class="p">]:</span>
+        <span class="n">bins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Low&quot;</span><span class="p">,</span> <span class="s2">&quot;Medium&quot;</span><span class="p">,</span> <span class="s2">&quot;High&quot;</span><span class="p">,</span> <span class="s2">&quot;Very High&quot;</span><span class="p">])</span>
+        <span class="n">grade_class_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">])</span>
+        <span class="n">grade_class_counts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> 
+                                <span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">grade_class_counts</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">grade_class_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">])</span>
+        <span class="n">grade_class_counts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> 
+                                <span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">grade_class_counts</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Stacked Bar Chart for </span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/79118faf3b3bce719eaa2401fb82d3de91ed0348b985c68ff679ff02e609a3d4.png" src="../_images/79118faf3b3bce719eaa2401fb82d3de91ed0348b985c68ff679ff02e609a3d4.png" />
+</div>
+</div>
+<p><strong>Study Time Weekly</strong></p>
+<p>As study time increases, the proportion of higher Grade Classes also increases. This suggests a positive correlation between study time and academic performance. Students who study very high hours tend to have a higher proportion of higher Grade Classes.</p>
+<p><strong>Absences</strong></p>
+<p>Students with very high absences have a significantly higher proportion of lower Grade Classes. As the number of absences increases, the proportion of lower Grade Classes also increases. This indicates a negative correlation between absences and academic performance.</p>
+<p><strong>Tutoring</strong></p>
+<p>Students who receive tutoring seem to have a higher proportion of higher Grade Classes, particularly in the highest Grade Class. This suggests that tutoring can have a positive impact on academic performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;GPA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">study_habits_features</span><span class="p">],</span><span class="n">plot_kws</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span> <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.65</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;w&#39;</span><span class="p">},</span><span class="n">diag_kws</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span> <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span><span class="s1">&#39;w&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b5a73fb2a3b826eafdd33685e600a37d489703a430438a648c5d98f6ceb13f3d.png" src="../_images/b5a73fb2a3b826eafdd33685e600a37d489703a430438a648c5d98f6ceb13f3d.png" />
+</div>
+</div>
+<p>The pairplot better shows the scatter distribution.</p>
+</section>
+<section id="parental-involvement">
+<h4>Parental Involvement<a class="headerlink" href="#parental-involvement" title="Link to this heading">#</a></h4>
+<p><strong>ParentalSupport</strong>: The level of parental support, coded as follows:</p>
+<p>0: None</p>
+<p>1: Low</p>
+<p>2: Moderate</p>
+<p>3: High</p>
+<p>4: Very High</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parental_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ParentalSupport&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">parental_features</span><span class="p">:</span>
+    <span class="n">grade_class_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">])</span>
+    <span class="n">grade_class_counts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> 
+                            <span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">grade_class_counts</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Stacked Bar Chart for </span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dca6804dff9ffcc9e9a7e23273d39b7798b09cea345cc1114d82ec0182956fce.png" src="../_images/dca6804dff9ffcc9e9a7e23273d39b7798b09cea345cc1114d82ec0182956fce.png" />
+</div>
+</div>
+<p><strong>Parental Support</strong>:</p>
+<ul class="simple">
+<li><p>Students with moderate (code 2) and high (code 3) levels of parental support are overrepresented in higher GradeClass levels (4 and 5), suggesting a positive correlation between parental support and academic performance.</p></li>
+<li><p>Minimal or no parental support (codes 0 and 1) correlates with a higher concentration in lower GradeClass levels.</p></li>
+</ul>
+</section>
+<section id="extracurricular">
+<h4>Extracurricular<a class="headerlink" href="#extracurricular" title="Link to this heading">#</a></h4>
+<p><strong>Extracurricular</strong>: Participation in extracurricular activities, where 0 indicates No and 1 indicates Yes.</p>
+<p><strong>Sports</strong>: Participation in sports, where 0 indicates No and 1 indicates Yes.</p>
+<p><strong>Music</strong>: Participation in music activities, where 0 indicates No and 1 indicates Yes.</p>
+<p><strong>Volunteering</strong>: Participation in volunteering, where 0 indicates No and 1 indicates Yes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extracurricular_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Extracurricular&#39;</span><span class="p">,</span> <span class="s1">&#39;Sports&#39;</span><span class="p">,</span> <span class="s1">&#39;Music&#39;</span><span class="p">,</span> <span class="s1">&#39;Volunteering&#39;</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">feature</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">extracurricular_features</span><span class="p">}</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="n">counts_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="n">counts_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">extracurricular_features</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Comparison of Extracurricular Activities&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Participation (0: No, 1: Yes)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Activity&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/09b3c9a4ac9d9c136d05e463847802469bb337ef34c8cfa5d84868dbb0e334ca.png" src="../_images/09b3c9a4ac9d9c136d05e463847802469bb337ef34c8cfa5d84868dbb0e334ca.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_gpa</span> <span class="o">=</span> <span class="p">{</span><span class="n">feature</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">feature</span><span class="p">)[</span><span class="s1">&#39;GPA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">extracurricular_features</span><span class="p">}</span>
+
+<span class="n">avg_gpa_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">avg_gpa</span><span class="p">)</span>
+
+<span class="n">avg_gpa_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">extracurricular_features</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Average GPA by Extracurricular Activities&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Participation (0: No, 1: Yes)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Average GPA&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Activity&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bc3a4cfa6398e36b523cdbd81f7e339f89375b228ed7827a0d874ccccd4353c2.png" src="../_images/bc3a4cfa6398e36b523cdbd81f7e339f89375b228ed7827a0d874ccccd4353c2.png" />
+</div>
+</div>
+<p>The side-by-side graph demonstrates that the participation in extracurricular and other activities does have positive impact on student’s GPA, especially for activities like music and extracurricular kind.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">,</span><span class="s1">&#39;StudentID&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;rocket&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Matrix of Features&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/29c6cb36a82e9af24004d2936de70a5e5f70ee0d40be51533a28a7945a715900.png" src="../_images/29c6cb36a82e9af24004d2936de70a5e5f70ee0d40be51533a28a7945a715900.png" />
+</div>
+</div>
+<p>Most of the features show weak or no correlation with GPA, indicating that these factors may not have a significant impact on academic performance.  Parental Support, Study Time Weekly, and Tutoring has slightly positive correlation with GPA. Notably, Absences has strong negative correlation with GPA.</p>
+</section>
+</section>
+</section>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h2>
+<p>In this section, we will examine 4 models’ performances on predicting the GradeClass of students, including Logistic Regression, Support Vector Machine, KNN, and Neural Network.</p>
+<section id="logistic-regression">
+<h3>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html">Logistic regression</a> is beneficial for its <strong>simplicity, interpretability, and efficiency</strong>, especially in binary or categorical classification tasks. Since we are expecting to do a multi-classification with many categorical variables, Logistic Regression is a primary choice.
+Unlike complex models, it is computationally efficient, works well with smaller datasets, and is less prone to overfitting when compared to more complex models like neural networks. Additionally, it handles multicollinearity better than some alternatives through regularization techniques.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_lr</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Classification Report:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.78
+Classification Report:
+              precision    recall  f1-score   support
+
+         1.0       0.33      0.07      0.12        14
+         2.0       0.63      0.52      0.57        52
+         3.0       0.65      0.66      0.65        87
+         4.0       0.58      0.59      0.59        66
+         5.0       0.90      0.96      0.93       260
+
+    accuracy                           0.78       479
+   macro avg       0.62      0.56      0.57       479
+weighted avg       0.76      0.78      0.77       479
+</pre></div>
+</div>
+<img alt="../_images/76499a8ca8f324f2a0954d5d077a19a53cb358f27005614dfa53b20385048efb.png" src="../_images/76499a8ca8f324f2a0954d5d077a19a53cb358f27005614dfa53b20385048efb.png" />
+</div>
+</div>
+<p>From the confusion matrix and the classification report, the model’s performance on this dataset is geerally great. However, the precision of the class 1(‘GradeClass’:1.0) is low, indicating that the dataset’s imbalance has largely affected the model’s prediction on minority class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Training Accuracy: </span><span class="si">{</span><span class="n">train_accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Test Accuracy: </span><span class="si">{</span><span class="n">test_accuracy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cross-validation scores: </span><span class="si">{</span><span class="n">scores</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean cross-validation score: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training Accuracy: 0.73
+Test Accuracy: 0.78
+Cross-validation scores: [0.75574113 0.71607516 0.73012552 0.76150628 0.60041841]
+Mean cross-validation score: 0.71
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the accuracy and cross-validation scores, we have making sure that the model is not overfitting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">SMOTE</span>
+<span class="n">sm</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">)</span>
+<span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span><span class="p">)</span>
+<span class="n">y_pred_lr2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+         1.0       0.07      0.29      0.11        14
+         2.0       0.47      0.35      0.40        52
+         3.0       0.60      0.38      0.46        87
+         4.0       0.30      0.39      0.34        66
+         5.0       0.88      0.81      0.84       260
+
+    accuracy                           0.61       479
+   macro avg       0.46      0.44      0.43       479
+weighted avg       0.68      0.61      0.64       479
+</pre></div>
+</div>
+</div>
+</div>
+<p>To address the class outweigh problem, we try to use the SMOTE method to resample the data and balance the classes. However, the output doesn’t seem to improve the model’s performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coefficients</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">feature_importance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="s1">&#39;Coefficient&#39;</span><span class="p">:</span> <span class="n">coefficients</span><span class="p">,</span>
+    <span class="s1">&#39;Absolute Coefficient&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="n">feature_importance_sorted</span> <span class="o">=</span> <span class="n">feature_importance</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Absolute Coefficient&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">feature_importance_sorted</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              Feature  Coefficient  Absolute Coefficient
+6            Tutoring     0.937286              0.937286
+8     Extracurricular     0.794371              0.794371
+7     ParentalSupport     0.593448              0.593448
+9              Sports     0.283565              0.283565
+5            Absences    -0.200093              0.200093
+11       Volunteering    -0.150882              0.150882
+10              Music     0.107792              0.107792
+1              Gender    -0.103360              0.103360
+2           Ethnicity     0.080243              0.080243
+4     StudyTimeWeekly     0.073835              0.073835
+0                 Age    -0.033343              0.033343
+3   ParentalEducation     0.002714              0.002714
+</pre></div>
+</div>
+</div>
+</div>
+<p>To improve the model’s performance, we try to modify on the features. First, we sorted the coefficients of the features to see the feature importance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">sorted_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tutoring&#39;</span><span class="p">,</span> <span class="s1">&#39;Extracurricular&#39;</span><span class="p">,</span> <span class="s1">&#39;ParentalSupport&#39;</span><span class="p">,</span> <span class="s1">&#39;Sports&#39;</span><span class="p">,</span> <span class="s1">&#39;Absences&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;Volunteering&#39;</span><span class="p">,</span> <span class="s1">&#39;Music&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;Ethnicity&#39;</span><span class="p">,</span> <span class="s1">&#39;StudyTimeWeekly&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;ParentalEducation&#39;</span><span class="p">]</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">sorted_features</span><span class="p">]</span>  
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_features</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">selected_features</span> <span class="o">=</span> <span class="n">sorted_features</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">X_train_selected</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">selected_features</span><span class="p">]</span>
+    <span class="n">X_test_selected</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">selected_features</span><span class="p">]</span>
+    
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_selected</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="n">y_pred_lr3</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_selected</span><span class="p">)</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr3</span><span class="p">)</span>
+
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">selected_features</span><span class="p">))</span>
+
+<span class="n">results_sorted</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">accuracy</span><span class="p">,</span> <span class="n">num_features</span><span class="p">,</span> <span class="n">selected_features</span> <span class="ow">in</span> <span class="n">results_sorted</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model with </span><span class="si">{</span><span class="n">num_features</span><span class="si">}</span><span class="s2"> features: </span><span class="si">{</span><span class="n">selected_features</span><span class="si">}</span><span class="s2">, Accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model with 11 features: [&#39;Tutoring&#39;, &#39;Extracurricular&#39;, &#39;ParentalSupport&#39;, &#39;Sports&#39;, &#39;Absences&#39;, &#39;Volunteering&#39;, &#39;Music&#39;, &#39;Gender&#39;, &#39;Ethnicity&#39;, &#39;StudyTimeWeekly&#39;, &#39;Age&#39;], Accuracy: 0.7787
+Model with 12 features: [&#39;Tutoring&#39;, &#39;Extracurricular&#39;, &#39;ParentalSupport&#39;, &#39;Sports&#39;, &#39;Absences&#39;, &#39;Volunteering&#39;, &#39;Music&#39;, &#39;Gender&#39;, &#39;Ethnicity&#39;, &#39;StudyTimeWeekly&#39;, &#39;Age&#39;, &#39;ParentalEducation&#39;], Accuracy: 0.7787
+Model with 10 features: [&#39;Tutoring&#39;, &#39;Extracurricular&#39;, &#39;ParentalSupport&#39;, &#39;Sports&#39;, &#39;Absences&#39;, &#39;Volunteering&#39;, &#39;Music&#39;, &#39;Gender&#39;, &#39;Ethnicity&#39;, &#39;StudyTimeWeekly&#39;], Accuracy: 0.7724
+Model with 8 features: [&#39;Tutoring&#39;, &#39;Extracurricular&#39;, &#39;ParentalSupport&#39;, &#39;Sports&#39;, &#39;Absences&#39;, &#39;Volunteering&#39;, &#39;Music&#39;, &#39;Gender&#39;], Accuracy: 0.7265
+Model with 7 features: [&#39;Tutoring&#39;, &#39;Extracurricular&#39;, &#39;ParentalSupport&#39;, &#39;Sports&#39;, &#39;Absences&#39;, &#39;Volunteering&#39;, &#39;Music&#39;], Accuracy: 0.7244
+Model with 9 features: [&#39;Tutoring&#39;, &#39;Extracurricular&#39;, &#39;ParentalSupport&#39;, &#39;Sports&#39;, &#39;Absences&#39;, &#39;Volunteering&#39;, &#39;Music&#39;, &#39;Gender&#39;, &#39;Ethnicity&#39;], Accuracy: 0.7182
+</pre></div>
+</div>
+</div>
+</div>
+<p>By modifying and grouping the top importance features with different trials, we obtained the best combination of features: removing the ‘ParentalEducation’ feature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features_2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tutoring&#39;</span><span class="p">,</span> <span class="s1">&#39;Extracurricular&#39;</span><span class="p">,</span> <span class="s1">&#39;ParentalSupport&#39;</span><span class="p">,</span> <span class="s1">&#39;Sports&#39;</span><span class="p">,</span> <span class="s1">&#39;Absences&#39;</span><span class="p">,</span> <span class="s1">&#39;Volunteering&#39;</span><span class="p">,</span> <span class="s1">&#39;Music&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;Ethnicity&#39;</span><span class="p">,</span> <span class="s1">&#39;StudyTimeWeekly&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features_2</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_lr3</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Classification Report:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr3</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.77
+Classification Report:
+              precision    recall  f1-score   support
+
+         1.0       0.25      0.07      0.11        14
+         2.0       0.63      0.56      0.59        52
+         3.0       0.64      0.62      0.63        87
+         4.0       0.55      0.56      0.56        66
+         5.0       0.90      0.96      0.93       260
+
+    accuracy                           0.77       479
+   macro avg       0.59      0.55      0.56       479
+weighted avg       0.76      0.77      0.76       479
+</pre></div>
+</div>
+<img alt="../_images/70c3aac81726d0ff24a6a9bd324c994e5d1936d6cfef0380ee0b29c5941f2a82.png" src="../_images/70c3aac81726d0ff24a6a9bd324c994e5d1936d6cfef0380ee0b29c5941f2a82.png" />
+</div>
+</div>
+<p>Training and testing the logistic regression model again with new feature combination, the output is still close to the original one. This means that the combinations of the features doesn’t influence the model a lot.</p>
+</section>
+<section id="support-vector-machine">
+<h3>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Link to this heading">#</a></h3>
+<p>Considering the the high dimensionality of the dataset, we expect <a class="reference external" href="https://scikit-learn.org/1.5/modules/svm.html">SVM</a> to perform better than logistic regression model on this classification task.
+Additionally, from EDA, we noticed that many data has markable outliers, the concept of soft margins allows SVM to tolerate some misclassified points, making it more robust to outliers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GradeClass&#39;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">34</span><span class="p">,</span><span class="n">gamma</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_svm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_svm</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Classification Report:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svm</span><span class="p">,</span><span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svm</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.778705636743215
+Classification Report:
+              precision    recall  f1-score   support
+
+         1.0       0.00      0.00      0.00        14
+         2.0       0.64      0.69      0.67        52
+         3.0       0.70      0.63      0.66        87
+         4.0       0.53      0.64      0.58        66
+         5.0       0.91      0.92      0.92       260
+
+    accuracy                           0.78       479
+   macro avg       0.55      0.58      0.56       479
+weighted avg       0.76      0.78      0.77       479
+</pre></div>
+</div>
+<img alt="../_images/894de4012c8a1547167fd87a06d17798d262371ace546ca89de9deec92692486.png" src="../_images/894de4012c8a1547167fd87a06d17798d262371ace546ca89de9deec92692486.png" />
+</div>
+</div>
+<p>Although the accuracy of the prediction doesn’t increase, the precision of the middle classes(code 2 and 3) has increased.</p>
+</section>
+<section id="k-nearest-neighbor-classification">
+<h3>K-Nearest-Neighbor Classification<a class="headerlink" href="#k-nearest-neighbor-classification" title="Link to this heading">#</a></h3>
+<p>By considering the proximity of data points, <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">KNN</a> can capture local patterns and relationships, which is particularly useful in understanding how different features relate to the target variable. Additionally, the intuitive nature of KNN provides a straightforward way to interpret the influence of features on the outcome, aligning well with the goal of gaining insights into the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="n">model_knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">model_knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_knn</span> <span class="o">=</span> <span class="n">model_knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_knn</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Classification Report:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.7390396659707724
+Classification Report:
+              precision    recall  f1-score   support
+
+         1.0       0.29      0.14      0.19        14
+         2.0       0.54      0.37      0.44        52
+         3.0       0.58      0.66      0.62        87
+         4.0       0.51      0.55      0.53        66
+         5.0       0.89      0.92      0.91       260
+
+    accuracy                           0.74       479
+   macro avg       0.56      0.53      0.54       479
+weighted avg       0.73      0.74      0.73       479
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+<span class="n">k_scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_range</span><span class="p">:</span>
+    <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+    <span class="n">k_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_range</span><span class="p">,</span> <span class="n">k_scores</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Accuracy vs. Number of Neighbors (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Neighbors (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cross-Validated Accuracy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">best_k</span> <span class="o">=</span> <span class="n">k_range</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">k_scores</span><span class="p">)]</span>
+<span class="n">best_score</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">k_scores</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">best_k</span><span class="p">,</span> <span class="n">best_score</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best k = </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best k value: </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Best Cross-Val-Score: </span><span class="si">{</span><span class="n">best_score</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">model_knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">best_k</span><span class="p">)</span>
+<span class="n">model_knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_knn</span> <span class="o">=</span> <span class="n">model_knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_knn</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Classification Report:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_knn</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5a07f6a214066f8db93978f331a13b4ab4b505f13fdb6bf46304a0ce06b4db12.png" src="../_images/5a07f6a214066f8db93978f331a13b4ab4b505f13fdb6bf46304a0ce06b4db12.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best k value: 34
+Best Cross-Val-Score: 0.6937
+Accuracy: 0.7411273486430062
+Classification Report:
+              precision    recall  f1-score   support
+
+         1.0       0.00      0.00      0.00        14
+         2.0       0.51      0.44      0.47        52
+         3.0       0.57      0.59      0.58        87
+         4.0       0.53      0.59      0.56        66
+         5.0       0.89      0.93      0.91       260
+
+    accuracy                           0.74       479
+   macro avg       0.50      0.51      0.50       479
+weighted avg       0.72      0.74      0.73       479
+</pre></div>
+</div>
+<img alt="../_images/aa95a629f5fb14147dd12a7e64a6b214fb78ca548fa4b6ebe354c92d01a4ffc0.png" src="../_images/aa95a629f5fb14147dd12a7e64a6b214fb78ca548fa4b6ebe354c92d01a4ffc0.png" />
+</div>
+</div>
+<p>The output reflected the model’s strong ability to correctly predict the majority class. The performance for smaller classes, such as Class 1, is notably poor, indicating the model fails to identify instances from minority classes.</p>
+<p>Overall, KNN doesn’t lead to a better performance compared to Logistic Regression.</p>
+</section>
+<section id="neural-network">
+<h3>Neural Network<a class="headerlink" href="#neural-network" title="Link to this heading">#</a></h3>
+<p>Given the diversity of the dataset, a <a class="reference external" href="https://python-course.eu/machine-learning/neural-networks-with-scikit.php">Neural Network</a> (NN) is a suitable choice for modeling. Unlike simpler algorithms such as KNN, NN can capture intricate patterns and nonlinear relationships between features and the target variable. This capability is especially important for datasets with a mix of numerical and categorical features like this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<span class="n">model_mlp</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,),</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">model_mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_mlp</span> <span class="o">=</span> <span class="n">model_mlp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_mlp</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Classification Report:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_mlp</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">cm</span><span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_mlp</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.7891440501043842
+Classification Report:
+              precision    recall  f1-score   support
+
+         1.0       0.80      0.29      0.42        14
+         2.0       0.66      0.63      0.65        52
+         3.0       0.69      0.61      0.65        87
+         4.0       0.56      0.71      0.63        66
+         5.0       0.92      0.93      0.92       260
+
+    accuracy                           0.79       479
+   macro avg       0.72      0.63      0.65       479
+weighted avg       0.79      0.79      0.79       479
+</pre></div>
+</div>
+<img alt="../_images/06939efab462ae112c7992c9264400e50d165ebaf78683d665dfc08b2ebf2175.png" src="../_images/06939efab462ae112c7992c9264400e50d165ebaf78683d665dfc08b2ebf2175.png" />
+</div>
+</div>
+<p>From the output of NN model, the NN model achieves slightly higher accuracy than the KNN model, indicating that it is better at overall predictions. This suggests that the NN can capture more complex relationships in the data, which is an advantage over KNN’s simpler, distance-based approach. Also, the NN shows improvements in precision and recall for some smaller classes, suggesting that it may have a better capacity to generalize when provided with sufficient data or optimized hyperparameters.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>In this project, we explored a dataset to analyze the factors influencing GPA, starting with an extensive exploratory data analysis (EDA). Through visualizations and statistical summaries, we identified key patterns and relationships among different feature groups. EDA provided valuable info, such as the significant impact of Absences on GPA, as well as the mixed effects of extracurricular participation.</p>
+<p>To predict GPA categories, we implemented multiple models, including K-Nearest Neighbors (KNN), Logistic Regression, Support Vector Machine (SVM), and Neural Networks (NN). Each model was chosen for its ability to handle different complexities and provide meaningful comparisons. Logistic Regression and SVM offered simplicity and interpretability, while KNN and NN leveraged more nuanced patterns in the data.</p>
+<p>Among the models, Logistic Regression and NN demonstrated competitive performance, effectively capturing the complexity of the dataset. While no model achieved perfect results, the analysis highlighted the importance of feature selection, data preprocessing, and model tuning in predictive tasks.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./final_projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Simon_Chen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Medical Insurance Prediction</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pre-processing">Data Pre-processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explorotory-data-analysis">Explorotory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpa-and-gradeclass">GPA and GradeClass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-features">Other Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demographic-features-analysis">Demographic Features Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#study-habits">Study Habits</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parental-involvement">Parental Involvement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extracurricular">Extracurricular</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machine">Support Vector Machine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nearest-neighbor-classification">K-Nearest-Neighbor Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network">Neural Network</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

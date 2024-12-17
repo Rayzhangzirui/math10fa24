@@ -1,0 +1,1788 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>An Analysis on the Likeliness of People Changing Their Occupation &#8212; UCI Math 10, Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_projects/Nikolina_Sentovich';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Predicting Subscription to Term Deposit" href="Pinge_Chen.html" />
+    <link rel="prev" title="Predicting Student Performance" href="Nicholas_Le.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Fall 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Fall 2024
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Logistic Regression for Multiclass Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/kmeans.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Fri.html">Lecture Week 7 Fri 11/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Mon.html">Lecture Week 8 Mon 11/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Wed.html">Lecture Week 8 Wed 11/20</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 11/15/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 11/25/2024 at 11:59pm)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Student Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Caroline_Cheng.html">Ballon D’or winner prediction model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Davin_Huynh.html">Predicting Heart Disease with Standard Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gabriela_Zuno.html">Correlation Bewteen a T.V Show’s Genre and Queer Female Character Deaths</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Hailili_Subinuer.html">The Application of Machine Learning in Gold Price Prediction</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Helena_Tran.html">Analyzing Life Expectancy Across Countries</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="James_Cho.html">TQQQ Stock Predictor Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kaiyuan_Chen.html">Data analysis of new energy vehicles in China</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kent_Hocaoglu.html">Analysis of Crime Reports in LA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Krishna_Saraogi.html">Step 1: Data Exploration/ Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nguyen_Bui.html">Title: Should I investing to SIRI stock ? Reason?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nicholas_Le.html">Predicting Student Performance</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">An Analysis on the Likeliness of People Changing Their Occupation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Pinge_Chen.html"><strong>Predicting Subscription to Term Deposit</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simon_Chen.html"><strong>Medical Insurance Prediction</strong></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Zhang_Zhang.html">Prediction of High School Students’ Academic Performance</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_projects/Nikolina_Sentovich.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>An Analysis on the Likeliness of People Changing Their Occupation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">An Analysis on the Likeliness of People Changing Their Occupation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-imports">Libraries and Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#field-of-study-occupation">Field of Study/Occupation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-relationships-between-the-three-most-important-features">Examining Relationships Between the Three Most Important Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-relationships-between-more-features">Examining Relationships Between More Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-random-forest">Extra: Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion:</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="an-analysis-on-the-likeliness-of-people-changing-their-occupation">
+<h1>An Analysis on the Likeliness of People Changing Their Occupation<a class="headerlink" href="#an-analysis-on-the-likeliness-of-people-changing-their-occupation" title="Link to this heading">#</a></h1>
+<p>Author: Nikolina Sentovich</p>
+<p>Course Project, UC Irvine, Math 10, F24</p>
+<p>I would like to post my notebook on the course’s website. [Yes]</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In this project, I will analyze what causes people to change jobs. As a college student who is not 100% set on what I want to do, I am curious to find out what factors have the biggest impact on prompting a career switch. Are there certain fields of study that are more likely to ? What about certain occupations? Are there other important factors?</p>
+<p>The goal of this project is to perform data cleaning and explore the data set by creating different models in order to get a better understanding of industry, the job market, and likelihood of changing occupation. I found a dataset on Kaggle which, according to the creator, has 30,000+ records and 22 features.</p>
+<p><a class="reference external" href="https://www.kaggle.com/datasets/jahnavipaliwal/field-of-study-vs-occupation">Kaggle Dataset: Field Of Study vs Occupation</a></p>
+</section>
+<section id="libraries-and-imports">
+<h2>Libraries and Imports<a class="headerlink" href="#libraries-and-imports" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Lasso</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="kn">import</span> <span class="n">scatter_matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;career_change_prediction_dataset.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Field of Study</th>
+      <th>Current Occupation</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Years of Experience</th>
+      <th>Education Level</th>
+      <th>Industry Growth Rate</th>
+      <th>Job Satisfaction</th>
+      <th>Work-Life Balance</th>
+      <th>Job Opportunities</th>
+      <th>...</th>
+      <th>Skills Gap</th>
+      <th>Family Influence</th>
+      <th>Mentorship Available</th>
+      <th>Certifications</th>
+      <th>Freelancing Experience</th>
+      <th>Geographic Mobility</th>
+      <th>Professional Networks</th>
+      <th>Career Change Events</th>
+      <th>Technology Adoption</th>
+      <th>Likely to Change Occupation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Medicine</td>
+      <td>Business Analyst</td>
+      <td>48</td>
+      <td>Male</td>
+      <td>7</td>
+      <td>High School</td>
+      <td>High</td>
+      <td>7</td>
+      <td>10</td>
+      <td>83</td>
+      <td>...</td>
+      <td>8</td>
+      <td>High</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Education</td>
+      <td>Economist</td>
+      <td>44</td>
+      <td>Male</td>
+      <td>26</td>
+      <td>Master's</td>
+      <td>Low</td>
+      <td>10</td>
+      <td>3</td>
+      <td>55</td>
+      <td>...</td>
+      <td>3</td>
+      <td>Medium</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>9</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Education</td>
+      <td>Biologist</td>
+      <td>21</td>
+      <td>Female</td>
+      <td>27</td>
+      <td>Master's</td>
+      <td>Low</td>
+      <td>8</td>
+      <td>3</td>
+      <td>78</td>
+      <td>...</td>
+      <td>4</td>
+      <td>Low</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Education</td>
+      <td>Business Analyst</td>
+      <td>33</td>
+      <td>Male</td>
+      <td>14</td>
+      <td>PhD</td>
+      <td>Medium</td>
+      <td>7</td>
+      <td>9</td>
+      <td>62</td>
+      <td>...</td>
+      <td>2</td>
+      <td>Medium</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Arts</td>
+      <td>Doctor</td>
+      <td>28</td>
+      <td>Female</td>
+      <td>0</td>
+      <td>PhD</td>
+      <td>Low</td>
+      <td>3</td>
+      <td>1</td>
+      <td>8</td>
+      <td>...</td>
+      <td>5</td>
+      <td>Low</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 23 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
+<p>The following features and their descriptions are provided from <a class="reference external" href="https://www.kaggle.com/datasets/jahnavipaliwal/field-of-study-vs-occupation">the Kaggle Dataset</a>.</p>
+<p><strong>Field of Study:</strong></p>
+<p>Type: Categorical (String)<br />
+Description: The area of academic focus during the individual’s education.</p>
+<p><strong>Current Occupation:</strong></p>
+<p>Type: Categorical (String)<br />
+Description: The individual’s current job or industry they are employed in.</p>
+<p><strong>Age:</strong></p>
+<p>Type: Integer<br />
+Description: The age of the individual.</p>
+<p><strong>Gender:</strong></p>
+<p>Type: Categorical (String)<br />
+Description: The gender of the individual.</p>
+<p><strong>Years of Experience:</strong></p>
+<p>Type: Integer<br />
+Description: The number of years the individual has been in the workforce.</p>
+<p><strong>Education Level:</strong></p>
+<p>Type: Categorical (String)<br />
+Description: The highest level of education completed by the individual.</p>
+<p><strong>Industry Growth Rate:</strong></p>
+<p>Type: Categorical (String)<br />
+Description: The growth rate of the industry the individual works in.</p>
+<p><strong>Job Satisfaction:</strong></p>
+<p>Type: Integer (1-10 scale)<br />
+Description: A rating of the individual’s job satisfaction.</p>
+<p><strong>Work-Life Balance:</strong></p>
+<p>Type: Integer (1-10 scale)<br />
+Description: A rating of the individual’s perceived work-life balance.</p>
+<p><strong>Job Opportunities:</strong></p>
+<p>Type: Integer<br />
+Description: The number of available job opportunities in the individual’s field.</p>
+<p><strong>Salary:</strong></p>
+<p>Type: Integer<br />
+Description: The annual salary of the individual (in USD or local currency equivalent).</p>
+<p><strong>Job Security:</strong></p>
+<p>Type: Integer (1-10 scale)<br />
+Description: A rating of the individual’s perceived job security.</p>
+<p><strong>Career Change Interest:</strong></p>
+<p>Type: Integer (0 or 1)<br />
+Description: Whether the individual is interested in changing their occupation (1 for yes, 0 for no).</p>
+<p><strong>Skills Gap:</strong></p>
+<p>Type: Integer (1-10 scale)<br />
+Description: A measure of how well the individual’s current skills match their job requirements.</p>
+<p><strong>Family Influence:</strong></p>
+<p>Type: Categorical (String)<br />
+Description: The degree of influence the individual’s family has on their career choice.</p>
+<p><strong>Mentorship Available:</strong></p>
+<p>Type: Integer (0 or 1)<br />
+Description: Whether the individual has access to a mentor in their current job.</p>
+<p><strong>Certifications:</strong></p>
+<p>Type: Integer (0 or 1)<br />
+Description: Whether the individual holds any certifications relevant to their occupation.</p>
+<p><strong>Freelancing Experience:</strong></p>
+<p>Type: Integer (0 or 1)<br />
+Description: Whether the individual has freelanced in the past.</p>
+<p><strong>Geographic Mobility:</strong></p>
+<p>Type: Integer (0 or 1)<br />
+Description: Whether the individual is willing to relocate for a job.</p>
+<p><strong>Professional Networks:</strong></p>
+<p>Type: Integer (1-10 scale)<br />
+Description: A measure of how strong the individual’s professional network is.</p>
+<p><strong>Career Change Events:</strong></p>
+<p>Type: Integer<br />
+Description: The number of career changes the individual has made in the past.</p>
+<p><strong>Technology Adoption:</strong></p>
+<p>Type: Integer (1-10 scale)<br />
+Description: A measure of the individual’s comfort level with adopting new technologies.</p>
+<p><strong>Target Variable: Likely to Change Occupation:</strong></p>
+<p>Type: Integer (0 or 1)<br />
+Description: The target variable indicating whether an individual is likely to change their occupation.</p>
+</section>
+<section id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
+<p>I am first going to convert all my catagorical data into numerical data. This way, it will be easier to clean the data and reduce the dimension. I did some research and found that the One Hot Encoder Method would be good to use on my data set. Code is inspired by <a class="reference external" href="https://www.geeksforgeeks.org/ml-one-hot-encoding/">Geeks for Geeks: One Hot Encoding using Scikit Learn Library</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting the categorical features</span>
+<span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Field of Study&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> 
+                        <span class="s1">&#39;Education Level&#39;</span><span class="p">,</span> <span class="s1">&#39;Industry Growth Rate&#39;</span><span class="p">,</span> <span class="s1">&#39;Family Influence&#39;</span><span class="p">]</span>
+
+<span class="c1"># Initialize the encoder</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Applying one-hot encoding to the categorical features</span>
+<span class="n">one_hot_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">categorical_features</span><span class="p">])</span>
+
+<span class="c1"># Create a df with the one-hot encoded/dummy features</span>
+<span class="n">one_hot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">one_hot_encoded</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># Concatenate the one-hot encoded df with the original df</span>
+<span class="n">df_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">one_hot_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># drop the original categorical columns (since they are now encoded)</span>
+<span class="n">df_encoded</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">categorical_features</span><span class="p">)</span>
+
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_encoded</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Years of Experience</th>
+      <th>Job Satisfaction</th>
+      <th>Work-Life Balance</th>
+      <th>Job Opportunities</th>
+      <th>Salary</th>
+      <th>Job Security</th>
+      <th>Career Change Interest</th>
+      <th>Skills Gap</th>
+      <th>Mentorship Available</th>
+      <th>...</th>
+      <th>Education Level_High School</th>
+      <th>Education Level_Master's</th>
+      <th>Education Level_PhD</th>
+      <th>Industry Growth Rate_High</th>
+      <th>Industry Growth Rate_Low</th>
+      <th>Industry Growth Rate_Medium</th>
+      <th>Family Influence_High</th>
+      <th>Family Influence_Low</th>
+      <th>Family Influence_Medium</th>
+      <th>Family Influence_nan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>48</td>
+      <td>7</td>
+      <td>7</td>
+      <td>10</td>
+      <td>83</td>
+      <td>198266</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>44</td>
+      <td>26</td>
+      <td>10</td>
+      <td>3</td>
+      <td>55</td>
+      <td>96803</td>
+      <td>9</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21</td>
+      <td>27</td>
+      <td>8</td>
+      <td>3</td>
+      <td>78</td>
+      <td>65920</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>14</td>
+      <td>7</td>
+      <td>9</td>
+      <td>62</td>
+      <td>85591</td>
+      <td>5</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>28</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>8</td>
+      <td>43986</td>
+      <td>3</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 50 columns</p>
+</div></div></div>
+</div>
+<p>We proceed with data cleaning by checking for columns with missing values. The results show that there are no columns with missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_values</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">missing_values</span><span class="p">[</span><span class="n">missing_values</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Series([], dtype: int64)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that my dataframe only consists of numerical data, I am going to do a Lasso Regression to see which features have the greatest significance on the targert variable (likley to change occupation)<br />
+The following code is inspired by the <a class="reference external" href="https://rayzhangzirui.github.io/math10fa24/notes/regularization.html#the-lasso">Math 10 Lecture Notes on Lasso Regression.</a>. I modified the plot to be bars instead for easier viewing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the target variable and features</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;Likely to Change Occupation&#39;</span>  
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+
+<span class="c1"># Split the data into training and testing sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Scale the features</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1">#Lasso regression</span>
+<span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>  
+<span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># predictions</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">lasso</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+
+<span class="c1"># Calculate Mean Squared Error (MSE)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error: </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get coefficients</span>
+<span class="n">coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">coefficients</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lasso Regression: Feature Coefficients&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Features&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Coefficient Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>  <span class="c1"># Rotate feature names for better readability</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># Adjust layout to prevent clipping</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error: 0.1054
+</pre></div>
+</div>
+<img alt="../_images/a23d408410b693e3c6c0b6d976441602da7c419c185428308b3389bd9a33ce02.png" src="../_images/a23d408410b693e3c6c0b6d976441602da7c419c185428308b3389bd9a33ce02.png" />
+</div>
+</div>
+<p>Based on the results of the Lasso Regression, we can infer from this plot that the three main features that have the greatest impact on the target variable are Career Change Interest, Salary, and Job Satisfaction.<br />
+Career change interest has a <strong>positive</strong> relationship with the likeliness to change occupation. That is, as career change interest increases, likeliness to change occupation increases. However, salary and job satisfaction has a <strong>negative</strong> relationship with the likliness to change occupation, meaning that as salary and job satisfaction increase (decrease), the likeliness to change occupation decreases (increases).</p>
+<p>So, now we know the features that have the most significant impact on the target variable, but what about the about the other features? I want to keep the top features that have an impact on the target variable to keep this project more interesting.</p>
+<p>In the following code, I do another plot of coefficents from the Lasso Regression, but I drop Career Change Interest, Salary, and Job Satisfaction so I can zoom in and determine what the next most significant features are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define features to drop</span>
+<span class="n">excluded_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Career Change Interest&#39;</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Satisfaction&#39;</span><span class="p">]</span>
+
+<span class="c1"># Filter the coefficients</span>
+<span class="n">filtered_coefficients</span> <span class="o">=</span> <span class="n">coefficients</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">excluded_features</span><span class="p">)</span>
+
+
+<span class="c1"># Sort filtered coefficients by absolute value</span>
+<span class="n">sorted_filtered_coefficients</span> <span class="o">=</span> <span class="n">filtered_coefficients</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span>
+    <span class="n">filtered_coefficients</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Filtered Coefficients (Sorted by Absolute Value):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sorted_filtered_coefficients</span><span class="p">)</span>
+
+
+<span class="c1"># y-axis limits</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">filtered_coefficients</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">filtered_coefficients</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.1</span>  <span class="c1"># Add margin</span>
+
+<span class="c1"># Plot the filtered coefficients</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">filtered_coefficients</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lasso Regression: Feature Coefficients (Excluding Selected Features)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Features&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Coefficient Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>  <span class="c1"># Rotate feature names for better readability</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>  <span class="c1"># Adjust layout to prevent clipping</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Filtered Coefficients (Sorted by Absolute Value):
+ Field of Study_Education                  3.295490e-03
+Industry Growth Rate_Medium               3.239855e-03
+Family Influence_High                     2.469651e-03
+Professional Networks                     2.251828e-03
+Years of Experience                      -2.205886e-03
+Education Level_High School              -1.962927e-03
+Freelancing Experience                    1.766056e-03
+Field of Study_Psychology                -1.623722e-03
+Current Occupation_Teacher               -1.544169e-03
+Field of Study_Arts                      -1.290953e-03
+Mentorship Available                     -1.142822e-03
+Current Occupation_Software Developer    -1.049295e-03
+Job Opportunities                        -8.464807e-04
+Gender_Female                            -8.162868e-04
+Age                                      -6.384907e-04
+Field of Study_Medicine                   5.987319e-04
+Field of Study_Biology                   -4.552262e-04
+Current Occupation_Biologist              4.497016e-04
+Field of Study_Business                   4.444105e-04
+Current Occupation_Mechanical Engineer    3.598012e-04
+Career Change Events                      3.188301e-04
+Certifications                            2.205796e-04
+Current Occupation_Lawyer                 2.968502e-05
+Geographic Mobility                      -5.533156e-06
+Gender_Male                               2.044644e-17
+Education Level_Master&#39;s                  0.000000e+00
+Education Level_PhD                       0.000000e+00
+Family Influence_Low                     -0.000000e+00
+Education Level_Bachelor&#39;s                0.000000e+00
+Industry Growth Rate_High                -0.000000e+00
+Family Influence_Medium                  -0.000000e+00
+Industry Growth Rate_Low                 -0.000000e+00
+Current Occupation_Artist                 0.000000e+00
+Current Occupation_Psychologist          -0.000000e+00
+Current Occupation_Economist             -0.000000e+00
+Current Occupation_Doctor                 0.000000e+00
+Current Occupation_Business Analyst      -0.000000e+00
+Field of Study_Mechanical Engineering     0.000000e+00
+Field of Study_Law                        0.000000e+00
+Field of Study_Economics                 -0.000000e+00
+Field of Study_Computer Science          -0.000000e+00
+Technology Adoption                      -0.000000e+00
+Skills Gap                               -0.000000e+00
+Job Security                              0.000000e+00
+Work-Life Balance                        -0.000000e+00
+Family Influence_nan                     -0.000000e+00
+dtype: float64
+</pre></div>
+</div>
+<img alt="../_images/9aca1af77035918ddc6456d8ee3169509a0cf8512d2181d5a8c748df4788a425.png" src="../_images/9aca1af77035918ddc6456d8ee3169509a0cf8512d2181d5a8c748df4788a425.png" />
+</div>
+</div>
+<p>Based on the results of this Lasso Regression, I will drop all of the features that the Lasso Regression drives the coefficent to zero since that means they don’t hold a lot of signficance to the target variable. I will create a new dataframe (features_reduced_dataframe) to work with.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Name zero coefficient features</span>
+<span class="n">zero_coefficient_features</span> <span class="o">=</span> <span class="n">filtered_coefficients</span><span class="p">[</span><span class="n">filtered_coefficients</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Droping zero coefficient features from the dataset</span>
+<span class="n">features_reduced_df</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">zero_coefficient_features</span><span class="p">)</span>
+
+
+<span class="c1">#Adding back the target variable</span>
+<span class="n">features_reduced_df</span><span class="p">[</span><span class="s1">&#39;Likely to Change Occupation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="p">[</span><span class="s1">&#39;Likely to Change Occupation&#39;</span><span class="p">]</span>
+
+
+<span class="n">display</span><span class="p">(</span><span class="n">features_reduced_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Years of Experience</th>
+      <th>Job Satisfaction</th>
+      <th>Job Opportunities</th>
+      <th>Salary</th>
+      <th>Career Change Interest</th>
+      <th>Mentorship Available</th>
+      <th>Certifications</th>
+      <th>Freelancing Experience</th>
+      <th>Geographic Mobility</th>
+      <th>...</th>
+      <th>Current Occupation_Lawyer</th>
+      <th>Current Occupation_Mechanical Engineer</th>
+      <th>Current Occupation_Software Developer</th>
+      <th>Current Occupation_Teacher</th>
+      <th>Gender_Female</th>
+      <th>Gender_Male</th>
+      <th>Education Level_High School</th>
+      <th>Industry Growth Rate_Medium</th>
+      <th>Family Influence_High</th>
+      <th>Likely to Change Occupation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>48</td>
+      <td>7</td>
+      <td>7</td>
+      <td>83</td>
+      <td>198266</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>44</td>
+      <td>26</td>
+      <td>10</td>
+      <td>55</td>
+      <td>96803</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21</td>
+      <td>27</td>
+      <td>8</td>
+      <td>78</td>
+      <td>65920</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>33</td>
+      <td>14</td>
+      <td>7</td>
+      <td>62</td>
+      <td>85591</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>28</td>
+      <td>0</td>
+      <td>3</td>
+      <td>8</td>
+      <td>43986</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>38439</th>
+      <td>24</td>
+      <td>34</td>
+      <td>8</td>
+      <td>92</td>
+      <td>117728</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>38440</th>
+      <td>21</td>
+      <td>24</td>
+      <td>2</td>
+      <td>73</td>
+      <td>132500</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>38441</th>
+      <td>35</td>
+      <td>21</td>
+      <td>4</td>
+      <td>77</td>
+      <td>55301</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>38442</th>
+      <td>35</td>
+      <td>11</td>
+      <td>9</td>
+      <td>63</td>
+      <td>171459</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>38443</th>
+      <td>37</td>
+      <td>23</td>
+      <td>6</td>
+      <td>49</td>
+      <td>189967</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>38444 rows × 29 columns</p>
+</div></div></div>
+</div>
+<p>Here are some basic general statistics of some of features of the reduced features dataframe that we will be using for the remainder of the project.</p>
+<p>Please note that for Career Change Interest, 1 means YES and 0 means NO. So based off the statistics, the average leans toward NO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stat_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Opportunities&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Satisfaction&#39;</span><span class="p">,</span> <span class="s1">&#39;Years of Experience&#39;</span><span class="p">,</span><span class="s1">&#39;Career Change Interest&#39;</span><span class="p">]</span>
+<span class="n">summary_stats</span> <span class="o">=</span> <span class="n">features_reduced_df</span><span class="p">[</span><span class="n">stat_columns</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Age         Salary  Job Opportunities  Job Satisfaction  \
+count  38444.000000   38444.000000       38444.000000      38444.000000   
+mean      39.540422  114975.623999          50.308267          5.489673   
+std       11.574509   48963.725598          28.877294          2.870407   
+min       20.000000   30005.000000           1.000000          1.000000   
+25%       30.000000   72701.500000          25.000000          3.000000   
+50%       40.000000  114861.000000          50.000000          6.000000   
+75%       50.000000  157241.000000          75.000000          8.000000   
+max       59.000000  199996.000000         100.000000         10.000000   
+
+       Years of Experience  Career Change Interest  
+count         38444.000000            38444.000000  
+mean             19.548200                0.199901  
+std              11.552474                0.399931  
+min               0.000000                0.000000  
+25%              10.000000                0.000000  
+50%              20.000000                0.000000  
+75%              30.000000                0.000000  
+max              39.000000                1.000000  
+</pre></div>
+</div>
+</div>
+</div>
+<p>To further clarify the distribution of career change interest, here is a histogram, indicating that more people selected that they have an interest in changing their career.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="field-of-study-occupation">
+<h1>Field of Study/Occupation<a class="headerlink" href="#field-of-study-occupation" title="Link to this heading">#</a></h1>
+<p>Even though generally Field of Study and Occupation types do not have as big of a significance on the target variable as other features, I still want to see which of the Fields of Study and Occupations cause people to be more likely to change careers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Selecting columns</span>
+<span class="n">field_of_study_df</span> <span class="o">=</span> <span class="n">filtered_coefficients</span><span class="p">[[</span><span class="s1">&#39;Field of Study_Biology&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Business&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Medicine&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Mechanical Engineering&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Education&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Law&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Computer Science&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Arts&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Psychology&#39;</span><span class="p">,</span> <span class="s1">&#39;Field of Study_Economics&#39;</span><span class="p">]]</span>
+
+<span class="n">occupation_df</span> <span class="o">=</span> <span class="n">filtered_coefficients</span><span class="p">[[</span><span class="s1">&#39;Current Occupation_Artist&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Biologist&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Business Analyst&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Doctor&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Economist&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Lawyer&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Mechanical Engineer&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Psychologist&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Software Developer&#39;</span><span class="p">,</span> <span class="s1">&#39;Current Occupation_Teacher&#39;</span><span class="p">]]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">field_of_study_df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Field of Study Coefficients&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Field of Study&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Coefficient Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">occupation_df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Occupation Coefficients&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Occupation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Coefficient Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ad906feef1a6cf36d75840b77bba6a40055474e924671602cd3bac5a53da90dc.png" src="../_images/ad906feef1a6cf36d75840b77bba6a40055474e924671602cd3bac5a53da90dc.png" />
+<img alt="../_images/ffa12f7c690f5d44e8fed8d15fcdcd897b5ea43276fa32859d6b3ece96baca19.png" src="../_images/ffa12f7c690f5d44e8fed8d15fcdcd897b5ea43276fa32859d6b3ece96baca19.png" />
+</div>
+</div>
+<p>By these results, we can conclude that those who study Education are more likely to change occupations, while those who study psychology are the least likely.<br />
+Also, Biologists are the most likely to change occupations, while teachers are the least likely to change occupations.</p>
+<section id="examining-relationships-between-the-three-most-important-features">
+<h2>Examining Relationships Between the Three Most Important Features<a class="headerlink" href="#examining-relationships-between-the-three-most-important-features" title="Link to this heading">#</a></h2>
+<p>Based on the results of the Lasso Regression, we know that the three features that have the greatest influence on the target variable: likelihood of a career change. The features are: Salary, Career Change Interest, and Job Satisfaction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Making Box Plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Likely to Change Occupation&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Job Satisfaction&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">features_reduced_df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Job Satisfaction vs. Career Change Interest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Likely to Change Occupation&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">features_reduced_df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Salary vs. Career Change Interest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/aab792d253b2db024960a2723c5b0dc1a72826d355e86b18eb9e9a5627d16e8b.png" src="../_images/aab792d253b2db024960a2723c5b0dc1a72826d355e86b18eb9e9a5627d16e8b.png" />
+<img alt="../_images/544986a1c518a72adde2161b8ae4b2cf5a56f35b36c499b27dabf7e13f377855.png" src="../_images/544986a1c518a72adde2161b8ae4b2cf5a56f35b36c499b27dabf7e13f377855.png" />
+</div>
+</div>
+<p>The results suggest that the median salary is higher for those not likely to change jobs.
+Additionallly, the median Job Satisfaction is lower for those likely to change jobs, and their satisfaction distribution is more variable and skewed downward.</p>
+<p>As for the range, the range of the Salary and Career Change Interest are more similar than the range of Job Satisfaction and Career Change Interest. Since Job Satisfaction with respect to Career Change Interest varies so much, it suggests that we should also examine the relationship with other variables effecting the likeliness to change occupations.</p>
+</section>
+<section id="examining-relationships-between-more-features">
+<h2>Examining Relationships Between More Features<a class="headerlink" href="#examining-relationships-between-more-features" title="Link to this heading">#</a></h2>
+<p>I want to see the relationship between more significant features we identified, not just the 3 most important.  So, I will contruct a scatter plot matrix to do so.<br />
+We can see from the results that many of the non-diagonal scatter plots visually demonstate non-linear relationships.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Opportunities&#39;</span><span class="p">,</span><span class="s1">&#39;Years of Experience&#39;</span><span class="p">,</span><span class="s1">&#39;Career Change Interest&#39;</span><span class="p">,</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span><span class="s1">&#39;Job Satisfaction&#39;</span><span class="p">,</span><span class="s1">&#39;Likely to Change Occupation&#39;</span><span class="p">]</span>
+<span class="n">scatter_matrix</span><span class="p">(</span><span class="n">features_reduced_df</span><span class="p">[</span><span class="n">selected_columns</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">diagonal</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8a86240438eab2c9f3ed7bf3a84e7676b3042f865066193601eea2f08ea15c7f.png" src="../_images/8a86240438eab2c9f3ed7bf3a84e7676b3042f865066193601eea2f08ea15c7f.png" />
+</div>
+</div>
+<p>In order to solidify the visual representation of relationships between features, I will construct a correlation matrix to give numerical values to the relationships.<br />
+We can see that of the feature relationships, Career Change Interest and Likely to Change Occupation has a moderate positive linear relationship and Job Satisfaction and Likely to Change Occupation have a moderate negative linear relationship. We can see that all the other relations have a correlation coefficent very close to zero, indicating a non-linear relationship.<br />
+I am glad I did both a correlation matrix and a scatter plot matrix as it made the results more clear.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;Job Opportunities&#39;</span><span class="p">,</span><span class="s1">&#39;Years of Experience&#39;</span><span class="p">,</span><span class="s1">&#39;Career Change Interest&#39;</span><span class="p">,</span><span class="s1">&#39;Salary&#39;</span><span class="p">,</span><span class="s1">&#39;Job Satisfaction&#39;</span><span class="p">,</span><span class="s1">&#39;Likely to Change Occupation&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Correlation Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8619dedc3bbfca81c03257750042eb94d4be5e4c7c20716e92aae72189fb4736.png" src="../_images/8619dedc3bbfca81c03257750042eb94d4be5e4c7c20716e92aae72189fb4736.png" />
+</div>
+</div>
+</section>
+<section id="extra-random-forest">
+<h2>Extra: Random Forest<a class="headerlink" href="#extra-random-forest" title="Link to this heading">#</a></h2>
+<p>Since most of the relationships are non-linear, it would be interesting to run a Random Forest Algorithm, which works better on non-linear relationships and compare it to the results of the Lasso Regression which predominatly is better for linear relationships.</p>
+<p>The information above and following code are adapted from <a class="reference external" href="https://www.geeksforgeeks.org/random-forest-algorithm-in-machine-learning/">Geeks for Geeks: Random Forest Algorithm in Machine Learning</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract feature names (excluding the target variable)</span>
+<span class="n">features_reduced</span> <span class="o">=</span> <span class="n">features_reduced_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Likely to Change Occupation&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="c1"># Subset the dataset using the reduced feature list</span>
+<span class="n">X_train_reduced</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">features_reduced</span><span class="p">]</span>
+<span class="n">X_test_reduced</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">[</span><span class="n">features_reduced</span><span class="p">]</span>
+
+<span class="c1"># Train the Random Forest model</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_reduced</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Make predictions on the test set</span>
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_reduced</span><span class="p">)</span>
+
+<span class="c1"># Generate confusion matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">rf</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix for Random Forest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/211ce466220d580bbcbf3433d5b1cb410e24d4565ac939e4c12dee5b64491101.png" src="../_images/211ce466220d580bbcbf3433d5b1cb410e24d4565ac939e4c12dee5b64491101.png" />
+</div>
+</div>
+<p>To confirm the results of the Confusion Matrix and visualize them in a different way, I will calculate the Cross-Validation accuracy and see if the results are the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[</span><span class="n">features_reduced</span><span class="p">],</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross-Validation Accuracy: </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-Validation Accuracy: 0.9999 ± 0.0001
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results of the Confusion Matrix and Cross-Validation Accuracy for the Random Forest implies that the model is working perfectly on the dataset since there is no Type I or Type II error.<br />
+Below is the code inspired by Stack Overflow (<a class="reference external" href="https://stackoverflow.com/questions/44511636/plot-feature-importance-with-feature-names">this page</a> and <a class="reference external" href="https://stackoverflow.com/questions/73667608/python-pandas-dataframe-comparison">this one too)</a> to compare Lasso coefficents and Random Forest feature importance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare Lasso coefficients and Random Forest feature importances</span>
+<span class="n">rf_importances</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="n">lasso_coefficients</span> <span class="o">=</span> <span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">features_reduced</span><span class="p">)]</span>  <span class="c1"># Ensure coefficients match feature set</span>
+
+<span class="c1"># Create a comparison df</span>
+<span class="n">comparison_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="n">features_reduced</span><span class="p">,</span><span class="s1">&#39;Lasso Coefficient&#39;</span><span class="p">:</span> <span class="n">lasso_coefficients</span><span class="p">,</span><span class="s1">&#39;Random Forest Importance&#39;</span><span class="p">:</span> <span class="n">rf_importances</span><span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Random Forest Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Plot the comparison</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">comparison_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Feature Importance: Lasso vs Random Forest&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>  <span class="c1"># Reverse the order for better readability</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1000x600 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../_images/3d18b9594d9a22f1635b540d62878dc7a9daef49eebc48b35cfff785fae25081.png" src="../_images/3d18b9594d9a22f1635b540d62878dc7a9daef49eebc48b35cfff785fae25081.png" />
+</div>
+</div>
+<p>This graph shows that Random Forest identifies significance in more features then Lasso Regression, since there are more orange bars than blue. Also, for shared features of Random Forest and Lasso, the Random Forest importance is greater than the Lasso’s in most cases.
+This shows that Random Forest is more sensitive, and thus has a potential for overfitting, while Lasso is more selective so it has the potential for underfitting.
+By the Bias-Variance Tradeoff, that makes Lasso have high bias and low variance and Random Forest have low bias and high variance for this dataset.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion:<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Through my project, I found that the three most significant factors (in order from greatest to least) are: Job Satisfaction, Career Change Interest, and Salary. The median salary is higher for those not likely to change jobs. Additionallly, the median Job Satisfaction is lower for those likely to change jobs.
+It was also interesting to see the how Field of Study and Occupation effect the likeliness to change jobs. Those who study Education are more likely to change occupations, while those who study psychology are the least likely. Also, Biologists are the most likely to change occupations, while teachers are the least likely to change occupations. These results are heavily influenced by salary and job satisfaction. The majority of features forming non-linear relationships was predictable, but made for a very interesting analysis when I compared the results of the Lasso Regression to the Random Forest. Ultimatly, the Random Forest was better as it was more sensitive to the data.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./final_projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Nicholas_Le.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Predicting Student Performance</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Pinge_Chen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Predicting Subscription to Term Deposit</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">An Analysis on the Likeliness of People Changing Their Occupation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-and-imports">Libraries and Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#field-of-study-occupation">Field of Study/Occupation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-relationships-between-the-three-most-important-features">Examining Relationships Between the Three Most Important Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-relationships-between-more-features">Examining Relationships Between More Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-random-forest">Extra: Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion:</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

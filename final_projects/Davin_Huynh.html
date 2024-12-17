@@ -1,0 +1,1839 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Predicting Heart Disease with Standard Machine Learning Models &#8212; UCI Math 10, Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_projects/Davin_Huynh';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="Fang_Zhao.html" />
+    <link rel="prev" title="Ballon D’or winner prediction model" href="Caroline_Cheng.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Fall 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Fall 2024
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Logistic Regression for Multiclass Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/kmeans.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Fri.html">Lecture Week 7 Fri 11/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Mon.html">Lecture Week 8 Mon 11/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Wed.html">Lecture Week 8 Wed 11/20</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 11/15/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 11/25/2024 at 11:59pm)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Student Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Caroline_Cheng.html">Ballon D’or winner prediction model</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Predicting Heart Disease with Standard Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gabriela_Zuno.html">Correlation Bewteen a T.V Show’s Genre and Queer Female Character Deaths</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Hailili_Subinuer.html">The Application of Machine Learning in Gold Price Prediction</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Helena_Tran.html">Analyzing Life Expectancy Across Countries</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="James_Cho.html">TQQQ Stock Predictor Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kaiyuan_Chen.html">Data analysis of new energy vehicles in China</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kent_Hocaoglu.html">Analysis of Crime Reports in LA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Krishna_Saraogi.html">Step 1: Data Exploration/ Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nguyen_Bui.html">Title: Should I investing to SIRI stock ? Reason?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nicholas_Le.html">Predicting Student Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nikolina_Sentovich.html">An Analysis on the Likeliness of People Changing Their Occupation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Pinge_Chen.html"><strong>Predicting Subscription to Term Deposit</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simon_Chen.html"><strong>Medical Insurance Prediction</strong></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Zhang_Zhang.html">Prediction of High School Students’ Academic Performance</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_projects/Davin_Huynh.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Predicting Heart Disease with Standard Machine Learning Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dataset-and-visualization">The Dataset and Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-feature-scaling">Preprocessing, Feature Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-our-models">Training our Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-and-evaluation">Logistic Regression and Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines-and-evaluation">Support Vector Machines and Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbors-classification-and-evaluation">Nearest Neighbors Classification and Evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="predicting-heart-disease-with-standard-machine-learning-models">
+<h1>Predicting Heart Disease with Standard Machine Learning Models<a class="headerlink" href="#predicting-heart-disease-with-standard-machine-learning-models" title="Link to this heading">#</a></h1>
+<p>Author: Davin Huynh</p>
+<p>Course Project, UC Irvine, Math 10, Fall 24</p>
+<p>I would like to post my notebook on the course’s website. <strong>Yes</strong></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Heart disease is a medical condition that affects the heart and blood vessels. It is one of the leading causes of death worldwide. As such, there is a great deal of research put into heart disease, espicially in predicting its presence. In this project, we will analyze a heart disease dataset from Kaggle and make predictions.</p>
+</section>
+<section id="the-dataset-and-visualization">
+<h2>The Dataset and Visualization<a class="headerlink" href="#the-dataset-and-visualization" title="Link to this heading">#</a></h2>
+<p>The dataset that we will be looking at is taken from Kaggle <a class="reference external" href="https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset/data">here</a>. Accordingly, the dataset dates from 1988 and consists of four databases from Cleveland, Hungary, Switzerland, and Long Beach. The original dataset contained 76 attributes, including the predicted attribute. However, some features are personal and are not meant for the public view. Hence, only 14 features will be considered in predicted heart disease. We now import the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import useful tools 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns  
+
+df = pd.read_csv(&#39;heart.csv&#39;) 
+df 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>52</td>
+      <td>1</td>
+      <td>0</td>
+      <td>125</td>
+      <td>212</td>
+      <td>0</td>
+      <td>1</td>
+      <td>168</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>53</td>
+      <td>1</td>
+      <td>0</td>
+      <td>140</td>
+      <td>203</td>
+      <td>1</td>
+      <td>0</td>
+      <td>155</td>
+      <td>1</td>
+      <td>3.1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>70</td>
+      <td>1</td>
+      <td>0</td>
+      <td>145</td>
+      <td>174</td>
+      <td>0</td>
+      <td>1</td>
+      <td>125</td>
+      <td>1</td>
+      <td>2.6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>61</td>
+      <td>1</td>
+      <td>0</td>
+      <td>148</td>
+      <td>203</td>
+      <td>0</td>
+      <td>1</td>
+      <td>161</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>62</td>
+      <td>0</td>
+      <td>0</td>
+      <td>138</td>
+      <td>294</td>
+      <td>1</td>
+      <td>1</td>
+      <td>106</td>
+      <td>0</td>
+      <td>1.9</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1020</th>
+      <td>59</td>
+      <td>1</td>
+      <td>1</td>
+      <td>140</td>
+      <td>221</td>
+      <td>0</td>
+      <td>1</td>
+      <td>164</td>
+      <td>1</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1021</th>
+      <td>60</td>
+      <td>1</td>
+      <td>0</td>
+      <td>125</td>
+      <td>258</td>
+      <td>0</td>
+      <td>0</td>
+      <td>141</td>
+      <td>1</td>
+      <td>2.8</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1022</th>
+      <td>47</td>
+      <td>1</td>
+      <td>0</td>
+      <td>110</td>
+      <td>275</td>
+      <td>0</td>
+      <td>0</td>
+      <td>118</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1023</th>
+      <td>50</td>
+      <td>0</td>
+      <td>0</td>
+      <td>110</td>
+      <td>254</td>
+      <td>0</td>
+      <td>0</td>
+      <td>159</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1024</th>
+      <td>54</td>
+      <td>1</td>
+      <td>0</td>
+      <td>120</td>
+      <td>188</td>
+      <td>0</td>
+      <td>1</td>
+      <td>113</td>
+      <td>0</td>
+      <td>1.4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1025 rows × 14 columns</p>
+</div></div></div>
+</div>
+<p>The dataset contains the following features:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">age</span></code>. Integer values representing the patient’s age in years, ranging from 20 to 80.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sex</span></code>. Binary values representing patient’s sex (0 is female, 1 is male).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cp</span></code>.* Integer values from 0 to 3, inclusive, representing chest pain type (0 if typical angina, 1 if atypical angina, 2 if non-anginal pain, 3 if asymptomatic).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trestbps</span></code>. Integer values of resting blood pressure (in mmHg on admission to hospital).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chol</span></code>. Integer values for serum cholesterol in <span class="math notranslate nohighlight">\(\mathrm{mg}/\mathrm{dl}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fbs</span></code>. Binary values representing whether the patient’s fasting blood sugar is greater 120 <span class="math notranslate nohighlight">\(\mathrm{mg}/\mathrm{dl}\)</span> (1 if true, 0 if false).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">restecg</span></code>.* Integer values from 0 to 2, inclusive, representing resting electrocardiographic results (0 if normal, 1 if ST-T wave abnormality, 2 if likely left ventricular hypertrophy).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thalach</span></code>. Integer values representing the patient’s maximum heart rate achieved.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exang</span></code>. Binary values representing whether the patient’s exercise induced angina or insufficient blood flow during physical activity (1 if yes, 0 if no).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">oldpeak</span></code>. Values up to 1 decimal place representing the patient’s ST depression induced by exercise relative to rest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slope</span></code>.* Integer values from 0 to 2, inclusive, representing the slope of the peak exercise ST segment (0 if upsloping, 1 if flat, 2 if downsloping).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ca</span></code>. Integer values from 0 to 3, inclusive, representing the number of major vessels colored by flourosopy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">thal</span></code>. Integer values representing thallium stress test results (0 if normal, 1 if fixed defect, 2 if reversable defect).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code>. Binary values representing whether patient has heart disease (0 if false, 1 if true).</p></li>
+</ol>
+<p>The original dataset from Kaggle does not explain the meaning some of the categorical variables, ex. <code class="docutils literal notranslate"><span class="pre">restecg</span></code>. <strong>Please note</strong> that for the sake of interpretation, I assigned meaning to these categorical variables and are marked with (*). For the remainder of this project, I will interpret the features as numbers.</p>
+<p>With these features in mind, it is helpful to gain an idea of their importance in predicting heart disease. More specifically, we will visualize their relationships with the presence of heart disease.</p>
+<p>Let us start by plotting the numerical features <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">trestbps</span></code>, <code class="docutils literal notranslate"><span class="pre">chol</span></code>, <code class="docutils literal notranslate"><span class="pre">thalach</span></code>, and <code class="docutils literal notranslate"><span class="pre">oldpeak</span></code> against <code class="docutils literal notranslate"><span class="pre">target</span></code>. Recall that <code class="docutils literal notranslate"><span class="pre">target=1</span></code> means the patient has heart disease.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># numerical features we want to analyze 
+numerical_features = [&#39;age&#39;, &#39;trestbps&#39;, &#39;chol&#39;, &#39;thalach&#39;, &#39;oldpeak&#39;]
+
+plt.figure(figsize=(12, 8))
+for i, feature in enumerate(numerical_features): # i is index from 0 to 4
+    plt.subplot(2, 3, i + 1) # 2 by 3 subplots at index i + 1
+    sns.histplot(data=df, x=feature, hue=&#39;target&#39;, kde=True, bins=20, palette=&#39;Set2&#39;) 
+    plt.title(f&#39;{feature} Distribution by Heart Disease&#39;)
+plt.tight_layout() 
+plt.show() 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/99c7aefea4596c967450eed8a5ffe6f4607331f3dad8d36ebab68283a7d11056.png"><img alt="../_images/99c7aefea4596c967450eed8a5ffe6f4607331f3dad8d36ebab68283a7d11056.png" src="../_images/99c7aefea4596c967450eed8a5ffe6f4607331f3dad8d36ebab68283a7d11056.png" style="width: 1190px; height: 790px;" /></a>
+</div>
+</div>
+<p>We can make few guesses from these plots.</p>
+<ul class="simple">
+<li><p>Heart disease is more prevalent in younger patients.</p></li>
+<li><p>Patients with higher maximum heart rates, described in <code class="docutils literal notranslate"><span class="pre">thalach</span></code>, tend to have heart disease.</p></li>
+<li><p>Low ST depressions in <code class="docutils literal notranslate"><span class="pre">oldpeak</span></code> are likely to have heart disease.</p></li>
+</ul>
+<p>Moving forward, we visualize the relationship between the categorical features <code class="docutils literal notranslate"><span class="pre">sex</span></code>, <code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">fbs</span></code>, <code class="docutils literal notranslate"><span class="pre">restecg</span></code>, <code class="docutils literal notranslate"><span class="pre">exang</span></code>, <code class="docutils literal notranslate"><span class="pre">slope</span></code>, <code class="docutils literal notranslate"><span class="pre">ca</span></code>, and <code class="docutils literal notranslate"><span class="pre">thal</span></code> against heart disease.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>categorical_features = [&#39;sex&#39;, &#39;cp&#39;, &#39;fbs&#39;, &#39;restecg&#39;, &#39;exang&#39;, &#39;slope&#39;, &#39;ca&#39;, &#39;thal&#39;]
+
+plt.figure(figsize=(12, 8))
+for i, feature in enumerate(categorical_features): # i is index 
+    plt.subplot(3, 3, i + 1) # 2 by 3 subplots at index i + 1
+    sns.countplot(data=df, x=feature, hue=&#39;target&#39;, palette=&#39;Set2&#39;) 
+    plt.title(f&#39;Heart Disease by {feature} Distribution&#39;)
+plt.tight_layout() 
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/cf2457dc5cc861d40e0f64c63dc254f4a4629c5f1af65c760b25398e1b2543f4.png"><img alt="../_images/cf2457dc5cc861d40e0f64c63dc254f4a4629c5f1af65c760b25398e1b2543f4.png" src="../_images/cf2457dc5cc861d40e0f64c63dc254f4a4629c5f1af65c760b25398e1b2543f4.png" style="width: 1189px; height: 790px;" /></a>
+</div>
+</div>
+<p>Let us again make few observations from these plots.</p>
+<ul class="simple">
+<li><p>In proportion, women are more at risk for heart disease.</p></li>
+<li><p>Patients with nonzero chest pains in <code class="docutils literal notranslate"><span class="pre">cp</span></code> are likely to have heart disease.</p></li>
+<li><p>Patients with no exercise-induced angina in <code class="docutils literal notranslate"><span class="pre">exang</span></code> are likely to have heart disease.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">slope</span></code> value of 2, <code class="docutils literal notranslate"><span class="pre">ca</span></code> value of 0, and <code class="docutils literal notranslate"><span class="pre">thal</span></code> value of 2 are prone to heart disease.</p></li>
+</ul>
+<p>To conclude our visualization, we finish by plotting a pairwise scatter plot to spot potential bivariate relations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sns.pairplot(df[numerical_features + [&#39;target&#39;]], 
+    diag_kind=&#39;kde&#39;, 
+    hue=&#39;target&#39;, 
+    palette=&#39;Set2&#39; 
+    ).map_lower(sns.kdeplot, levels=4, color=&quot;.2&quot;) 
+plt.suptitle(&#39;Pairwise Scatter Plot of Numerical Features by Heart Disease&#39;, y=1)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/9308379711aae690ed41082bbe0cd1272b4f65153d52af211cf4ecbc36767c1a.png"><img alt="../_images/9308379711aae690ed41082bbe0cd1272b4f65153d52af211cf4ecbc36767c1a.png" src="../_images/9308379711aae690ed41082bbe0cd1272b4f65153d52af211cf4ecbc36767c1a.png" style="width: 1301px; height: 1250px;" /></a>
+</div>
+</div>
+<p>Informally interpretting the plots, we see no immediate correlation between two numerical features and heart disease prediction. Let us move on to the next section.</p>
+</section>
+<section id="preprocessing-feature-scaling">
+<h2>Preprocessing, Feature Scaling<a class="headerlink" href="#preprocessing-feature-scaling" title="Link to this heading">#</a></h2>
+<p>Before applying machine learning estimators, we should adhere to the standard practice of preprocessing our dataset. Raw data often contains noise, inconsistencies, and missing values which can lead to poor model performance. As such, preprocessing data aims to clean and give more structure to our data.</p>
+<p>Luckily, our dataset contains no missing values. For the sake of model performance, we will be checking for features that are highly correlated so as to detect potential <strong>multicollinearity</strong>. Intuitively, two features displaying multicollinearity are essentially measuring the same thing. This can make it challenging to interpret the relative importance of each feature and may even lead to model instability. To address this, we can visualize feature correlation by considering the <strong>correlation matrix</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>corr_matrix = df.corr() 
+plt.figure(figsize=(10, 8))
+sns.heatmap(corr_matrix, annot=True, cmap=&#39;coolwarm&#39;, fmt=&#39;.2f&#39;)
+plt.title(&#39;Correlation Matrix&#39;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/477b1877f5fef2f9a061763e2d76ce8e989898c703f32a15f48fa8768bac5b31.png"><img alt="../_images/477b1877f5fef2f9a061763e2d76ce8e989898c703f32a15f48fa8768bac5b31.png" src="../_images/477b1877f5fef2f9a061763e2d76ce8e989898c703f32a15f48fa8768bac5b31.png" style="width: 819px; height: 725px;" /></a>
+</div>
+</div>
+<p>The conventional cutoff for strong correlation are values greater than <code class="docutils literal notranslate"><span class="pre">0.70</span></code> or less than <code class="docutils literal notranslate"><span class="pre">-0.70</span></code>. From the correlation matrix, we see that distinct features have no strong correlation. Hence, we will refrain from dropping any features.</p>
+<p>Some machine learning models, including those we will use in this project, are sensitive to the magnitude of features. To improve model performance, we will consider <em>scaling</em> our numerical features. In particular, we will analyze the features <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">trestbps</span></code>, <code class="docutils literal notranslate"><span class="pre">chol</span></code>, <code class="docutils literal notranslate"><span class="pre">thalach</span></code>, and <code class="docutils literal notranslate"><span class="pre">oldpeak</span></code>. First, let us visualize their histograms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># numerical_features = [&#39;age&#39;, &#39;trestbps&#39;, &#39;chol&#39;, &#39;thalach&#39;, &#39;oldpeak&#39;] defined earlier 
+
+# plotting histograms 
+plt.figure(figsize=(12, 8))
+for i, feature in enumerate(numerical_features): # i is index 
+    plt.subplot(2, 3, i + 1) # 2 by 3 subplots at index i + 1
+    sns.histplot(df[feature], bins=20, kde=True, color=&#39;blue&#39;) 
+    plt.title(feature) 
+plt.tight_layout() 
+plt.show() 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/3fa8a10b49a6bbd444c04298563c1c350368de2e0b7798bd0ea5dfc4c594b4f5.png"><img alt="../_images/3fa8a10b49a6bbd444c04298563c1c350368de2e0b7798bd0ea5dfc4c594b4f5.png" src="../_images/3fa8a10b49a6bbd444c04298563c1c350368de2e0b7798bd0ea5dfc4c594b4f5.png" style="width: 1190px; height: 790px;" /></a>
+</div>
+</div>
+<p>Based off the histograms, we find that <code class="docutils literal notranslate"><span class="pre">age</span></code> roughly follows a normal distribution, so we will apply <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> to it. In other words, we will match the age values to  a standard normal distribution.</p>
+<p>On the contrary, the features <code class="docutils literal notranslate"><span class="pre">tresetbps</span></code>, <code class="docutils literal notranslate"><span class="pre">chol</span></code>, and <code class="docutils literal notranslate"><span class="pre">thalach</span></code>, and are slightly skewed whence <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code> will be used.</p>
+<p>The feature <code class="docutils literal notranslate"><span class="pre">oldpeak</span></code> has a strong positive skew, and so we will perform a logarithmic transformation on <code class="docutils literal notranslate"><span class="pre">oldpeak</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import scaling packages 
+from sklearn.preprocessing import StandardScaler, MinMaxScaler 
+
+features_st = [&#39;age&#39;] # to standardize 
+features_m = [&#39;trestbps&#39;, &#39;chol&#39;, &#39;thalach&#39;] # to min-max scale 
+
+df[features_st] = StandardScaler().fit_transform(df[features_st])
+df[features_m] = MinMaxScaler().fit_transform(df[features_m]) 
+df[&#39;oldpeak&#39;] = np.log1p(df[&#39;oldpeak&#39;]) # log scale 
+
+df.head(10)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.268437</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.292453</td>
+      <td>0.196347</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.740458</td>
+      <td>0</td>
+      <td>0.693147</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.158157</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.433962</td>
+      <td>0.175799</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.641221</td>
+      <td>1</td>
+      <td>1.410987</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.716595</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.481132</td>
+      <td>0.109589</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.412214</td>
+      <td>1</td>
+      <td>1.280934</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.724079</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.509434</td>
+      <td>0.175799</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.687023</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.834359</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.415094</td>
+      <td>0.383562</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.267176</td>
+      <td>0</td>
+      <td>1.064711</td>
+      <td>1</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.393241</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.056604</td>
+      <td>0.278539</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.389313</td>
+      <td>0</td>
+      <td>0.693147</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.393241</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.188679</td>
+      <td>0.438356</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0.526718</td>
+      <td>0</td>
+      <td>1.686399</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.062402</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.622642</td>
+      <td>0.372146</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.564885</td>
+      <td>1</td>
+      <td>0.587787</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>-0.930114</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.245283</td>
+      <td>0.280822</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.557252</td>
+      <td>0</td>
+      <td>0.587787</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-0.047877</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.264151</td>
+      <td>0.365297</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.343511</td>
+      <td>1</td>
+      <td>1.435085</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="training-our-models">
+<h2>Training our Models<a class="headerlink" href="#training-our-models" title="Link to this heading">#</a></h2>
+<p>Our dataset has 1025 data points to consider. To train our models, we will split our data into training and testing sets using the conventional 80-20 split. Note that because we have many data points, we do not need to perform <strong>Cross-Validation</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># splitting our data 
+from sklearn.model_selection import train_test_split 
+
+X = df.drop(columns=[&#39;target&#39;]) # features 
+y = df[&#39;target&#39;] # target, heart disease 
+
+# split into 80% training and 20% testing 
+# random state = 0 for reproducibility 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0, stratify=y) 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have now prepared our training and testing sets for our models to use. In the following sections, we will train and evaluate each model individually, but we will compare their performance at the end.</p>
+<section id="logistic-regression-and-evaluation">
+<h3>Logistic Regression and Evaluation<a class="headerlink" href="#logistic-regression-and-evaluation" title="Link to this heading">#</a></h3>
+<p>Our binary classification task of predicting the presence of heart disease is a classic example for applying (binary) logistic regression (<a class="reference external" href="https://scikit-learn.org/1.5/modules/linear_model.html#logistic-regression">User Guide</a> and <a class="reference external" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html">documentation</a>). We first initialize and fit the logistic regression model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import logistic regression model 
+from sklearn.linear_model import LogisticRegression 
+
+# train logistic regression 
+clf = LogisticRegression(max_iter=1000) # 1000 is the max num of iterations until regression converges 
+clf.fit(X_train, y_train) 
+
+# save prediction on test set to evaluate the model&#39;s perfomance later 
+clf_y_test_pred = clf.predict(X_test)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have fit our logistic regression model in <code class="docutils literal notranslate"><span class="pre">clf</span></code>, we can evaluate its performance on the testing set.
+One may look at the <strong>accuracy score</strong> (<a class="reference external" href="https://scikit-learn.org/1.5/modules/model_evaluation.html#accuracy-score">User Guide</a>) of the model which represents the <em>overall proportion</em> of correct predictions (closer to 1 is ideal). However, accuracy alone is insufficient, especially in critical applications like medical diagnoses where misdiagnoses can have serious consequences. For example, a person who is positive for heart disease may be incorrectly classified by our model, known as a false negative <span class="math notranslate nohighlight">\(\text{FN}\)</span> test. To address this, we need additional metrics to quantify how frequently such errors occur.</p>
+<p>More specifically, we want to analyze how well the model accurately predicts a given class (ex. positive for heart disease). We can do this by running a <strong>classification report</strong> (<a class="reference external" href="https://scikit-learn.org/1.5/modules/model_evaluation.html#classification-report">User Guide</a>) on our logistic model and examining the values for <code class="docutils literal notranslate"><span class="pre">precision</span></code>, <code class="docutils literal notranslate"><span class="pre">recall</span></code>, and <code class="docutils literal notranslate"><span class="pre">f1-score</span></code>. I will briefly discuss what they measure.</p>
+<p>Let us focus on the case on the class of patients being positive for heart disease (<code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">=</span> <span class="pre">1</span></code>).</p>
+<ul class="simple">
+<li><p>To evaluate the model’s <code class="docutils literal notranslate"><span class="pre">precision</span></code>, we calculate the proportion of true (and predicted) positive individuals to predicted positive individuals. Equivalently, <code class="docutils literal notranslate"><span class="pre">precision</span></code> answers the question: “How many predicted positive patients are truly positive?” The formula is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ P_1 = \text{precision for positives} = \dfrac{\text{TP}}{\text{TP} + \text{FP}} \]</div>
+<ul class="simple">
+<li><p>The model’s <code class="docutils literal notranslate"><span class="pre">recall</span></code> value answers a similar question: “How many truly positive patients were predicted correctly by the model?” That is, the value of <code class="docutils literal notranslate"><span class="pre">recall</span></code> is the proportion of predicted (and true) positive patients to true positive patients. The formula is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ R_1 = \text{recall for positives} = \dfrac{\text{TP}}{\text{TP} + \text{FN}} \]</div>
+<ul class="simple">
+<li><p>The model’s <code class="docutils literal notranslate"><span class="pre">f1-score</span></code> is the harmonic mean of precision and recall. Essentially, an <code class="docutils literal notranslate"><span class="pre">f1-score</span></code> close to 1 says that the model balances precision and recall well. The formula is</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ F_1 = \dfrac{2}{\frac{1}{P_1} + \frac{1}{R_1}} = \dfrac{2P_1 R_1}{P_1+R_1} \]</div>
+<p>Evaluating the model’s <code class="docutils literal notranslate"><span class="pre">precision</span></code>, <code class="docutils literal notranslate"><span class="pre">recall</span></code>, and <code class="docutils literal notranslate"><span class="pre">f1-score</span></code> for negative patients is analgous:</p>
+<div class="math notranslate nohighlight">
+\[ P_0 = \dfrac{\text{TN}}{\text{TN} + \text{FN}},\ R_0 = \dfrac{\text{TN}}{\text{TN} + \text{FP}},\ F_0 = \dfrac{2}{\frac{1}{P_0} + \frac{1}{R_0}} \]</div>
+<p>Note that because our model is for binary classification (either you have or don’t have heart disease), the values of <span class="math notranslate nohighlight">\(P_1\)</span> and <span class="math notranslate nohighlight">\(R_0\)</span> are known as <strong>sensitivity</strong> and <strong>specificity</strong>, respectively. Additionally, the number of <span class="math notranslate nohighlight">\(\text{TP}\)</span> patients and the like are recorded in the model’s <strong>confusion matrix</strong>, which is a nice visualization of the model’s performance.</p>
+<p>Let us now run these metrics on our logistic model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import metrics 
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix 
+
+# printing accuracy and precision information 
+print(f&#39;Test Accuracy for Logistic Regression: {accuracy_score(y_test, clf_y_test_pred):.4f}&#39;) 
+
+print(&#39;Classification Report for Logistic Regression:&#39;) 
+print(classification_report(y_test, clf_y_test_pred)) 
+
+
+# initialize confusion matrix 
+clf_conf_matrix = confusion_matrix(y_test, clf_y_test_pred) 
+
+# want to evaluate TP, FP, TN, FN 
+# visualize confusion matrix with a heatmap 
+plt.figure(figsize=(8, 6))
+sns.heatmap(clf_conf_matrix, 
+    annot=True, 
+    fmt=&quot;d&quot;, 
+    cmap=&quot;Blues&quot;, 
+    xticklabels=[&quot;No Heart Disease&quot;, &quot;Heart Disease&quot;], 
+    yticklabels=[&quot;No Heart Disease&quot;, &quot;Heart Disease&quot;])
+
+plt.title(&quot;Confusion Matrix for Logistic Regression&quot;) 
+plt.xlabel(&quot;Predicted&quot;) 
+plt.ylabel(&quot;Actual&quot;) 
+plt.show() 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Accuracy for Logistic Regression: 0.8195
+Classification Report for Logistic Regression:
+              precision    recall  f1-score   support
+
+           0       0.82      0.81      0.81       100
+           1       0.82      0.83      0.82       105
+
+    accuracy                           0.82       205
+   macro avg       0.82      0.82      0.82       205
+weighted avg       0.82      0.82      0.82       205
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/aa5f578aa9fd4c1a5328ee3d329df768ca05ebc5a066e7cf7df93f98dae18e27.png"><img alt="../_images/aa5f578aa9fd4c1a5328ee3d329df768ca05ebc5a066e7cf7df93f98dae18e27.png" src="../_images/aa5f578aa9fd4c1a5328ee3d329df768ca05ebc5a066e7cf7df93f98dae18e27.png" style="width: 640px; height: 547px;" /></a>
+</div>
+</div>
+<p>Many classifers, such as our logistic model, have built-in probability scores. In words, our logistic model assigns how likely a patient has heart disease. The cutoff is usually <span class="math notranslate nohighlight">\(50\%\)</span>, but we can vary this threshold. Varying the threshold certainly changes how many people are predicted positive or negative. Hence, we can calculate the model’s true positive rate <span class="math notranslate nohighlight">\(\text{TPR}\)</span> and false positive rate <span class="math notranslate nohighlight">\(\text{FPR}\)</span> for each threshold. This brings us to the <strong>ROC Curve</strong>.</p>
+<p>Essentially, the ROC Curve visualizes the trade-off between <span class="math notranslate nohighlight">\(\text{TPR}\)</span> and <span class="math notranslate nohighlight">\(\text{FPR}\)</span> as our threshold varies from <span class="math notranslate nohighlight">\(100\%\)</span> to <span class="math notranslate nohighlight">\(0\%\)</span> (strict to lenient). Ideally, we want the model to correctly assess patients <span class="math notranslate nohighlight">\(100\%\)</span> of the time, which corresponds to <span class="math notranslate nohighlight">\(\text{TPR}=1\)</span> and <span class="math notranslate nohighlight">\(\text{FPR}=0\)</span> at some threshold. Therefore, an ideal ROC Curve should “hug” the top-left corner <span class="math notranslate nohighlight">\((0,1)\)</span>. As such, if we compare two ROC Curves of different models, the curve that is closer to the top-left corver (or steeper) is considered the better model. Here is the <a class="reference external" href="https://scikit-learn.org/1.5/modules/model_evaluation.html#roc-metrics">User Guide</a>.</p>
+<p>To numerically evaluate how “close” an ROC Curve is to the top-left corner, we can compute its <strong>AUC Score</strong>. The AUC Score of a ROC Curve is simply the area under the curve. Therefore, AUC Scores close to <span class="math notranslate nohighlight">\(1\)</span> is ideal.</p>
+<p>Let us now visualize the ROC Curve of our logistic model along its AUC Score.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import roc_curve, roc_auc_score 
+
+# get probabilities for the positive class 
+clf_y_test_prob = clf.predict_proba(X_test)[:, 1] 
+
+# calculate ROC curve 
+fpr, tpr, thresholds = roc_curve(y_test, clf_y_test_prob) 
+
+# plot ROC curve 
+plt.figure(figsize=(8, 6)) 
+plt.plot(fpr, tpr, label=f&#39;AUC = {roc_auc_score(y_test, clf_y_test_prob):.3f}&#39;) 
+plt.plot([0, 1], [0, 1], &#39;r--&#39;)  # classifier line 
+plt.title(&#39;ROC Curve for Logistic Regression&#39;) 
+plt.xlabel(&#39;False Positive Rate&#39;) 
+plt.ylabel(&#39;True Positive Rate&#39;) 
+plt.legend(loc=&#39;lower right&#39;) 
+plt.show() 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/844de1a7854cc58b5ef80a36084c89ab6a0f005b3b95606ee39c7411975f0e04.png"><img alt="../_images/844de1a7854cc58b5ef80a36084c89ab6a0f005b3b95606ee39c7411975f0e04.png" src="../_images/844de1a7854cc58b5ef80a36084c89ab6a0f005b3b95606ee39c7411975f0e04.png" style="width: 691px; height: 547px;" /></a>
+</div>
+</div>
+<p>Before we conclude our evaluation on logistic regression, we should look at the coefficients to get a feel for which features are considered important.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># extracting coefficients from our logistic regression model 
+clf_coef = clf.coef_[0]
+
+sns.barplot(x=clf_coef, y=X.columns) 
+plt.title(&#39;Feature Importance in Logistic Regression&#39;)
+plt.xlabel(&#39;Coefficient Value&#39;)
+plt.ylabel(&#39;Feature&#39;)
+plt.axvline(0, color=&#39;red&#39;, linestyle=&#39;--&#39;)  # line to show zero
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/24ae32294ad1e19e0bf79dc3fcfa11f1986923de30244a0be7464d74efabc36f.png"><img alt="../_images/24ae32294ad1e19e0bf79dc3fcfa11f1986923de30244a0be7464d74efabc36f.png" src="../_images/24ae32294ad1e19e0bf79dc3fcfa11f1986923de30244a0be7464d74efabc36f.png" style="width: 609px; height: 455px;" /></a>
+</div>
+</div>
+<p>Based on the magnitude of the coefficients, we find that <code class="docutils literal notranslate"><span class="pre">sex</span></code>, <code class="docutils literal notranslate"><span class="pre">trestbps</span></code>, <code class="docutils literal notranslate"><span class="pre">chol</span></code>, and <code class="docutils literal notranslate"><span class="pre">thalach</span></code> are the most important factors in predicting heart diease. Let us move forward to the next model.</p>
+</section>
+<section id="support-vector-machines-and-evaluation">
+<h3>Support Vector Machines and Evaluation<a class="headerlink" href="#support-vector-machines-and-evaluation" title="Link to this heading">#</a></h3>
+<p>In short, support vector machines (SVM) aim to separate data points with a hyper-plane. Because SVMs work well in high-dimensional spaces, we are motivated to use SVMs for our classification task (<a class="reference external" href="https://scikit-learn.org/1.5/modules/svm.html#">SVM User Guide</a> and <a class="reference external" href="https://scikit-learn.org/1.5/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC">SVC documentation</a>).</p>
+<p>Let us now initialize and train our model. We will start with linear classification <code class="docutils literal notranslate"><span class="pre">kernel='linear'</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import SVM for classification from sklearn
+from sklearn.svm import SVC 
+
+# initialize 
+svm = SVC(kernel=&#39;linear&#39;, C=1.0, probability=True) 
+
+# training 
+svm.fit(X_train, y_train) 
+
+# predicting on test set 
+svm_y_test_pred = svm.predict(X_test)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have our SVM model, we can evaluate its perfomance using the same metrics in our logistic regression model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># printing accuracy and precision information for svm
+print(f&#39;Test Accuracy for Linear SVM: {accuracy_score(y_test, svm_y_test_pred):.3f}&#39;) 
+
+print(&#39;Classification Report for Linear SVM:&#39;) 
+print(classification_report(y_test, svm_y_test_pred)) 
+
+
+# initialize confusion matrix for linear svm
+svm_conf_matrix = confusion_matrix(y_test, svm_y_test_pred) 
+
+# visualize confusion matrix for linear svm with a heatmap 
+plt.figure(figsize=(8, 6))
+sns.heatmap(svm_conf_matrix, 
+    annot=True, 
+    fmt=&quot;d&quot;, 
+    cmap=&quot;Blues&quot;, 
+    xticklabels=[&quot;No Heart Disease&quot;, &quot;Heart Disease&quot;], 
+    yticklabels=[&quot;No Heart Disease&quot;, &quot;Heart Disease&quot;])
+
+plt.title(&quot;Confusion Matrix for Linear SVM&quot;) 
+plt.xlabel(&quot;Predicted&quot;) 
+plt.ylabel(&quot;Actual&quot;) 
+plt.show() 
+
+
+# get probabilities for the positive class 
+svm_y_test_prob = svm.predict_proba(X_test)[:, 1] 
+
+# calculate ROC curve 
+fpr, tpr, thresholds = roc_curve(y_test, svm_y_test_prob) 
+
+# plot ROC curve 
+plt.figure(figsize=(8, 6)) 
+plt.plot(fpr, tpr, label=f&#39;AUC = {roc_auc_score(y_test, svm_y_test_prob):.3f}&#39;) 
+plt.plot([0, 1], [0, 1], &#39;r--&#39;) # classifier line 
+plt.title(&#39;ROC Curve for Linear SVM&#39;) 
+plt.xlabel(&#39;False Positive Rate&#39;) 
+plt.ylabel(&#39;True Positive Rate&#39;) 
+plt.legend(loc=&#39;lower right&#39;) 
+plt.show() 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test Accuracy for Linear SVM: 0.844
+Classification Report for Linear SVM:
+              precision    recall  f1-score   support
+
+           0       0.86      0.81      0.84       100
+           1       0.83      0.88      0.85       105
+
+    accuracy                           0.84       205
+   macro avg       0.85      0.84      0.84       205
+weighted avg       0.84      0.84      0.84       205
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/7179b30dbb1c35860ed6a0d7fb79419b94d3519861722d857815c7b44441c30c.png"><img alt="../_images/7179b30dbb1c35860ed6a0d7fb79419b94d3519861722d857815c7b44441c30c.png" src="../_images/7179b30dbb1c35860ed6a0d7fb79419b94d3519861722d857815c7b44441c30c.png" style="width: 640px; height: 547px;" /></a>
+<a class="reference internal image-reference" href="../_images/93f60fb9a05ef6de02ba192390306efad15cf0131794d270dbed5d53ef74a324.png"><img alt="../_images/93f60fb9a05ef6de02ba192390306efad15cf0131794d270dbed5d53ef74a324.png" src="../_images/93f60fb9a05ef6de02ba192390306efad15cf0131794d270dbed5d53ef74a324.png" style="width: 691px; height: 547px;" /></a>
+</div>
+</div>
+<p>Because our decision boundary is linear, we visualize its feature importance as we did with logistic regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># extracting the svm decision boundary coefficients
+svm_coef = svm.coef_[0]
+
+# bar plot of svm coefficients
+sns.barplot(x=svm_coef, y=X.columns) 
+plt.title(&#39;Feature Importance from Linear SVM&#39;)
+plt.xlabel(&#39;Coefficient Value&#39;)
+plt.ylabel(&#39;Feature&#39;)
+plt.axvline(0, color=&#39;red&#39;, linestyle=&#39;--&#39;) # line to show zero
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/b9667cb6c1dc58de129bb4e9ef73cf2eb2d8bb939e267510aaeebb43dc242d8f.png"><img alt="../_images/b9667cb6c1dc58de129bb4e9ef73cf2eb2d8bb939e267510aaeebb43dc242d8f.png" src="../_images/b9667cb6c1dc58de129bb4e9ef73cf2eb2d8bb939e267510aaeebb43dc242d8f.png" style="width: 602px; height: 455px;" /></a>
+</div>
+</div>
+<p>According to our linear SVM model, <code class="docutils literal notranslate"><span class="pre">sex</span></code>, <code class="docutils literal notranslate"><span class="pre">trestbps</span></code>, <code class="docutils literal notranslate"><span class="pre">chol</span></code>, and <code class="docutils literal notranslate"><span class="pre">thalach</span></code> are relatively more important compared to the other features. Unsuprisingly, our logistic regression model also predicted this as both models assumed linear kernels.</p>
+<p><strong>Extra.</strong> To explore the usage of SVMs further, we can optimize the hyperparameters by using a <strong>Grid Search</strong> (<a class="reference external" href="https://scikit-learn.org/dev/modules/grid_search.html#grid-search">User Guide</a> and <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.model_selection.GridSearchCV.html">documentation</a>). Essentially, we specify which parameters we want to optimize and perform an exhaustive search. We will compare the hyperparameter performance using the standard accuracy score (proportion of correctly predicted to all samples). The hyperparameters we will vary are the regularization <code class="docutils literal notranslate"><span class="pre">C</span></code>, kernel type <code class="docutils literal notranslate"><span class="pre">kernel</span></code>, and kernel coefficient <code class="docutils literal notranslate"><span class="pre">gamma</span></code> parameters. Please refer to the <a class="reference external" href="https://scikit-learn.org/1.5/modules/svm.html#svm-kernels">User Guide</a> for the mathematical formulation of the kernel functions. Note that we are performing tuning hyperparameters for curiosity, but further investigation should address overfitting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from sklearn.model_selection import GridSearchCV
+
+# define the parameter grid
+param_grid = {
+    &#39;C&#39;: [0.1, 1, 10, 100],
+    &#39;kernel&#39;: [&#39;linear&#39;, &#39;rbf&#39;, &#39;poly&#39;],
+    &#39;gamma&#39;: [&#39;scale&#39;, &#39;auto&#39;] # for &#39;rbf&#39; and &#39;poly&#39;
+}
+
+# set up the grid search on SVC with 5 cross-fold validations 
+grid_search = GridSearchCV(SVC(probability=True), param_grid, cv=5, scoring=&#39;accuracy&#39;)
+grid_search.fit(X_train, y_train)
+
+# reporting best parameters and model
+print(&quot;Best Parameters:&quot;, grid_search.best_params_)
+best_svm = grid_search.best_estimator_ 
+
+
+# testing
+best_svm_y_test_pred = best_svm.predict(X_test) 
+
+# printing accuracy and precision information for svm
+print(f&#39;Test Accuracy for Tuned SVM: {accuracy_score(y_test, best_svm_y_test_pred):.4f}&#39;) 
+
+print(&#39;Classification Report for Tuned SVM:&#39;) 
+print(classification_report(y_test, best_svm_y_test_pred)) 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Parameters: {&#39;C&#39;: 100, &#39;gamma&#39;: &#39;scale&#39;, &#39;kernel&#39;: &#39;rbf&#39;}
+Test Accuracy for Tuned SVM: 0.9756
+Classification Report for Tuned SVM:
+              precision    recall  f1-score   support
+
+           0       0.97      0.98      0.98       100
+           1       0.98      0.97      0.98       105
+
+    accuracy                           0.98       205
+   macro avg       0.98      0.98      0.98       205
+weighted avg       0.98      0.98      0.98       205
+</pre></div>
+</div>
+</div>
+</div>
+<p>As expected, our hyperparameter tuning yielded a much better performance for our SVM model. In particular, a radial decision boundary performed better than a linear one. We should again note that overfitting is a potential issue with our optimized hyperparameters, but since this is just an exploration, I will leave it here and move on to our final model.</p>
+</section>
+<section id="nearest-neighbors-classification-and-evaluation">
+<h3>Nearest Neighbors Classification and Evaluation<a class="headerlink" href="#nearest-neighbors-classification-and-evaluation" title="Link to this heading">#</a></h3>
+<p>The last model we will use is the <strong>Nearest Neighbors Classification</strong> or <strong>kNN Classification</strong> (<a class="reference external" href="https://scikit-learn.org/dev/modules/neighbors.html#classification#">User Guide</a> and <a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier">documentation</a>). The idea of the Nearest Neighbors model is to consider <span class="math notranslate nohighlight">\(k\)</span> of the “closest” data points from a given point and predicting a label. We should note that there are different notions of “distance” (<a class="reference external" href="https://scikit-learn.org/dev/modules/generated/sklearn.metrics.pairwise.distance_metrics.html#sklearn.metrics.pairwise.distance_metrics">list</a>) between data points. Furthermore, the kNN model depends on our choice of <span class="math notranslate nohighlight">\(k\)</span> and that the corresponding optimal choice of <span class="math notranslate nohighlight">\(k\)</span> is heavily dependant on our data. This brings us to the <strong>bias-variance trade off</strong>.</p>
+<p>The bias-variance trade off compares the model’s ability to generalize (bias) and its sensitivity to new data (variance). Intuitively, a model with high bias tends to underfit whereas a model with high variance tends to overfit. This trade off is very apparent with the kNN model as we vary the number of neighbors, <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<ul class="simple">
+<li><p>When <span class="math notranslate nohighlight">\(k\)</span> is very large, the kNN model essentially averages the whole dataset and oversimplifies (high bias), leading to underfitting. But because <span class="math notranslate nohighlight">\(k\)</span> is very large, the model is less sensitive to new data (low variance).</p></li>
+<li><p>Conversely, if <span class="math notranslate nohighlight">\(k\)</span> is very small, then new data points have much more influence (high variance). But considering very few neighbors allows more generalization (low bias).</p></li>
+</ul>
+<p>We would like to minimize bias and variance error as much as possible. But first, we should get a feel for our kNN model. We will first initialize and fit our model using the standard <span class="math notranslate nohighlight">\(k=5\)</span> neighbors and the conventional Euclidean metric, which corresponds to <code class="docutils literal notranslate"><span class="pre">metric='minkowski'</span></code> and <code class="docutils literal notranslate"><span class="pre">p=2</span></code>. We follow up with its accuracy and classification report.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># importing kNN classifier 
+from sklearn.neighbors import KNeighborsClassifier
+
+# initialize 
+knn = KNeighborsClassifier(n_neighbors=5, metric=&#39;minkowski&#39;, p=2) 
+
+# training 
+knn.fit(X_train, y_train) 
+
+# record predictions 
+knn_y_pred = knn.predict(X_test) 
+
+
+# accuracy for k=7
+accuracy = accuracy_score(y_test, knn_y_pred)
+print(f&quot;Accuracy of kNN at k=5: {accuracy:.4f}&quot;)
+
+# classification report for k=7
+print(&quot;Classification Report of kNN at k=5:&quot;)
+print(classification_report(y_test, knn_y_pred))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of kNN at k=5: 0.8780
+Classification Report of kNN at k=5:
+              precision    recall  f1-score   support
+
+           0       0.87      0.88      0.88       100
+           1       0.88      0.88      0.88       105
+
+    accuracy                           0.88       205
+   macro avg       0.88      0.88      0.88       205
+weighted avg       0.88      0.88      0.88       205
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our kNN Classifer model performs well for an initial guess of <span class="math notranslate nohighlight">\(k=5\)</span> neighbors. Other <span class="math notranslate nohighlight">\(k\)</span> values may perform better, and we can visualize their corresponding performance by plotting the model’s training and testing accuracy against each <span class="math notranslate nohighlight">\(k\)</span> value. In particular, we will range <span class="math notranslate nohighlight">\(k\)</span> from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(50\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># range of k values
+k_values = range(1, 51)
+
+# initialize lists to store accuracy scores
+knn_train_accuracies = []
+knn_test_accuracies = []
+
+# go through each k value
+for k in k_values:
+    # initialize the kNN model with specified hyperparameters
+    knn = KNeighborsClassifier(n_neighbors=k, metric=&#39;minkowski&#39;, p=2)
+    
+    # fit model on training set
+    knn.fit(X_train, y_train)
+    
+    # evaluate accuracy on the training and testing sets
+    knn_y_train_pred = knn.predict(X_train)
+    knn_train_accuracy = accuracy_score(y_train, knn_y_train_pred)
+    knn_train_accuracies.append(knn_train_accuracy)
+    
+    knn_y_test_pred = knn.predict(X_test)
+    knn_test_accuracy = accuracy_score(y_test, knn_y_test_pred)
+    knn_test_accuracies.append(knn_test_accuracy)
+
+# plot the results
+plt.figure(figsize=(12, 6))
+plt.plot(k_values, knn_train_accuracies, label=&#39;Training Accuracy&#39;, marker=&#39;o&#39;, linestyle=&#39;-&#39;, color=&#39;blue&#39;)
+plt.plot(k_values, knn_test_accuracies, label=&#39;Testing Accuracy&#39;, marker=&#39;o&#39;, linestyle=&#39;--&#39;, color=&#39;red&#39;)
+plt.title(&#39;Training and Testing Accuracy vs. Number of Neighbors (k)&#39;, fontsize=14)
+plt.xlabel(&#39;Number of Neighbors (k)&#39;, fontsize=12)
+plt.ylabel(&#39;Accuracy&#39;, fontsize=12)
+plt.legend(fontsize=12)
+plt.grid()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/a24d85c3901c4b157fc6fba15eb2282730447d70dfd94b0f77ec235b5311ff85.png"><img alt="../_images/a24d85c3901c4b157fc6fba15eb2282730447d70dfd94b0f77ec235b5311ff85.png" src="../_images/a24d85c3901c4b157fc6fba15eb2282730447d70dfd94b0f77ec235b5311ff85.png" style="width: 1022px; height: 552px;" /></a>
+</div>
+</div>
+<p>As discussed before, the kNN classifer is prone to overfitting as seen by the graph above where the highest testing accuracy corresponds to only <span class="math notranslate nohighlight">\(k=1\)</span> neighbor. It is more likely to be the case that having more neighbors, coupled with decent training and testing accuracy, has more generalization ability. As such, <span class="math notranslate nohighlight">\(k=11\)</span> or <span class="math notranslate nohighlight">\(k=12\)</span> neighbors serve as great candidates for our model.</p>
+<p>Let us take <span class="math notranslate nohighlight">\(k=11\)</span> neighbors and run our metrics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># importing kNN classifier 
+from sklearn.neighbors import KNeighborsClassifier
+
+# initialize 
+knn = KNeighborsClassifier(n_neighbors=11, metric=&#39;minkowski&#39;, p=2) 
+
+# training 
+knn.fit(X_train, y_train) 
+
+# record predictions 
+knn_y_pred = knn.predict(X_test) 
+
+
+# accuracy for k=11
+accuracy = accuracy_score(y_test, knn_y_pred)
+print(f&quot;Accuracy of kNN at k=11: {accuracy:.4f}&quot;)
+
+# classification report for k=11
+print(&quot;Classification Report of kNN at k=11:&quot;)
+print(classification_report(y_test, knn_y_pred)) 
+
+
+# initialize confusion matrix for knn
+knn_conf_matrix = confusion_matrix(y_test, knn_y_test_pred) 
+
+# visualize confusion matrix for knn with a heatmap 
+plt.figure(figsize=(8, 6))
+sns.heatmap(knn_conf_matrix, 
+    annot=True, 
+    fmt=&quot;d&quot;, 
+    cmap=&quot;Blues&quot;, 
+    xticklabels=[&quot;No Heart Disease&quot;, &quot;Heart Disease&quot;], 
+    yticklabels=[&quot;No Heart Disease&quot;, &quot;Heart Disease&quot;])
+
+plt.title(&quot;Confusion Matrix for knn at k=11&quot;) 
+plt.xlabel(&quot;Predicted&quot;) 
+plt.ylabel(&quot;Actual&quot;) 
+plt.show() 
+
+
+# get probabilities for the positive class 
+knn_y_test_prob = knn.predict_proba(X_test)[:, 1] 
+
+# calculate ROC curve 
+fpr, tpr, thresholds = roc_curve(y_test, knn_y_test_prob) 
+
+# plot ROC curve 
+plt.figure(figsize=(8, 6)) 
+plt.plot(fpr, tpr, label=f&#39;AUC = {roc_auc_score(y_test, knn_y_test_prob):.3f}&#39;) 
+plt.plot([0, 1], [0, 1], &#39;r--&#39;) # classifier line 
+plt.title(&#39;ROC Curve for knn at k=11&#39;) 
+plt.xlabel(&#39;False Positive Rate&#39;) 
+plt.ylabel(&#39;True Positive Rate&#39;) 
+plt.legend(loc=&#39;lower right&#39;) 
+plt.show() 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy of kNN at k=11: 0.9024
+Classification Report of kNN at k=11:
+              precision    recall  f1-score   support
+
+           0       0.92      0.88      0.90       100
+           1       0.89      0.92      0.91       105
+
+    accuracy                           0.90       205
+   macro avg       0.90      0.90      0.90       205
+weighted avg       0.90      0.90      0.90       205
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/98cac1f5c960f7a2a7a0c8f45add2dfa9ce872c26fc25f64525fe6e2ee3c6d6a.png"><img alt="../_images/98cac1f5c960f7a2a7a0c8f45add2dfa9ce872c26fc25f64525fe6e2ee3c6d6a.png" src="../_images/98cac1f5c960f7a2a7a0c8f45add2dfa9ce872c26fc25f64525fe6e2ee3c6d6a.png" style="width: 640px; height: 547px;" /></a>
+<a class="reference internal image-reference" href="../_images/26887617a271dd51ef74853fbdd0b30e65427cf5771351e17fab347defab6f4c.png"><img alt="../_images/26887617a271dd51ef74853fbdd0b30e65427cf5771351e17fab347defab6f4c.png" src="../_images/26887617a271dd51ef74853fbdd0b30e65427cf5771351e17fab347defab6f4c.png" style="width: 691px; height: 547px;" /></a>
+</div>
+</div>
+<p><strong>Extra.</strong> As we did with our SVM model, we can perform hyperparameter tuning to optimize our kNN model’s accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>param_grid = {
+    &#39;n_neighbors&#39;: range(1, 21),
+    &#39;weights&#39;: [&#39;uniform&#39;, &#39;distance&#39;],
+    &#39;metric&#39;: [&#39;minkowski&#39;, &#39;euclidean&#39;, &#39;manhattan&#39;]
+}
+
+grid_search = GridSearchCV(KNeighborsClassifier(), param_grid, cv=5, scoring=&#39;accuracy&#39;)
+grid_search.fit(X_train, y_train)
+
+# best parameters
+print(&quot;Best Parameters:&quot;, grid_search.best_params_)
+best_knn = grid_search.best_estimator_ 
+
+
+# testing best knn
+best_knn_y_test_pred = best_knn.predict(X_test)
+
+# printing accuracy and precision information for knn
+print(f&#39;Test Accuracy for Tuned kNN: {accuracy_score(y_test, best_knn_y_test_pred):.3f}&#39;) 
+
+print(&#39;Classification Report for Tuned kNN:&#39;) 
+print(classification_report(y_test, best_knn_y_test_pred)) 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Parameters: {&#39;metric&#39;: &#39;minkowski&#39;, &#39;n_neighbors&#39;: 6, &#39;weights&#39;: &#39;distance&#39;}
+Test Accuracy for Tuned kNN: 1.000
+Classification Report for Tuned kNN:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       100
+           1       1.00      1.00      1.00       105
+
+    accuracy                           1.00       205
+   macro avg       1.00      1.00      1.00       205
+weighted avg       1.00      1.00      1.00       205
+</pre></div>
+</div>
+</div>
+</div>
+<p>We obtain <span class="math notranslate nohighlight">\(100\%\)</span> accuracy with these parameters. However, the issue of overfitting is clearly evident, though we won’t address it in detail since this is a small-scale exploration.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>In this project, we sought out to predict the presence or absence of heart disease from a dataset from Kaggle. This task is a binary classification problem. We began by making a few visualizations to give insight to our dataset. We then preprocessed our dataset, which included scaling numerical features and checking for multicollinearity. After that, we train and evaluated three models: logistic regression, SVM, and kNN. We now compare their performance by summarizating their metrics. Note that we will look at the precision and recall scores for the positive class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import precision_score, recall_score, f1_score
+
+# initialize a dictionary to store results
+results = {}
+
+# define a function to evaluate and store metrics
+def evaluate_model(name, model, X_test, y_test):
+    y_pred = model.predict(X_test)
+    y_pred_proba = model.predict_proba(X_test)[:, 1] if hasattr(model, &#39;predict_proba&#39;) else None
+    
+    # calculate metrics
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    roc_auc = roc_auc_score(y_test, y_pred_proba) if y_pred_proba is not None else &quot;N/A&quot;
+    
+    # store in results dictionary
+    results[name] = {
+        &quot;Accuracy&quot;: accuracy,
+        &quot;Precision&quot;: precision,
+        &quot;Recall&quot;: recall,
+        &quot;F1-Score&quot;: f1,
+        &quot;ROC-AUC&quot;: roc_auc
+    }
+
+# evaluate models 
+evaluate_model(&quot;Logistic Regression&quot;, clf, X_test, y_test)
+evaluate_model(&quot;SVM&quot;, svm, X_test, y_test)
+evaluate_model(&quot;kNN&quot;, knn, X_test, y_test)
+
+# display results
+import pandas as pd
+results_df = pd.DataFrame(results).T
+results_df
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Accuracy</th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1-Score</th>
+      <th>ROC-AUC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Logistic Regression</th>
+      <td>0.819512</td>
+      <td>0.820755</td>
+      <td>0.828571</td>
+      <td>0.824645</td>
+      <td>0.913238</td>
+    </tr>
+    <tr>
+      <th>SVM</th>
+      <td>0.843902</td>
+      <td>0.828829</td>
+      <td>0.876190</td>
+      <td>0.851852</td>
+      <td>0.913952</td>
+    </tr>
+    <tr>
+      <th>kNN</th>
+      <td>0.902439</td>
+      <td>0.889908</td>
+      <td>0.923810</td>
+      <td>0.906542</td>
+      <td>0.953143</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Just looking at the scores, it is clear that kNN at <span class="math notranslate nohighlight">\(k=11\)</span> outperformed logistic regression and SVM. Between logistic regression and SVM, we see that their AUC scores are similar. However, SVM preformed slightly better than logistic regression in <code class="docutils literal notranslate"><span class="pre">accuracy</span></code>, <code class="docutils literal notranslate"><span class="pre">recall</span></code>, and <code class="docutils literal notranslate"><span class="pre">f1-score</span></code>. Hence, kNN performs the best whereas logistic regression performed the worst.</p>
+<p><strong>Extra.</strong> As an aside, both SVM and kNN performed much better after tuning their hyperparameters, with kNN achieving an accuracy score of <span class="math notranslate nohighlight">\(100\%\)</span>.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Dataset from Kaggle: <a class="reference external" href="https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset/data">https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset/data</a>. Accessed 24 Nov. 2024.</p></li>
+<li><p>Codes from Class Lecture Notes for Math 10 in Fall 2024 and ChatGPT.</p></li>
+<li><p>scikit-learn <a class="reference external" href="https://scikit-learn.org/1.5/index.html">https://scikit-learn.org/1.5/index.html</a>, specific pages linked throughout project.</p></li>
+</ol>
+<a style='text-decoration:none;line-height:16px;display:flex;color:#5B5B62;padding:10px;justify-content:end;' href='https://deepnote.com?utm_source=created-in-deepnote-cell&projectId=03440bca-b9a6-4222-8038-6ef9beaeb66d' target="_blank">
+<img alt='Created in deepnote.com' style='display:inline;max-height:16px;margin:0px;margin-right:7.5px;' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iODBweCIgaGVpZ2h0PSI4MHB4IiB2aWV3Qm94PSIwIDAgODAgODAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0LjEgKDc2NDkwKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5Hcm91cCAzPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IkxhbmRpbmciIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJBcnRib2FyZCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEyMzUuMDAwMDAwLCAtNzkuMDAwMDAwKSI+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMjM1LjAwMDAwMCwgNzkuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yMCIgZmlsbD0iIzAyNjVCNCIgcG9pbnRzPSIyLjM3NjIzNzYyIDgwIDM4LjA0NzY2NjcgODAgNTcuODIxNzgyMiA3My44MDU3NTkyIDU3LjgyMTc4MjIgMzIuNzU5MjczOSAzOS4xNDAyMjc4IDMxLjY4MzE2ODMiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNS4wMDc3MTgsODAgQzQyLjkwNjIwMDcsNzYuNDU0OTM1OCA0Ny41NjQ5MTY3LDcxLjU0MjI2NzEgNDguOTgzODY2LDY1LjI2MTk5MzkgQzUxLjExMjI4OTksNTUuODQxNTg0MiA0MS42NzcxNzk1LDQ5LjIxMjIyODQgMjUuNjIzOTg0Niw0OS4yMTIyMjg0IEMyNS40ODQ5Mjg5LDQ5LjEyNjg0NDggMjkuODI2MTI5Niw0My4yODM4MjQ4IDM4LjY0NzU4NjksMzEuNjgzMTY4MyBMNzIuODcxMjg3MSwzMi41NTQ0MjUgTDY1LjI4MDk3Myw2Ny42NzYzNDIxIEw1MS4xMTIyODk5LDc3LjM3NjE0NCBMMzUuMDA3NzE4LDgwIFoiIGlkPSJQYXRoLTIyIiBmaWxsPSIjMDAyODY4Ij48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMCwzNy43MzA0NDA1IEwyNy4xMTQ1MzcsMC4yNTcxMTE0MzYgQzYyLjM3MTUxMjMsLTEuOTkwNzE3MDEgODAsMTAuNTAwMzkyNyA4MCwzNy43MzA0NDA1IEM4MCw2NC45NjA0ODgyIDY0Ljc3NjUwMzgsNzkuMDUwMzQxNCAzNC4zMjk1MTEzLDgwIEM0Ny4wNTUzNDg5LDc3LjU2NzA4MDggNTMuNDE4MjY3Nyw3MC4zMTM2MTAzIDUzLjQxODI2NzcsNTguMjM5NTg4NSBDNTMuNDE4MjY3Nyw0MC4xMjg1NTU3IDM2LjMwMzk1NDQsMzcuNzMwNDQwNSAyNS4yMjc0MTcsMzcuNzMwNDQwNSBDMTcuODQzMDU4NiwzNy43MzA0NDA1IDkuNDMzOTE5NjYsMzcuNzMwNDQwNSAwLDM3LjczMDQ0MDUgWiIgaWQ9IlBhdGgtMTkiIGZpbGw9IiMzNzkzRUYiPjwvcGF0aD4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+' > </img>
+Created in <span style='font-weight:600;margin-left:4px;'>Deepnote</span></a></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./final_projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Caroline_Cheng.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Ballon D’or winner prediction model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Fang_Zhao.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dataset-and-visualization">The Dataset and Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-feature-scaling">Preprocessing, Feature Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-our-models">Training our Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-and-evaluation">Logistic Regression and Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines-and-evaluation">Support Vector Machines and Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nearest-neighbors-classification-and-evaluation">Nearest Neighbors Classification and Evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

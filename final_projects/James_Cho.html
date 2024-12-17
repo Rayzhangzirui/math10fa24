@@ -1,0 +1,1344 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TQQQ Stock Predictor Project &#8212; UCI Math 10, Fall 2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'final_projects/James_Cho';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data analysis of new energy vehicles in China" href="Kaiyuan_Chen.html" />
+    <link rel="prev" title="Analyzing Life Expectancy Across Countries" href="Helena_Tran.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">UCI Math 10, Fall 2024</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    UC Irvine, Math 10, Fall 2024
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Course Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../final_project_instruction.html">Final Project Instruction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/notes_intro.html">Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notes/python_review.html">Python review</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/OOP.html">Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/numpy.html">NumPy Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/prob_stat.html">Probability and Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pandas.html">Pandas dataframe</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/visualization.html">Visualization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/multi_linear_reg.html">Multiple Linear Regression</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/polynomial_reg.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/bias_variance.html">Bias-Variance Tradeoff</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/cv.html">Cross Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gradient_descent.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_binary.html">Binary Classification with logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/logistic_multiclass.html">Logistic Regression for Multiclass Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/fairness.html">Bias and Fairness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/knn.html">Nearest Neighbor Regression and Classification</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../notes/kmeans.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/pca.html">Dimensionality Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/intro_nn.html">Nerual Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notes/gan.html">Generative Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture/intro.html">Lectures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Mon.html">Lecture Week 1 Mon 9/30</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Wed.html">Lecture Week 1 Wed 10/2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week1_Fri.html">Lecture Week 1 Fri 10/4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Mon.html">Lecture Week 2 Mon 10/7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Wed.html">Lecture Week 2 Wed 10/9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week2_Fri.html">Lecture Week 2 Fri 10/11</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Mon.html">Lecture Week 3 Mon 10/14</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Wed.html">Lecture Week 3 Wed 10/16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week3_Fri.html">Lecture Week 3 Fri 10/19</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Mon.html">Lecture Week 4 Mon 10/21</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Wed.html">Lecture Week 4 Wed 10/23</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week4_Fri.html">Lecture Week 4 Fri 10/25</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Mon.html">Lecture Week 5 Mon 10/7</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Wed.html">Lecture Week 5 Wed 10/30</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week5_Fri.html">Lecture Week 5 Fri 11/1</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Wed.html">Lecture Week 6 Wed 11/6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week6_Fri.html">Lecture Week 6 Fri 11/8</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Wed.html">Lecture Week 7 Wed 11/13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week7_Fri.html">Lecture Week 7 Fri 11/15</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Mon.html">Lecture Week 8 Mon 11/18</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture/week8_Wed.html">Lecture Week 8 Wed 11/20</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../homework/intro.html">Homework</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw1.html">Homework 1 (Due 10/4/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw2_sol.html">Homework 2 (Due 10/11/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw3_sol.html">Homework 3 (Due 10/18/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw4_sol.html">Homework 4 (Due 10/25/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw5_sol.html">Homework 5 (Due 11/1/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw6_sol.html">Homework 6 (Due 11/15/2024 at 11:59pm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework/hw7_sol.html">Homework 7 (Due 11/25/2024 at 11:59pm)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Student Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Caroline_Cheng.html">Ballon D’or winner prediction model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Davin_Huynh.html">Predicting Heart Disease with Standard Machine Learning Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Gabriela_Zuno.html">Correlation Bewteen a T.V Show’s Genre and Queer Female Character Deaths</a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Hailili_Subinuer.html">The Application of Machine Learning in Gold Price Prediction</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Helena_Tran.html">Analyzing Life Expectancy Across Countries</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">TQQQ Stock Predictor Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kaiyuan_Chen.html">Data analysis of new energy vehicles in China</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kent_Hocaoglu.html">Analysis of Crime Reports in LA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Krishna_Saraogi.html">Step 1: Data Exploration/ Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nguyen_Bui.html">Title: Should I investing to SIRI stock ? Reason?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nicholas_Le.html">Predicting Student Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Nikolina_Sentovich.html">An Analysis on the Likeliness of People Changing Their Occupation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Pinge_Chen.html"><strong>Predicting Subscription to Term Deposit</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Simon_Chen.html"><strong>Medical Insurance Prediction</strong></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Zhang_Zhang.html">Prediction of High School Students’ Academic Performance</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/final_projects/James_Cho.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TQQQ Stock Predictor Project</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-james-cho">Author: James Cho</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-project-uc-irvine-math-10-fall-24">Course Project, UC Irvine, Math 10, Fall 24</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-introduction">I) Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-importing-data">II) Importing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-sorting-data">III) Sorting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-data-exploration">IV) Data Exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-statistics">General Statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-graph">Line Graph</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-heatmap">Correlation Heatmap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v-lagged-prices-and-moving-averages">V) Lagged Prices and Moving Averages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-linear-regression">VI) Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-regression-model">Building the Regression Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-the-model">Visualization of the Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vii-discussion-of-results-and-potential-improvements">VII) Discussion of Results and Potential Improvements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-that-we-have">Now that we have:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-performance">Model Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-linear-regression">Limitations of Linear Regression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viii-tree-based-model">VIII) Tree-Based Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-the-tree-based-model-do-that-the-linear-regression-model-can-t">What can the Tree-based Model do that the Linear Regression Model can’t?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-required-libraries">Install Required Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-a-tree-based-model">Train-Test a Tree Based Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-model-performance">Random Forest Model Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-tree-based-models">Limitations of Tree-Based Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ix-cross-validation-and-bias-variance-tradeoff">IX) Cross Validation and Bias-Variance Tradeoff</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross Validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-tradeoff">Bias-Variance Tradeoff</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-summary">X) Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xi-references">XI) References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tqqq-stock-predictor-project">
+<h1>TQQQ Stock Predictor Project<a class="headerlink" href="#tqqq-stock-predictor-project" title="Link to this heading">#</a></h1>
+<section id="author-james-cho">
+<h2>Author: James Cho<a class="headerlink" href="#author-james-cho" title="Link to this heading">#</a></h2>
+</section>
+<section id="course-project-uc-irvine-math-10-fall-24">
+<h2>Course Project, UC Irvine, Math 10, Fall 24<a class="headerlink" href="#course-project-uc-irvine-math-10-fall-24" title="Link to this heading">#</a></h2>
+<p>I would like to post my notebook on the course’s website. [Yes]</p>
+</section>
+<section id="i-introduction">
+<h2>I) Introduction<a class="headerlink" href="#i-introduction" title="Link to this heading">#</a></h2>
+<p>The purpose of this project is to predict the price of the TQQQ stock, and I specifically chose TQQQ because this is my main stock that I have invested in and plan to invest in the future. The following data set is the price of TQQQ from 01/01/2011 to 01/01/2024, and I will be using feature engineering, linear regression, and model evaluation to determine the prediction of this stock.</p>
+</section>
+<section id="ii-importing-data">
+<h2>II) Importing Data<a class="headerlink" href="#ii-importing-data" title="Link to this heading">#</a></h2>
+<p>In the following, I will download Yahoo Finance and import the necessary libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+
+<span class="n">ticker</span> <span class="o">=</span> <span class="s1">&#39;TQQQ&#39;</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2011-01-01&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2024-01-01&#39;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">ticker</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end_date</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  1 of 1 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Price      Adj Close     Close      High       Low      Open    Volume
+Ticker          TQQQ      TQQQ      TQQQ      TQQQ      TQQQ      TQQQ
+Date                                                                  
+2011-01-03  0.777172  0.805000  0.820885  0.790573  0.790677  66758400
+2011-01-04  0.775966  0.803750  0.815313  0.788385  0.815104  65760000
+2011-01-05  0.795224  0.823698  0.824063  0.794740  0.795781  61440000
+2011-01-06  0.802415  0.831146  0.833073  0.821510  0.826615  52262400
+2011-01-07  0.800554  0.829219  0.836771  0.805156  0.835365  76204800
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to avoid any errors, the data can be saved for future use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;TQQQ_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iii-sorting-data">
+<h2>III) Sorting Data<a class="headerlink" href="#iii-sorting-data" title="Link to this heading">#</a></h2>
+<p>After downloading the data, I am going to clean and preprocess the data, drop any null values, remove any unnecessary columns, and rename some columns to make the data set clearer/more organized.</p>
+<p>The original and cleaned dataset will be displayed to visualize a comparison between the two.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">cleaned_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">cleaned_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cleaned_data</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Volume&#39;</span><span class="p">])</span>
+<span class="n">cleaned_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Open&#39;</span><span class="p">:</span> <span class="s1">&#39;Opening Price&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;High&#39;</span><span class="p">:</span> <span class="s1">&#39;Highest Price&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Low&#39;</span><span class="p">:</span> <span class="s1">&#39;Lowest Price&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Close&#39;</span><span class="p">:</span> <span class="s1">&#39;Closing Price&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Adj Close&#39;</span><span class="p">:</span> <span class="s1">&#39;Adjusted Closing Price&#39;</span><span class="p">},</span> 
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">original_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cleaned Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original Data:
+Price      Adj Close     Close      High       Low      Open    Volume
+Ticker          TQQQ      TQQQ      TQQQ      TQQQ      TQQQ      TQQQ
+Date                                                                  
+2011-01-03  0.777172  0.805000  0.820885  0.790573  0.790677  66758400
+2011-01-04  0.775966  0.803750  0.815313  0.788385  0.815104  65760000
+2011-01-05  0.795224  0.823698  0.824063  0.794740  0.795781  61440000
+2011-01-06  0.802415  0.831146  0.833073  0.821510  0.826615  52262400
+2011-01-07  0.800554  0.829219  0.836771  0.805156  0.835365  76204800
+
+Cleaned Data:
+Price      Adjusted Closing Price Closing Price Highest Price Lowest Price  \
+Ticker                       TQQQ          TQQQ          TQQQ         TQQQ   
+Date                                                                         
+2011-01-03               0.777172      0.805000      0.820885     0.790573   
+2011-01-04               0.775966      0.803750      0.815313     0.788385   
+2011-01-05               0.795224      0.823698      0.824063     0.794740   
+2011-01-06               0.802415      0.831146      0.833073     0.821510   
+2011-01-07               0.800554      0.829219      0.836771     0.805156   
+
+Price      Opening Price  
+Ticker              TQQQ  
+Date                      
+2011-01-03      0.790677  
+2011-01-04      0.815104  
+2011-01-05      0.795781  
+2011-01-06      0.826615  
+2011-01-07      0.835365  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iv-data-exploration">
+<h2>IV) Data Exploration<a class="headerlink" href="#iv-data-exploration" title="Link to this heading">#</a></h2>
+<p>To get a better understanding of the dataset, we want to see the general statistics of the graph and visualize the dataset through various charts such as the line graph, histogram, and the correlation heatmap.</p>
+<section id="general-statistics">
+<h3>General Statistics<a class="headerlink" href="#general-statistics" title="Link to this heading">#</a></h3>
+<p>In this section, general statistical overview are shown such as the mean, median, mode, standard deviation, etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Price  Adjusted Closing Price Closing Price Highest Price Lowest Price  \
+Ticker                   TQQQ          TQQQ          TQQQ         TQQQ   
+count             3270.000000   3270.000000   3270.000000  3270.000000   
+mean                15.847460     16.344687     16.701963    15.940602   
+std                 18.367921     18.932647     19.343526    18.462385   
+min                  0.526663      0.545521      0.585104     0.533854   
+25%                  2.536822      2.627656      2.670417     2.575104   
+50%                  8.446779      8.745417      8.893750     8.544583   
+75%                 22.471020     23.162500     23.737501    22.375000   
+max                 85.722473     88.570000     91.680000    87.660004   
+
+Price  Opening Price  
+Ticker          TQQQ  
+count    3270.000000  
+mean       16.341786  
+std        18.939127  
+min         0.550625  
+25%         2.625937  
+50%         8.736667  
+75%        23.136250  
+max        89.644997  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="line-graph">
+<h3>Line Graph<a class="headerlink" href="#line-graph" title="Link to this heading">#</a></h3>
+<p>Here, we will visualize how the Adjusted Closing Price has changed over the years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cleaned_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;Adjusted Closing Price&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Adjusted Closing Price&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;TQQQ Adjusted Closing Price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Price (USD)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ceb00a197ffafafa89f6f5bba9e2fc9f1c56c45799477be3172dc0f72aa7777d.png" src="../_images/ceb00a197ffafafa89f6f5bba9e2fc9f1c56c45799477be3172dc0f72aa7777d.png" />
+</div>
+</div>
+<p>It can be easily observed from the line graph that the price has generally increased, but has peaked roughly around 2021-2022.</p>
+</section>
+<section id="histogram">
+<h3>Histogram<a class="headerlink" href="#histogram" title="Link to this heading">#</a></h3>
+<p>It is also important to see how the Adjusted Closing Price is distibuted because it shows how frequently the stock is traded at various price levels. Wide distribution implies high volatility and risk while narrow distribution indicates stability where there’s low volatility and risk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">cleaned_data</span><span class="p">[</span><span class="s1">&#39;Adjusted Closing Price&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of Adjusted Closing Price&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Price (USD)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9c313ca8181772a8eda7c487d085599c66d479522df1454e5f1c2bd7097a28a9.png" src="../_images/9c313ca8181772a8eda7c487d085599c66d479522df1454e5f1c2bd7097a28a9.png" />
+</div>
+</div>
+<p>As you can see, the distribution of the Adjusted Closing Price is narrow and right-skewed, which indicated that this stock is low-risk, priced relatively low, and is generally stable with rare, significant price spikes.</p>
+</section>
+<section id="correlation-heatmap">
+<h3>Correlation Heatmap<a class="headerlink" href="#correlation-heatmap" title="Link to this heading">#</a></h3>
+<p>To check for any potential predictors for price changes, correlation heatmaps can indicate those predictors by visualizing relationships between numerical vairables within the dataset.</p>
+<p>The indicators are known as <strong>correlation cofficients</strong>, and they range between -1 to 1.</p>
+<ul class="simple">
+<li><p><strong>1</strong> Positive correlation</p></li>
+<li><p><strong>0</strong> No correlation</p></li>
+<li><p><strong>-1</strong> Negative correlation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlation_matrix</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlation Heatmap&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8fe10a099887b7b30379b9b3321db8012d8b7fbcaaf91291d60deed28d01bd2d.png" src="../_images/8fe10a099887b7b30379b9b3321db8012d8b7fbcaaf91291d60deed28d01bd2d.png" />
+</div>
+</div>
+<p>From the heatmap above, it is clear that no matter what type of TQQQ price it is, they all have a very strong positive correlation.</p>
+</section>
+</section>
+<section id="v-lagged-prices-and-moving-averages">
+<h2>V) Lagged Prices and Moving Averages<a class="headerlink" href="#v-lagged-prices-and-moving-averages" title="Link to this heading">#</a></h2>
+<p>Lagged prices are all the previous prices of the stock for a specific number of days. A good example of this is price of TQQQ a day or two ago. This is useful in determining the future price of TQQQ because they can influence today or the future price. In other words, they can be helpful when it comes to predictions.</p>
+<p>Moving averages are also very useful because they can make the graph line look “smoother” due to it picking up on trends and noise that the model can remove. This is important when it comes to predicting TQQQ prices to see where the general trend is heading to, whether if it’s rising or falling.</p>
+<p>The following code will prepare the TQQQ dataset for the upcoming section: linear regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lag_days</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  
+
+<span class="c1"># For lagged prices</span>
+<span class="k">for</span> <span class="n">lag</span> <span class="ow">in</span> <span class="n">lag_days</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Lag_</span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">_Price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">lag</span><span class="p">)</span>
+
+<span class="c1"># For moving averages</span>
+<span class="n">moving_avg_days</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span> 
+<span class="k">for</span> <span class="n">ma</span> <span class="ow">in</span> <span class="n">moving_avg_days</span><span class="p">:</span>
+    <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;MA_</span><span class="si">{</span><span class="n">ma</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">ma</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">processed_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">processed_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">processed_data</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Price      Adj Close     Close      High       Low      Open     Volume  \
+Ticker          TQQQ      TQQQ      TQQQ      TQQQ      TQQQ       TQQQ   
+Date                                                                      
+2011-01-31  0.803118  0.831875  0.838125  0.804688  0.822969   79987200   
+2011-02-01  0.847719  0.878073  0.883854  0.847813  0.851042  101721600   
+2011-02-02  0.843898  0.874115  0.883125  0.868594  0.873438   46060800   
+2011-02-03  0.847166  0.877500  0.882240  0.848281  0.869271   65779200   
+2011-02-04  0.862452  0.893333  0.894792  0.871771  0.879740   67968000   
+
+Price      Lag_1_Price Lag_2_Price Lag_3_Price      MA_5     MA_10     MA_20  
+Ticker                                                                        
+Date                                                                          
+2011-01-31    0.791403    0.855966    0.839775  0.823443  0.822835  0.815755  
+2011-02-01    0.803118    0.791403    0.855966  0.827596  0.821884  0.819282  
+2011-02-02    0.847719    0.803118    0.791403  0.828421  0.823423  0.822679  
+2011-02-03    0.843898    0.847719    0.803118  0.826661  0.827149  0.825276  
+2011-02-04    0.847166    0.843898    0.847719  0.840871  0.834254  0.828278  
+Price       Adj Close      Close       High        Low       Open    Volume  \
+Ticker           TQQQ       TQQQ       TQQQ       TQQQ       TQQQ      TQQQ   
+Date                                                                          
+2023-12-22  49.817402  50.349998  50.939999  49.639999  50.599998  66114200   
+2023-12-26  50.727673  51.270000  51.509998  50.619999  50.639999  43685600   
+2023-12-27  50.994816  51.540001  51.660000  51.020000  51.349998  55747800   
+2023-12-28  50.866188  51.410000  52.009998  51.270000  51.919998  42884100   
+2023-12-29  50.163700  50.700001  51.520000  50.000000  51.380001  66986200   
+
+Price      Lag_1_Price Lag_2_Price Lag_3_Price       MA_5      MA_10  \
+Ticker                                                                 
+Date                                                                   
+2023-12-22   49.619526   48.026550   50.259678  49.448802  48.336206   
+2023-12-26   49.817402   49.619526   48.026550  49.690166  48.880479   
+2023-12-27   50.727673   49.817402   49.619526  49.837193  49.342122   
+2023-12-28   50.994816   50.727673   49.817402  50.405121  49.627375   
+2023-12-29   50.866188   50.994816   50.727673  50.513956  49.850260   
+
+Price           MA_20  
+Ticker                 
+Date                   
+2023-12-22  45.777204  
+2023-12-26  46.143910  
+2023-12-27  46.506734  
+2023-12-28  46.871007  
+2023-12-29  47.218381  
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following code will visualize the dot plots between the closing prices, lagged prices, and the moving averages. I have tried my best to make the lines the most distinguishable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># For original closed prices</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">processed_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">processed_data</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Close Price&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="c1"># For lagged prices</span>
+<span class="n">lag_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">lag</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">lag_colors</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">processed_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">processed_data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Lag_</span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1">_Price&#39;</span><span class="p">],</span> 
+             <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Lag </span><span class="si">{</span><span class="n">lag</span><span class="si">}</span><span class="s1"> Price&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># For moving averages</span>
+<span class="n">ma_styles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">]</span>
+<span class="n">ma_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">ma</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="n">ma_styles</span><span class="p">,</span> <span class="n">ma_colors</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">processed_data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">processed_data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;MA_</span><span class="si">{</span><span class="n">ma</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">],</span> 
+             <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ma</span><span class="si">}</span><span class="s1">-Day MA&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Close Price, Lagged Prices, Moving Averages&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Price (USD)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">AutoLocator</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># Adjust minor tick spacing if needed</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4d60eb736c13be196f1233188dc14e698727b2c3946745f46aa5fb2125ba1241.png" src="../_images/4d60eb736c13be196f1233188dc14e698727b2c3946745f46aa5fb2125ba1241.png" />
+</div>
+</div>
+</section>
+<section id="vi-linear-regression">
+<h2>VI) Linear Regression<a class="headerlink" href="#vi-linear-regression" title="Link to this heading">#</a></h2>
+<p>Linear regression is a technique that learns the models or dataset between the dependent and independent variables to generate predictions. This is visualized as a line that best fits the data.</p>
+<p>This is obviously very useful in this project since the definition itself is essentially what this project is about: predictions.</p>
+<p>It is good that lagged prices and moving averages were defined and cleared up in the previous section, and those factors are one of the major building blocks of linear regression.</p>
+<section id="data-preparation">
+<h3>Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h3>
+<p>For independent variables, we would only need relevant predictors, which will be the features mentioned beforehand, and drop any unnecessary columns that we won’t use, which in this case will be all the prices that are not the closing price.</p>
+<p>For dependent variables, this will be the closing price and adjusted closing prices for the upcoming days.</p>
+<p>We also want to prepare the training and testing models for the next section by splitting the data into training and testing sets. We will use the 80-20 train-test split.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lag_1_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;Lag_2_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;Lag_3_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_5&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_10&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_20&#39;</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;Adj Close&#39;</span>  
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">processed_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">processed_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>   
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training data size:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Testing data size:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training data size: (2600, 6)
+Testing data size: (651, 6)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="building-the-regression-model">
+<h3>Building the Regression Model<a class="headerlink" href="#building-the-regression-model" title="Link to this heading">#</a></h3>
+<p>Here is where we build the linear regression model through the training set so the model can learn the relationship between the independent and dependent variables, cut any removable noise, and examine coefficients for better predictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define features and target</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lag_1_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;Lag_2_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;Lag_3_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_5&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_10&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_20&#39;</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;Adj Close&#39;</span>
+
+<span class="c1"># Ensure all columns exist (to avoid Value Errors)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">col</span> <span class="ow">in</span> <span class="n">processed_data</span><span class="o">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">features</span> <span class="o">+</span> <span class="p">[</span><span class="n">target</span><span class="p">]):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Some required columns are missing in the dataset.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Prepare feature matrix (X) and target vector (y)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">processed_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>  
+<span class="n">y</span> <span class="o">=</span> <span class="n">processed_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>  
+
+<span class="c1"># Ensure y is 1-dim (to avoid Value Errors)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># Split data into training-testing sets (80% train, 20% test)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Start an train the Linear Regression model </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Display coefficients</span>
+<span class="n">coefficients</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Feature&#39;</span><span class="p">:</span> <span class="n">features</span><span class="p">,</span>
+    <span class="s1">&#39;Coefficient&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Linear Regression Coefficients:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear Regression Coefficients:
+       Feature  Coefficient
+0  Lag_1_Price    -0.151225
+1  Lag_2_Price    -0.578373
+2  Lag_3_Price    -0.978489
+3         MA_5     3.096734
+4        MA_10    -0.447328
+5        MA_20     0.059459
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluating-the-model">
+<h3>Evaluating the Model<a class="headerlink" href="#evaluating-the-model" title="Link to this heading">#</a></h3>
+<p>We will now evaluate the model by using such metrics like the Mean Absolute Error, Mean Squared Error, and R-squared error ot test the model’s performance. All these metrics are important to see how the regression model predicts the stock prices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict the target values </span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Calculate the metrics</span>
+<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model Evaluation Metrics:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Absolute Error (MAE): </span><span class="si">{</span><span class="n">mae</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MSE): </span><span class="si">{</span><span class="n">mse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R-squared (R²): </span><span class="si">{</span><span class="n">r2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Evaluation Metrics:
+Mean Absolute Error (MAE): 0.2793619982651877
+Mean Squared Error (MSE): 0.31413069934276044
+R-squared (R²): 0.9990696878500049
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualization-of-the-model">
+<h3>Visualization of the Model<a class="headerlink" href="#visualization-of-the-model" title="Link to this heading">#</a></h3>
+<p>Now, we will create a graph to visualize the stock prices (actual vs. predicted prices).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicted v.s. Actual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">y_test</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_test</span><span class="p">)],</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">y_test</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_test</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Perfect Prediction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Actual Prices&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predicted Prices&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Actual v.s. Predicted Prices&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/97de39ec848700108af3c648c592fa935a7c51dd83486093163786540a3f4743.png" src="../_images/97de39ec848700108af3c648c592fa935a7c51dd83486093163786540a3f4743.png" />
+</div>
+</div>
+<p>We noticed that there are two plots on this graph: scatter plts and a diagonal line. The scatter plot compared the prices between the actual and predicted price, while the diagonal line shows the perfect prediction of the price.</p>
+<p>The closer the dots are to the line, the better the model is.</p>
+</section>
+</section>
+<section id="vii-discussion-of-results-and-potential-improvements">
+<h2>VII) Discussion of Results and Potential Improvements<a class="headerlink" href="#vii-discussion-of-results-and-potential-improvements" title="Link to this heading">#</a></h2>
+<section id="now-that-we-have">
+<h3>Now that we have:<a class="headerlink" href="#now-that-we-have" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Imported and cleaned the data</p></li>
+<li><p>Explored the data where we created different graphs</p></li>
+<li><p>Got a better understanding of the data</p></li>
+<li><p>Picked up on moving averages and lagged prices</p></li>
+<li><p>Built the linear regression model using those lagged prices and moving averages</p></li>
+<li><p>Trained the model on the data</p></li>
+<li><p>Evaluated the data using MAE, MSE, and R^2</p></li>
+<li><p>Visualized actual vs predicted stock prices</p></li>
+</ul>
+<p>We can now reflect on the model’s performance.</p>
+</section>
+<section id="model-performance">
+<h3>Model Performance<a class="headerlink" href="#model-performance" title="Link to this heading">#</a></h3>
+<p>Based on the model’s evaluation metrics (MAE, MSE, and R²), the model performed extremely well in predicting TQQQ prices. To go further in depth:</p>
+<ul class="simple">
+<li><p><strong>MAE:</strong> averages all the errors in the prediction, so the smaller the MAE, the better. In our case, we got a value of 0.279, which is excellent. In general, the MAE value shows that the model’s performance is superb.</p></li>
+<li><p><strong>MSE:</strong> similar concept to MAE where the smaller the MSE, the better. The difference is that MSE are sensitive to larger errors much more than MAE, so the value would be higher than MAE. From this model, we got MSE=0.314. Although it’s higher than the MAE, it is still a significantly small number, which proves that the model performed very well.</p></li>
+<li><p><strong>R²:</strong> measures how much variance there are in TQQQ prices, and R² ranges from [0,1] where 0 indicates that the data does not fit the regression model at all while 1 indicates that the data does fit the regression model very well. Here, we recieved R²=0.99906, proving that the data fits the regression model almost perfectly.</p></li>
+</ul>
+<p>In general, after reflecting on the metric values of MAE, MSE, and R², we can conclude that the model performed <strong>extremely well</strong>.</p>
+</section>
+<section id="limitations-of-linear-regression">
+<h3>Limitations of Linear Regression<a class="headerlink" href="#limitations-of-linear-regression" title="Link to this heading">#</a></h3>
+<p>Although using linear regression models can be helpful and is a strong strategy to predict values based on the dataset, it does have its limitations.</p>
+<ul class="simple">
+<li><p>In the finance world, not everything is linear and may have non-linear trends in the stock market, and the linear regression may not be able to capture those specific trends.</p></li>
+<li><p>The finance world is not only influenced by its numbers. It is vastly influenced by multiple factors such as world economic events (macro or/and micro), geopolitical events, connections to other stocks, etc. Using linear regression and its features (lagged prices and moving averages) do not take those factors into considerations in the model.</p></li>
+</ul>
+</section>
+</section>
+<section id="viii-tree-based-model">
+<h2>VIII) Tree-Based Model<a class="headerlink" href="#viii-tree-based-model" title="Link to this heading">#</a></h2>
+<p>As mentioned earlier, linear regressions has a limitation where it cannot capture non-linear trends. This is where the <strong>tree based model</strong> deems to be useful in this situation.</p>
+<section id="what-can-the-tree-based-model-do-that-the-linear-regression-model-can-t">
+<h3>What can the Tree-based Model do that the Linear Regression Model can’t?<a class="headerlink" href="#what-can-the-tree-based-model-do-that-the-linear-regression-model-can-t" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Tree-based models (TBM) can capture non-linear trends between features, such as lagged prices and moving averages, and the target. Since the stock markets are filled with non-linear relationships and trends, TBMs can vastly improve this model’s performance.</p></li>
+<li><p>TBMs are much more resistant to outliers compared to linear regression models, so naturally, TBMs takes care of the need to scale.</p></li>
+<li><p>Overall, TBMs can reduce variance and improve predictions thanks to certain TBM models creating multiple “trees.”</p></li>
+</ul>
+</section>
+<section id="install-required-libraries">
+<h3>Install Required Libraries<a class="headerlink" href="#install-required-libraries" title="Link to this heading">#</a></h3>
+<p>In order to use tree-based models, we need to install the required libraries</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span> <span class="n">xgboost</span> <span class="n">lightgbm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in c:\users\diamo\anaconda3\lib\site-packages (1.5.2)
+Requirement already satisfied: xgboost in c:\users\diamo\anaconda3\lib\site-packages (2.1.3)
+Requirement already satisfied: lightgbm in c:\users\diamo\anaconda3\lib\site-packages (4.5.0)
+Requirement already satisfied: scipy&gt;=1.6.0 in c:\users\diamo\anaconda3\lib\site-packages (from scikit-learn) (1.9.1)
+Requirement already satisfied: joblib&gt;=1.2.0 in c:\users\diamo\anaconda3\lib\site-packages (from scikit-learn) (1.4.2)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\users\diamo\anaconda3\lib\site-packages (from scikit-learn) (3.5.0)
+Requirement already satisfied: numpy&gt;=1.19.5 in c:\users\diamo\anaconda3\lib\site-packages (from scikit-learn) (1.21.5)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="train-test-a-tree-based-model">
+<h3>Train-Test a Tree Based Model<a class="headerlink" href="#train-test-a-tree-based-model" title="Link to this heading">#</a></h3>
+<p>We can now train-test a tree based model. We will use a simple 80-train/20-test split and then train a random forest to make predictions. Then, we will also incorporate the same evaluation metrics that we have used previously.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="c1"># Features (X) and Target (y)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">processed_data</span><span class="p">[[</span><span class="s1">&#39;Lag_1_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;Lag_2_Price&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_5&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_10&#39;</span><span class="p">,</span> <span class="s1">&#39;MA_20&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">processed_data</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span>
+
+<span class="c1"># Prevent 2D column vector and 1D array mix-ups</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># Train-test split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Train Random Forest</span>
+<span class="n">rf_model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rf_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predictions</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Evaluation metrics</span>
+<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Forest - MAE: </span><span class="si">{</span><span class="n">mae</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Forest - MSE: </span><span class="si">{</span><span class="n">mse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Forest - R²: </span><span class="si">{</span><span class="n">r2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest - MAE: 0.47689498255879115
+Random Forest - MSE: 0.9780074029303077
+Random Forest - R²: 0.9971035872277534
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="random-forest-model-performance">
+<h3>Random Forest Model Performance<a class="headerlink" href="#random-forest-model-performance" title="Link to this heading">#</a></h3>
+<p>Again, based on the model’s evaluation metrics (MAE, MSE, and R²), the model still performed extremely well in predicting TQQQ prices. In addition, the metrics also have more credibility since the metrics took consideration to non-linear trends.</p>
+<p>Here is the model performance summary between linear regression and random tree:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>MAE</p></th>
+<th class="head"><p>MSE</p></th>
+<th class="head"><p>R²</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Linear Regression</p></td>
+<td><p>0.2794</p></td>
+<td><p>0.3141</p></td>
+<td><p>0.9991</p></td>
+</tr>
+<tr class="row-odd"><td><p>Random Forest</p></td>
+<td><p>0.4768</p></td>
+<td><p>0.9770</p></td>
+<td><p>0.9971</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>MAE:</strong> we got value of 0.477, which is excellent. Although it is higher than the linear regression model’s MAE, TBM’s MAE is still highly reliable due to its low number and taking non-linear trends into consideration.</p></li>
+<li><p><strong>MSE:</strong> we got value of 0.977. Again, although it’s higher than the linear regression MSE, it is still a significantly small number and took non-linear trends into consideration.</p></li>
+<li><p><strong>R²:</strong> we recieved value of 0.997, which is not even a big difference from the linear regression R² value of 0.99906. The TBM’s R² being that high all while taking non-linear relationships into consideration shows that this model performed extremely well.</p></li>
+</ul>
+<p>In general, it makes sense that the metric numbers from the TBM is very slightly worse due to it taking non-linear trends into consideration. In addition, those same metric numbers are still very good, proving that this model not only improved its credibility, but also proved that the model performed very well overall.</p>
+</section>
+<section id="limitations-of-tree-based-models">
+<h3>Limitations of Tree-Based Models<a class="headerlink" href="#limitations-of-tree-based-models" title="Link to this heading">#</a></h3>
+<p>Although Tree-Based Models are much more useful and helpful compared to the linear regression model, it still has its limitations.</p>
+<ul class="simple">
+<li><p>If the dataset is too small, the decision trees would easily <strong>overfit</strong> by it making a complex tree due to it having too little data to work with. In addition, if the decision tree is coded to train to its full potential (no matter the size of the dataset), the branch would hit every single data point, making the tree model be very difficult to interpret.</p></li>
+<li><p>Since linear regressions have a more straightforward mathmematical concept, it’s <strong>easier to interpret linear regression models</strong> compared to tree based models.</p></li>
+</ul>
+</section>
+</section>
+<section id="ix-cross-validation-and-bias-variance-tradeoff">
+<h2>IX) Cross Validation and Bias-Variance Tradeoff<a class="headerlink" href="#ix-cross-validation-and-bias-variance-tradeoff" title="Link to this heading">#</a></h2>
+<section id="cross-validation">
+<h3>Cross Validation<a class="headerlink" href="#cross-validation" title="Link to this heading">#</a></h3>
+<p>Cross validation is crucial when it comes to testing the model’s robustness, and it can help the model’s performance to be more consistent, make overfitting or underfitting to be less likely to the training set or the whole data, respectfully.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="c1"># Cross-validation for Linear Regression</span>
+<span class="n">lr_cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Linear Regression Cross-Validation MAE (5-fold): </span><span class="si">{</span><span class="o">-</span><span class="n">lr_cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cross-validation for Random Forest</span>
+<span class="n">rf_cv_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf_model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Forest Cross-Validation MAE (5-fold): </span><span class="si">{</span><span class="o">-</span><span class="n">rf_cv_scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear Regression Cross-Validation MAE (5-fold): 0.42
+Random Forest Cross-Validation MAE (5-fold): 1.45
+</pre></div>
+</div>
+</div>
+</div>
+<p>Like mentioned previously, the lower the MAE, the more consistent the predictions are as a whole in cross-validation folds.</p>
+<ul class="simple">
+<li><p>Linear Regression Cross Validation: we have MAE of 0.42, which shows that this model is less prone to overfitting and more resistant to noise. However, we discussed that LR’s are don’t capture non-linear trends.</p></li>
+<li><p>Random Forest Cross Validation: we have MAE of 1.45, which is much higher than the LR’s MAE. However, this is still a low MAE number considering the fact that the RF took non-linear aspects into consideration. However,  it is still overfitting in some areas which could be due to it being too complext for this dataset.</p></li>
+</ul>
+</section>
+<section id="bias-variance-tradeoff">
+<h3>Bias-Variance Tradeoff<a class="headerlink" href="#bias-variance-tradeoff" title="Link to this heading">#</a></h3>
+<p>Between the two models, the LR model has higher bias due to it only picking up on linear relationships and trends between its features and the target, and the stock market and the finance world has lots of complex relationships that the LR does not pick up on. On the other hand, the RF model does has lower bias, but has higher variance due to it picking up on more complex relationships and trends from the dataset.</p>
+</section>
+</section>
+<section id="x-summary">
+<h2>X) Summary<a class="headerlink" href="#x-summary" title="Link to this heading">#</a></h2>
+<p>To recall, this project aimed to predict TQQ stock prices through machine learning techniques such as linear regression and tree-based models. We first collected the dataset of those prices from 01/01/2011 to 01/01/2024 and received that data using Yahoo Finance API and cleaned the data. To get a better understanding of the dataset, we also calculated basic statistics and visualized the dataset through distributions, line graphs, and a correlation heatmap. Next, we utilized features such as lagged prices and moving averages and visualized them to see how they compare to the closed price. We then built the linear regression model, made some evaluations to help us reflect on the performance, visualized the model, and reflected on it to see if any improvements could be made. Afterwards, we considered the reflection to create a better model: a tree-based model. Just like the linear regression model, we train-tested the model and acquired metrics (such as the MAE, MSE, and R²), and reflected on the model’s performance and what its limitations are. Finally, we discussed the cross-validation and bias-variance tradeoff between the two models.</p>
+</section>
+<section id="xi-references">
+<h2>XI) References<a class="headerlink" href="#xi-references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://rayzhangzirui.github.io/math10fa24/notes/notes_intro.html"><strong>Linear Regression, Visualizations, Correlation Heatmap, Train-Test Method, Lagged Prices, and Evaluation Metrics</strong></a><br />
+Notes and concepts referenced to help with the project.</p></li>
+<li><p><a class="reference external" href="https://finance.yahoo.com/quote/TQQQ/"><strong>Stock Prices for TQQQ</strong></a><br />
+Source of the TQQQ stock data used in this project.</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/yfinance/"><strong>yfinance Library Documentation</strong></a><br />
+The <code class="docutils literal notranslate"><span class="pre">yfinance</span></code> library was used to download and use the data for the TQQQ stock.</p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/"><strong>sklearn Library Documentation</strong></a><br />
+The <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> library was used for machine learning models.</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/"><strong>pandas Library Documentation</strong></a><br />
+The <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library used data manipulation, cleaning, and processing.</p></li>
+<li><p><a class="reference external" href="https://numpy.org/"><strong>numpy Library Documentation</strong></a><br />
+The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library was used for computations and array handling.</p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/"><strong>matplotlib Library Documentation</strong></a><br />
+The <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library was used to create visualizations.</p></li>
+<li><p><a class="reference external" href="https://seaborn.pydata.org/"><strong>seaborn Library Documentation</strong></a><br />
+The <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> library was used to generate correlation heatmaps and other visualizations.</p></li>
+<li><p><a class="reference external" href="https://www.researchgate.net/publication/378435618_Stock_price_prediction_using_decision_tree_classifier_and_LSTM_network"><strong>Tree-Based Models</strong></a><br />
+Research on tree-based models for better stock price prediction.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./final_projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Helena_Tran.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyzing Life Expectancy Across Countries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Kaiyuan_Chen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data analysis of new energy vehicles in China</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-james-cho">Author: James Cho</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-project-uc-irvine-math-10-fall-24">Course Project, UC Irvine, Math 10, Fall 24</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-introduction">I) Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-importing-data">II) Importing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-sorting-data">III) Sorting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-data-exploration">IV) Data Exploration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-statistics">General Statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-graph">Line Graph</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-heatmap">Correlation Heatmap</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v-lagged-prices-and-moving-averages">V) Lagged Prices and Moving Averages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vi-linear-regression">VI) Linear Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data Preparation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-regression-model">Building the Regression Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-model">Evaluating the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-the-model">Visualization of the Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vii-discussion-of-results-and-potential-improvements">VII) Discussion of Results and Potential Improvements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-that-we-have">Now that we have:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-performance">Model Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-linear-regression">Limitations of Linear Regression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viii-tree-based-model">VIII) Tree-Based Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-the-tree-based-model-do-that-the-linear-regression-model-can-t">What can the Tree-based Model do that the Linear Regression Model can’t?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-required-libraries">Install Required Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-a-tree-based-model">Train-Test a Tree Based Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-model-performance">Random Forest Model Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-tree-based-models">Limitations of Tree-Based Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ix-cross-validation-and-bias-variance-tradeoff">IX) Cross Validation and Bias-Variance Tradeoff</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross Validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-tradeoff">Bias-Variance Tradeoff</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-summary">X) Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xi-references">XI) References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ray Zirui Zhang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
