@@ -52,15 +52,15 @@ chapters:
       - file: lecture/week7_Fri
       - file: lecture/week8_Mon
       - file: lecture/week8_Wed
-  - file: homework/intro
-    sections:
-      - file: homework/hw1
-      - file: homework/hw2_sol
-      - file: homework/hw3_sol
-      - file: homework/hw4_sol
-      - file: homework/hw5_sol
-      - file: homework/hw6_sol
-      - file: homework/hw7_sol
+  # - file: homework/intro
+  #   sections:
+      # - file: homework/hw1
+      # - file: homework/hw2_sol
+      # - file: homework/hw3_sol
+      # - file: homework/hw4_sol
+      # - file: homework/hw5_sol
+      # - file: homework/hw6_sol
+      # - file: homework/hw7_sol
   - file: final_projects/intro
     sections:
       - file: final_projects/Caroline_Cheng.ipynb 
