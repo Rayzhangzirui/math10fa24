@@ -1,0 +1,34 @@
+# Originally duplicated from UW Visualization Curriculum
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: UCI Math 10, Fall 2024
+author: Ray Zirui Zhang
+copyright: "2024"
+
+
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: 'off'
+
+exclude_patterns:
+  - 'homework/**'
+  # exclude_patterns:
+  #   - 'Week?/*.ipynb'
+  #   - 'Week??/*.ipynb'
+  # execute_notebooks: 'cache'
+  # allow_errors: true
+  # timeout: 200
+
+
+#launch_buttons:
+#  colab_url: "https://colab.research.google.com"
+
+
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+# html:
+#   use_repository_button: true
+  #favicon : "images/favicon.ico"
+
